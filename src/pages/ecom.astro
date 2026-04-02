@@ -1,0 +1,31 @@
+---
+import Footer from '../components/Footer.astro';
+import FaqSection from '../components/FaqSection.astro';
+import FeatureCardsSection from '../components/FeatureCardsSection.astro';
+import Header from '../components/Header.astro';
+import HeroSection from '../components/HeroSection.astro';
+import CalculatorSection from '../components/CalculatorSection.astro';
+import PartnersSection from '../components/PartnersSection.astro';
+import ProductsSection from '../components/ProductsSection.astro';
+import StepsSection from '../components/StepsSection.astro';
+import ToolsSection from '../components/ToolsSection.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="SuperFin | Home"
+	description="Base homepage shell for the Astro project."
+>
+	<Header />
+	<main>
+		<HeroSection />
+		<FeatureCardsSection />
+		<CalculatorSection />
+		<ProductsSection />
+		<ToolsSection />
+		<StepsSection />
+		<PartnersSection />
+		<FaqSection />
+	</main>
+	<Footer />
+</BaseLayout>

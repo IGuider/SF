@@ -1,0 +1,37 @@
+---
+import '../../styles/components/button.scss';
+
+interface Props {
+	as?: 'button' | 'a';
+	href?: string;
+	type?: 'button' | 'submit' | 'reset';
+	variant?: 'primary' | 'secondary';
+	size?: 'md' | 'lg';
+	class?: string;
+}
+
+const {
+	as = 'button',
+	href,
+	type = 'button',
+	variant = 'primary',
+	size = 'md',
+	class: className,
+} = Astro.props;
+
+const componentClass = ['ui-button', `ui-button--${variant}`, `ui-button--${size}`, className]
+	.filter(Boolean)
+	.join(' ');
+---
+
+{
+	as === 'a' ? (
+		<a class={componentClass} href={href}>
+			<slot />
+		</a>
+	) : (
+		<button class={componentClass} type={type}>
+			<slot />
+		</button>
+	)
+}

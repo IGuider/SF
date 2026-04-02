@@ -1,0 +1,43 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# editor settings
+.vscode/
+
+# local tooling
+.ai/
+.anima/
+
+# local preview and tunnel artifacts
+share-url.txt
+.devserver.log
+.devserver.err
+.ssh-tunnel.log
+.ssh-tunnel.err
+.localtunnel.log
+.lhr.log
+.lt-test.log
+.bg-test.txt
+.cmd-test.txt

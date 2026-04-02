@@ -1,0 +1,40 @@
+---
+import logo from '../assets/sf-logo.svg';
+import '../styles/components/header.scss';
+import Button from './ui/Button.astro';
+
+const navItems = [
+  { label: 'О компании', href: '#about' },
+  { label: 'Продукты', href: '#products' },
+  { label: 'Контакты', href: '#contacts' },
+];
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href={`${basePath}ecom`} aria-label="SimpleFinance">
+      <img class="site-header__logo" src={logo.src} alt="SimpleFinance" />
+    </a>
+
+    <nav class="site-header__nav" aria-label="Основная навигация">
+      <ul class="site-header__nav-list">
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="site-header__phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+      <Button class="site-header__button">Перезвоните мне</Button>
+    </div>
+  </div>
+</header>
