@@ -5,15 +5,16 @@ import FeatureCardsSection from '../components/FeatureCardsSection.astro';
 import Header from '../components/Header.astro';
 import HeroSection from '../components/HeroSection.astro';
 import CalculatorSection from '../components/CalculatorSection.astro';
-import PartnersSection from '../components/PartnersSection.astro';
+import BlogSection from '../components/BlogSection.astro';
 import ProductsSection from '../components/ProductsSection.astro';
 import StepsSection from '../components/StepsSection.astro';
-import ToolsSection from '../components/ToolsSection.astro';
+import ClientsSection from '../components/ClientsSection.astro';
+import ConsultationDialog from '../components/ConsultationDialog.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-	title="SuperFin | Home"
+	title="SimpleFinance | ECOM"
 	description="Base homepage shell for the Astro project."
 >
 	<Header />
@@ -22,10 +23,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		<FeatureCardsSection />
 		<CalculatorSection />
 		<ProductsSection />
-		<ToolsSection />
+		<ClientsSection />
 		<StepsSection />
-		<PartnersSection />
+		<BlogSection />
 		<FaqSection />
 	</main>
+	<ConsultationDialog />
 	<Footer />
 </BaseLayout>

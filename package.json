@@ -13,7 +13,8 @@
     "publish:pages": "node ./scripts/publish-pages.mjs"
   },
   "dependencies": {
-    "astro": "^6.1.1"
+    "astro": "^6.1.1",
+    "swiper": "^12.1.3"
   },
   "devDependencies": {
     "sass": "^1.98.0"

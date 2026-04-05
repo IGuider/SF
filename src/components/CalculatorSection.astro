@@ -10,6 +10,7 @@ import {
 	formatCurrency,
 	formatPercent,
 } from '../lib/calculator';
+import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
 import Button from './ui/Button.astro';
 ---
 
@@ -164,9 +165,11 @@ import Button from './ui/Button.astro';
 									</div>
 								</dl>
 
-								<Button variant="primary" size="md" class="calculator-card__button" type="button">
-									Оставить заявку
-								</Button>
+								<ConsultationDialogTrigger amountSourceSelector="[data-calculator-amount-input]">
+									<Button variant="primary" size="md" class="calculator-card__button" type="button">
+										Оставить заявку
+									</Button>
+								</ConsultationDialogTrigger>
 							</article>
 						))
 					}

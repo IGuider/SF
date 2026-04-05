@@ -186,6 +186,11 @@ export const initCalculatorSections = () => {
 
 		commitInputValue(currentValue);
 
+		const recalculateAmountLayout = () => {
+			syncCurrencyPosition();
+			paintRange(currentValue);
+		};
+
 		rangeInput.addEventListener('input', () => {
 			const nextValue = Number.parseInt(rangeInput.value, 10);
 			currentValue = nextValue;
@@ -272,9 +277,16 @@ export const initCalculatorSections = () => {
 			});
 		}
 
-		window.addEventListener('resize', () => {
-			syncCurrencyPosition();
-			paintRange(currentValue);
+		window.addEventListener('resize', recalculateAmountLayout);
+
+		if ('fonts' in document) {
+			void document.fonts.ready.then(() => {
+				requestAnimationFrame(recalculateAmountLayout);
+			});
+		}
+
+		window.addEventListener('load', () => {
+			requestAnimationFrame(recalculateAmountLayout);
 		});
 	}
 };

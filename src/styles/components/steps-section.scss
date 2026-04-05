@@ -1,0 +1,140 @@
+@use './shared-sections' as shared;
+
+.steps-section {
+	&__header {
+		@include shared.centered-section-header();
+	}
+
+	&__title {
+		@include shared.primary-section-title();
+	}
+
+	&__grid {
+		@include shared.two-column-grid();
+	}
+}
+
+.steps-card {
+	position: relative;
+	display: flex;
+	min-height: 360px;
+	padding: 40px 30px;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+	@include shared.feature-surface-gradient();
+
+	&__content {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		align-content: start;
+		gap: 14px;
+	}
+
+	&__title {
+		@include shared.section-card-title();
+		line-height: 1.04;
+	}
+
+	&__description {
+		@include shared.section-card-description();
+		text-wrap: balance;
+	}
+
+	&__actions {
+		margin-top: 24px;
+	}
+
+	&__number {
+		position: absolute;
+		right: 22px;
+		bottom: 0;
+		font-size: clamp(88px, 10vw, 190px);
+		font-weight: 300;
+		line-height: 0.85;
+		letter-spacing: -7.428px;
+		color: var(--color-secondary);
+	}
+}
+
+@media (max-width: 1024px) {
+	.steps-card {
+		min-height: 220px;
+
+		&__content {
+			max-width: min(66%, 360px);
+		}
+	}
+}
+
+@media (max-width: 820px) {
+	.steps-section {
+		&__header {
+			margin-bottom: 24px;
+		}
+
+		&__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.steps-card {
+		min-height: 190px;
+		padding: 24px 22px 20px;
+
+		&__content {
+			max-width: min(72%, 420px);
+		}
+
+		&__title {
+			font-size: 28px;
+		}
+
+		&__description {
+			font-size: 17px;
+		}
+
+		&__number {
+			right: 18px;
+			font-size: 88px;
+		}
+	}
+}
+
+@media (max-width: 520px) {
+	.steps-section {
+		&__title {
+			font-size: 28px;
+		}
+	}
+
+	.steps-card {
+		min-height: 180px;
+		padding: 20px 16px 18px;
+		border-radius: var(--radius-md-mobile);
+
+		&__content {
+			max-width: calc(100% - 96px);
+			gap: 10px;
+		}
+
+		&__title {
+			font-size: 24px;
+			letter-spacing: -0.04em;
+		}
+
+		&__description {
+			font-size: 16px;
+		}
+
+		&__actions {
+			margin-top: 6px;
+		}
+
+		&__number {
+			right: 12px;
+			bottom: -4px;
+			font-size: 72px;
+		}
+	}
+}

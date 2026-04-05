@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+import clientsBg1 from '../assets/clients-bg1.png';
+import '../styles/components/clients-section.scss';
+
+const cases = [
+	{
+		company: 'ПК «Тутси», г. Волгодонск',
+		industry: 'Производитель<br> детских товаров',
+		coverVariant: 'magnifier',
+		beforeLead: 'До пандемии бизнес работал стабильно: офлайн-продажи, налаженный сбыт.',
+		beforeAccent: 'После 2020 года покупатели ушли в онлайн, а долговые обязательства остались',
+		afterLead: 'Финансирование под поручительство нашего действующего клиента - производителя мебели.',
+		afterAccent: 'Сейчас «Тутси» продолжает расти в большом лимите с нами',
+	},
+	{
+		company: 'ООО «ЛайтПак», Казань',
+		industry: 'Поставщик упаковки<br> для маркетплейсов',
+		coverVariant: 'focus',
+		beforeLead: 'До пандемии бизнес работал стабильно: офлайн-продажи, налаженный сбыт.',
+		beforeAccent: 'После 2020 года покупатели ушли в онлайн, а долговые обязательства остались',
+		afterLead: 'Финансирование под поручительство нашего действующего клиента - производителя мебели.',
+		afterAccent: 'Сейчас «Тутси» продолжает расти в большом лимите с нами',
+	},
+] as const;
+---
+
+<section class="clients-section section" id="clients" aria-labelledby="clients-title" data-clients-section data-clients-count={cases.length}>
+	<div class="container">
+		<div class="clients-section__header">
+			<h2 class="clients-section__title" id="clients-title">Наши клиенты</h2>
+		</div>
+
+		<div class="clients-section__list">
+			<div class="clients-section__slider swiper" data-clients-slider>
+				<div class="swiper-wrapper">
+					{
+						cases.map((item, index) => (
+							<div class="swiper-slide">
+								<article class="client-case" aria-labelledby={`client-case-title-${index}`}>
+									<div class:list={['client-case__card', `client-case__card--${item.coverVariant}`]}>
+										<div class="client-case__identity">
+											<h3 class="client-case__company" id={`client-case-title-${index}`}>{item.company}</h3>
+											<p class="client-case__industry" set:html={item.industry}></p>
+										</div>
+
+										<div class="client-case__visual" aria-hidden="true">
+											<Image class="client-case__visual-image" src={clientsBg1} alt="" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+										</div>
+
+										<button class="client-case__link" type="button" data-client-next aria-label="Показать следующий кейс">
+											<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M4 9H14M14 9L9.5 4.5M14 9L9.5 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+											</svg>
+										</button>
+									</div>
+
+									<div class="client-case__story">
+										<div class="client-case__story-item">
+											<p class="client-case__story-label">Было:</p>
+											<div class="client-case__story-block">
+												<p class="client-case__story-text">
+													<span class="client-case__story-line">{item.beforeLead}</span>
+													<span class="client-case__story-accent">{item.beforeAccent}</span>
+												</p>
+											</div>
+										</div>
+
+										<div class="client-case__story-item">
+											<p class="client-case__story-label">Стало:</p>
+											<div class="client-case__story-block">
+												<p class="client-case__story-text">
+													<span class="client-case__story-line">{item.afterLead}</span>
+													<span class="client-case__story-accent">{item.afterAccent}</span>
+												</p>
+											</div>
+										</div>
+									</div>
+								</article>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	import { initClientsSection } from '../scripts/clients-section';
+
+	initClientsSection();
+</script>

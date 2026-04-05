@@ -4,53 +4,53 @@ import heroGlowTop from '../assets/hero-bg1.png';
 import heroGlowBottom from '../assets/hero-bg2.png';
 import heroWarehouse from '../assets/hero.jpg';
 import '../styles/components/hero-section.scss';
+import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
 import Button from './ui/Button.astro';
 ---
 
 <section class="hero-section section" id="hero">
-	<div class="container">
-		<div class="hero-section__layout">
-			<div class="hero-section__content">
-				<span
-					class="hero-section__glow hero-section__glow--top"
-					style={`--hero-glow-image: url(${heroGlowTop.src});`}
-					aria-hidden="true"
-				></span>
-				<span
-					class="hero-section__glow hero-section__glow--bottom"
-					style={`--hero-glow-image: url(${heroGlowBottom.src});`}
-					aria-hidden="true"
-				></span>
+  <div class="container">
+    <div class="hero-section__layout">
+      <div class="hero-section__content">
+        <span
+          class="hero-section__glow hero-section__glow--top"
+          style={`--hero-glow-image: url(${heroGlowTop.src});`}
+          aria-hidden="true"
+        ></span>
+        <span
+          class="hero-section__glow hero-section__glow--bottom"
+          style={`--hero-glow-image: url(${heroGlowBottom.src});`}
+          aria-hidden="true"
+        ></span>
 
-				<div class="hero-section__panel">
-					<h1 class="hero-section__title">Финансирование для роста бизнеса на маркетплейсах</h1>
-					<p class="hero-section__text">
-						От 5 млн Р без залога для продавцов Wildberries, Ozon, Lamoda и других
-					</p>
+        <div class="hero-section__panel">
+          <h1 class="hero-section__title">
+            Финансирование для роста бизнеса на маркетплейсах
+          </h1>
+          <p class="hero-section__text">
+            От 5 млн ₽ без залога для продавцов Wildberries, Ozon, Lamoda и других
+            площадок.
+          </p>
 
-					<Button
-						as="a"
-						href="#calculator"
-						variant="secondary"
-						size="lg"
-						class="hero-section__button"
-					>
-						Узнать условия
-					</Button>
-				</div>
-			</div>
+          <ConsultationDialogTrigger>
+            <Button variant="secondary" size="lg" class="hero-section__button">
+              Оставить заявку
+            </Button>
+          </ConsultationDialogTrigger>
+        </div>
+      </div>
 
-			<div class="hero-section__visual" aria-hidden="true">
-				<div class="hero-section__visual-frame">
-					<Image
-						class="hero-section__image"
-						src={heroWarehouse}
-						alt=""
-						loading="eager"
-						decoding="async"
-					/>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="hero-section__visual" aria-hidden="true">
+        <div class="hero-section__visual-frame">
+          <Image
+            class="hero-section__image"
+            src={heroWarehouse}
+            alt=""
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

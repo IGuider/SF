@@ -160,11 +160,11 @@
 		&__panel {
 			min-height: 0;
 			padding: 34px 20px 26px;
-			border-radius: 18px;
+			border-radius: var(--radius-md-mobile);
 		}
 
 		&__visual-frame {
-			border-radius: 18px;
+			border-radius: var(--radius-md-mobile);
 			aspect-ratio: 4 / 3;
 		}
 

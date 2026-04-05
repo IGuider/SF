@@ -1,0 +1,11 @@
+---
+interface Props {
+  amountSourceSelector?: string;
+}
+
+const { amountSourceSelector } = Astro.props;
+---
+
+<span class="consultation-dialog-trigger" data-consultation-amount-source={amountSourceSelector}>
+  <slot />
+</span>

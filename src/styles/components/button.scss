@@ -10,7 +10,7 @@
 	text-align: center;
 	color: var(--color-white);
 	cursor: pointer;
-	transition: background-color 0.2s ease;
+	transition: background-color var(--transition-duration-fast) ease;
 
 	&--primary {
 		background: var(--color-primary);
@@ -31,14 +31,14 @@
 	&--md {
 		height: 52px;
 		padding: 14px 14px;
-		border-radius: 7px;
+		border-radius: var(--radius-xs);
 		font-size: 18px;
 	}
 
 	&--lg {
 		height: 57px;
 		padding: 10px 14px;
-		border-radius: 7px;
+		border-radius: var(--radius-xs);
 		font-size: 26px;
 		letter-spacing: -1.04px;
 	}

@@ -1,28 +1,28 @@
+@use './shared-sections' as shared;
+
 .products-section {
 	&__header {
-		display: flex;
-		justify-content: center;
-		margin-bottom: 75px;
+		@include shared.centered-section-header();
+	}
+
+	&__heading-group {
+		display: grid;
+		gap: 10px;
+		justify-items: center;
 	}
 
 	&__title {
-		font-size: clamp(30px, 2.3vw, 52px);
-		font-weight: var(--font-weight-medium);
-		letter-spacing: -2.08px;
-		color: var(--color-primary);
-		text-align: center;
+		@include shared.primary-section-title();
 	}
 
 	&__list {
-		display: grid;
-		gap: 12px;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		@include shared.two-column-grid();
 	}
 }
 
 .products-card {
 	position: relative;
-	min-height: 240px;
+	min-height: 280px;
 	perspective: 2000px;
 	outline: none;
 
@@ -35,11 +35,9 @@
 	}
 
 	&__face {
-		min-height: 280px;
-		padding: 30px;
-		border: 1px solid rgba(24, 49, 83, 0.06);
-		border-radius: 22px;
-		box-shadow: 0 18px 45px rgba(24, 49, 83, 0.08);
+		min-height: 300px;
+		padding: 30px 30px 30px;
+		border-radius: var(--radius-md);
 		backface-visibility: hidden;
 		-webkit-backface-visibility: hidden;
 		transform-style: preserve-3d;
@@ -48,83 +46,73 @@
 	}
 
 	&__face--front {
-		background:
-			radial-gradient(circle at 88% 12%, rgba(162, 191, 255, 0.26), transparent 24%),
-			linear-gradient(111deg, rgba(231, 238, 255, 0.98) 0%, rgba(242, 246, 255, 0.94) 100%);
+		display: flex;
+		@include shared.soft-panel-gradient();
 	}
 
 	&__face--back {
 		position: absolute;
 		inset: 0;
 		grid-template-columns: minmax(0, 1fr);
-		background:
-			radial-gradient(circle at 12% 10%, rgba(248, 168, 35, 0.12), transparent 18%),
-			linear-gradient(109deg, rgba(228, 237, 255, 0.98) 0%, rgba(240, 245, 255, 0.96) 100%);
+		background: var(--color-surface-soft);
 		transform: rotateX(-180deg);
+		justify-content: space-between;
+		display: flex;
+		flex-direction: column;
 	}
 
 	&__content,
 	&__back-content {
 		display: grid;
 		gap: 18px;
-		align-content: center;
 		position: relative;
 		z-index: 1;
-		transform: translateZ(58px) scale(0.96);
-		transform-style: preserve-3d;
+	}
+
+	&__content {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+	}
+
+	&__back-content {
+		align-content: center;
 	}
 
 	&__body {
 		display: grid;
 		gap: 20px;
 		max-width: 100%;
-		transform: translateZ(16px);
 	}
 
 	&__title {
-		font-size: clamp(28px, 2vw, 42px);
-		font-weight: var(--font-weight-medium);
-		letter-spacing: -2.08px;
-		line-height: 1.02;
-		color: var(--color-text-strong);
+		@include shared.section-card-title();
 		text-wrap: balance;
 	}
 
 	&__description {
-		font-size: clamp(18px, 1.15vw, 26px);
-		line-height: 1.3;
-		letter-spacing: -0.03em;
-		color: var(--color-primary);
+		@include shared.section-card-description();
 	}
 
 	&__link {
 		display: inline-flex;
 		align-items: center;
-		gap: 12px;
-		padding: 0;
-		border: 0;
-		background: transparent;
-		font: inherit;
-		font-size: 18px;
-		line-height: 1.2;
-		color: var(--color-text-strong);
+		gap: 10px;
+		margin-top: auto;
+		font-size: 22px;
+		color: var(--color-black);
 		cursor: pointer;
+		letter-spacing: -1.32px;
+		height: 52px;
 	}
 
 	&__link-icon {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 22px;
-		height: 22px;
-		border-radius: 50%;
-		background: var(--color-secondary);
-		color: var(--color-white);
-		box-shadow: 0 8px 18px rgba(248, 168, 35, 0.32);
+		width: 27px;
+		height: 27px;
 
 		svg {
-			width: 12px;
-			height: 12px;
+			width: 27px;
+			height: 27px;
 		}
 	}
 
@@ -135,8 +123,6 @@
 		height: 140px;
 		pointer-events: none;
 		overflow: hidden;
-		transform: translateZ(82px) scale(1.04);
-		transform-style: preserve-3d;
 
 		&-image {
 			display: block;
@@ -144,7 +130,6 @@
 			height: 100%;
 			object-fit: contain;
 			object-position: center;
-			transform: translateZ(18px);
 		}
 	}
 
@@ -157,8 +142,7 @@
 
 	&__points {
 		display: grid;
-		gap: 14px;
-		transform: translateZ(10px);
+		gap: 12px;
 	}
 
 	&__point {
@@ -166,7 +150,7 @@
 		grid-template-columns: 18px 1fr;
 		gap: 12px;
 		align-items: start;
-		font-size: clamp(17px, 1vw, 20px);
+		font-size: clamp(17px, 1vw, 18px);
 		line-height: 1.35;
 		color: var(--color-text-strong);
 	}
@@ -187,8 +171,7 @@
 	&__actions {
 		display: flex;
 		align-items: center;
-		justify-content: flex-start;
-		transform: translateZ(72px) scale(0.98);
+		justify-content: flex-end;
 	}
 
 	&.is-flipped {
@@ -220,7 +203,6 @@
 			bottom: 24px;
 			width: 220px;
 			height: 140px;
-			transform: translateZ(70px) scale(1.02);
 		}
 
 		&__back-title {
@@ -312,7 +294,7 @@
 		&__face,
 		&__face--back {
 			padding: 18px 16px;
-			border-radius: 18px;
+			border-radius: var(--radius-md-mobile);
 		}
 
 		&__title,

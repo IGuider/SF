@@ -1,0 +1,592 @@
+.consultation-dialog-open {
+	overflow: hidden;
+}
+
+.consultation-dialog {
+	position: fixed;
+	inset: 0;
+	display: none;
+	width: min(calc(100% - 2rem), 560px);
+	max-height: calc(100vh - 3rem);
+	margin: auto;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	overflow: visible;
+
+	&::backdrop {
+		background: rgb(111 115 158 / 70%);
+		animation: consultation-dialog-backdrop-in 0.22s ease forwards;
+	}
+
+	&[open] {
+		display: grid;
+		place-items: center;
+	}
+
+	&[data-state='closing'] {
+		&::backdrop {
+			animation: consultation-dialog-backdrop-out 0.22s ease forwards;
+		}
+
+		.consultation-dialog__panel {
+			animation: consultation-dialog-panel-out 0.22s ease forwards;
+		}
+	}
+
+	&__panel {
+		position: relative;
+		width: 100%;
+		padding: 38px 40px;
+		border-radius: var(--radius-md);
+		background: linear-gradient(109deg, rgba(215, 226, 255, 0.80) 1.57%, rgba(215, 226, 255, 0.10) 100%);
+		backdrop-filter: blur(46px);
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+		animation: consultation-dialog-panel-in 0.22s ease forwards;
+	}
+
+	&__header {
+		margin-bottom: 1.25rem;
+	}
+
+	&__content,
+	&__success {
+		grid-area: 1 / 1;
+		transition:
+			opacity var(--transition-duration-medium) ease,
+			transform var(--transition-duration-medium) ease,
+			visibility var(--transition-duration-medium) ease;
+	}
+
+	&__content {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+
+		&[data-state='success'] {
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			transform: translateY(-12px);
+		}
+	}
+
+	&__title {
+		font-size: 34px;
+		font-weight: 500;
+		letter-spacing: -1.3px;
+		color: var(--color-primary);
+		text-align: center;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__success {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 32px 40px;
+		text-align: center;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transform: translateY(12px);
+
+		&[data-state='visible'] {
+			opacity: 1;
+			visibility: visible;
+			pointer-events: auto;
+			transform: translateY(0);
+		}
+	}
+
+	&__success-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: 250px;
+		padding: 32px 28px;
+		border-radius: 16px;
+		background: #1f46c9;
+		box-shadow: 0 18px 50px rgba(18, 46, 139, 0.22);
+	}
+
+	&__success-title {
+		margin-bottom: 16px;
+		font-size: 38px;
+		font-weight: 500;
+		letter-spacing: -1.88px;
+		color: var(--color-white);
+	}
+
+	&__success-text {
+		max-width: 320px;
+		font-size: 26px;
+		font-weight: 300;
+		letter-spacing: -1.44px;
+		color: var(--color-white);
+		text-align: center;
+	}
+
+	&__close-icon {
+		width: 20px;
+		height: 20px;
+		opacity: 0.7;
+	}
+
+	&__close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		padding: 0;
+		border: 0;
+		border-radius: var(--radius-pill);
+		background: transparent;
+		color: rgb(67 81 138 / 0.86);
+		cursor: pointer;
+		transition: color var(--transition-duration-fast) ease, background-color var(--transition-duration-fast) ease;
+
+		&:hover {
+			background: rgb(255 255 255 / 0.45);
+			color: rgb(40 52 104);
+		}
+	}
+
+	&__field {
+		position: relative;
+		display: block;
+		padding-bottom: 0;
+		transition: padding-bottom var(--transition-duration-fast) ease;
+
+		&[data-invalid='true'] {
+			padding-bottom: 10px;
+
+			.consultation-dialog__input {
+				border: 1px solid var(--color-warning);
+				background: rgb(255 165 0 / 10%);
+			}
+
+			.consultation-dialog__field-label {
+				color: var(--color-primary-70);
+			}
+
+			.consultation-dialog__error {
+				opacity: 1;
+				transform: translateY(0);
+				max-height: 24px;
+			}
+		}
+	}
+
+	&__field-label {
+		position: absolute;
+		top: 27px;
+		left: 16px;
+		pointer-events: none;
+		font-size: 18px;
+		font-weight: 400;
+		color: var(--color-primary-50);
+		transform: translateY(-50%);
+		transform-origin: left top;
+		transition:
+			top 0.16s ease,
+			transform 0.16s ease,
+			font-size 0.16s ease,
+			color 0.16s ease,
+			opacity 0.16s ease;
+
+		&--disabled {
+			color: rgba(255, 255, 255, 0.5);
+		}
+	}
+
+	&__error {
+		position: absolute;
+		top: 58px;
+		left: 0;
+		padding-left: 8px;
+		font-size: 14px;
+		color: var(--color-warning-dark);
+		opacity: 0;
+		transform: translateY(-4px);
+		max-height: 0;
+		overflow: hidden;
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease,
+			max-height 0.2s ease;
+	}
+
+	&__input {
+		width: 100%;
+		height: 56px;
+		padding: 20px 16px 8px;
+		border: 1px solid rgb(196 205 240 / 0.95);
+		border-radius: 8px;
+		outline: none;
+		background: rgb(255 255 255 / 0.97);
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 1.2;
+		color: var(--color-text-strong);
+		transition:
+			border-color var(--transition-duration-fast) ease,
+			box-shadow var(--transition-duration-fast) ease,
+			background-color var(--transition-duration-fast) ease;
+
+		&::placeholder {
+			color: transparent;
+		}
+
+		&:focus {
+			border-color: var(--color-primary);
+		}
+
+		&:required:invalid {
+			box-shadow: none;
+		}
+
+		&--disabled {
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			background: rgba(111, 115, 158, 0.70);
+			color: rgba(255, 255, 255, 0.50);
+
+			&::placeholder {
+				color: rgba(255, 255, 255, 0.50);
+			}
+		}
+	}
+
+	&__input:not(&__select):focus + &__field-label,
+	&__input:not(&__select):not(:placeholder-shown) + &__field-label {
+		top: 6px;
+		transform: translateY(0);
+		font-size: 13px;
+		color: var(--color-primary-80);
+		letter-spacing: normal;
+	}
+
+	&__input--disabled + &__field-label {
+		top: 27px;
+		transform: translateY(-50%);
+		font-size: 18px;
+	}
+
+	&__field--select {
+		position: relative;
+
+		&[data-invalid='true'] {
+			.consultation-dialog__select {
+				border: 1px solid var(--color-warning);
+				background: rgb(255 165 0 / 10%);
+			}
+
+			.consultation-dialog__field-label--select,
+			.consultation-dialog__select-icon {
+				color: var(--color-primary-70);
+			}
+		}
+	}
+
+	&__field-label--select {
+		z-index: 1;
+	}
+
+	&__select {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding: 20px 34px 8px 16px;
+		color: rgb(5 55 200 / 50%);
+		text-align: left;
+		cursor: pointer;
+	}
+
+	&__select-label {
+		display: block;
+		width: 100%;
+		font-size: 18px;
+		font-weight: 400;
+		color: var(--color-text-strong);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&__field--select:focus-within &__select-icon,
+	&__field--select[data-has-value='true'] &__select-icon {
+		color: var(--color-primary-80);
+	}
+
+	&__field--select:focus-within &__field-label--select,
+	&__field--select[data-has-value='true'] &__field-label--select {
+		top: 6px;
+		transform: translateY(0);
+		font-size: 13px;
+		color: var(--color-primary-80);
+		letter-spacing: normal;
+	}
+
+	&__select-icon {
+		position: absolute;
+		top: 28px;
+		right: 11px;
+		width: 16px;
+		height: 16px;
+		color: #8090cc;
+		pointer-events: none;
+		transform: translateY(-50%);
+		transition:
+			transform var(--transition-duration-fast) ease,
+			color var(--transition-duration-fast) ease;
+	}
+
+	&__select[aria-expanded='true'] ~ &__select-icon {
+		transform: translateY(-50%) rotate(180deg);
+	}
+
+	&__dropdown {
+		position: absolute;
+		top: calc(100% + 6px);
+		left: 0;
+		z-index: 5;
+		display: flex;
+		gap: 4px;
+		flex-direction: column;
+		width: 100%;
+		padding: 6px;
+		border: 1px solid rgb(5 55 200 / 50%);
+		border-radius: 7px;
+		background: #fff;
+		box-shadow: 0 14px 34px rgb(38 58 138 / 0.14);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transform: translateY(-6px);
+		transition:
+			opacity var(--transition-duration-fast) ease,
+			transform var(--transition-duration-fast) ease,
+			visibility var(--transition-duration-fast) ease;
+
+		&[data-state='open'] {
+			opacity: 1;
+			visibility: visible;
+			pointer-events: auto;
+			transform: translateY(0);
+		}
+	}
+
+	&__option {
+		padding: 12px 16px;
+		border: 0;
+		background: transparent;
+		font-size: 16px;
+		border-radius: var(--radius-xs);
+		color: var(--color-text-strong);
+		text-align: left;
+		cursor: pointer;
+		transition: background-color var(--transition-duration-fast) ease, color var(--transition-duration-fast) ease;
+
+		&:hover {
+			background: rgba(5, 55, 200, 0.05);
+			color: rgb(5 55 200 / 80%);
+		}
+
+		&[data-selected='true'] {
+			background: rgba(5, 55, 200, 0.1);
+			color: rgb(5 55 200 / 90%);
+		}
+	}
+
+	&__field--disabled &__field-note {
+		position: absolute;
+		top: 28px;
+		right: 17px;
+		width: 22px;
+		height: 22px;
+		pointer-events: none;
+		transform: translateY(-50%);
+	}
+
+	&__consent {
+		display: flex;
+		flex-direction: row-reverse;
+		gap: 8px;
+		align-items: center;
+		position: relative;
+		margin-block: 10px;
+		padding-bottom: 0;
+		font-size: 16px;
+		color: var(--color-primary);
+		transition: padding-bottom var(--transition-duration-fast) ease;
+
+		a {
+			color: inherit;
+			text-decoration: underline;
+			text-underline-offset: 1px;
+		}
+
+		&[data-invalid='true'] {
+			color: var(--color-warning-dark);
+
+			.consultation-dialog__checkbox-box {
+				border-color: var(--color-warning);
+				background: rgba(255, 165, 0, 0.1);
+			}
+		}
+	}
+
+	&__checkbox {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	&__consent-text {
+		flex: 1 1 auto;
+		line-height: 1.35;
+		transition: color var(--transition-duration-fast) ease;
+	}
+
+	&__checkbox-box {
+		flex: 0 0 22px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 22px;
+		height: 22px;
+		margin-top: 1px;
+		border: 1px solid #A8BFFF;
+		border-radius: 5px;
+		background: var(--color-white);
+		cursor: pointer;
+		transition:
+			border-color var(--transition-duration-fast) ease,
+			background-color var(--transition-duration-fast) ease,
+			box-shadow var(--transition-duration-fast) ease;
+	}
+
+	&__checkbox-check {
+		margin-top: 1px;
+		width: 13px;
+		height: 13px;
+		opacity: 0;
+		transform: scale(0.1);
+		transition:
+			opacity 0.3s ease,
+			transform 0.3s ease;
+	}
+
+	&__checkbox:checked + &__consent-text + &__checkbox-box {
+		border-color: var(--color-primary);
+		background: var(--color-primary);
+	}
+
+	&__checkbox:checked + &__consent-text + &__checkbox-box &__checkbox-check {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	&__submit {
+		height: 60px;
+		padding: 0 1rem;
+		border: 0;
+		border-radius: 8px;
+		background: var(--color-primary);
+		font-size: 22px;
+		font-weight: var(--font-weight-medium);
+		color: var(--color-white);
+		transition: background-color var(--transition-duration-fast) ease;
+
+		&:hover {
+			background: var(--color-secondary);
+		}
+	}
+}
+
+@keyframes consultation-dialog-backdrop-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes consultation-dialog-backdrop-out {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes consultation-dialog-panel-in {
+	from {
+		opacity: 0;
+		transform: translateY(24px) scale(0.96);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes consultation-dialog-panel-out {
+	from {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(18px) scale(0.98);
+	}
+}
+
+@media (max-width: 640px) {
+	.consultation-dialog {
+		width: min(calc(100% - 1rem), 840px);
+
+		&__panel {
+			padding: 1.25rem;
+		}
+
+		&__title {
+			font-size: 1.35rem;
+		}
+
+		&__success {
+			padding: 20px;
+		}
+
+		&__success-card {
+			min-height: 220px;
+			padding: 28px 20px;
+		}
+
+		&__success-title {
+			font-size: 24px;
+		}
+
+		&__success-text {
+			font-size: 20px;
+		}
+	}
+}

@@ -1,1 +1,80 @@
-<section class="section"></section>
+---
+import '../styles/components/steps-section.scss';
+import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
+import Button from './ui/Button.astro';
+
+type StepItem = {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  cta?: {
+    label: string;
+  };
+};
+
+const steps: StepItem[] = [
+  {
+    id: 'request',
+    number: '01',
+    title: 'Заявка',
+    description: 'Оставьте заявку на сайте: площадка, оборот, контакты, 2 минуты на заполнение.',
+  },
+  {
+    id: 'review',
+    number: '02',
+    title: 'Рассмотрение',
+    description: 'В течение 1 дня изучим динамику ваших продаж и подготовим персональные условия.',
+  },
+  {
+    id: 'offer',
+    number: '03',
+    title: 'Предложение',
+    description: 'Получите лимит, ставку и срок под параметры вашего бизнеса.',
+  },
+  {
+    id: 'payout',
+    number: '04',
+    title: 'Выдача',
+    description: 'После подписания документов средства поступают на счёт, обычно в тот же день.',
+    cta: {
+      label: 'Оставить заявку',
+    },
+  },
+];
+---
+
+<section class="steps-section section" id="steps" aria-labelledby="steps-title">
+  <div class="container">
+    <div class="steps-section__header">
+      <h2 class="steps-section__title" id="steps-title">Как получить финансирование</h2>
+    </div>
+
+    <div class="steps-section__grid">
+      {
+        steps.map((step) => (
+          <article class="steps-card" aria-labelledby={`${step.id}-title`}>
+            <div class="steps-card__content">
+              <h3 class="steps-card__title" id={`${step.id}-title`}>{step.title}</h3>
+              <p class="steps-card__description">{step.description}</p>
+
+              {
+                step.cta && (
+                  <div class="steps-card__actions">
+                    <ConsultationDialogTrigger>
+                      <Button variant="secondary" size="md">{step.cta.label}</Button>
+                    </ConsultationDialogTrigger>
+                  </div>
+                )
+              }
+            </div>
+
+            <div class="steps-card__number" aria-hidden="true">
+              {step.number}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

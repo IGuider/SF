@@ -6,7 +6,7 @@
 	--calculator-field-side-padding: 53px;
 	--calculator-field-side-padding-mobile: 20px;
 	--calculator-field-radius: 20px;
-	--calculator-pill-radius: 999px;
+	--calculator-pill-radius: var(--radius-pill);
 	--calculator-track-height: 14px;
 	--calculator-track-height-mobile: 8px;
 	--calculator-thumb-size: 26px;
@@ -115,7 +115,7 @@
 		max-width: 470px;
 		--amount-padding-left: var(--calculator-field-side-padding);
 		--amount-padding-right: var(--calculator-field-side-padding);
-		--amount-currency-gap: 20px;
+		--amount-currency-gap: 10px;
 		--amount-currency-offset: calc(var(--amount-padding-left) + var(--amount-text-width, 0px) + var(--amount-currency-gap));
 	}
 
@@ -131,6 +131,8 @@
 		font-size: clamp(34px, 2.7vw, 40px);
 		font-family: inherit;
 		font-weight: var(--font-weight-regular);
+		line-height: var(--line-height-compact);
+		letter-spacing: -1.4px;
 		color: var(--color-primary);
 		white-space: nowrap;
 		outline: none;
@@ -152,6 +154,10 @@
 		left: min(calc(100% - 48px), var(--amount-currency-offset));
 		transform: translateY(-50%);
 		font-size: clamp(34px, 2.7vw, 40px);
+		font-family: inherit;
+		font-weight: var(--font-weight-regular);
+		line-height: var(--line-height-compact);
+		letter-spacing: -1.4px;
 		color: var(--color-primary);
 		pointer-events: none;
 	}
@@ -176,10 +182,10 @@
 		left: 0;
 		visibility: hidden;
 		white-space: pre;
-		font-size: clamp(34px, 2.7vw, 50px);
+		font-size: clamp(34px, 2.7vw, 40px);
 		font-family: inherit;
 		font-weight: var(--font-weight-regular);
-		line-height: var(--calculator-amount-min-height);
+		line-height: var(--line-height-compact);
 		letter-spacing: -1.4px;
 		pointer-events: none;
 	}
@@ -427,7 +433,7 @@
 	flex-direction: column;
 	min-height: 262px;
 	padding: 31px 15px 29px 15px;
-	border-radius: 18px;
+	border-radius: var(--radius-md-mobile);
 	background: var(--calculator-surface-color);
 	box-shadow: var(--shadow-focus-soft);
 
@@ -619,7 +625,7 @@
 		}
 
 		&__panel {
-			border-radius: 20px;
+			border-radius: var(--radius-md);
 
 			&--amount {
 				padding: 18px 14px 16px;
@@ -699,7 +705,7 @@
 		}
 
 		&__summary-link {
-			border-radius: 18px;
+			border-radius: var(--radius-md-mobile);
 			font-size: 22px;
 		}
 	}

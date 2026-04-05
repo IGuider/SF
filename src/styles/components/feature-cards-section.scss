@@ -18,7 +18,7 @@
 	padding: 40px;
 	border-radius: var(--radius-md);
 	overflow: hidden;
-	background: linear-gradient(109deg, var(--color-surface-soft) 1.57%, var(--color-surface-feature-end) 117.3%);
+	background: var(--gradient-surface-feature);
 
 	&--primary {
 		grid-column: 1;
@@ -198,7 +198,7 @@
 	.feature-card {
 		min-height: 220px;
 		padding: 22px 18px;
-		border-radius: 18px;
+		border-radius: var(--radius-md-mobile);
 
 		&--primary,
 		&--top,

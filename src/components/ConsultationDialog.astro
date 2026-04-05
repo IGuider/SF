@@ -1,0 +1,222 @@
+---
+import '../styles/components/consultation-dialog.scss';
+import consultationDialogScriptUrl from '../scripts/consultation-dialog.ts?url';
+
+interface Props {
+  id?: string;
+}
+
+const { id = 'consultation-dialog' } = Astro.props;
+
+const turnoverOptions = [
+  'До 5 млн ₽ в месяц',
+  '5-20 млн ₽ в месяц',
+  '20-75 млн ₽ в месяц',
+  '75-150 млн ₽ в месяц',
+  'Более 150 млн ₽ в месяц',
+];
+---
+
+<dialog id={id} class="consultation-dialog" aria-labelledby={`${id}-title`}>
+  <div class="consultation-dialog__panel">
+    <button
+      type="button"
+      class="consultation-dialog__close"
+      data-dialog-close
+      aria-label="Закрыть форму"
+    >
+      <svg
+        class="consultation-dialog__close-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>
+    </button>
+
+    <section>
+      <div class="consultation-dialog__content" data-dialog-content data-state="form">
+        <div class="consultation-dialog__header">
+          <h2 class="consultation-dialog__title" id={`${id}-title`}>
+            Вы в одном клике
+            <br />
+            от финансирования
+          </h2>
+        </div>
+
+        <form class="consultation-dialog__form" data-dialog-form novalidate>
+        <label class="consultation-dialog__field" data-required-field>
+          <input
+            id="consultation-amount"
+            class="consultation-dialog__input"
+            name="amount"
+            type="text"
+            inputmode="numeric"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <span class="consultation-dialog__field-label">Сумма кредита</span>
+          <span class="consultation-dialog__error">Необходимо заполнить поле</span>
+        </label>
+
+        <label class="consultation-dialog__field" data-required-field>
+          <input
+            id="consultation-phone"
+            class="consultation-dialog__input"
+            name="phone"
+            type="tel"
+            autocomplete="tel"
+            inputmode="tel"
+            placeholder=" "
+            maxlength="18"
+            required
+          />
+          <span class="consultation-dialog__field-label">Телефон</span>
+          <span class="consultation-dialog__error">Необходимо заполнить поле</span>
+        </label>
+
+        <label class="consultation-dialog__field" data-required-field>
+          <input
+            id="consultation-inn"
+            class="consultation-dialog__input"
+            name="inn"
+            type="text"
+            inputmode="numeric"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <span class="consultation-dialog__field-label">ИНН организации</span>
+          <span class="consultation-dialog__error">Необходимо заполнить поле</span>
+        </label>
+
+        <div
+          class="consultation-dialog__field consultation-dialog__field--select"
+          data-dropdown-root
+          data-required-field
+          data-has-value="false"
+          data-invalid="false"
+        >
+          <input id="consultation-turnover" type="hidden" name="turnover" required />
+          <button
+            type="button"
+            class="consultation-dialog__input consultation-dialog__select"
+            data-dropdown-trigger
+            aria-expanded="false"
+            aria-controls="consultation-turnover-options"
+          >
+            <span class="consultation-dialog__select-label" data-dropdown-label></span>
+          </button>
+          <span class="consultation-dialog__field-label consultation-dialog__field-label--select">
+            Обороты
+          </span>
+          <span class="consultation-dialog__select-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path
+                d="M4 6L8 10L12 6"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <div
+            class="consultation-dialog__dropdown"
+            id="consultation-turnover-options"
+            data-dropdown-menu
+            data-state="closed"
+            aria-hidden="true"
+          >
+            {
+              turnoverOptions.map((option) => (
+                <button
+                  type="button"
+                  class="consultation-dialog__option"
+                  data-dropdown-option
+                  data-selected="false"
+                  data-value={option}
+                >
+                  {option}
+                </button>
+              ))
+            }
+          </div>
+          <span class="consultation-dialog__error">Необходимо заполнить поле</span>
+        </div>
+
+        <label class="consultation-dialog__field consultation-dialog__field--disabled">
+          <input
+            class="consultation-dialog__input consultation-dialog__input--disabled"
+            name="api-key"
+            type="text"
+            placeholder=" "
+            disabled
+          />
+          <span class="consultation-dialog__field-label consultation-dialog__field-label--disabled">
+            API ключ
+          </span>
+          <span class="consultation-dialog__field-note" aria-hidden="true">
+            <svg viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.657 17.8221C20.657 17.151 20.1129 16.6069 19.4418 16.6069C18.7708 16.6069 18.2267 17.151 18.2267 17.8221V27.5434C18.2267 28.2145 18.7708 28.7586 19.4418 28.7586C20.1129 28.7586 20.657 28.2145 20.657 27.5434V17.8221Z" fill="white" fill-opacity="0.5" />
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M19.4415 2.02502C9.82219 2.02502 2.02417 9.82304 2.02417 19.4424C2.02417 29.0618 9.82219 36.8597 19.4415 36.8597C29.0609 36.8597 36.8589 29.0618 36.8589 19.4424C36.8589 9.82304 29.0609 2.02502 19.4415 2.02502ZM4.4545 19.4424C4.4545 11.1653 11.1644 4.45535 19.4415 4.45535C27.7186 4.45535 34.4286 11.1653 34.4286 19.4424C34.4286 27.7194 27.7186 34.4294 19.4415 34.4294C11.1644 34.4294 4.4545 27.7194 4.4545 19.4424Z" fill="white" fill-opacity="0.5" />
+              <path d="M21.0621 12.9618C21.0621 13.8566 20.3367 14.582 19.4419 14.582C18.547 14.582 17.8217 13.8566 17.8217 12.9618C17.8217 12.067 18.547 11.3416 19.4419 11.3416C20.3367 11.3416 21.0621 12.067 21.0621 12.9618Z" fill="white" fill-opacity="0.5" />
+            </svg>
+          </span>
+        </label>
+
+        <label class="consultation-dialog__consent" data-required-field data-invalid="false">
+          <input class="consultation-dialog__checkbox" name="consent" type="checkbox" required />
+          <span class="consultation-dialog__consent-text">
+            Нажимая кнопку я <a href="#privacy">принимаю условия оферты</a>
+            и соглашаюсь на <a href="#privacy">обработку персональных данных</a>
+          </span>
+          <span class="consultation-dialog__checkbox-box" aria-hidden="true">
+            <svg
+              class="consultation-dialog__checkbox-check"
+              viewBox="0 0 20 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </label>
+
+          <button class="consultation-dialog__submit" type="submit">Отправить заявку</button>
+        </form>
+      </div>
+
+      <div
+        class="consultation-dialog__success"
+        data-dialog-success
+        data-state="hidden"
+        aria-live="polite"
+      >
+        <div class="consultation-dialog__success-card">
+          <h3 class="consultation-dialog__success-title">Спасибо!</h3>
+          <p class="consultation-dialog__success-text">
+            Ваша заявка отправлена.
+            <br>
+            В ближайшее время менеджер свяжется с вами
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</dialog>
+
+<script is:inline type="module" src={consultationDialogScriptUrl}></script>

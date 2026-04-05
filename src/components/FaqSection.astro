@@ -1,1 +1,78 @@
-<section id="faq" class="section"></section>
+---
+import '../styles/components/faq-section.scss';
+
+type FaqItem = {
+	id: string;
+	question: string;
+	answer: string;
+	isOpen?: boolean;
+};
+
+const faqItems: FaqItem[] = [
+	{
+		id: 'marketplaces',
+		question: 'С какими маркетплейсами вы работаете?',
+		answer:
+			'Финансируем продавцов Wildberries, Ozon, Яндекс Маркета, Lamoda и других крупных площадок. Если у вас смешанная модель продаж, рассмотрим ее отдельно.',
+	},
+	{
+		id: 'documents',
+		question: 'Какие документы потребуются?',
+		answer:
+			'Обычно нужны регистрационные документы компании или ИП, выписки по расчетному счету и данные по оборотам на маркетплейсе. Точный список зависит от суммы и структуры бизнеса.',
+	},
+	{
+		id: 'decision',
+		question: 'Как быстро принимается решение?',
+		answer: 'Предварительное решение за 1 час, выпуск за 1 день.',
+	},
+	{
+		id: 'limits',
+		question: 'Как формируется лимит и условия?',
+		answer:
+			'Оцениваем обороты, сезонность, маржинальность и стабильность продаж. На основе этого рассчитываем лимит, ставку и удобный график погашения.',
+	},
+];
+---
+
+<section class="faq-section section" id="faq" aria-labelledby="faq-title">
+	<div class="container">
+		<div class="faq-section__header">
+			<h2 class="faq-section__title" id="faq-title">Популярные вопросы</h2>
+		</div>
+
+		<div class="faq-section__grid">
+			{
+				faqItems.map((item) => (
+					<article class:list={['faq-item', item.isOpen && 'is-open']}>
+						<button
+							class="faq-item__summary"
+							type="button"
+							aria-expanded={item.isOpen ? 'true' : 'false'}
+							aria-controls={`${item.id}-panel`}
+						>
+							<span class="faq-item__question">{item.question}</span>
+							<span class="faq-item__icon" aria-hidden="true"></span>
+						</button>
+
+						<div
+							class="faq-item__content"
+							id={`${item.id}-panel`}
+							hidden={!item.isOpen}
+						>
+							<div class="faq-item__content-inner">
+								<p class="faq-item__answer">{item.answer}</p>
+							</div>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	import { initFaqSections } from '../scripts/faq-section';
+
+	initFaqSections();
+</script>

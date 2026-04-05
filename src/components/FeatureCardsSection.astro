@@ -5,67 +5,70 @@ import featureBg2 from '../assets/feature-bg2.png';
 import featureBg3 from '../assets/feature-bg3.png';
 import featureBg4 from '../assets/feature-bg4.png';
 import '../styles/components/feature-cards-section.scss';
+import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
 import Button from './ui/Button.astro';
 
 const cards = [
-	{
-		title: 'Закроем кассовый разрыв',
-		text: 'Кредитная линия как <span>досрочная выплата</span> от МП',
-		modifier: 'primary',
-		image: featureBg1,
-		loading: 'eager',
-	},
-	{
-		title: 'Подстроимся под ваш сезон',
-		text: 'График погашения<br> <span>под ваш цикл</span> продаж',
-		modifier: 'top',
-		image: featureBg2,
-		loading: 'eager',
-	},
-	{
-		title: 'Расти быстрее',
-		text: 'Оплатим <span>закупку</span><br> <span>и логистику</span>',
-		modifier: 'bottom',
-		image: featureBg3,
-		loading: 'lazy',
-	},
-	{
-		title: 'Планируйте расходы спокойно',
-		text: 'Все условия <span>известны<br> до подписания</span> договора',
-		modifier: 'accent',
-		image: featureBg4,
-		loading: 'lazy',
-	},
+  {
+    title: 'Закроем кассовый разрыв',
+    text: 'Кредитная линия как <span>досрочная выплата</span> от МП',
+    modifier: 'primary',
+    image: featureBg1,
+    loading: 'eager',
+  },
+  {
+    title: 'Подстроимся под ваш сезон',
+    text: 'График погашения<br> <span>под ваш цикл</span> продаж',
+    modifier: 'top',
+    image: featureBg2,
+    loading: 'eager',
+  },
+  {
+    title: 'Расти быстрее',
+    text: 'Оплатим <span>закупку</span><br> <span>и логистику</span>',
+    modifier: 'bottom',
+    image: featureBg3,
+    loading: 'lazy',
+  },
+  {
+    title: 'Планируйте расходы спокойно',
+    text: 'Все условия <span>известны<br> до подписания</span> договора',
+    modifier: 'accent',
+    image: featureBg4,
+    loading: 'lazy',
+  },
 ] as const;
 ---
 
 <section class="feature-cards section" id="about">
-	<div class="container">
-		<div class="feature-cards__grid">
-			{
-				cards.map((card) => (
-					<article class:list={['feature-card', `feature-card--${card.modifier}`]}>
-						<div class:list={['feature-card__media', `feature-card__media--${card.modifier}`]} aria-hidden="true">
-							<Image class="feature-card__media-image" src={card.image} alt="" loading={card.loading} decoding="async" />
-						</div>
+  <div class="container">
+    <div class="feature-cards__grid">
+      {
+        cards.map((card) => (
+          <article class:list={['feature-card', `feature-card--${card.modifier}`]}>
+            <div class:list={['feature-card__media', `feature-card__media--${card.modifier}`]} aria-hidden="true">
+              <Image class="feature-card__media-image" src={card.image} alt="" loading={card.loading} decoding="async" />
+            </div>
 
-						<div class="feature-card__content">
-							<div class="feature-card__body">
-								<h2 class="feature-card__title">{card.title}</h2>
-								<p class="feature-card__text" set:html={card.text}></p>
-							</div>
+            <div class="feature-card__content">
+              <div class="feature-card__body">
+                <h2 class="feature-card__title">{card.title}</h2>
+                <p class="feature-card__text" set:html={card.text}></p>
+              </div>
 
-							{
-								card.modifier === 'accent' && (
-									<Button variant="secondary" size="lg" class="feature-card__button" type="button">
-										Оставить заявку
-									</Button>
-								)
-							}
-						</div>
-					</article>
-				))
-			}
-		</div>
-	</div>
+              {
+                card.modifier === 'accent' && (
+                  <ConsultationDialogTrigger>
+                    <Button variant="secondary" size="lg" class="feature-card__button" type="button">
+                      Оставить заявку
+                    </Button>
+                  </ConsultationDialogTrigger>
+                )
+              }
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
 </section>

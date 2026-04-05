@@ -34,7 +34,7 @@
 			font-size: 22px;
 			font-weight: var(--font-weight-regular);
 			color: var(--color-text-muted);
-			transition: color 0.2s ease;
+			transition: color var(--transition-duration-fast) ease;
 
 			&:hover {
 				color: var(--color-text-strong);
@@ -57,7 +57,7 @@
 		color: var(--color-primary);
 		text-decoration: underline;
 		text-underline-offset: auto;
-		transition: opacity 0.2s ease;
+		transition: opacity var(--transition-duration-fast) ease;
 		white-space: nowrap;
 
 		&:hover {

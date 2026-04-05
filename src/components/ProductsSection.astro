@@ -1,137 +1,146 @@
-<!--
--&#45;&#45;
+---
 import { Image } from 'astro:assets';
 import productCardBg1 from '../assets/product-card-bg1.png';
 import productCardBg2 from '../assets/product-card-bg2.png';
 import productCardBg3 from '../assets/product-card-bg3.png';
 import productCardBg4 from '../assets/product-card-bg4.png';
 import '../styles/components/products-section.scss';
+import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
 import Button from './ui/Button.astro';
 
 const cards = [
-	{
-		id: 'credit-line',
-		modifier: 'credit-line',
-		title: 'Возобновляемая кредитная линия',
-		description: 'Откройте лимит и пользуйтесь в любой момент.<br> Срок транша до 18 месяцев, лимит до 36 месяцев.',
-		image: productCardBg1,
-		points: [
-			'Открываете лимит один раз и пользуетесь, когда нужно.',
-			'Платите проценты только за дни использования.',
-			'Лимит восстанавливается после погашения.',
-		],
-	},
-	{
-		id: 'early-payouts',
-		modifier: 'early-payouts',
-		title: 'Досрочные выводы',
-		description: 'В 2,5 раза дешевле, чем досрочные выплаты от маркетплейсов. Получайте деньги за товар быстрее.',
-		image: productCardBg2,
-		points: [
-			'Получаете деньги за товар, не дожидаясь выплаты от маркетплейса.',
-			'В 2,5 раза дешевле, чем досрочные выплаты на площадках.',
-			'Средства приходят на счёт в течение 1 рабочего дня.',
-		],
-	},
-	{
-		id: 'seasonal-plan',
-		modifier: 'seasonal-plan',
-		title: 'Сезонный график',
-		description: 'Погашение подстраивается под ваш цикл продаж.<br> Перед сезоном меньше, в пик больше.',
-		image: productCardBg3,
-		points: [
-			'Средства поступают на счёт в течение 1 рабочего дня.',
-			'Перед сезоном платежи меньше, в пиковой фазе больше.',
-			'График можно пересмотреть вместе с менеджером.',
-		],
-	},
-	{
-		id: 'classic-plan',
-		modifier: 'classic-plan',
-		title: 'Классический график',
-		description: 'Фиксированные платежи по стандартному графику.<br> Для тех, кому важна предсказуемость.',
-		image: productCardBg4,
-		points: [
-			'Фиксированная сумма платежа каждый месяц.',
-			'Ставка известна заранее и не меняется.',
-			'Досрочное погашение без штрафов.',
-		],
-	},
+  {
+    id: 'credit-line',
+    modifier: 'credit-line',
+    title: 'Возобновляемая кредитная линия',
+    description:
+      'Откройте лимит и пользуйтесь в любой момент.<br> Срок транша до 18 месяцев, лимит до 36 месяцев.',
+    image: productCardBg1,
+    points: [
+      'Открываете лимит один раз и пользуетесь, когда нужно.',
+      'Платите проценты только за дни использования.',
+      'Лимит восстанавливается после погашения.',
+    ],
+  },
+  {
+    id: 'early-payouts',
+    modifier: 'early-payouts',
+    title: 'Досрочные выводы',
+    description:
+      'В 2,5 раза дешевле, чем досрочные выплаты от маркетплейсов. Получайте деньги за товар быстрее.',
+    image: productCardBg2,
+    points: [
+      'Получаете деньги за товар, не дожидаясь выплаты от маркетплейса.',
+      'В 2,5 раза дешевле, чем досрочные выплаты на площадках.',
+      'Средства приходят на счёт в течение 1 рабочего дня.',
+    ],
+  },
+  {
+    id: 'seasonal-plan',
+    modifier: 'seasonal-plan',
+    title: 'Сезонный график',
+    description:
+      'Погашение подстраивается под ваш цикл продаж.<br> Перед сезоном меньше, в пик больше.',
+    image: productCardBg3,
+    points: [
+      'Средства поступают на счёт в течение 1 рабочего дня.',
+      'Перед сезоном платежи меньше, в пиковой фазе больше.',
+      'График можно пересмотреть вместе с менеджером.',
+    ],
+  },
+  {
+    id: 'classic-plan',
+    modifier: 'classic-plan',
+    title: 'Классический график',
+    description:
+      'Фиксированные платежи по стандартному графику.<br> Для тех, кому важна предсказуемость.',
+    image: productCardBg4,
+    points: [
+      'Фиксированная сумма платежа каждый месяц.',
+      'Ставка известна заранее и не меняется.',
+      'Досрочное погашение без штрафов.',
+    ],
+  },
 ] as const;
--&#45;&#45;
+---
 
 <section class="products-section section" id="products" aria-labelledby="products-title">
-	<div class="container">
-		<div class="products-section__header">
-			<h2 class="products-section__title" id="products-title">Наши продукты</h2>
-		</div>
+  <div class="container">
+    <div class="products-section__header">
+      <div class="products-section__heading-group">
+        <h2 class="products-section__title" id="products-title">Наши продукты</h2>
+      </div>
+    </div>
 
-		<div class="products-section__list">
-			{
-				cards.map((card) => (
-					<article class:list={['products-card', `products-card&#45;&#45;${card.modifier}`]} tabindex="0" aria-labelledby={`${card.id}-title`}>
-						<div class="products-card__inner">
-							<div class="products-card__face products-card__face&#45;&#45;front">
-								<div class="products-card__content">
-									<div class="products-card__body">
-										<h3 class="products-card__title" id={`${card.id}-title`}>{card.title}</h3>
-										<p class="products-card__description" set:html={card.description}></p>
-									</div>
+    <div class="products-section__list">
+      {
+        cards.map((card) => (
+          <article
+            class:list={['products-card', `products-card--${card.modifier}`]}
+            tabindex="0"
+            aria-labelledby={`${card.id}-title`}
+          >
+            <div class="products-card__inner">
+              <div class="products-card__face products-card__face--front">
+                <div class="products-card__content">
+                  <div class="products-card__body">
+                    <h3 class="products-card__title" id={`${card.id}-title`}>{card.title}</h3>
+                    <p class="products-card__description" set:html={card.description}></p>
+                  </div>
 
-									<button class="products-card__link" type="button" data-products-card-toggle aria-expanded="false">
-										<span class="products-card__link-icon">
-											<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M6 10H14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-												<path d="M10.5 6.5L14 10L10.5 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-											</svg>
-										</span>
-										Подробнее
-									</button>
-								</div>
+                  <button class="products-card__link" type="button" data-products-card-toggle aria-expanded="false">
+                    <span class="products-card__link-icon">
+                      <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="39" y="0" width="39" height="39" rx="19.5" transform="rotate(90 39 0)" fill="#F8A823" />
+                        <path d="M13 20L25 20M25 20L19 14M25 20L19 26" stroke="white" stroke-width="2.22156" />
+                      </svg>
+                    </span>
+                    Подробнее
+                  </button>
+                </div>
 
-								<div class:list={['products-card__visual', `products-card__visual&#45;&#45;${card.modifier}`]} aria-hidden="true">
-									<Image class="products-card__visual-image" src={card.image} alt="" loading="lazy" decoding="async" />
-								</div>
-							</div>
+                <div class:list={['products-card__visual', `products-card__visual--${card.modifier}`]} aria-hidden="true">
+                  <Image class="products-card__visual-image" src={card.image} alt="" loading="lazy" decoding="async" />
+                </div>
+              </div>
 
-							<div class="products-card__face products-card__face&#45;&#45;back">
-								<div class="products-card__back-content">
-									<p class="products-card__back-title">Как это работает</p>
+              <div class="products-card__face products-card__face--back">
+                <div class="products-card__back-content">
+                  <p class="products-card__back-title">Как это работает</p>
 
-									<ul class="products-card__points" aria-label={`Преимущества продукта ${card.title}`}>
-										{
-											card.points.map((point) => (
-												<li class="products-card__point">
-													<span class="products-card__point-icon" aria-hidden="true">
-														<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<circle cx="8" cy="8" r="8" fill="currentColor" />
-															<path d="M4.8 8.1L7 10.3L11.2 5.9" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-														</svg>
-													</span>
-													<span>{point}</span>
-												</li>
-											))
-										}
-									</ul>
-								</div>
+                  <ul class="products-card__points" aria-label={`Преимущества продукта ${card.title}`}>
+                    {
+                      card.points.map((point) => (
+                        <li class="products-card__point">
+                          <span class="products-card__point-icon" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle cx="8" cy="8" r="8" fill="currentColor" />
+                              <path d="M4.8 8.1L7 10.3L11.2 5.9" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                          </span>
+                          <span>{point}</span>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </div>
 
-								<div class="products-card__actions">
-									<Button as="a" href="#calculator" variant="secondary" size="md">
-										Подать заявку
-									</Button>
-								</div>
-							</div>
-						</div>
-					</article>
-				))
-			}
-		</div>
-	</div>
+                <div class="products-card__actions">
+                  <ConsultationDialogTrigger>
+                    <Button variant="secondary" size="md">Подать заявку</Button>
+                  </ConsultationDialogTrigger>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
 </section>
 
 <script>
-	import { initProductsSection } from '../scripts/products-section';
+  import { initProductsSection } from '../scripts/products-section';
 
-	initProductsSection();
+  initProductsSection();
 </script>
--->
