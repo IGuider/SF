@@ -1,8 +1,8 @@
 ﻿---
-import calcBg1 from '../assets/calc-bg1.png';
-import calcBg2 from '../assets/calc-bg2.png';
-import calcCardBg1 from '../assets/calc-card-bg1.png';
-import '../styles/components/calculator-section.scss';
+import calcBg1 from '../../assets/calc-bg1.png';
+import calcBg2 from '../../assets/calc-bg2.png';
+import calcCardBg1 from '../../assets/calc-card-bg1.png';
+import '../../styles/components/ecom/calculator-section.scss';
 import {
 	CALCULATOR_AMOUNT_CONFIG,
 	CALCULATOR_PERKS,
@@ -10,9 +10,9 @@ import {
 	INITIAL_CALCULATOR_STATE,
 	formatCurrency,
 	formatPercent,
-} from '../lib/calculator';
-import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
-import Button from './ui/Button.astro';
+} from '../../lib/calculator';
+import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
+import Button from '../ui/Button.astro';
 ---
 
 <section id="calculator" class="calculator-section calculator-section--pending section">
@@ -38,8 +38,6 @@ import Button from './ui/Button.astro';
 
 						<label class="calculator-section__amount-field" for="calculator-amount">
 							<span class="visually-hidden">Сумма</span>
-							<span class="calculator-section__amount-sizer" aria-hidden="true">{INITIAL_CALCULATOR_STATE.amountDisplayValue}</span>
-							<span class="calculator-section__amount-currency-sizer" aria-hidden="true">₽</span>
 							<input
 								id="calculator-amount"
 								class="calculator-section__amount-value"
@@ -251,7 +249,7 @@ import Button from './ui/Button.astro';
 </noscript>
 
 <script>
-	import { initCalculatorSections } from '../scripts/calculator-section';
+	import { initCalculatorSections } from '../../scripts/ecom/calculator-section';
 
 	initCalculatorSections();
 </script>

@@ -1,0 +1,43 @@
+---
+import '../../styles/pages/home.scss';
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+---
+
+<main class="home-page">
+	<section class="home-page__intro" aria-labelledby="home-page-title">
+		<div class="container home-page__intro-inner">
+			<p class="home-page__eyebrow">SimpleFinance</p>
+			<h1 class="home-page__title" id="home-page-title">Главная страница</h1>
+			<p class="home-page__text">
+				Каркас страницы готов к подключению финальных секций после дизайна.
+			</p>
+			<div class="home-page__actions" aria-label="Быстрые переходы">
+				<a class="home-page__link home-page__link--primary" href={`${basePath}ecom`}>Перейти в ECOM</a>
+				<a class="home-page__link" href="#about">О сервисе</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="home-page__section" id="about" aria-labelledby="home-page-about-title">
+		<div class="container home-page__section-inner">
+			<p class="home-page__eyebrow">О сервисе</p>
+			<h2 class="home-page__section-title" id="home-page-about-title">Финансовые продукты для бизнеса</h2>
+			<p class="home-page__section-text">
+				На главной можно собрать навигацию по основным направлениям и вести пользователей в готовые разделы сайта.
+			</p>
+		</div>
+	</section>
+
+	<section class="home-page__section home-page__section--muted" id="contacts" aria-labelledby="home-page-contacts-title">
+		<div class="container home-page__section-inner">
+			<p class="home-page__eyebrow">Контакты</p>
+			<h2 class="home-page__section-title" id="home-page-contacts-title">Свяжитесь с SimpleFinance</h2>
+			<p class="home-page__section-text">
+				Телефон для связи: <a href="tel:+74951504011">+7 (495) 150-40-11</a>
+			</p>
+		</div>
+	</section>
+</main>

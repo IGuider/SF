@@ -1,15 +1,10 @@
-import { calculatePlanValues, formatAmount, formatCurrency, formatPercent } from '../lib/calculator';
+import { calculatePlanValues, formatAmount, formatCurrency, formatPercent } from '../../lib/calculator';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const tabletPerksMedia = window.matchMedia('(max-width: 1024px)');
 const compactCardsMedia = window.matchMedia('(max-width: 540px)');
 const countDigits = (value: string) => String(value).replace(/\D/g, '').length;
 const trimDigits = (value: string, maxDigits: number) => String(value).replace(/\D/g, '').slice(0, maxDigits);
-const DESKTOP_COMFORT_WIDTH = 126;
-const LARGE_DESKTOP_COMFORT_WIDTH = 113;
-const TABLET_COMFORT_WIDTH = 45;
-const TABLET_AMOUNT_FIELD_MIN_WIDTH = 227;
-const COMPACT_MOBILE_AMOUNT_FIELD_MIN_WIDTH = 190;
 
 const getCaretFromDigitIndex = (value: string, digitIndex: number) => {
 	if (digitIndex <= 0) {
@@ -89,9 +84,6 @@ export const initCalculatorSections = () => {
 		const perksBlock = calculator.querySelector('[data-calculator-perks]');
 		const perksSlot = calculator.querySelector('[data-calculator-perks-slot]');
 		const perksMobileSlot = calculator.querySelector('[data-calculator-perks-mobile-slot]');
-		const amountSizer = calculator.querySelector('.calculator-section__amount-sizer');
-		const currencySizer = calculator.querySelector('.calculator-section__amount-currency-sizer');
-		const amountField = calculator.querySelector('.calculator-section__amount-field');
 		const perkInputs = [...calculator.querySelectorAll('.calculator-section__perk-input')].filter(
 			(input): input is HTMLInputElement => input instanceof HTMLInputElement,
 		);
@@ -110,10 +102,7 @@ export const initCalculatorSections = () => {
 			!(trackShell instanceof HTMLElement) ||
 			!(perksBlock instanceof HTMLElement) ||
 			!(perksSlot instanceof HTMLElement) ||
-			!(perksMobileSlot instanceof HTMLElement) ||
-			!(amountSizer instanceof HTMLElement) ||
-			!(currencySizer instanceof HTMLElement) ||
-			!(amountField instanceof HTMLElement)
+			!(perksMobileSlot instanceof HTMLElement)
 		) {
 			continue;
 		}
@@ -188,37 +177,6 @@ export const initCalculatorSections = () => {
 			return { nextMin, nextMax };
 		};
 
-		const syncCurrencyPosition = () => {
-			amountSizer.textContent = amountInput.value || '0';
-			const textWidth = Math.ceil(amountSizer.getBoundingClientRect().width);
-			const currencyWidth = Math.ceil(currencySizer.getBoundingClientRect().width);
-			const amountFieldStyles = getComputedStyle(amountField);
-			const amountPaddingLeft = Number.parseFloat(amountFieldStyles.getPropertyValue('--amount-padding-left')) || 0;
-			const amountPaddingRight = Number.parseFloat(amountFieldStyles.getPropertyValue('--amount-padding-right')) || 0;
-			const amountCurrencyGap = Number.parseFloat(amountFieldStyles.getPropertyValue('--amount-currency-gap')) || 0;
-			const amountFieldMinWidth =
-				window.innerWidth <= 540
-					? COMPACT_MOBILE_AMOUNT_FIELD_MIN_WIDTH
-					: window.innerWidth <= 1024
-						? TABLET_AMOUNT_FIELD_MIN_WIDTH
-						: 280;
-			const comfortWidth =
-				window.innerWidth <= 540
-					? amountPaddingLeft + amountPaddingRight + amountCurrencyGap
-					: window.innerWidth <= 1024
-					? TABLET_COMFORT_WIDTH
-					: window.innerWidth <= 1440 && window.innerWidth > 1024
-						? LARGE_DESKTOP_COMFORT_WIDTH
-						: DESKTOP_COMFORT_WIDTH;
-			amountField.style.setProperty('--amount-text-width', `${textWidth}px`);
-			amountField.style.setProperty('--amount-currency-width', `${currencyWidth}px`);
-			amountField.style.setProperty('--amount-field-min-width', `${amountFieldMinWidth}px`);
-			amountField.style.setProperty(
-				'--amount-field-width',
-				`clamp(${amountFieldMinWidth}px, calc(${textWidth}px + ${currencyWidth}px + ${comfortWidth}px), 470px)`,
-			);
-		};
-
 		const paintRange = (value: number) => {
 			const { nextMin, nextMax } = updateRangeBounds(value);
 			const ratio = nextMax === nextMin ? 1 : (value - nextMin) / (nextMax - nextMin);
@@ -289,7 +247,6 @@ export const initCalculatorSections = () => {
 			currentValue = rawValue;
 			amountInput.value = formatAmount(currentValue);
 			paintRange(currentValue);
-			syncCurrencyPosition();
 			updatePlans(currentValue);
 		};
 
@@ -315,11 +272,10 @@ export const initCalculatorSections = () => {
 		syncPerksPlacement();
 		syncCardDetailsLayout();
 
-		const recalculateAmountLayout = () => {
+		const syncResponsiveLayout = () => {
 			syncTabletLayout();
 			syncPerksPlacement();
 			syncCardDetailsLayout();
-			syncCurrencyPosition();
 			paintRange(currentValue);
 		};
 
@@ -328,7 +284,6 @@ export const initCalculatorSections = () => {
 			currentValue = nextValue;
 			amountInput.value = formatAmount(nextValue);
 			paintRange(nextValue);
-			syncCurrencyPosition();
 		});
 
 		rangeInput.addEventListener('change', () => {
@@ -347,7 +302,6 @@ export const initCalculatorSections = () => {
 			const nextCaretPosition = getCaretFromDigitIndex(amountInput.value, digitsBeforeCaret);
 			amountInput.setSelectionRange(nextCaretPosition, nextCaretPosition);
 			paintRange(parsed);
-			syncCurrencyPosition();
 		});
 
 		amountInput.addEventListener('blur', () => {
@@ -358,7 +312,6 @@ export const initCalculatorSections = () => {
 
 		amountInput.addEventListener('focus', () => {
 			amountInput.value = formatAmount(currentValue);
-			syncCurrencyPosition();
 		});
 
 		amountInput.addEventListener('keydown', (event) => {
@@ -388,7 +341,6 @@ export const initCalculatorSections = () => {
 
 			if (!nextDigits) {
 				amountInput.value = '';
-				syncCurrencyPosition();
 				return;
 			}
 
@@ -396,7 +348,6 @@ export const initCalculatorSections = () => {
 			amountInput.value = formattedValue;
 			currentValue = Number.parseInt(nextDigits, 10);
 			paintRange(currentValue);
-			syncCurrencyPosition();
 
 			const caretDigitIndex = Math.min(countDigits(amountInput.value.slice(0, selectionStart)) + countDigits(pastedText), maxDigits);
 			const caretPosition = getCaretFromDigitIndex(formattedValue, caretDigitIndex);
@@ -428,19 +379,13 @@ export const initCalculatorSections = () => {
 			});
 		}
 
-		window.addEventListener('resize', recalculateAmountLayout);
+		window.addEventListener('resize', syncResponsiveLayout);
 		tabletPerksMedia.addEventListener('change', syncTabletLayout);
 		tabletPerksMedia.addEventListener('change', syncPerksPlacement);
 		compactCardsMedia.addEventListener('change', syncCardDetailsLayout);
 
-		if ('fonts' in document) {
-			void document.fonts.ready.then(() => {
-				requestAnimationFrame(recalculateAmountLayout);
-			});
-		}
-
 		window.addEventListener('load', () => {
-			requestAnimationFrame(recalculateAmountLayout);
+			requestAnimationFrame(syncResponsiveLayout);
 		});
 
 		calculator.classList.remove('calculator-section--pending');

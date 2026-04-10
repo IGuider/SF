@@ -1,0 +1,40 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import ConsultationDialog from './ConsultationDialog.astro';
+import ScrollToTop from './ScrollToTop.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+interface NavItem {
+	label: string;
+	href: string;
+}
+
+interface Props {
+	title?: string;
+	description?: string;
+	headerBrandHref?: string;
+	headerNavItems?: NavItem[];
+	headerMobileNavItems?: NavItem[];
+}
+
+const {
+	title,
+	description,
+	headerBrandHref,
+	headerNavItems,
+	headerMobileNavItems,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+	<Header
+		brandHref={headerBrandHref}
+		navItems={headerNavItems}
+		mobileNavItems={headerMobileNavItems}
+	/>
+	<slot />
+	<ConsultationDialog />
+	<Footer />
+	<ScrollToTop />
+</BaseLayout>

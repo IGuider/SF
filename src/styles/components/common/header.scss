@@ -491,7 +491,7 @@ body.site-header-menu-open {
 	.site-header {
 
 		&__logo {
-			height: 26px;
+			height: 30px;
 		}
 
 		&__toggle {
@@ -503,14 +503,15 @@ body.site-header-menu-open {
 
 @media (max-width: 390px) {
 	.site-header {
-		padding-top: 22px;
+		padding-top: 16px;
+		padding-bottom: 7px;
 
 		&__inner {
 			min-height: 56px;
 		}
 
 		&__logo {
-			height: 26px;
+			height: 30px;
 		}
 
 		&__toggle {
@@ -579,5 +580,11 @@ body.site-header-menu-open {
 				width: 152px;
 			}
 		}
+	}
+
+	.site-header.is-sticky-active:not(.is-menu-open) {
+		padding-top: 10px;
+		padding-bottom: 2px;
+		box-shadow: inset 0 0 0 1px #dddddd59;
 	}
 }

@@ -1,0 +1,25 @@
+---
+import SiteShell from '../components/common/SiteShell.astro';
+import HomePage from '../components/home/HomePage.astro';
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const homeNavItems = [
+	{ label: 'Главная', href: basePath },
+	{ label: 'ECOM', href: `${basePath}ecom` },
+	{ label: 'О сервисе', href: '#about' },
+	{ label: 'Контакты', href: '#contacts' },
+];
+---
+
+<SiteShell
+	title="SimpleFinance"
+	description="Главная страница SimpleFinance."
+	headerBrandHref={basePath}
+	headerNavItems={homeNavItems}
+	headerMobileNavItems={homeNavItems}
+>
+	<HomePage />
+</SiteShell>

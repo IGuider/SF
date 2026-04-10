@@ -1,0 +1,127 @@
+---
+import sfLogo from '../../assets/sf-logo.svg';
+import sfpLogo from '../../assets/sfp-logo.svg';
+import skLogo from '../../assets/Sk-logo.svg';
+import '../../styles/components/common/footer.scss';
+import SocialIcon from '../ui/SocialIcon.astro';
+
+const footerLinks = [
+	{ label: 'Наш блог', href: '#blog' },
+	{ label: 'Реквизиты', href: '#requisites' },
+	{ label: 'Контакты', href: '#contacts' },
+	{ label: 'Политика конфиденциальности', href: '#privacy' },
+	{ label: 'Юридические документы', href: '#documents' },
+];
+
+const socialLinks = [
+	{
+		label: 'Telegram',
+		href: '#',
+		icon: 'telegram',
+	},
+	{
+		label: 'Max',
+		href: '#',
+		icon: 'max',
+	},
+	{
+		label: 'VK',
+		href: '#',
+		icon: 'vk',
+	},
+	{
+		label: 'Email',
+		href: 'mailto:info@simplefinance.ru',
+		icon: 'mail',
+	},
+] as const;
+---
+
+<footer class="site-footer" id="contacts">
+	<div class="container site-footer__inner">
+		<div class="site-footer__top">
+			<a class="site-footer__phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+
+			<nav class="site-footer__nav" aria-label="Навигация в футере">
+				<ul class="site-footer__nav-list">
+					{
+						footerLinks.map((item) => (
+							<li>
+								<a href={item.href}>{item.label}</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<ul class="site-footer__socials" aria-label="Социальные сети">
+				{
+					socialLinks.map((item) => (
+						<li>
+							<a href={item.href} aria-label={item.label} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noreferrer' : undefined}>
+								<SocialIcon icon={item.icon} />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<div class="site-footer__content">
+			<article class="site-footer__disclosure">
+				<button
+					class="site-footer__entity"
+					type="button"
+					aria-expanded="false"
+					aria-controls="footer-requisites-panel"
+				>
+					<span>
+						Общество с ограниченной ответственностью микрокредитная компания
+						«СимплФинанс»
+					</span>
+					<span class="site-footer__entity-icon" aria-hidden="true">
+						<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M0.822266 0.822266L5.09845 6.43053C5.42747 6.86204 6.07692 6.86204 6.40595 6.43053L10.6821 0.822266" stroke="#2C2C2C" stroke-opacity="0.5" stroke-width="1.64421" stroke-linecap="round"/>
+						</svg>
+					</span>
+				</button>
+
+				<div class="site-footer__details" id="footer-requisites-panel" hidden>
+					<div class="site-footer__details-inner" id="requisites">
+						<p>ИНН 7703381419, ОГРН 1157746499547</p>
+						<p>Дата внесения в реестр микрофинансовых организаций 23.10.2015</p>
+						<p>Регистрационный номер записи 001503045007061</p>
+						<p>Сайт Банка России</p>
+						<p>Интернет-приемная Банка России</p>
+						<p>Член СРО «МиР» с 15.12.2015, регистрационный номер в реестре 77000229.</p>
+						<p style="margin-bottom: 10px;">107078, г. Москва Орликов переулок, д.5, стр.1, этаж 2, пом.11</p>
+						<p>
+							Вы можете обратиться в Службу финансового уполномоченного: 8 (800) 200-00-10,
+							https://finombudsman.ru/
+						</p>
+						<p>119017, г. Москва, Старомонетный пер., д.3</p>
+						<p>или направить нам заявление на оспаривание своей кредитной истории в SimpleFinance (СимплФинанс)</p>
+						<p>«Вся представленная информация на сайте носит информационно-справочный характер и не является рекламой»</p>
+					</div>
+				</div>
+			</article>
+
+			<div class="site-footer__partners">
+				<img src={sfLogo.src} alt="SimpleFinance" />
+				<img src={sfpLogo.src} alt="SimpleFinance Platform" />
+				<img src={skLogo.src} alt="Сколково участник" />
+			</div>
+		</div>
+
+		<div class="site-footer__bottom">
+			<p>© 2015-2026 ООО МКК «СимплФинанс» 115191, г. Москва, Холодильный переулок, д.3</p>
+			<p>© 2026 Simplefinance Platform — единая платформа для компаний, участвующих в тендерах. Резидент Сколково с 2018 года</p>
+		</div>
+	</div>
+</footer>
+
+<script>
+	import { initFooterDisclosure } from '../../scripts/common/footer-disclosure';
+
+	initFooterDisclosure();
+</script>

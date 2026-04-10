@@ -1,0 +1,133 @@
+---
+import logo from '../../assets/sf-logo.svg';
+import menuDecorTop from '../../assets/menu-bg1.png';
+import menuDecorBottom from '../../assets/menu-bg2.png';
+import '../../styles/components/common/header.scss';
+import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
+import Button from '../ui/Button.astro';
+import SocialIcon from '../ui/SocialIcon.astro';
+
+interface NavItem {
+	label: string;
+	href: string;
+}
+
+interface Props {
+	brandHref?: string;
+	navItems?: NavItem[];
+	mobileNavItems?: NavItem[];
+}
+
+const defaultNavItems = [
+	{ label: 'О компании', href: '#about' },
+	{ label: 'Продукты', href: '#products' },
+	{ label: 'Контакты', href: '#contacts' },
+];
+
+const defaultMobileNavItems = [
+	{ label: 'Калькулятор', href: '#calculator' },
+	{ label: 'Продукты', href: '#products' },
+	{ label: 'Наши клиенты', href: '#clients' },
+	{ label: 'Как получить', href: '#steps' },
+	{ label: 'Блог', href: '#blog' },
+];
+
+const socialLinks = [
+	{ label: 'Telegram', href: '#', icon: 'telegram' },
+	{ label: 'Max', href: '#', icon: 'max' },
+	{ label: 'VK', href: '#', icon: 'vk' },
+	{ label: 'Email', href: 'mailto:info@simplefinance.ru', icon: 'mail' },
+] as const;
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const {
+	brandHref = basePath,
+	navItems = defaultNavItems,
+	mobileNavItems = defaultMobileNavItems,
+} = Astro.props;
+---
+
+<header class="site-header">
+	<div class="container site-header__inner">
+		<a class="site-header__brand" href={brandHref} aria-label="SimpleFinance">
+			<img class="site-header__logo" src={logo.src} alt="SimpleFinance" />
+		</a>
+
+		<button
+			class="site-header__toggle"
+			type="button"
+			aria-expanded="false"
+			aria-controls="site-header-menu"
+			aria-label="Открыть меню"
+		>
+			<span class="site-header__toggle-line"></span>
+			<span class="site-header__toggle-line"></span>
+			<span class="site-header__toggle-line"></span>
+		</button>
+
+		<div class="site-header__menu" id="site-header-menu">
+			<div class="site-header__menu-container">
+				<nav class="site-header__nav" aria-label="Основная навигация">
+					<ul class="site-header__nav-list site-header__nav-list--desktop">
+						{
+							navItems.map((item) => (
+								<li>
+									<a href={item.href}>{item.label}</a>
+								</li>
+							))
+						}
+					</ul>
+
+					<ul class="site-header__nav-list site-header__nav-list--mobile">
+						{
+							mobileNavItems.map((item) => (
+								<li>
+									<a href={item.href}>{item.label}</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+
+				<div class="site-header__actions">
+					<a class="site-header__phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+					<ConsultationDialogTrigger>
+						<Button class="site-header__button">Перезвоните мне</Button>
+					</ConsultationDialogTrigger>
+				</div>
+
+				<div class="site-header__mobile-footer">
+					<a class="site-header__mobile-phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+
+					<ul class="site-header__socials" aria-label="Социальные сети">
+						{
+							socialLinks.map((item) => (
+								<li>
+									<a href={item.href} aria-label={item.label}>
+										<SocialIcon icon={item.icon} />
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="site-header__decor" aria-hidden="true">
+			<img class="site-header__decor-item site-header__decor-item--top" src={menuDecorTop.src} alt="" />
+			<img class="site-header__decor-item site-header__decor-item--bottom" src={menuDecorBottom.src} alt="" />
+		</div>
+	</div>
+</header>
+
+<script>
+	import { initHeaderMenu } from '../../scripts/common/header-menu';
+
+	initHeaderMenu();
+	document.addEventListener('astro:after-swap', initHeaderMenu);
+</script>

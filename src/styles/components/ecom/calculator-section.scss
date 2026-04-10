@@ -6,7 +6,8 @@
 	--calculator-field-side-padding: 53px;
 	--calculator-field-side-padding-mobile: 20px;
 	--calculator-field-radius: 20px;
-	--amount-field-min-width: 280px;
+	--amount-field-width: 355px;
+	--amount-value-width: 9ch;
 	--calculator-pill-radius: var(--radius-pill);
 	--calculator-track-height: 14px;
 	--calculator-track-height-mobile: 10px;
@@ -113,27 +114,36 @@
 	}
 
 	&__amount-field {
-		position: relative;
-		display: block;
-		width: min(100%, var(--amount-field-width, 355px));
-		min-width: min(100%, var(--amount-field-min-width));
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--amount-currency-gap, 10px);
+		box-sizing: border-box;
+		width: fit-content;
+		min-width: min(100%, var(--amount-field-width));
 		max-width: 470px;
-		--amount-padding-left: var(--calculator-field-side-padding);
-		--amount-padding-right: var(--calculator-field-side-padding);
-		--amount-currency-gap: 10px;
-		--amount-currency-offset: calc(var(--amount-padding-left) + var(--amount-text-width, 0px) + var(--amount-currency-gap));
-		--amount-currency-max-left: calc(100% - var(--amount-padding-right) - var(--amount-currency-width, 0px));
+		min-height: var(--calculator-amount-min-height);
+		padding: 0 var(--calculator-field-side-padding);
+		border: 1px solid var(--color-surface-input-border);
+		border-radius: var(--calculator-field-radius);
+		background: var(--calculator-surface-color);
+		box-shadow: var(--shadow-focus-soft);
+		transition: box-shadow 0.3s ease-in-out;
+
+		&:focus-within {
+			box-shadow: 0 0 3.5px 3.5px var(--color-primary-focus-overlay);
+		}
 	}
 
 	&__amount-value {
 		display: block;
 		box-sizing: border-box;
-		width: 100%;
-		min-height: var(--calculator-amount-min-height);
-		padding: 0 var(--amount-padding-right) 0 var(--amount-padding-left);
-		border: 1px solid var(--color-surface-input-border);
-		border-radius: var(--calculator-field-radius);
-		background: var(--calculator-surface-color);
+		flex: 0 0 auto;
+		width: var(--amount-value-width);
+		min-width: 0;
+		padding: 0;
+		border: 0;
+		background: transparent;
 		font-size: clamp(34px, 2.7vw, 40px);
 		font-family: inherit;
 		font-weight: var(--font-weight-regular);
@@ -142,57 +152,29 @@
 		color: var(--color-primary);
 		white-space: nowrap;
 		outline: none;
-		box-shadow: var(--shadow-focus-soft);
-		transition: box-shadow 0.3s ease-in-out;
-
-		&:focus {
-			box-shadow: 0 0 3.5px 3.5px var(--color-primary-focus-overlay);
-		}
 
 		&::selection {
 			background: var(--calculator-focus-ring);
 		}
 	}
 
+	@supports (field-sizing: content) {
+		&__amount-value {
+			width: auto;
+			min-width: 1ch;
+			max-width: var(--amount-value-width);
+			field-sizing: content;
+		}
+	}
+
 	&__amount-currency {
-		position: absolute;
-		top: 50%;
-		left: min(var(--amount-currency-max-left), var(--amount-currency-offset));
-		transform: translateY(-50%);
+		flex: 0 0 auto;
 		font-size: clamp(34px, 2.7vw, 40px);
 		font-family: inherit;
 		font-weight: var(--font-weight-regular);
 		line-height: var(--line-height-compact);
 		letter-spacing: -1.4px;
 		color: var(--color-primary);
-		pointer-events: none;
-	}
-
-	&__amount-sizer {
-		position: absolute;
-		top: 0;
-		left: var(--amount-padding-left);
-		visibility: hidden;
-		white-space: pre;
-		font-size: clamp(34px, 2.7vw, 40px);
-		font-family: inherit;
-		font-weight: var(--font-weight-regular);
-		line-height: var(--calculator-amount-min-height);
-		letter-spacing: -1.4px;
-		pointer-events: none;
-	}
-
-	&__amount-currency-sizer {
-		position: absolute;
-		top: 0;
-		left: 0;
-		visibility: hidden;
-		white-space: pre;
-		font-size: clamp(34px, 2.7vw, 40px);
-		font-family: inherit;
-		font-weight: var(--font-weight-regular);
-		line-height: var(--line-height-compact);
-		letter-spacing: -1.4px;
 		pointer-events: none;
 	}
 
@@ -570,9 +552,8 @@
 @media (max-width: 1440px) {
 	.calculator-section {
 		--calculator-amount-min-height: 85px;
-		--calculator-field-side-padding: 48px;
-		--amount-field-min-width: 227px;
-		--amount-field-width: 320px;
+		--calculator-field-side-padding: 40px;
+		--amount-field-width: 300px;
 
 		&__glow--top {
 			left: -14.8%;
@@ -670,8 +651,9 @@
 
 		--calculator-amount-min-height: 60px;
 		--calculator-field-side-padding: 20px;
-		--amount-field-min-width: 227px;
-		--amount-field-width: clamp(220px, calc(150px + 3px + 37px), 460px);
+		--amount-field-width: 227px;
+		--amount-value-width: 8.5ch;
+		--amount-currency-gap: 8px;
 
 		&__glow--top {
 			left: -17.8%;
@@ -711,19 +693,11 @@
 		}
 
 		&__amount-value {
-			padding-left: 20px;
-			padding-right: 42px;
 			font-size: 30px;
 		}
 
 		&__amount-currency {
 			font-size: 30px;
-		}
-
-		&__amount-field {
-			--amount-padding-left: 20px;
-			--amount-padding-right: 35px;
-			--amount-currency-gap: 14px;
 		}
 
 		&__slider {
@@ -864,13 +838,8 @@
 
 @media (max-width: 540px) {
 	.calculator-section {
-		--amount-field-min-width: 190px;
-
-		&__amount-field {
-			--amount-padding-left: 20px;
-			--amount-padding-right: 23px;
-			--amount-currency-gap: 14px;
-		}
+		--amount-field-width: 190px;
+		--amount-value-width: 8.5ch;
 
 		&__title {
 			letter-spacing: -1px;
@@ -894,25 +863,11 @@
 		}
 
 		&__amount-value {
-			padding-left: 30px;
-			padding-right: 45px;
 			font-size: 26px;
 		}
 
 		&__amount-currency {
 			font-size: 26px;
-		}
-
-		&__amount-sizer {
-			font-size: 26px;
-			line-height: var(--calculator-amount-min-height);
-			letter-spacing: -1px;
-		}
-
-		&__amount-currency-sizer {
-			font-size: 26px;
-			line-height: var(--calculator-amount-min-height);
-			letter-spacing: -1px;
 		}
 
 		&__amount-group {
@@ -1121,15 +1076,10 @@
 
 @media (max-width: 390px) {
 	.calculator-section {
+		--calculator-field-side-padding: 18px;
 
-		&__amount-field {
-			--amount-padding-left: 18px;
-			--amount-padding-right: 23px;
-			--amount-currency-gap: 14px;
-		}
-
-		&__amount-value {
-			padding-left: 24px;
+		&__perk-text {
+			font-size: 20px;
 		}
 	}
 }

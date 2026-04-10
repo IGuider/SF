@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import productCardBg1 from '../assets/product-card-bg1.png';
-import productCardBg2 from '../assets/product-card-bg2.png';
-import productCardBg3 from '../assets/product-card-bg3.png';
-import productCardBg4 from '../assets/product-card-bg4.png';
-import '../styles/components/products-section.scss';
-import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
-import Button from './ui/Button.astro';
+import productCardBg1 from '../../assets/product-card-bg1.png';
+import productCardBg2 from '../../assets/product-card-bg2.png';
+import productCardBg3 from '../../assets/product-card-bg3.png';
+import productCardBg4 from '../../assets/product-card-bg4.png';
+import '../../styles/components/ecom/products-section.scss';
+import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
+import Button from '../ui/Button.astro';
 
 const cards = [
   {
@@ -144,7 +144,7 @@ const cards = [
 </section>
 
 <script>
-  import { initProductsSection } from '../scripts/products-section';
+  import { initProductsSection } from '../../scripts/ecom/products-section';
 
   initProductsSection();
 </script>

@@ -1,0 +1,99 @@
+---
+import { Image } from 'astro:assets';
+import blogPhoto from '../../assets/blog.jpg';
+import '../../styles/components/ecom/blog-section.scss';
+import SocialIcon from '../ui/SocialIcon.astro';
+
+const posts = [
+	{
+		title: 'Нераспроданный товар на складах - боль любого селлера',
+		href: '#',
+	},
+	{
+		title: 'Сервисы для автоматизации ответов',
+		href: '#',
+	},
+	{
+		title: 'Главные изменения в маркировке товаров с 1 марта',
+		href: '#',
+	},
+	{
+		title: 'Сервисы для автоматизации ответов',
+		href: '#',
+	},
+] as const;
+
+const socials = [
+	{
+		label: 'ВКонтакте',
+		href: '#',
+		icon: 'vk',
+	},
+	{
+		label: 'Telegram',
+		href: '#',
+		icon: 'telegram',
+	},
+	{
+		label: 'MAX',
+		href: '#',
+		icon: 'max',
+	},
+] as const;
+---
+
+<section class="blog-section section" id="blog" aria-labelledby="blog-title">
+	<div class="container">
+		<div class="blog-section__grid">
+			<div class="blog-section__visual">
+				<Image
+					class="blog-section__image"
+					src={blogPhoto}
+					alt="Команда SimpleFinance на выставочном стенде"
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
+
+			<div class="blog-section__content">
+				<h2 class="blog-section__title" id="blog-title">Блог</h2>
+
+				<ul class="blog-section__list" aria-label="Статьи блога">
+					{
+						posts.map((post) => (
+							<li>
+								<a class="blog-post" href={post.href} aria-label={`Открыть статью: ${post.title}`}>
+									<span class="blog-post__title">{post.title}</span>
+									<span class="blog-post__icon" aria-hidden="true">
+										<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M8 12H16M16 12L12.5 8.5M16 12L12.5 15.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+									</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+
+				<div class="blog-section__socials" aria-label="Социальные сети">
+					<p class="blog-section__socials-title">Читайте нас:</p>
+
+					<ul class="blog-section__socials-list">
+						{
+							socials.map((social) => (
+								<li>
+									<a class="blog-social" href={social.href} aria-label={social.label}>
+										<span>{social.label}</span>
+										<span class:list={['blog-social__icon', `blog-social__icon--${social.icon}`]} aria-hidden="true">
+											<SocialIcon icon={social.icon} size={30} />
+										</span>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -61,6 +61,10 @@ export const initHeaderMenu = () => {
 		return;
 	}
 
+	if (header.dataset.headerMenuBound === 'true') {
+		return;
+	}
+
 	const toggle = header.querySelector('.site-header__toggle');
 	const menu = header.querySelector('.site-header__menu');
 
@@ -132,5 +136,6 @@ export const initHeaderMenu = () => {
 	window.addEventListener('resize', handleResize);
 	window.addEventListener('scroll', syncStickyState, { passive: true });
 	menu.addEventListener('click', closeOnMenuAction);
+	header.dataset.headerMenuBound = 'true';
 	syncStickyState();
 };

@@ -18,7 +18,7 @@ const clearScheduledState = (panel: HTMLElement) => {
 	}
 };
 
-type AccordionConfig = {
+export type AccordionConfig = {
 	rootSelector: string;
 	itemSelector: string;
 	triggerSelector: string;
@@ -85,7 +85,7 @@ const setPanelState = (item: Element, expanded: boolean, config: AccordionConfig
 	animationFrames.set(panel, animationFrame);
 };
 
-const initAccordionGroup = (config: AccordionConfig) => {
+export const initAccordionGroup = (config: AccordionConfig) => {
 	const accordions = Array.from(document.querySelectorAll(`${config.rootSelector} ${config.itemSelector}`));
 
 	accordions.forEach((item) => {
@@ -140,26 +140,4 @@ const initAccordionGroup = (config: AccordionConfig) => {
 
 	resizeHandlers.set(config.rootSelector, resizeHandler);
 	window.addEventListener('resize', resizeHandler);
-};
-
-export const initFaqSections = () => {
-	initAccordionGroup({
-		rootSelector: '.faq-section',
-		itemSelector: '.faq-item',
-		triggerSelector: '.faq-item__summary',
-		panelSelector: '.faq-item__content',
-		panelInnerSelector: '.faq-item__content-inner',
-		openClass: 'is-open',
-	});
-};
-
-export const initFooterDisclosure = () => {
-	initAccordionGroup({
-		rootSelector: '.site-footer',
-		itemSelector: '.site-footer__disclosure',
-		triggerSelector: '.site-footer__entity',
-		panelSelector: '.site-footer__details',
-		panelInnerSelector: '.site-footer__details-inner',
-		openClass: 'is-open',
-	});
 };
