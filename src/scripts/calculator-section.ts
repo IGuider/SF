@@ -1,8 +1,15 @@
 import { calculatePlanValues, formatAmount, formatCurrency, formatPercent } from '../lib/calculator';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const tabletPerksMedia = window.matchMedia('(max-width: 1024px)');
+const compactCardsMedia = window.matchMedia('(max-width: 540px)');
 const countDigits = (value: string) => String(value).replace(/\D/g, '').length;
 const trimDigits = (value: string, maxDigits: number) => String(value).replace(/\D/g, '').slice(0, maxDigits);
+const DESKTOP_COMFORT_WIDTH = 126;
+const LARGE_DESKTOP_COMFORT_WIDTH = 113;
+const TABLET_COMFORT_WIDTH = 45;
+const TABLET_AMOUNT_FIELD_MIN_WIDTH = 227;
+const COMPACT_MOBILE_AMOUNT_FIELD_MIN_WIDTH = 190;
 
 const getCaretFromDigitIndex = (value: string, digitIndex: number) => {
 	if (digitIndex <= 0) {
@@ -74,6 +81,14 @@ export const initCalculatorSections = () => {
 		const amountInput = calculator.querySelector('[data-calculator-amount-input]');
 		const rangeInput = calculator.querySelector('[data-calculator-range]');
 		const trackShell = calculator.querySelector('.calculator-section__track-shell');
+		const amountPanel = calculator.querySelector('.calculator-section__panel--amount');
+		const plansPanel = calculator.querySelector('.calculator-section__panel--plans');
+		const amountRow = calculator.querySelector('[data-calculator-amount-row]');
+		const sliderBlock = calculator.querySelector('[data-calculator-slider]');
+		const plansHeaderSlot = calculator.querySelector('[data-calculator-plans-header-slot]');
+		const perksBlock = calculator.querySelector('[data-calculator-perks]');
+		const perksSlot = calculator.querySelector('[data-calculator-perks-slot]');
+		const perksMobileSlot = calculator.querySelector('[data-calculator-perks-mobile-slot]');
 		const amountSizer = calculator.querySelector('.calculator-section__amount-sizer');
 		const currencySizer = calculator.querySelector('.calculator-section__amount-currency-sizer');
 		const amountField = calculator.querySelector('.calculator-section__amount-field');
@@ -87,7 +102,15 @@ export const initCalculatorSections = () => {
 		if (
 			!(amountInput instanceof HTMLInputElement) ||
 			!(rangeInput instanceof HTMLInputElement) ||
+			!(amountPanel instanceof HTMLElement) ||
+			!(plansPanel instanceof HTMLElement) ||
+			!(amountRow instanceof HTMLElement) ||
+			!(sliderBlock instanceof HTMLElement) ||
+			!(plansHeaderSlot instanceof HTMLElement) ||
 			!(trackShell instanceof HTMLElement) ||
+			!(perksBlock instanceof HTMLElement) ||
+			!(perksSlot instanceof HTMLElement) ||
+			!(perksMobileSlot instanceof HTMLElement) ||
 			!(amountSizer instanceof HTMLElement) ||
 			!(currencySizer instanceof HTMLElement) ||
 			!(amountField instanceof HTMLElement)
@@ -99,6 +122,62 @@ export const initCalculatorSections = () => {
 		const baseMax = Number.parseInt(amountInput.dataset.max || rangeInput.max, 10);
 		const maxDigits = Number.parseInt(amountInput.dataset.maxDigits || '12', 10);
 		let currentValue = Number.parseInt(rangeInput.value, 10);
+		const perksOriginalParent = perksBlock.parentElement;
+		const amountRowOriginalParent = amountRow.parentElement;
+		const sliderOriginalParent = sliderBlock.parentElement;
+
+		const syncTabletLayout = () => {
+			if (
+				!(amountRowOriginalParent instanceof HTMLElement) ||
+				!(sliderOriginalParent instanceof HTMLElement)
+			) {
+				return;
+			}
+
+			if (tabletPerksMedia.matches) {
+				plansHeaderSlot.append(amountRow, sliderBlock);
+				plansHeaderSlot.removeAttribute('hidden');
+				plansHeaderSlot.removeAttribute('aria-hidden');
+				amountPanel.setAttribute('hidden', '');
+				return;
+			}
+
+			amountRowOriginalParent.appendChild(amountRow);
+			sliderOriginalParent.appendChild(sliderBlock);
+			plansHeaderSlot.setAttribute('hidden', '');
+			plansHeaderSlot.setAttribute('aria-hidden', 'true');
+			amountPanel.removeAttribute('hidden');
+		};
+
+		const syncPerksPlacement = () => {
+			if (!(perksOriginalParent instanceof HTMLElement)) {
+				return;
+			}
+
+			if (compactCardsMedia.matches) {
+				perksMobileSlot.appendChild(perksBlock);
+				perksMobileSlot.removeAttribute('hidden');
+				perksMobileSlot.removeAttribute('aria-hidden');
+				perksSlot.setAttribute('hidden', '');
+				perksSlot.setAttribute('aria-hidden', 'true');
+				return;
+			}
+
+			if (tabletPerksMedia.matches) {
+				perksSlot.appendChild(perksBlock);
+				perksSlot.removeAttribute('hidden');
+				perksSlot.removeAttribute('aria-hidden');
+				perksMobileSlot.setAttribute('hidden', '');
+				perksMobileSlot.setAttribute('aria-hidden', 'true');
+				return;
+			}
+
+			perksOriginalParent.appendChild(perksBlock);
+			perksSlot.setAttribute('hidden', '');
+			perksSlot.setAttribute('aria-hidden', 'true');
+			perksMobileSlot.setAttribute('hidden', '');
+			perksMobileSlot.setAttribute('aria-hidden', 'true');
+		};
 
 		const updateRangeBounds = (value: number) => {
 			const nextMin = Math.min(baseMin, value);
@@ -113,11 +192,30 @@ export const initCalculatorSections = () => {
 			amountSizer.textContent = amountInput.value || '0';
 			const textWidth = Math.ceil(amountSizer.getBoundingClientRect().width);
 			const currencyWidth = Math.ceil(currencySizer.getBoundingClientRect().width);
+			const amountFieldStyles = getComputedStyle(amountField);
+			const amountPaddingLeft = Number.parseFloat(amountFieldStyles.getPropertyValue('--amount-padding-left')) || 0;
+			const amountPaddingRight = Number.parseFloat(amountFieldStyles.getPropertyValue('--amount-padding-right')) || 0;
+			const amountCurrencyGap = Number.parseFloat(amountFieldStyles.getPropertyValue('--amount-currency-gap')) || 0;
+			const amountFieldMinWidth =
+				window.innerWidth <= 540
+					? COMPACT_MOBILE_AMOUNT_FIELD_MIN_WIDTH
+					: window.innerWidth <= 1024
+						? TABLET_AMOUNT_FIELD_MIN_WIDTH
+						: 280;
+			const comfortWidth =
+				window.innerWidth <= 540
+					? amountPaddingLeft + amountPaddingRight + amountCurrencyGap
+					: window.innerWidth <= 1024
+					? TABLET_COMFORT_WIDTH
+					: window.innerWidth <= 1440 && window.innerWidth > 1024
+						? LARGE_DESKTOP_COMFORT_WIDTH
+						: DESKTOP_COMFORT_WIDTH;
 			amountField.style.setProperty('--amount-text-width', `${textWidth}px`);
 			amountField.style.setProperty('--amount-currency-width', `${currencyWidth}px`);
+			amountField.style.setProperty('--amount-field-min-width', `${amountFieldMinWidth}px`);
 			amountField.style.setProperty(
 				'--amount-field-width',
-				`clamp(280px, calc(${textWidth}px + ${currencyWidth}px + 126px), 470px)`,
+				`clamp(${amountFieldMinWidth}px, calc(${textWidth}px + ${currencyWidth}px + ${comfortWidth}px), 470px)`,
 			);
 		};
 
@@ -125,14 +223,25 @@ export const initCalculatorSections = () => {
 			const { nextMin, nextMax } = updateRangeBounds(value);
 			const ratio = nextMax === nextMin ? 1 : (value - nextMin) / (nextMax - nextMin);
 			const shellWidth = trackShell.clientWidth;
-			const thumbSize =
-				Number.parseFloat(getComputedStyle(calculator).getPropertyValue('--calculator-thumb-size')) || 0;
+			const calculatorStyles = getComputedStyle(calculator);
+			const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+			const thumbSizeVariable = isMobileViewport ? '--calculator-thumb-size-mobile' : '--calculator-thumb-size';
+			const trackHeightVariable =
+				isMobileViewport ? '--calculator-track-height-mobile' : '--calculator-track-height';
+			const thumbSize = Number.parseFloat(calculatorStyles.getPropertyValue(thumbSizeVariable)) || 0;
+			const trackHeight = Number.parseFloat(calculatorStyles.getPropertyValue(trackHeightVariable)) || 0;
+			const thumbRadius = thumbSize / 2;
+			const trackRadius = trackHeight / 2;
+			const thumbCoverWidth =
+				thumbRadius > 0 && trackRadius > 0 && thumbRadius >= trackRadius
+					? Math.sqrt(thumbRadius ** 2 - trackRadius ** 2)
+					: thumbRadius;
 			const fillWidth =
 				ratio <= 0
 					? 0
 					: ratio >= 1
 						? shellWidth
-						: ratio * (shellWidth - thumbSize) + thumbSize / 2;
+						: ratio * (shellWidth - thumbSize) + thumbCoverWidth;
 
 			rangeInput.value = String(value);
 			trackShell.style.setProperty('--range-fill-width', `${fillWidth}px`);
@@ -184,9 +293,32 @@ export const initCalculatorSections = () => {
 			updatePlans(currentValue);
 		};
 
+		const syncCardDetailsLayout = () => {
+			for (const card of planCards) {
+				const toggle = card.querySelector('[data-calculator-card-toggle]');
+				const details = card.querySelector('[data-calculator-card-details]');
+
+				if (!(toggle instanceof HTMLButtonElement) || !(details instanceof HTMLElement)) {
+					continue;
+				}
+
+				if (!compactCardsMedia.matches) {
+					card.classList.remove('is-expanded');
+					toggle.setAttribute('aria-expanded', 'false');
+					return;
+				}
+			}
+		};
+
 		commitInputValue(currentValue);
+		syncTabletLayout();
+		syncPerksPlacement();
+		syncCardDetailsLayout();
 
 		const recalculateAmountLayout = () => {
+			syncTabletLayout();
+			syncPerksPlacement();
+			syncCardDetailsLayout();
 			syncCurrencyPosition();
 			paintRange(currentValue);
 		};
@@ -277,7 +409,29 @@ export const initCalculatorSections = () => {
 			});
 		}
 
+		for (const card of planCards) {
+			const toggle = card.querySelector('[data-calculator-card-toggle]');
+			const details = card.querySelector('[data-calculator-card-details]');
+
+			if (!(toggle instanceof HTMLButtonElement) || !(details instanceof HTMLElement)) {
+				continue;
+			}
+
+			toggle.addEventListener('click', () => {
+				if (!compactCardsMedia.matches) {
+					return;
+				}
+
+				const nextExpanded = !card.classList.contains('is-expanded');
+				card.classList.toggle('is-expanded', nextExpanded);
+				toggle.setAttribute('aria-expanded', String(nextExpanded));
+			});
+		}
+
 		window.addEventListener('resize', recalculateAmountLayout);
+		tabletPerksMedia.addEventListener('change', syncTabletLayout);
+		tabletPerksMedia.addEventListener('change', syncPerksPlacement);
+		compactCardsMedia.addEventListener('change', syncCardDetailsLayout);
 
 		if ('fonts' in document) {
 			void document.fonts.ready.then(() => {
@@ -288,5 +442,7 @@ export const initCalculatorSections = () => {
 		window.addEventListener('load', () => {
 			requestAnimationFrame(recalculateAmountLayout);
 		});
+
+		calculator.classList.remove('calculator-section--pending');
 	}
 };

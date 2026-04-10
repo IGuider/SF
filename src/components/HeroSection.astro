@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import heroGlowTop from '../assets/hero-bg1.png';
 import heroGlowBottom from '../assets/hero-bg2.png';
+import featureGlowTablet from '../assets/feature-bg4.png';
 import heroWarehouse from '../assets/hero.jpg';
 import '../styles/components/hero-section.scss';
 import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
@@ -14,7 +15,7 @@ import Button from './ui/Button.astro';
       <div class="hero-section__content">
         <span
           class="hero-section__glow hero-section__glow--top"
-          style={`--hero-glow-image: url(${heroGlowTop.src});`}
+          style={`--hero-glow-image: url(${heroGlowTop.src}); --hero-glow-image-tablet: url(${featureGlowTablet.src});`}
           aria-hidden="true"
         ></span>
         <span
@@ -25,16 +26,16 @@ import Button from './ui/Button.astro';
 
         <div class="hero-section__panel">
           <h1 class="hero-section__title">
-            Финансирование для роста бизнеса на маркетплейсах
+            Финансирование для роста бизнеса<br> на маркетплейсах
           </h1>
           <p class="hero-section__text">
             От 5 млн ₽ без залога для продавцов Wildberries, Ozon, Lamoda и других
-            площадок.
+            площадок
           </p>
 
           <ConsultationDialogTrigger>
             <Button variant="secondary" size="lg" class="hero-section__button">
-              Оставить заявку
+              Узнать условия
             </Button>
           </ConsultationDialogTrigger>
         </div>

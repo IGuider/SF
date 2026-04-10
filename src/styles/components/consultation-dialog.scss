@@ -143,6 +143,7 @@
 
 	&__close {
 		position: absolute;
+		z-index: 1;
 		top: 1rem;
 		right: 1rem;
 		display: inline-flex;
@@ -207,9 +208,6 @@
 			color 0.16s ease,
 			opacity 0.16s ease;
 
-		&--disabled {
-			color: rgba(255, 255, 255, 0.5);
-		}
 	}
 
 	&__error {
@@ -258,15 +256,6 @@
 			box-shadow: none;
 		}
 
-		&--disabled {
-			border: 1px solid rgba(255, 255, 255, 0.2);
-			background: rgba(111, 115, 158, 0.70);
-			color: rgba(255, 255, 255, 0.50);
-
-			&::placeholder {
-				color: rgba(255, 255, 255, 0.50);
-			}
-		}
 	}
 
 	&__input:not(&__select):focus + &__field-label,
@@ -276,12 +265,6 @@
 		font-size: 13px;
 		color: var(--color-primary-80);
 		letter-spacing: normal;
-	}
-
-	&__input--disabled + &__field-label {
-		top: 27px;
-		transform: translateY(-50%);
-		font-size: 18px;
 	}
 
 	&__field--select {
@@ -342,7 +325,7 @@
 	&__select-icon {
 		position: absolute;
 		top: 28px;
-		right: 11px;
+		right: 15px;
 		width: 16px;
 		height: 16px;
 		color: #8090cc;
@@ -410,14 +393,34 @@
 		}
 	}
 
-	&__field--disabled &__field-note {
+	&__field-note {
 		position: absolute;
 		top: 28px;
-		right: 17px;
+		right: 14px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		width: 22px;
 		height: 22px;
-		pointer-events: none;
 		transform: translateY(-50%);
+		color: rgba(0, 0, 0, 0.55);
+		transition: opacity var(--transition-duration-fast) ease, transform var(--transition-duration-fast) ease;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&:focus-visible {
+			outline: none;
+			opacity: 0.8;
+			transform: translateY(-50%) scale(1.04);
+		}
+	}
+
+	&__field-note svg {
+		display: block;
+		width: 100%;
+		height: 100%;
 	}
 
 	&__consent {
@@ -560,16 +563,123 @@
 	}
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
 	.consultation-dialog {
-		width: min(calc(100% - 1rem), 840px);
+		width: min(calc(100% - 1rem), 600px);
 
 		&__panel {
-			padding: 1.25rem;
+			padding: 28px 26px;
 		}
 
 		&__title {
-			font-size: 1.35rem;
+			font-size: 30px;
+		}
+
+		&__input {
+			height: 52px;
+		}
+
+		&__error {
+			font-size: 13px;
+			top: 55px;
+		}
+
+		&__select-icon {
+			top: 27px;
+		}
+
+		&__field-label {
+			top: 26px;
+			font-size: 16px;
+		}
+
+		&__input {
+			font-size: 16px;
+		}
+
+		&__dropdown {
+			top: calc(100% + 3px);
+		}
+
+		&__option {
+			padding: 9px 13px;
+			border: 0;
+			background: transparent;
+			font-size: 15px;
+		}
+
+		&__consent {
+			font-size: 14px;
+		}
+
+		&__checkbox-box {
+			flex: 0 0 20px;
+			width: 20px;
+			height: 20px;
+		}
+
+		&__submit {
+			height: 52px;
+			font-size: 20px;
+		}
+
+		&__success {
+			padding: 20px;
+		}
+
+		&__success-card {
+			min-height: 220px;
+			padding: 28px 20px;
+		}
+
+		&__success-title {
+			font-size: 24px;
+		}
+
+		&__success-text {
+			font-size: 20px;
+		}
+	}
+}
+
+@media (max-width: 560px) {
+	.consultation-dialog {
+
+		&__panel {
+			padding: 24px 20px;
+		}
+
+		&__title {
+			font-size: 24px;
+		}
+
+		&__select-icon {
+			top: 27px;
+		}
+
+		&__field-label {
+			top: 26px;
+			font-size: 16px;
+		}
+
+		&__input {
+			font-size: 16px;
+		}
+
+		&__dropdown {
+			top: calc(100% + 3px);
+		}
+
+		&__option {
+			padding: 9px 13px;
+			border: 0;
+			background: transparent;
+			font-size: 15px;
+		}
+
+		&__consent {
+			font-size: 12px;
+			margin-block: 6px;
 		}
 
 		&__success {

@@ -156,22 +156,228 @@
 	}
 }
 
-@media (max-width: 1100px) {
-	.client-case {
-		grid-template-columns: 1fr;
-
-		&__card {
-			min-height: 380px;
+@media (max-width: 1440px) {
+	.clients-section {
+		&__header {
+			margin-bottom: 65px;
 		}
 
-		&__story {
-			grid-template-columns: 1fr 1fr;
-			align-content: stretch;
+		&__title {
+			letter-spacing: -1.8px;
+			font-size: 45px;
+		}
+	}
+
+	.client-case {
+		&__card {
+			min-height: 490px;
+			padding: 38px 65px 20px 30px;
+		}
+
+		&__story-block {
+			padding: 20px 28px 21px 26px;
+		}
+
+		&__visual {
+			height: 400px;
+		}
+
+		&__story-item {
+			gap: 18px;
+		}
+
+		&__company {
+			font-size: 35px;
+			letter-spacing: -1.4px;
+		}
+
+		&__industry {
+			font-size: 30px;
+			letter-spacing: -1.2px;
+		}
+
+		&__story-label {
+			font-size: 30px;
+			letter-spacing: -1.2px;
+		}
+
+		&__story-text {
+			font-size: 28px;
+			letter-spacing: -1.2px;
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.clients-section {
+		&__header {
+			margin-bottom: 45px;
+		}
+
+		&__title {
+			letter-spacing: -1.2px;
+			font-size: 32px;
+		}
+	}
+
+	.client-case {
+		&__card {
+			min-height: 360px;
+			padding: 28px 59px 15px 20px;
+		}
+
+		&__story-block {
+			padding: 16px 24px 16px 22px;
+		}
+
+		&__visual {
+			height: 300px;
+		}
+
+		&__story-item {
+			gap: 14px;
+		}
+
+		&__company {
+			font-size: 25px;
+			letter-spacing: -1px;
+		}
+
+		&__industry {
+			font-size: 22px;
+			letter-spacing: -0.88px;
+		}
+
+		&__story-label {
+			font-size: 20px;
+			letter-spacing: -0.8px;
+			padding-left: 22px;
+		}
+
+		&__story-text {
+			font-size: 18px;
+			letter-spacing: -0.72px;
 		}
 	}
 }
 
 @media (max-width: 768px) {
+	.clients-section {
+		&__header {
+			margin-bottom: 45px;
+		}
+
+		&__title {
+			letter-spacing: -1.2px;
+			font-size: 32px;
+		}
+
+		&__list {
+			margin-top: 0;
+		}
+	}
+
+	.client-case {
+		grid-template-columns: 1fr;
+
+		&__card {
+			min-height: auto;
+			padding: 25px 20px;
+			margin-right: 70px;
+			overflow: visible;
+			position: relative;
+		}
+
+		&__identity {
+			gap: 5px;
+		}
+
+		&__story-block {
+			padding: 18px 20px;
+		}
+
+		&__story {
+			grid-template-columns: 1fr;
+			align-content: stretch;
+			gap: 0;
+		}
+
+		&__story-item {
+			gap: 10px;
+			margin-top: 15px;
+		}
+
+		&__company {
+			font-size: 21px;
+			letter-spacing: -0.84px;
+			color: #2C2C2C;
+		}
+
+		&__story-label {
+			font-size: 18px;
+			letter-spacing: -0.72px;
+			padding-left: 20px;
+		}
+
+		&__story-text {
+			font-size: 16px;
+			letter-spacing: -0.64px;
+		}
+
+		&__industry {
+			font-size: 16px;
+			letter-spacing: -0.64px;
+			color: rgba(0, 0, 0, 0.55);
+
+			br {
+				display: none;
+			}
+		}
+
+		&__visual {
+			display: none;
+		}
+
+		&__link {
+			position: absolute;
+			right: -55px;
+			bottom: 50%;
+			transform: translateY(20px);
+			width: 40px;
+			height: 40px;
+			padding: 0;
+			border: 0;
+			border-radius: 0;
+			background: none;
+			color: var(--color-primary);
+
+			svg	{
+				width: 24px;
+				height: 24px;
+			}
+
+			&:hover {
+				background: none;
+				transform: translateY(20px);
+			}
+		}
+	}
+}
+
+@media (max-width: 560px) {
+	.clients-section {
+		&__header {
+			margin-bottom: 25px;
+		}
+
+		&__title {
+			letter-spacing: -1px;
+			font-size: 26px;
+		}
+	}
+}
+
+/*@media (max-width: 768px) {
 	.clients-section {
 		&__title {
 			font-size: 34px;
@@ -218,6 +424,19 @@
 
 		&__story-text {
 			font-size: 22px;
+		}
+	}
+}*/
+
+@media (max-width: 540px) {
+	.clients-section {
+		&__header {
+			margin-bottom: 25px;
+		}
+
+		&__title {
+			letter-spacing: -1px;
+			font-size: 26px;
 		}
 	}
 }

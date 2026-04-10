@@ -1,6 +1,7 @@
 ﻿---
 import calcBg1 from '../assets/calc-bg1.png';
 import calcBg2 from '../assets/calc-bg2.png';
+import calcCardBg1 from '../assets/calc-card-bg1.png';
 import '../styles/components/calculator-section.scss';
 import {
 	CALCULATOR_AMOUNT_CONFIG,
@@ -14,7 +15,7 @@ import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
 import Button from './ui/Button.astro';
 ---
 
-<section id="calculator" class="calculator-section section">
+<section id="calculator" class="calculator-section calculator-section--pending section">
 	<div class="container">
 		<div class="calculator-section__wrap">
 			<span
@@ -31,7 +32,7 @@ import Button from './ui/Button.astro';
 			<h2 class="calculator-section__title">Рассчитайте условия</h2>
 
 			<div class="calculator-section__panel calculator-section__panel--amount">
-				<div class="calculator-section__amount-row">
+				<div class="calculator-section__amount-row" data-calculator-amount-row>
 					<div class="calculator-section__amount-group">
 						<span class="calculator-section__amount-label">Сумма</span>
 
@@ -56,11 +57,18 @@ import Button from './ui/Button.astro';
 						</label>
 					</div>
 
-					<div class="calculator-section__perks">
+					<div class="calculator-section__perks" data-calculator-perks>
 						<div class="calculator-section__perks-grid">
 							<div class="calculator-section__perks-title">
 							<span class="calculator-section__perks-icon" aria-hidden="true">
-								<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<svg
+									class="calculator-section__perks-icon-desktop"
+									width="32"
+									height="32"
+									viewBox="0 0 32 32"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
 									<circle cx="16" cy="16" r="16" fill="white"/>
 									<g clip-path="url(#clip0_1_125)">
 									<path d="M21.1923 13.5909C21.1384 13.5233 21.073 13.5366 21.0387 13.5504C21.01 13.562 20.9443 13.5992 20.9534 13.6924C20.9643 13.8043 20.9704 13.9184 20.9716 14.0316C20.9765 14.5011 20.7882 14.961 20.455 15.2934C20.1239 15.6238 19.6884 15.8017 19.2247 15.7966C18.5914 15.7885 18.0661 15.4581 17.7055 14.8412C17.4075 14.3311 17.5385 13.6732 17.6772 12.9766C17.7584 12.5688 17.8423 12.1472 17.8423 11.7459C17.8423 8.62133 15.7418 6.81867 14.4896 6.02223C14.4637 6.00578 14.4391 6 14.4173 6C14.3818 6 14.3536 6.01531 14.3398 6.02469C14.3129 6.04289 14.2699 6.08438 14.2837 6.15781C14.7623 8.6993 13.3348 10.2279 11.8235 11.8461C10.2657 13.5142 8.5 15.4049 8.5 18.8147C8.5 22.7768 11.7233 26.0001 15.6854 26.0001C18.9475 26.0001 21.8237 23.7257 22.6797 20.4692C23.2634 18.2488 22.6517 15.4204 21.1923 13.5909ZM15.8646 24.4664C14.8725 24.5116 13.929 24.1558 13.2083 23.4667C12.4954 22.785 12.0865 21.8336 12.0865 20.8565C12.0865 19.0229 12.7876 17.6768 14.6733 15.8898C14.7041 15.8605 14.7357 15.8513 14.7633 15.8513C14.7882 15.8513 14.8099 15.8589 14.8248 15.866C14.8561 15.8811 14.9077 15.9186 14.9007 15.9995C14.8333 16.7841 14.8345 17.4353 14.9042 17.9351C15.0823 19.2119 16.017 20.0697 17.23 20.0697C17.8248 20.0697 18.3913 19.8459 18.8253 19.4395C18.8756 19.3923 18.9319 19.3983 18.9534 19.4029C18.982 19.409 19.0202 19.4265 19.0403 19.4748C19.2202 19.9093 19.3121 20.3704 19.3136 20.8454C19.3193 22.7565 17.7721 24.3809 15.8646 24.4664Z" fill="#F8A823"/>
@@ -69,6 +77,24 @@ import Button from './ui/Button.astro';
 									<clipPath id="clip0_1_125">
 									<rect width="20" height="20" fill="white" transform="translate(6 6)"/>
 									</clipPath>
+									</defs>
+								</svg>
+								<svg
+									class="calculator-section__perks-icon-tablet"
+									width="27"
+									height="27"
+									viewBox="0 0 27 27"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<circle cx="13.5" cy="13.5" r="13.5" fill="#0537C8"/>
+									<g clip-path="url(#clip0_57_664)">
+										<path d="M17.5778 11.4522C17.5329 11.3948 17.4784 11.4061 17.4498 11.4178C17.4259 11.4277 17.3711 11.4593 17.3787 11.5385C17.3878 11.6337 17.3929 11.7306 17.3939 11.8268C17.3979 12.2259 17.241 12.6168 16.9633 12.8994C16.6874 13.1802 16.3244 13.3314 15.938 13.327C15.4102 13.3202 14.9724 13.0394 14.6719 12.515C14.4235 12.0814 14.5327 11.5222 14.6483 10.9301C14.7159 10.5835 14.7859 10.2251 14.7859 9.88399C14.7859 7.22812 13.0353 5.69587 11.9918 5.01889C11.9702 5.00491 11.9497 5 11.9315 5C11.9019 5 11.8784 5.01302 11.8669 5.02098C11.8445 5.03646 11.8086 5.07172 11.8202 5.13414C12.219 7.29439 11.0293 8.59366 9.7698 9.96919C8.47151 11.3871 7 12.9941 7 15.8925C7 19.2602 9.68633 22 12.9883 22C15.707 22 18.1041 20.0668 18.8174 17.2988C19.3038 15.4114 18.7941 13.0073 17.5778 11.4522ZM13.1377 20.6964C12.3109 20.7348 11.5245 20.4324 10.9239 19.8467C10.3298 19.2672 9.98899 18.4585 9.98899 17.628C9.98899 16.0694 10.5733 14.9252 12.1448 13.4063C12.1706 13.3814 12.1969 13.3735 12.2198 13.3735C12.2406 13.3735 12.2587 13.38 12.2711 13.3861C12.2972 13.3989 12.3402 13.4307 12.3344 13.4995C12.2782 14.1664 12.2792 14.7199 12.3373 15.1448C12.4857 16.2301 13.2647 16.9592 14.2756 16.9592C14.7713 16.9592 15.2435 16.769 15.6051 16.4235C15.6471 16.3834 15.694 16.3885 15.7119 16.3924C15.7357 16.3976 15.7676 16.4125 15.7843 16.4536C15.9342 16.8228 16.0109 17.2148 16.0121 17.6185C16.0168 19.243 14.7274 20.6237 13.1377 20.6964Z" fill="#F8A823"/>
+									</g>
+									<defs>
+										<clipPath id="clip0_57_664">
+											<rect width="17" height="17" fill="white" transform="translate(5 5)"/>
+										</clipPath>
 									</defs>
 								</svg>
 							</span>
@@ -101,11 +127,17 @@ import Button from './ui/Button.astro';
 									</label>
 								))
 							}
+
+							<span
+								class="calculator-section__perks-illustration"
+								style={`--calculator-perks-illustration: url(${calcCardBg1.src});`}
+								aria-hidden="true"
+							></span>
 						</div>
 					</div>
 				</div>
 
-				<div class="calculator-section__slider">
+				<div class="calculator-section__slider" data-calculator-slider>
 					<div
 						class="calculator-section__track-shell"
 						style={`--range-fill-width: ${INITIAL_CALCULATOR_STATE.amountProgress};`}
@@ -133,6 +165,9 @@ import Button from './ui/Button.astro';
 			</div>
 
 			<div class="calculator-section__panel calculator-section__panel--plans">
+				<div class="calculator-section__plans-header-slot" data-calculator-plans-header-slot hidden aria-hidden="true"></div>
+				<div class="calculator-section__perks-mobile-slot" data-calculator-perks-mobile-slot hidden aria-hidden="true"></div>
+
 				<h3 class="calculator-section__plans-title">Тарифы</h3>
 
 				<div class="calculator-section__cards">
@@ -144,35 +179,56 @@ import Button from './ui/Button.astro';
 								data-payment-periods={plan.paymentPeriods}
 								data-first-period-rate={plan.firstPeriodRate}
 							>
-								{plan.featured && <span class="calculator-card__badge calculator-card__badge--featured">Популярно</span>}
-								{plan.profitable && <span class="calculator-card__badge calculator-card__badge--profit">Выгодно</span>}
+								<div class="calculator-card__surface">
+									{plan.featured && <span class="calculator-card__badge calculator-card__badge--featured">Популярно</span>}
+									{plan.profitable && <span class="calculator-card__badge calculator-card__badge--profit">Выгодно</span>}
 
-								<p class="calculator-card__term">{plan.months}</p>
-								<p
-									class="calculator-card__payment"
-									data-plan-payment
-								>{formatCurrency(INITIAL_CALCULATOR_STATE.planValues[index].monthlyPayment)}</p>
-								<p class="calculator-card__caption">Еженедельный платеж</p>
+									<p class="calculator-card__term">{plan.months}</p>
+									<p
+										class="calculator-card__payment"
+										data-plan-payment
+									>{formatCurrency(INITIAL_CALCULATOR_STATE.planValues[index].monthlyPayment)}</p>
+									<p class="calculator-card__caption">Еженедельный платеж</p>
 
-								<dl class="calculator-card__meta">
-									<div class="calculator-card__meta-row">
-										<dt>Переплата</dt>
-										<dd data-plan-overpayment>{formatCurrency(INITIAL_CALCULATOR_STATE.planValues[index].overpayment)}</dd>
+									<button
+										class="calculator-card__toggle"
+										type="button"
+										aria-expanded="false"
+										data-calculator-card-toggle
+									>
+										<span class="visually-hidden">Показать подробности тарифа</span>
+										<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+											<rect width="44" height="44" rx="10" fill="#0537C8"/>
+											<path class="calculator-card__toggle-arrow" d="M22 15L22 29M22 29L29 22M22 29L15 22" stroke="white" stroke-width="2.10767"/>
+										</svg>
+									</button>
+								</div>
+
+								<div class="calculator-card__details" data-calculator-card-details>
+									<div class="calculator-card__details-inner">
+										<dl class="calculator-card__meta">
+											<div class="calculator-card__meta-row">
+												<dt>Переплата</dt>
+												<dd data-plan-overpayment>{formatCurrency(INITIAL_CALCULATOR_STATE.planValues[index].overpayment)}</dd>
+											</div>
+											<div class="calculator-card__meta-row">
+												<dt>Ставка переплаты</dt>
+												<dd data-plan-rate>{formatPercent(INITIAL_CALCULATOR_STATE.planValues[index].overpaymentRate)}</dd>
+											</div>
+										</dl>
+
+										<ConsultationDialogTrigger amountSourceSelector="[data-calculator-amount-input]">
+											<Button variant="primary" size="md" class="calculator-card__button" type="button">
+												Оставить заявку
+											</Button>
+										</ConsultationDialogTrigger>
 									</div>
-									<div class="calculator-card__meta-row">
-										<dt>Ставка переплаты</dt>
-										<dd data-plan-rate>{formatPercent(INITIAL_CALCULATOR_STATE.planValues[index].overpaymentRate)}</dd>
-									</div>
-								</dl>
-
-								<ConsultationDialogTrigger amountSourceSelector="[data-calculator-amount-input]">
-									<Button variant="primary" size="md" class="calculator-card__button" type="button">
-										Оставить заявку
-									</Button>
-								</ConsultationDialogTrigger>
+								</div>
 							</article>
 						))
 					}
+
+					<div class="calculator-section__perks-slot" data-calculator-perks-slot hidden aria-hidden="true"></div>
 				</div>
 
 				<p class="calculator-section__disclaimer">Расчет предварительный и не является офертой</p>
@@ -184,6 +240,15 @@ import Button from './ui/Button.astro';
 		</div>
 	</div>
 </section>
+
+<noscript>
+	<style>
+		.calculator-section--pending {
+			opacity: 1 !important;
+			visibility: visible !important;
+		}
+	</style>
+</noscript>
 
 <script>
 	import { initCalculatorSections } from '../scripts/calculator-section';

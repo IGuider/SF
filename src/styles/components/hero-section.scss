@@ -56,6 +56,10 @@
 	}
 
 	&__glow {
+		--hero-glow-shift-x-positive: 8px;
+		--hero-glow-shift-y-negative: -9px;
+		--hero-glow-shift-x-negative: -6px;
+		--hero-glow-shift-y-positive: 7px;
 		position: absolute;
 		z-index: 0;
 		display: block;
@@ -94,100 +98,180 @@
 	}
 
 	35% {
-		transform: translate3d(8px, -9px, 0) rotate(calc(var(--hero-glow-rotate, 0deg) + 1deg));
+		transform: translate3d(var(--hero-glow-shift-x-positive), var(--hero-glow-shift-y-negative), 0) rotate(calc(var(--hero-glow-rotate, 0deg) + 1deg));
 	}
 
 	68% {
-		transform: translate3d(-6px, 7px, 0) rotate(calc(var(--hero-glow-rotate, 0deg) - 1deg));
+		transform: translate3d(var(--hero-glow-shift-x-negative), var(--hero-glow-shift-y-positive), 0) rotate(calc(var(--hero-glow-rotate, 0deg) - 1deg));
 	}
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
 	.hero-section {
-		&__content,
-		&__visual {
-			min-height: 400px;
+
+		&__glow--top {
+			width: 140px;
+			height: 138px;
 		}
 
-		&__panel {
-			padding: 52px 28px 38px;
+		&__glow--bottom {
+			width: 168px;
+			height: 165px;
+		}
+
+		&__title {
+			font-size: clamp(42px, 4.8vw, 58px);
+			letter-spacing: -2.32px;
 		}
 
 		&__text {
-			max-width: 420px;
+			font-size: clamp(22px, 2vw, 26px);
+			margin-block: 22px;
+			letter-spacing: -1.04px;
+		}
+
+		&__panel {
+			padding: 55px 31px 45px 35px;
 		}
 	}
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
 	.hero-section {
-		padding-bottom: 56px;
+
+		&__glow--top {
+			top: -42px;
+			left: 72%;
+			width: 84px;
+			height: 82px;
+		}
+
+		&__glow--bottom {
+			right: 16%;
+			bottom: -58px;
+			width: 101px;
+			height: 99px;
+		}
+
+		&__content, &__visual {
+			min-height: 346px;
+		}
+
+		&__title {
+			font-size: clamp(35px, 4.8vw, 40px);
+			letter-spacing: -1.6px;
+		}
+
+		&__text {
+			font-size: clamp(18px, 2vw, 18px);
+			margin-block: 16px;
+			letter-spacing: -0.72px;
+		}
+
+		&__panel {
+			padding: 40px 22px 35px 24px;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.hero-section {
+		margin-top: 96px !important;
+
+		&__glow--top {
+			background-image: var(--hero-glow-image-tablet, var(--hero-glow-image));
+			--hero-glow-shift-x-positive: 4px;
+			--hero-glow-shift-y-negative: -6px;
+			--hero-glow-shift-x-negative: -3px;
+			--hero-glow-shift-y-positive: 4px;
+			top: -22px;
+			left: auto;
+			right: -38px;
+			width: 120px;
+			height: 120px;
+			z-index: 2;
+		}
+
+		&__glow--bottom {
+			display: none;
+		}
 
 		&__layout {
 			grid-template-columns: 1fr;
 		}
 
-		&__content,
-		&__visual {
+		&__content {
 			min-height: auto;
 		}
 
+		&__visual {
+			display: none;
+		}
+
+		&__title {
+			font-size: clamp(30px, 4.8vw, 35px);
+			letter-spacing: -1.4px;
+		}
+
+		&__text {
+			font-size: clamp(16px, 4vw, 16px);
+			margin-block: 14px;
+			letter-spacing: -0.64px;
+		}
+
 		&__panel {
-			min-height: 360px;
-		}
-
-		&__visual-frame {
-			aspect-ratio: 16 / 11;
-		}
-
-		&__glow--top {
-			left: auto;
-			right: 12%;
-		}
-
-		&__glow--bottom {
-			right: 8%;
-			bottom: -28px;
+			padding: 35px 30px 30px 20px;
 		}
 	}
 }
 
-@media (max-width: 640px) {
+@media (max-width: 390px) {
 	.hero-section {
-		padding-top: 18px;
-		padding-bottom: 44px;
+		margin-top: 78px !important;
 
-		&__panel {
-			min-height: 0;
-			padding: 34px 20px 26px;
-			border-radius: var(--radius-md-mobile);
+		&__glow--top {
+			background-image: var(--hero-glow-image-tablet, var(--hero-glow-image));
+			--hero-glow-shift-x-positive: 4px;
+			--hero-glow-shift-y-negative: -6px;
+			--hero-glow-shift-x-negative: -3px;
+			--hero-glow-shift-y-positive: 4px;
+			top: -22px;
+			left: auto;
+			right: -38px;
+			width: 120px;
+			height: 120px;
+			z-index: 2;
 		}
 
-		&__visual-frame {
-			border-radius: var(--radius-md-mobile);
-			aspect-ratio: 4 / 3;
+		&__glow--bottom {
+			display: none;
+		}
+
+		&__layout {
+			grid-template-columns: 1fr;
+		}
+
+		&__content {
+			min-height: auto;
+		}
+
+		&__visual {
+			display: none;
+		}
+
+		&__title {
+			font-size: clamp(30px, 4.8vw, 35px);
+			letter-spacing: -1.4px;
 		}
 
 		&__text {
-			margin-top: 18px;
+			font-size: clamp(16px, 4vw, 16px);
+			margin-block: 14px;
+			letter-spacing: -0.64px;
 		}
 
-		&__button {
-			margin-top: 24px;
-		}
-
-		&__glow {
-			&--top {
-				top: -30px;
-				width: 116px;
-				height: 114px;
-			}
-
-			&--bottom {
-				bottom: -18px;
-				width: 138px;
-				height: 136px;
-			}
+		&__panel {
+			padding: 35px 30px 30px 20px;
 		}
 	}
 }

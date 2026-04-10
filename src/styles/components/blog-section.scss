@@ -90,7 +90,7 @@
 	&__title {
 		font-size: clamp(17px, 9vw, 29px);
 		letter-spacing: -1.16px;
-		text-wrap: balance;
+		padding-right: 30px;
 	}
 
 	&__icon {
@@ -142,72 +142,106 @@
 	}
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1440px) {
 	.blog-section {
 		&__grid {
-			grid-template-columns: minmax(0, 1fr);
-			align-items: start;
+			gap: 33px;
 		}
 
-		&__visual {
-			max-width: 720px;
+		&__title {
+			font-size: 46px;
+			letter-spacing: -1.829px;
+		}
+
+		&__socials-title {
+			font-size: 30px;
+			letter-spacing: -1.5px;
+		}
+	}
+
+	.blog-post {
+		padding: 23px;
+
+		&__title {
+			font-size: 26px;
+			letter-spacing: -1.04px;
 		}
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 	.blog-section {
 		&__grid {
 			gap: 18px;
 		}
 
 		&__content {
-			gap: 14px;
+			gap: 12px;
 		}
 
 		&__title {
-			font-size: 32px;
-			letter-spacing: -0.04em;
+			font-size: 27px;
+			letter-spacing: -1.1px;
+		}
+
+		&__socials {
+			gap: 12px;
 		}
 
 		&__socials-title {
-			font-size: 24px;
-			letter-spacing: -0.04em;
+			font-size: 16px;
+			letter-spacing: -0.64px;
 		}
 	}
 
 	.blog-post {
-		padding: 14px 16px;
+		padding: 16px;
 
 		&__title {
 			font-size: 16px;
+			letter-spacing: -0.64px;
 		}
+
+		&__icon {
+			width: 28px;
+			height: 28px;
+
+			svg {
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+
+	.blog-social {
+		gap: 10px;
+		font-size: 16px;
 	}
 }
 
-@media (max-width: 520px) {
+@media (max-width: 768px) {
 	.blog-section {
-		&__visual {
-			border-radius: var(--radius-md-mobile);
+		&__grid {
+			grid-template-columns: minmax(0, 1fr);
+			align-items: start;
+			gap: 18px;
 		}
 
-		&__image {
-			aspect-ratio: 1.08;
+		&__content {
+			gap: 20px;
 		}
 
-		&__socials-list {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
+		&__socials-title {
+			font-size: 20px;
 		}
 	}
 
 	.blog-post {
-		align-items: flex-start;
-		padding: 14px;
+		padding: 18px;
 	}
 
 	.blog-social {
-		justify-content: space-between;
-		width: 100%;
+		gap: 10px;
+		font-size: 16px;
 	}
 }

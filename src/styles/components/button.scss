@@ -30,16 +30,50 @@
 
 	&--md {
 		height: 52px;
-		padding: 14px 14px;
+		padding: 14px 16px;
 		border-radius: var(--radius-xs);
 		font-size: 18px;
 	}
 
 	&--lg {
 		height: 57px;
-		padding: 10px 14px;
+		padding: 10px 16px;
 		border-radius: var(--radius-xs);
 		font-size: 26px;
 		letter-spacing: -1.04px;
+	}
+}
+
+@media (max-width: 1440px) {
+	.ui-button {
+
+		&--md {
+			height: 46px;
+			padding-inline: 14px;
+			font-size: 16px;
+		}
+
+		&--lg {
+			height: 50px;
+			padding-inline: 14px;
+			font-size: 22px;
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.ui-button {
+
+		&--md {
+			height: 38px;
+			padding-inline: 12px;
+			font-size: 14px;
+		}
+
+		&--lg {
+			height: 35px;
+			padding-inline: 10px;
+			font-size: 16px;
+		}
 	}
 }
