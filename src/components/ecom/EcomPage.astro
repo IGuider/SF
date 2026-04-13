@@ -4,13 +4,28 @@ import CalculatorSection from './CalculatorSection.astro';
 import ClientsSection from './ClientsSection.astro';
 import FaqSection from './FaqSection.astro';
 import FeatureCardsSection from './FeatureCardsSection.astro';
-import HeroSection from './HeroSection.astro';
+import HeroSection from '../common/HeroSection.astro';
 import ProductsSection from './ProductsSection.astro';
 import StepsSection from './StepsSection.astro';
+import heroGlowTop from '../../assets/hero-bg1.png';
+import heroGlowBottom from '../../assets/hero-bg2.png';
+import featureGlowTablet from '../../assets/feature-bg4.png';
+import heroWarehouse from '../../assets/hero.jpg';
 ---
 
-<main transition:name="page-content" transition:animate="slide">
-	<HeroSection />
+<!--transition:name="page-content" transition:animate="slide"-->
+
+<main>
+	<HeroSection
+		variant="ecom"
+		titleLines={['Финансирование для роста бизнеса', 'на маркетплейсах']}
+		descriptionLines={['От 5 млн ₽ без залога для продавцов Wildberries, Ozon, Lamoda и других', 'площадок']}
+		buttonLabel="Узнать условия"
+		image={heroWarehouse}
+		glowTop={heroGlowTop}
+		glowTopMobile={featureGlowTablet}
+		glowBottom={heroGlowBottom}
+	/>
 	<FeatureCardsSection />
 	<CalculatorSection />
 	<ProductsSection />

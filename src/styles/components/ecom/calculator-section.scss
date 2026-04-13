@@ -799,12 +799,12 @@
 		}
 
 		&__disclaimer {
-			margin-top: 20px;
+			margin-top: 6px;
 			font-size: 15px;
 		}
 
 		&__summary-link {
-			margin-top: 20px;
+			margin-top: 25px;
 			font-size: 15px;
 			letter-spacing: -0.6px;
 		}
@@ -958,6 +958,10 @@
 			flex: 0 0 26px;
 			width: 26px;
 			height: 26px;
+		}
+
+		&__summary-link {
+			margin-top: 20px;
 		}
 	}
 

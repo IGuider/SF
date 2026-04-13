@@ -149,9 +149,22 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
-		height: 140px;
+		width: 159px;
+		height: auto;
 		pointer-events: none;
 		overflow: hidden;
+
+		&--early-payouts {
+			width: 122px;
+		}
+
+		&--seasonal-plan {
+			width: 206px;
+		}
+
+		&--classic-plan {
+			width: 222px;
+		}
 
 		&-image {
 			display: block;
@@ -279,10 +292,6 @@
 			min-height: 260px;
 		}
 
-		&__visual {
-			height: 160px;
-		}
-
 		&__back-title {
 			font-size: 30px;
 		}
@@ -318,10 +327,6 @@
 			min-height: 260px;
 		}
 
-		&__visual {
-			height: 130px;
-		}
-
 		&__back-title {
 			font-size: 30px;
 		}
@@ -355,7 +360,19 @@
 		}
 
 		&__visual {
-			height: 110px;
+			width: 137px;
+
+			&--early-payouts {
+				width: 114px;
+			}
+
+			&--seasonal-plan {
+				width: 190px;
+			}
+
+			&--classic-plan {
+				width: 210px;
+			}
 		}
 
 		&__title {
@@ -426,7 +443,19 @@
 		}
 
 		&__visual {
-			height: 110px;
+			width: 120px;
+
+			&--early-payouts {
+				width: 105px;
+			}
+
+			&--seasonal-plan {
+				width: 185px;
+			}
+
+			&--classic-plan {
+				width: 200px;
+			}
 		}
 
 		&__title {

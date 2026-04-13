@@ -1,21 +1,24 @@
 ---
-import BlogSection from '../ecom/BlogSection.astro';
-import CalculatorSection from '../ecom/CalculatorSection.astro';
-import ClientsSection from '../ecom/ClientsSection.astro';
-import FaqSection from '../ecom/FaqSection.astro';
-import FeatureCardsSection from '../ecom/FeatureCardsSection.astro';
-import HeroSection from '../ecom/HeroSection.astro';
-import ProductsSection from '../ecom/ProductsSection.astro';
-import StepsSection from '../ecom/StepsSection.astro';
+import DirectionsSection from './DirectionsSection.astro';
+import WhyTrustSection from './WhyTrustSection.astro';
+import HeroSection from '../common/HeroSection.astro';
+import heroGlowTop from '../../assets/hero-bg1-home.png';
+import heroGlowBottom from '../../assets/hero-bg2-home.png';
+import heroHomeImage from '../../assets/hero-home.jpg';
 ---
 
-<main transition:name="page-content" transition:animate="slide">
-	<HeroSection />
-	<FeatureCardsSection />
-	<CalculatorSection />
-	<ProductsSection />
-	<ClientsSection />
-	<StepsSection />
-	<BlogSection />
-	<FaqSection />
+<main>
+	<HeroSection
+		variant="home"
+		titleLines={['Финансирование,', 'которое помогает', 'бизнесу расти']}
+		descriptionLines={['Для государственных контрактов', 'и продавцов маркетплейсов']}
+		buttonLabel="Подобрать решение"
+		image={heroHomeImage}
+		glowTop={heroGlowTop}
+		glowBottom={heroGlowBottom}
+		glowTopStyle="width: 177px; height: 177px;"
+		glowBottomStyle="width: 137px; height: 137px;"
+	/>
+	<DirectionsSection />
+	<WhyTrustSection />
 </main>
