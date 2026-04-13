@@ -8,6 +8,10 @@ export const initClientsSection = () => {
 			continue;
 		}
 
+		if (section.dataset.clientsBound === 'true') {
+			continue;
+		}
+
 		const slider = section.querySelector('[data-clients-slider]');
 		const nextButtons = section.querySelectorAll('[data-client-next]');
 
@@ -39,6 +43,9 @@ export const initClientsSection = () => {
 			}
 		}
 
+		section.classList.remove('clients-section--pending');
+		section.dataset.clientsReady = 'true';
+
 		section.addEventListener('click', (event) => {
 			const target = event.target;
 
@@ -54,5 +61,7 @@ export const initClientsSection = () => {
 
 			swiper.slideNext();
 		});
+
+		section.dataset.clientsBound = 'true';
 	}
 };

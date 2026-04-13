@@ -1,6 +1,14 @@
 @use './shared-sections' as shared;
 
 .clients-section {
+	&--pending {
+		pointer-events: none;
+
+		.clients-section__slider {
+			min-height: 480px;
+		}
+	}
+
 	&__header {
 		@include shared.centered-section-header();
 	}
@@ -20,10 +28,12 @@
 }
 
 .client-case {
+	position: relative;
 	display: grid;
 	grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
 	gap: 6px;
 	align-items: stretch;
+	padding-right: 86px;
 
 	&__card,
 	&__story-block {
@@ -85,14 +95,15 @@
 
 	&__link {
 		position: absolute;
-		right: 24px;
-		bottom: 24px;
+		right: 3px;
+		top: 50%;
+		bottom: auto;
 		z-index: 2;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 40px;
-		height: 40px;
+		width: 50px;
+		height: 50px;
 		padding: 0;
 		border: 0;
 		border-radius: 50%;
@@ -103,11 +114,12 @@
 		transition:
 			transform 0.2s ease,
 			background-color 0.2s ease;
+		transform: translateY(-50%);
 
 		&:hover,
 		&:focus-visible {
 			background: var(--color-secondary-hover);
-			transform: translateX(2px);
+			transform: translate(2px, -50%);
 		}
 
 		&:disabled {
@@ -169,6 +181,8 @@
 	}
 
 	.client-case {
+		padding-right: 60px;
+
 		&__card {
 			min-height: 490px;
 			padding: 38px 65px 20px 30px;
@@ -178,31 +192,36 @@
 			padding: 20px 28px 21px 26px;
 		}
 
+		&__link {
+			width: 40px;
+			height: 40px;
+		}
+
 		&__visual {
 			height: 400px;
 		}
 
 		&__story-item {
-			gap: 18px;
+			gap: 14px;
 		}
 
 		&__company {
-			font-size: 35px;
-			letter-spacing: -1.4px;
-		}
-
-		&__industry {
-			font-size: 30px;
+			font-size: 31px;
 			letter-spacing: -1.2px;
 		}
 
+		&__industry {
+			font-size: 27px;
+			letter-spacing: -1.1px;
+		}
+
 		&__story-label {
-			font-size: 30px;
+			font-size: 27px;
 			letter-spacing: -1.2px;
 		}
 
 		&__story-text {
-			font-size: 28px;
+			font-size: 25px;
 			letter-spacing: -1.2px;
 		}
 	}
@@ -221,6 +240,8 @@
 	}
 
 	.client-case {
+		padding-right: 55px;
+
 		&__card {
 			min-height: 360px;
 			padding: 28px 59px 15px 20px;
@@ -278,12 +299,15 @@
 	}
 
 	.client-case {
-		grid-template-columns: 1fr;
+		padding-right: 0;
+		grid-template-columns: minmax(0, 1fr) 40px;
+		column-gap: 15px;
+		row-gap: 0;
 
 		&__card {
+			grid-column: 1;
 			min-height: auto;
 			padding: 25px 20px;
-			margin-right: 70px;
 			overflow: visible;
 			position: relative;
 		}
@@ -297,6 +321,7 @@
 		}
 
 		&__story {
+			grid-column: 1 / -1;
 			grid-template-columns: 1fr;
 			align-content: stretch;
 			gap: 0;
@@ -339,10 +364,11 @@
 		}
 
 		&__link {
-			position: absolute;
-			right: -55px;
-			bottom: 50%;
-			transform: translateY(20px);
+			position: static;
+			grid-column: 2;
+			grid-row: 1;
+			align-self: center;
+			justify-self: center;
 			width: 40px;
 			height: 40px;
 			padding: 0;
@@ -350,6 +376,7 @@
 			border-radius: 0;
 			background: none;
 			color: var(--color-primary);
+			transform: none;
 
 			svg	{
 				width: 24px;
@@ -358,7 +385,7 @@
 
 			&:hover {
 				background: none;
-				transform: translateY(20px);
+				transform: none;
 			}
 		}
 	}
@@ -376,57 +403,6 @@
 		}
 	}
 }
-
-/*@media (max-width: 768px) {
-	.clients-section {
-		&__title {
-			font-size: 34px;
-		}
-	}
-
-	.client-case {
-		gap: 18px;
-
-		&__card {
-			min-height: 320px;
-			padding: 22px 20px 20px;
-		}
-
-		&__industry {
-			max-width: 180px;
-			font-size: 24px;
-		}
-
-		&__visual {
-			inset: auto -20px -24px -4px;
-			height: 220px;
-		}
-
-		&__visual-image {
-			height: 100%;
-		}
-
-		&__story {
-			grid-template-columns: 1fr;
-		}
-
-		&__story-item {
-			gap: 8px;
-		}
-
-		&__story-block {
-			padding: 18px;
-		}
-
-		&__story-label {
-			font-size: 20px;
-		}
-
-		&__story-text {
-			font-size: 22px;
-		}
-	}
-}*/
 
 @media (max-width: 540px) {
 	.clients-section {

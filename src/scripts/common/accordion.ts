@@ -97,6 +97,10 @@ export const initAccordionGroup = (config: AccordionConfig) => {
 			return;
 		}
 
+		if (item instanceof HTMLElement && item.dataset.accordionBound === 'true') {
+			return;
+		}
+
 		if (item.classList.contains(config.openClass)) {
 			panel.hidden = false;
 			panel.style.height = 'auto';
@@ -109,6 +113,10 @@ export const initAccordionGroup = (config: AccordionConfig) => {
 			const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
 			setPanelState(item, !isExpanded, config);
 		});
+
+		if (item instanceof HTMLElement) {
+			item.dataset.accordionBound = 'true';
+		}
 	});
 
 	const existingResizeHandler = resizeHandlers.get(config.rootSelector);

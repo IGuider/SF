@@ -15,6 +15,13 @@ const githubPagesBase =
 export default defineConfig({
   site: githubPagesSite,
   base: githubPagesBase,
+  compressHTML: false,
+  vite: {
+    build: {
+      minify: false,
+      sourcemap: true,
+    },
+  },
   server: {
     host: '127.0.0.1',
     allowedHosts: ['.lhr.life'],

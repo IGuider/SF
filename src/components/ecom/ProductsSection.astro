@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import productCardBg1 from '../../assets/product-card-bg1.png';
 import productCardBg2 from '../../assets/product-card-bg2.png';
@@ -8,63 +9,23 @@ import '../../styles/components/ecom/products-section.scss';
 import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
 import Button from '../ui/Button.astro';
 
-const cards = [
-  {
-    id: 'credit-line',
-    modifier: 'credit-line',
-    title: 'Возобновляемая кредитная линия',
-    description:
-      'Откройте лимит и пользуйтесь в любой момент.<br> Срок транша до 18 месяцев, лимит до 36 месяцев',
-    image: productCardBg1,
-    points: [
-      'Открываете лимит один раз и пользуетесь, когда нужно',
-      'Платите проценты только за дни использования',
-      'Лимит восстанавливается после погашения',
-    ],
-  },
-  {
-    id: 'early-payouts',
-    modifier: 'early-payouts',
-    title: 'Досрочные выводы',
-    description:
-      'В 2,5 раза дешевле, чем досрочные выплаты<br> от маркетплейсов. Получайте деньги за товар быстрее',
-    image: productCardBg2,
-    points: [
-      'Получаете деньги за товар, не дожидаясь выплаты от маркетплейса',
-      'В 2,5 раза дешевле, чем досрочные выплаты на площадках',
-      'Средства приходят на счет в течение 1 рабочего дня',
-    ],
-  },
-  {
-    id: 'seasonal-plan',
-    modifier: 'seasonal-plan',
-    title: 'Сезонный график',
-    description:
-      'Погашение подстраивается под ваш цикл продаж.<br> Перед сезоном меньше, в пик больше',
-    image: productCardBg3,
-    points: [
-      'Средства поступают на счет в течение 1 рабочего дня',
-      'Перед сезоном платежи меньше, в пиковой фазе больше',
-      'График можно пересмотреть вместе с менеджером',
-    ],
-  },
-  {
-    id: 'classic-plan',
-    modifier: 'classic-plan',
-    title: 'Классический график',
-    description:
-      'Фиксированные платежи по стандартному графику.<br> Для тех, кому важна предсказуемость',
-    image: productCardBg4,
-    points: [
-      'Фиксированная сумма платежа каждый месяц',
-      'Ставка известна заранее и не меняется',
-      'Досрочное погашение без штрафов',
-    ],
-  },
-] as const;
+const productImageMap = {
+	'credit-line': productCardBg1,
+	'early-payouts': productCardBg2,
+	'seasonal-plan': productCardBg3,
+	'classic-plan': productCardBg4,
+} as const;
+
+const cards = (await getCollection('products'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => ({
+		id: item.id,
+		...item.data,
+		image: productImageMap[item.id as keyof typeof productImageMap],
+	}));
 ---
 
-<section class="products-section section" id="products" aria-labelledby="products-title">
+<section class="products-section products-section--pending section" id="products" aria-labelledby="products-title">
   <div class="container">
     <div class="products-section__header">
       <div class="products-section__heading-group">
@@ -143,8 +104,18 @@ const cards = [
   </div>
 </section>
 
+<noscript>
+  <style>
+    .products-section--pending {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</noscript>
+
 <script>
   import { initProductsSection } from '../../scripts/ecom/products-section';
 
   initProductsSection();
+  document.addEventListener('astro:after-swap', initProductsSection);
 </script>

@@ -1,6 +1,14 @@
 @use './shared-sections' as shared;
 
 .products-section {
+	&--pending {
+		pointer-events: none;
+
+		.products-card__inner {
+			transition: none;
+		}
+	}
+
 	&__header {
 		@include shared.centered-section-header();
 	}
@@ -48,6 +56,18 @@
 	&__face--front {
 		display: flex;
 		background: linear-gradient(109deg, #E7EEFF 1.57%, rgba(231, 238, 255, 0.18) 117.3%);
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			.products-card__link-icon {
+				transform: translateX(1px);
+
+				rect:first-child {
+					fill: var(--color-secondary-hover);
+				}
+			}
+		}
 	}
 
 	&__face--back {
@@ -109,10 +129,15 @@
 	&__link-icon {
 		width: 27px;
 		height: 27px;
+		transition: transform 180ms ease;
 
 		svg {
 			width: 27px;
 			height: 27px;
+
+			rect:first-child {
+				transition: fill 180ms ease;
+			}
 		}
 	}
 

@@ -52,7 +52,7 @@ const {
 
 <header class="site-header">
 	<div class="container site-header__inner">
-		<a class="site-header__brand" href={brandHref} aria-label="SimpleFinance">
+		<a class="site-header__brand" href={brandHref} aria-label="SimpleFinance" transition:name="site-brand">
 			<img class="site-header__logo" src={logo.src} alt="SimpleFinance" />
 		</a>
 
@@ -126,8 +126,11 @@ const {
 </header>
 
 <script>
+	import { initActiveNav } from '../../scripts/common/active-nav';
 	import { initHeaderMenu } from '../../scripts/common/header-menu';
 
 	initHeaderMenu();
+	initActiveNav();
 	document.addEventListener('astro:after-swap', initHeaderMenu);
+	document.addEventListener('astro:after-swap', initActiveNav);
 </script>

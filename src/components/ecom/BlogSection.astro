@@ -1,45 +1,12 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import blogPhoto from '../../assets/blog.jpg';
 import '../../styles/components/ecom/blog-section.scss';
 import SocialIcon from '../ui/SocialIcon.astro';
 
-const posts = [
-	{
-		title: 'Нераспроданный товар на складах - боль любого селлера',
-		href: '#',
-	},
-	{
-		title: 'Сервисы для автоматизации ответов',
-		href: '#',
-	},
-	{
-		title: 'Главные изменения в маркировке товаров с 1 марта',
-		href: '#',
-	},
-	{
-		title: 'Сервисы для автоматизации ответов',
-		href: '#',
-	},
-] as const;
-
-const socials = [
-	{
-		label: 'ВКонтакте',
-		href: '#',
-		icon: 'vk',
-	},
-	{
-		label: 'Telegram',
-		href: '#',
-		icon: 'telegram',
-	},
-	{
-		label: 'MAX',
-		href: '#',
-		icon: 'max',
-	},
-] as const;
+const posts = (await getCollection('blogPosts')).sort((left, right) => left.data.order - right.data.order);
+const socials = (await getCollection('socialLinks')).sort((left, right) => left.data.order - right.data.order);
 ---
 
 <section class="blog-section section" id="blog" aria-labelledby="blog-title">
@@ -62,8 +29,8 @@ const socials = [
 					{
 						posts.map((post) => (
 							<li>
-								<a class="blog-post" href={post.href} aria-label={`Открыть статью: ${post.title}`}>
-									<span class="blog-post__title">{post.title}</span>
+								<a class="blog-post" href={post.data.href} aria-label={`Открыть статью: ${post.data.title}`}>
+									<span class="blog-post__title">{post.data.title}</span>
 									<span class="blog-post__icon" aria-hidden="true">
 										<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M8 12H16M16 12L12.5 8.5M16 12L12.5 15.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -82,10 +49,10 @@ const socials = [
 						{
 							socials.map((social) => (
 								<li>
-									<a class="blog-social" href={social.href} aria-label={social.label}>
-										<span>{social.label}</span>
-										<span class:list={['blog-social__icon', `blog-social__icon--${social.icon}`]} aria-hidden="true">
-											<SocialIcon icon={social.icon} size={30} />
+									<a class="blog-social" href={social.data.href} aria-label={social.data.label}>
+										<span>{social.data.label}</span>
+										<span class:list={['blog-social__icon', `blog-social__icon--${social.data.icon}`]} aria-hidden="true">
+											<SocialIcon icon={social.data.icon} size={30} />
 										</span>
 									</a>
 								</li>

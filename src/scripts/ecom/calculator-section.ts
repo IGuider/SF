@@ -107,6 +107,10 @@ export const initCalculatorSections = () => {
 			continue;
 		}
 
+		if (calculator instanceof HTMLElement && calculator.dataset.calculatorBound === 'true') {
+			continue;
+		}
+
 		const baseMin = Number.parseInt(amountInput.dataset.min || rangeInput.min, 10);
 		const baseMax = Number.parseInt(amountInput.dataset.max || rangeInput.max, 10);
 		const maxDigits = Number.parseInt(amountInput.dataset.maxDigits || '12', 10);
@@ -389,5 +393,9 @@ export const initCalculatorSections = () => {
 		});
 
 		calculator.classList.remove('calculator-section--pending');
+		if (calculator instanceof HTMLElement) {
+			calculator.dataset.calculatorBound = 'true';
+			calculator.dataset.calculatorReady = 'true';
+		}
 	}
 };

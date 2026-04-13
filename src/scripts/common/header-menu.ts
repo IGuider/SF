@@ -1,3 +1,5 @@
+import { navigate } from 'astro:transitions/client';
+
 const MOBILE_BREAKPOINT = 768;
 const BODY_OPEN_CLASS = 'site-header-menu-open';
 const HEADER_OPEN_CLASS = 'is-menu-open';
@@ -6,6 +8,30 @@ const HEADER_STICKY_ACTIVE_CLASS = 'is-sticky-active';
 const MENU_CLOSE_DELAY_MS = 260;
 const MENU_OPEN_LABEL = 'Открыть меню';
 const MENU_CLOSE_LABEL = 'Закрыть меню';
+
+const isDeferredMobileNavigation = (link: HTMLAnchorElement) => {
+	if (link.target && link.target !== '_self') {
+		return false;
+	}
+
+	if (link.hasAttribute('download')) {
+		return false;
+	}
+
+	const href = link.getAttribute('href');
+
+	if (!href || href === '#') {
+		return false;
+	}
+
+	if (/^(mailto:|tel:|javascript:)/i.test(href)) {
+		return false;
+	}
+
+	const url = new URL(link.href, window.location.href);
+
+	return url.origin === window.location.origin;
+};
 
 const finishCloseMenu = (header: HTMLElement, toggle: HTMLButtonElement) => {
 	header.classList.remove(HEADER_CLOSING_CLASS);
@@ -125,7 +151,25 @@ export const initHeaderMenu = () => {
 			return;
 		}
 
-		if (target.closest('a, button')) {
+		const link = target.closest('a');
+
+		if (link instanceof HTMLAnchorElement && header.classList.contains(HEADER_OPEN_CLASS)) {
+			if (isDeferredMobileNavigation(link)) {
+				event.preventDefault();
+				const href = link.href;
+
+				closeMenu(header, toggle, closeTimerRef);
+				window.setTimeout(() => {
+					navigate(href);
+				}, MENU_CLOSE_DELAY_MS);
+				return;
+			}
+
+			closeMenu(header, toggle, closeTimerRef);
+			return;
+		}
+
+		if (target.closest('button')) {
 			closeMenu(header, toggle, closeTimerRef);
 		}
 	};

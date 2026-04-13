@@ -229,12 +229,11 @@ import Button from '../ui/Button.astro';
 					<div class="calculator-section__perks-slot" data-calculator-perks-slot hidden aria-hidden="true"></div>
 				</div>
 
+				<a class="calculator-section__summary-link" target="_blank" href="https://ya.ru/">
+					Общие условия для возобновляемой кредитной линии
+				</a>
 				<p class="calculator-section__disclaimer">Расчет предварительный и не является офертой</p>
 			</div>
-
-			<a class="calculator-section__summary-link" target="_blank" href="https://ya.ru/">
-				Общие условия для возобновляемой кредитной линии
-			</a>
 		</div>
 	</div>
 </section>
@@ -252,4 +251,5 @@ import Button from '../ui/Button.astro';
 	import { initCalculatorSections } from '../../scripts/ecom/calculator-section';
 
 	initCalculatorSections();
+	document.addEventListener('astro:after-swap', initCalculatorSections);
 </script>

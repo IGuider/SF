@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import featureBg1 from '../../assets/feature-bg1.png';
 import featureBg1Mobile from '../../assets/feature-bg1-m.png';
@@ -10,47 +11,19 @@ import '../../styles/components/ecom/feature-cards-section.scss';
 import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
 import Button from '../ui/Button.astro';
 
-type FeatureCard = {
-  title: string;
-  text: string;
-  modifier: 'primary' | 'top' | 'bottom' | 'accent';
-  image: ImageMetadata;
-  mobileImage?: ImageMetadata;
-  loading: 'eager' | 'lazy';
-};
+const featureImageMap = {
+	primary: { image: featureBg1, mobileImage: featureBg1Mobile, loading: 'eager' },
+	top: { image: featureBg2, loading: 'eager' },
+	bottom: { image: featureBg3, loading: 'lazy' },
+	accent: { image: featureBg4, mobileImage: featureBg4Mobile, loading: 'lazy' },
+} as const;
 
-const cards: FeatureCard[] = [
-  {
-    title: 'Закроем кассовый разрыв',
-    text: 'Кредитная линия как <span>досрочная выплата</span> от МП',
-    modifier: 'primary',
-    image: featureBg1,
-    mobileImage: featureBg1Mobile,
-    loading: 'eager',
-  },
-  {
-    title: 'Подстроимся под ваш сезон',
-    text: 'График погашения<br> <span>под ваш цикл</span> продаж',
-    modifier: 'top',
-    image: featureBg2,
-    loading: 'eager',
-  },
-  {
-    title: 'Помогаем расти быстрее',
-    text: 'Оплатим <span>закупку</span><br> <span>и логистику</span>',
-    modifier: 'bottom',
-    image: featureBg3,
-    loading: 'lazy',
-  },
-  {
-    title: 'Планируйте расходы спокойно',
-    text: 'Все условия <span>известны<br> до подписания</span> договора',
-    modifier: 'accent',
-    image: featureBg4,
-    mobileImage: featureBg4Mobile,
-    loading: 'lazy',
-  },
-] as const;
+const cards = (await getCollection('featureCards'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => ({
+		...item.data,
+		...featureImageMap[item.data.modifier],
+	}));
 ---
 
 <section class="feature-cards section" id="about">

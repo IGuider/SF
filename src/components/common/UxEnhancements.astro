@@ -1,0 +1,6 @@
+<script>
+	import { initScrollReveal } from '../../scripts/common/scroll-reveal';
+
+	initScrollReveal();
+	document.addEventListener('astro:after-swap', initScrollReveal);
+</script>

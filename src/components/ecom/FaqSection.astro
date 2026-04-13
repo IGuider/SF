@@ -1,50 +1,8 @@
 ---
+import { getCollection } from 'astro:content';
 import '../../styles/components/ecom/faq-section.scss';
 
-type FaqItem = {
-	id: string;
-	question: string;
-	answer: string;
-	isOpen?: boolean;
-};
-
-const faqItems: FaqItem[] = [
-	{
-		id: 'marketplaces',
-		question: 'Можно ли оформить сделку удаленно?',
-		answer:
-			'Да. Документы для рассмотрения присылаете на электронную почту, договоры подписываете через ЭДО: Контур.Диадок или СБИС. Приезжать никуда не нужно',
-	},
-	{
-		id: 'documents',
-		question: 'Работаете ли с нерезидентами?',
-		answer:
-			'Да, главное, чтобы ваше ИП или ООО было зарегистрировано в России',
-	},
-	{
-		id: 'decision',
-		question: 'Нужен ли залог?',
-		answer: 'Нет, мы выдаем беззалоговые займы. Но если вам нужна бóльшая сумма или более длинный срок, можем предложить подкрепить сделку залогом',
-	},
-	{
-		id: 'limits',
-		question: 'Нужно ли переводить обороты на другой счет?',
-		answer:
-			'Нет, это не обязательное условие. Но вы можете увеличить сумму одобренного займа, переведя поступления от маркетплейса на номинальный счет одного из наших банков-партнеров: Точка или Модульбанк',
-	},
-	{
-		id: 'creditline',
-		question: 'Есть ли кредитная линия?',
-		answer:
-			'Да. Оформляем как длинные займы сроком до 18 месяцев, так и кредитные линии с траншами на 1-6 месяцев',
-	},
-	{
-		id: 'ots',
-		question: 'Можно ли получить отсрочку?',
-		answer:
-			'Да. Если у вас сезонный товар, мы можем согласовать гибкий график или отсрочку по оплате основного долга до 3 месяцев',
-	},
-];
+const faqItems = (await getCollection('faq')).sort((left, right) => left.data.order - right.data.order);
 ---
 
 <section class="faq-section section" id="faq" aria-labelledby="faq-title">
@@ -56,14 +14,14 @@ const faqItems: FaqItem[] = [
 		<div class="faq-section__grid">
 			{
 				faqItems.map((item) => (
-					<article class:list={['faq-item', item.isOpen && 'is-open']}>
+					<article class="faq-item">
 						<button
 							class="faq-item__summary"
 							type="button"
-							aria-expanded={item.isOpen ? 'true' : 'false'}
+							aria-expanded="false"
 							aria-controls={`${item.id}-panel`}
 						>
-							<span class="faq-item__question">{item.question}</span>
+							<span class="faq-item__question">{item.data.question}</span>
 							<span class="faq-item__icon" aria-hidden="true">
 								<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path class="faq-item__icon-line faq-item__icon-line--horizontal" d="M5 11H17" />
@@ -75,10 +33,10 @@ const faqItems: FaqItem[] = [
 						<div
 							class="faq-item__content"
 							id={`${item.id}-panel`}
-							hidden={!item.isOpen}
+							hidden
 						>
 							<div class="faq-item__content-inner">
-								<p class="faq-item__answer">{item.answer}</p>
+								<p class="faq-item__answer">{item.data.answer}</p>
 							</div>
 						</div>
 					</article>
@@ -92,4 +50,5 @@ const faqItems: FaqItem[] = [
 	import { initFaqSections } from '../../scripts/ecom/faq-section';
 
 	initFaqSections();
+	document.addEventListener('astro:after-swap', initFaqSections);
 </script>

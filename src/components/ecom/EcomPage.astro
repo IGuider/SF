@@ -9,7 +9,7 @@ import ProductsSection from './ProductsSection.astro';
 import StepsSection from './StepsSection.astro';
 ---
 
-<main>
+<main transition:name="page-content" transition:animate="slide">
 	<HeroSection />
 	<FeatureCardsSection />
 	<CalculatorSection />
