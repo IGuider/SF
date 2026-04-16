@@ -29,6 +29,19 @@ const getCaretFromDigitIndex = (value: string, digitIndex: number) => {
 const easeInOutCubic = (progress: number) =>
 	progress < 0.5 ? 4 * progress ** 3 : 1 - ((-2 * progress + 2) ** 3) / 2;
 
+const scheduleAfterFrames = (callback: () => void, frames = 2) => {
+	const run = (remainingFrames: number) => {
+		if (remainingFrames <= 0) {
+			callback();
+			return;
+		}
+
+		requestAnimationFrame(() => run(remainingFrames - 1));
+	};
+
+	run(frames);
+};
+
 const animateNumericText = (
 	node: HTMLElement,
 	nextValue: number,
@@ -283,6 +296,12 @@ export const initCalculatorSections = () => {
 			paintRange(currentValue);
 		};
 
+		const syncRangeAfterLayout = () => {
+			scheduleAfterFrames(() => {
+				paintRange(currentValue);
+			});
+		};
+
 		rangeInput.addEventListener('input', () => {
 			const nextValue = Number.parseInt(rangeInput.value, 10);
 			currentValue = nextValue;
@@ -387,10 +406,19 @@ export const initCalculatorSections = () => {
 		tabletPerksMedia.addEventListener('change', syncTabletLayout);
 		tabletPerksMedia.addEventListener('change', syncPerksPlacement);
 		compactCardsMedia.addEventListener('change', syncCardDetailsLayout);
+		tabletPerksMedia.addEventListener('change', syncRangeAfterLayout);
+		compactCardsMedia.addEventListener('change', syncRangeAfterLayout);
+
+		const trackResizeObserver = new ResizeObserver(() => {
+			paintRange(currentValue);
+		});
+		trackResizeObserver.observe(trackShell);
 
 		window.addEventListener('load', () => {
 			requestAnimationFrame(syncResponsiveLayout);
 		});
+
+		syncRangeAfterLayout();
 
 		calculator.classList.remove('calculator-section--pending');
 		if (calculator instanceof HTMLElement) {

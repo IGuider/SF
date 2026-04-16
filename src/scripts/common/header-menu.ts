@@ -6,6 +6,7 @@ const HEADER_OPEN_CLASS = 'is-menu-open';
 const HEADER_CLOSING_CLASS = 'is-menu-closing';
 const HEADER_STICKY_ACTIVE_CLASS = 'is-sticky-active';
 const MENU_CLOSE_DELAY_MS = 260;
+const MOBILE_NAVIGATION_DELAY_MS = 150;
 const MENU_OPEN_LABEL = 'Открыть меню';
 const MENU_CLOSE_LABEL = 'Закрыть меню';
 
@@ -161,7 +162,7 @@ export const initHeaderMenu = () => {
 				closeMenu(header, toggle, closeTimerRef);
 				window.setTimeout(() => {
 					navigate(href);
-				}, MENU_CLOSE_DELAY_MS);
+				}, MENU_CLOSE_DELAY_MS + MOBILE_NAVIGATION_DELAY_MS);
 				return;
 			}
 

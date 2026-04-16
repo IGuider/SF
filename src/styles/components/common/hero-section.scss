@@ -188,7 +188,7 @@
 
 @media (max-width: 768px) {
 	.hero-section {
-		margin-top: 85px !important;
+		margin-top: 90px !important;
 
 		&__mobile-glow {
 			--hero-glow-shift-x-positive: 4px;
@@ -276,19 +276,6 @@
 
 @media (max-width: 390px) {
 	.hero-section {
-		margin-top: 90px !important;
-
-		&__content,
-		&__panel {
-			background-image: none;
-
-			&::before,
-			&::after {
-				content: none;
-				background-image: none;
-			}
-		}
-
 		&__mobile-glow {
 			--hero-glow-shift-x-positive: 4px;
 			--hero-glow-shift-y-negative: -6px;
@@ -296,10 +283,10 @@
 			--hero-glow-shift-y-positive: 4px;
 			--hero-glow-rotate: -4deg;
 			display: block;
-			right: -56px;
-			bottom: -10px;
-			width: 190px;
-			height: 190px;
+			right: -59px;
+			bottom: -26px;
+			width: 210px;
+			height: 210px;
 			animation-duration: 14s;
 			animation-delay: -6s;
 			pointer-events: none;
@@ -331,15 +318,13 @@
 		}
 
 		&__badges {
-			gap: 8px;
-			margin-bottom: 20px;
+			gap: 4px;
+			margin-bottom: 8px;
 		}
 
 		&__badge {
-			padding: 10px 14px;
-			font-size: 14px;
-			line-height: 1.1;
-			letter-spacing: -0.28px;
+			padding: 4px 7px;
+			font-size: 12px;
 		}
 
 		&__text {
@@ -349,7 +334,7 @@
 		}
 
 		&__panel {
-			padding: 35px 30px 30px 20px;
+			padding: 35px 20px;
 		}
 	}
 }
