@@ -149,21 +149,21 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
-		width: 159px;
+		width: 150px;
 		height: auto;
 		pointer-events: none;
 		overflow: hidden;
 
 		&--early-payouts {
-			width: 122px;
+			width: 133px;
 		}
 
 		&--seasonal-plan {
-			width: 206px;
+			width: 166px;
 		}
 
 		&--classic-plan {
-			width: 222px;
+			width: 183px;
 		}
 
 		&-image {
@@ -244,6 +244,22 @@
 			min-height: 280px;
 		}
 
+		&__visual {
+			width: 130px;
+
+			&--early-payouts {
+				width: 122px;
+			}
+
+			&--seasonal-plan {
+				width: 144px;
+			}
+
+			&--classic-plan {
+				width: 154px;
+			}
+		}
+
 		&__body {
 			gap: 15px;
 		}
@@ -321,6 +337,22 @@
 	.products-card {
 		min-height: 190px;
 
+		&__visual {
+			width: 120px;
+
+			&--early-payouts {
+				width: 112px;
+			}
+
+			&--seasonal-plan {
+				width: 134px;
+			}
+
+			&--classic-plan {
+				width: 144px;
+			}
+		}
+
 		&__face {
 			grid-template-columns: minmax(0, 1fr);
 			padding: 24px 24px 24px 28px;
@@ -357,22 +389,6 @@
 		&__face {
 			padding: 24px 24px 24px 28px;
 			min-height: 230px;
-		}
-
-		&__visual {
-			width: 137px;
-
-			&--early-payouts {
-				width: 114px;
-			}
-
-			&--seasonal-plan {
-				width: 190px;
-			}
-
-			&--classic-plan {
-				width: 210px;
-			}
 		}
 
 		&__title {
@@ -443,18 +459,18 @@
 		}
 
 		&__visual {
-			width: 120px;
+			width: 110px;
 
 			&--early-payouts {
-				width: 105px;
+				width: 112px;
 			}
 
 			&--seasonal-plan {
-				width: 185px;
+				width: 114px;
 			}
 
 			&--classic-plan {
-				width: 200px;
+				width: 120px;
 			}
 		}
 

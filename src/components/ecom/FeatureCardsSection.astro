@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import featureBg1 from '../../assets/feature-bg1.png';
 import featureBg1Mobile from '../../assets/feature-bg1-m.png';
 import featureBg2 from '../../assets/feature-bg2.png';
@@ -11,12 +12,18 @@ import '../../styles/components/ecom/feature-cards-section.scss';
 import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
 import Button from '../ui/Button.astro';
 
-const featureImageMap = {
+type FeatureImageConfig = {
+	image: ImageMetadata;
+	mobileImage?: ImageMetadata;
+	loading: 'eager' | 'lazy';
+};
+
+const featureImageMap: Record<'primary' | 'top' | 'bottom' | 'accent', FeatureImageConfig> = {
 	primary: { image: featureBg1, mobileImage: featureBg1Mobile, loading: 'eager' },
 	top: { image: featureBg2, loading: 'eager' },
 	bottom: { image: featureBg3, loading: 'lazy' },
 	accent: { image: featureBg4, mobileImage: featureBg4Mobile, loading: 'lazy' },
-} as const;
+};
 
 const cards = (await getCollection('featureCards'))
 	.sort((left, right) => left.data.order - right.data.order)
@@ -50,16 +57,6 @@ const cards = (await getCollection('featureCards'))
                 <h2 class="feature-card__title">{card.title}</h2>
                 <p class="feature-card__text" set:html={card.text}></p>
               </div>
-
-              {
-                card.modifier === 'accent' && (
-                  <ConsultationDialogTrigger>
-                    <Button variant="secondary" size="lg" class="feature-card__button" type="button">
-                      Оставить заявку
-                    </Button>
-                  </ConsultationDialogTrigger>
-                )
-              }
             </div>
           </article>
         ))

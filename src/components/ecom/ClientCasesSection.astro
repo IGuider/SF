@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import '../../styles/components/ecom/client-cases-section.scss';
+
+const fallbackCases = [
+	{
+		title: 'Кассовый разрыв',
+		before: 'WB задержал выплаты на 5 недель, грозили штрафы. На счете было 400 тыс. ₽, а нужно 3,5 млн ₽',
+		after: 'Получили 3,5 млн ₽ за 1 день. Рассчитались с поставщиком вовремя',
+		result: '0 штрафов • деньги за 1 день',
+		order: 1,
+	},
+	{
+		title: 'Масштабирование',
+		before: 'Хотели запустить Ozon, но все деньги заняты WB. Вытащить значит просесть на WB',
+		after: 'Открыли лимит ВКЛ, не трогая WB. За 3 месяца Ozon дал 40% от общей выручки',
+		result: '+40% выручки • Ozon за 3 мес',
+		order: 2,
+	},
+	{
+		title: 'Сезонная закупка',
+		before: 'Перед сезоном нужно было завезти товар. Деньги в обороте. Банк одобрял долго',
+		after: 'Получили 4 млн ₽ за 1 день, завезли товар до пика. Маржа +35%. Вернули кредит в первые 2 недели',
+		result: '+35% маржа в сезон',
+		order: 3,
+	},
+];
+
+const collectionCases = (await getCollection('clients')).sort((left, right) => left.data.order - right.data.order);
+const hasCompleteCollectionData = collectionCases.every(
+	(item) => item.data.title && item.data.before && item.data.after && item.data.result,
+);
+const cases = hasCompleteCollectionData
+	? collectionCases.map((item) => item.data)
+	: fallbackCases;
+---
+
+<section class="clients-section section" id="clients" aria-labelledby="clients-title" data-clients-section data-clients-count={cases.length}>
+	<div class="container">
+		<div class="clients-section__header">
+			<h2 class="clients-section__title" id="clients-title">Кейсы клиентов</h2>
+		</div>
+
+		<div class="clients-section__slider" data-clients-slider>
+			<div class="clients-section__track" data-clients-track>
+					{
+						cases.map((item, index) => (
+							<div class="clients-section__slide" data-clients-slide>
+								<article class="client-case" aria-labelledby={`client-case-title-${index}`}>
+									<h3 class="client-case__title" id={`client-case-title-${index}`}>{item.title}</h3>
+
+									<div class="client-case__story">
+										<div class="client-case__story-item">
+											<p class="client-case__label">Было:</p>
+											<p class="client-case__text">{item.before}</p>
+										</div>
+
+										<div class="client-case__divider" aria-hidden="true"></div>
+
+										<div class="client-case__story-item">
+											<p class="client-case__label client-case__label--accent">Стало:</p>
+											<p class="client-case__text client-case__text--strong">{item.after}</p>
+										</div>
+									</div>
+
+									<p class="client-case__result">{item.result}</p>
+								</article>
+							</div>
+						))
+					}
+			</div>
+		</div>
+
+		<div class="clients-section__pagination" aria-label="Навигация по кейсам" data-clients-pagination>
+			{
+				cases.map((item) => (
+					<button class="clients-section__pagination-button" type="button" aria-label={`Показать кейс: ${item.title}`}></button>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	import { initClientsSection } from '../../scripts/ecom/clients-section';
+
+	initClientsSection();
+	document.addEventListener('astro:after-swap', initClientsSection);
+</script>

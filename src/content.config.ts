@@ -25,13 +25,10 @@ const products = defineCollection({
 const clients = defineCollection({
 	loader: glob({ pattern: '**/*.json', base: './src/content/clients' }),
 	schema: z.object({
-		company: z.string(),
-		industry: z.string(),
-		coverVariant: z.enum(['magnifier', 'focus']),
-		beforeLead: z.string(),
-		beforeAccent: z.string(),
-		afterLead: z.string(),
-		afterAccent: z.string(),
+		title: z.string(),
+		before: z.string(),
+		after: z.string(),
+		result: z.string(),
 		order: z.number().int().positive(),
 	}),
 });
