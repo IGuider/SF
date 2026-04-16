@@ -1,6 +1,9 @@
 <script>
+	import { initCompanyStatsCounter } from '../../scripts/common/company-stats-counter';
 	import { initScrollReveal } from '../../scripts/common/scroll-reveal';
 
 	initScrollReveal();
+	initCompanyStatsCounter();
 	document.addEventListener('astro:after-swap', initScrollReveal);
+	document.addEventListener('astro:after-swap', initCompanyStatsCounter);
 </script>

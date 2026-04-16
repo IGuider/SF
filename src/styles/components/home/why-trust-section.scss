@@ -1,0 +1,194 @@
+@use '../ecom/shared-sections' as shared;
+
+.why-trust-section {
+	&__header {
+		@include shared.centered-section-header();
+	}
+
+	&__title {
+		@include shared.primary-section-title();
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: var(--gap-sm);
+	}
+}
+
+.why-trust-card {
+	display: grid;
+	gap: 26px;
+
+	&__headline {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding: 22px 28px;
+		border-radius: var(--radius-md);
+		background: var(--color-surface-card);
+	}
+
+	&__title {
+		margin: 0;
+		font-size: 50px;
+		letter-spacing: -2.109px;
+		font-weight: var(--font-weight-medium);
+		color: var(--color-primary);
+		text-align: center;
+	}
+
+	&__icon {
+		display: inline-flex;
+		align-self: center;
+		width: 42px;
+		height: 42px;
+		flex: 0 0 42px;
+		color: var(--color-secondary);
+		margin-top: 7px;
+
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&__description {
+		margin: 0;
+		padding-inline: 22px;
+		font-size: 26px;
+		letter-spacing: -1.16px;
+		color: var(--color-text-strong);
+		text-wrap: pretty;
+	}
+}
+
+@media (max-width: 1440px) {
+	.why-trust-section {
+		&__header {
+			margin-bottom: 44px;
+		}
+
+		&__title {
+			font-size: 45px;
+			letter-spacing: -1.8px;
+		}
+	}
+
+	.why-trust-card {
+		gap: 20px;
+
+		&__headline {
+			min-height: 88px;
+			padding-inline: 22px;
+		}
+
+		&__title {
+			font-size: 34px;
+			letter-spacing: -1.36px;
+		}
+
+		&__description {
+			padding-inline: 22px;
+			font-size: 20px;
+			letter-spacing: -0.8px;
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.why-trust-section {
+		&__header {
+			margin-bottom: 36px;
+		}
+
+		&__title {
+			font-size: 32px;
+			letter-spacing: -1.2px;
+		}
+
+		&__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.why-trust-card {
+		gap: 14px;
+
+		&__headline {
+			min-height: 78px;
+			padding-inline: 20px;
+		}
+
+		&__title {
+			font-size: 30px;
+			letter-spacing: -1.2px;
+		}
+
+		&__icon {
+			width: 28px;
+			height: 28px;
+		}
+
+		&__description {
+			padding-inline: 20px;
+			font-size: 18px;
+			letter-spacing: -0.72px;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.why-trust-section {
+		&__header {
+			margin-bottom: 28px;
+		}
+	}
+
+	.why-trust-card {
+		&__headline {
+			min-height: 70px;
+			padding-inline: 18px;
+			border-radius: var(--radius-md-mobile);
+		}
+
+		&__title {
+			font-size: 26px;
+			letter-spacing: -1.04px;
+		}
+
+		&__description {
+			padding-inline: 18px;
+			font-size: 16px;
+			letter-spacing: -0.64px;
+		}
+	}
+}
+
+@media (max-width: 390px) {
+	.why-trust-card {
+		gap: 12px;
+
+		&__headline {
+			min-height: 64px;
+			padding-inline: 16px;
+		}
+
+		&__title {
+			font-size: 22px;
+			letter-spacing: -0.88px;
+		}
+
+		&__icon {
+			width: 24px;
+			height: 24px;
+		}
+
+		&__description {
+			padding-inline: 16px;
+			font-size: 15px;
+			letter-spacing: -0.6px;
+		}
+	}
+}

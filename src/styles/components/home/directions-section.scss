@@ -1,0 +1,321 @@
+@use '../ecom/shared-sections' as shared;
+
+.directions-section {
+	&__header {
+		@include shared.centered-section-header();
+	}
+
+	&__title {
+		@include shared.primary-section-title();
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 512px minmax(0, 1fr);
+		gap: var(--gap-sm);
+	}
+}
+
+.directions-card {
+	display: flex;
+	flex-direction: column;
+	min-height: 714px;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+	position: relative;
+	background: var(--gradient-surface-feature);
+
+	&__visual {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	&__body {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 40px;
+	}
+
+	&__title {
+		margin-top: auto;
+		font-size: 40px;
+		letter-spacing: -1.6px;
+		font-weight: var(--font-weight-medium);
+		color: var(--color-text-strong);
+	}
+
+	&__description {
+		margin: 24px 0;
+		font-size: 29px;
+		letter-spacing: -1.16px;
+		color: var(--color-text-muted);
+	}
+
+	&--marketplaces {
+		.directions-card__visual {
+			width: 250px;
+			height: auto;
+		}
+	}
+
+	&--procurement {
+		.directions-card__visual {
+			width: 350px;
+			height: auto;
+		}
+	}
+
+	&--guarantees {
+		.directions-card__visual {
+			width: 255px;
+			height: auto;
+		}
+	}
+}
+
+@media (max-width: 1440px) {
+	.directions-section {
+		&__grid {
+			grid-template-columns: minmax(0, 1fr) 420px minmax(0, 1fr);
+		}
+	}
+
+	.directions-card {
+		min-height: 560px;
+
+		&__body {
+			padding: 32px;
+		}
+
+		&__title {
+			font-size: 34px;
+			letter-spacing: -1.36px;
+		}
+
+		&__description {
+			margin: 20px 0;
+			font-size: 24px;
+			letter-spacing: -0.96px;
+		}
+
+		&__link {
+			min-width: 108px;
+			height: 38px;
+			font-size: 16px;
+		}
+
+		&--marketplaces {
+			.directions-card__visual {
+				width: 212px;
+			}
+		}
+
+		&--procurement {
+			.directions-card__visual {
+				width: 300px;
+			}
+		}
+
+		&--guarantees {
+			.directions-card__visual {
+				width: 216px;
+			}
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.directions-section {
+		&__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	.directions-card {
+		min-height: 420px;
+
+		&__body {
+			padding: 24px;
+		}
+
+		&__title {
+			font-size: 28px;
+			letter-spacing: -1.12px;
+		}
+
+		&__description {
+			margin: 16px 0;
+			font-size: 20px;
+			letter-spacing: -0.8px;
+		}
+
+		&__link {
+			min-width: 100px;
+			height: 36px;
+			font-size: 15px;
+		}
+
+		&--procurement {
+			grid-column: 1 / -1;
+			min-height: 360px;
+
+			.directions-card__visual {
+				width: 268px;
+			}
+		}
+
+		&--marketplaces {
+			.directions-card__visual {
+				width: 184px;
+			}
+		}
+
+		&--guarantees {
+			.directions-card__visual {
+				width: 188px;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.directions-section {
+		&__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.directions-card {
+		min-height: 320px;
+
+		&__body {
+			padding: 20px;
+		}
+
+		&__title {
+			font-size: 28px;
+		}
+
+		&__description {
+			margin: 14px 0;
+			font-size: 18px;
+		}
+
+		&__link {
+			margin-top: auto;
+		}
+
+		&--procurement {
+			min-height: 320px;
+		}
+
+		&--marketplaces {
+			.directions-card__visual {
+				width: 170px;
+			}
+		}
+
+		&--procurement {
+			.directions-card__visual {
+				width: 208px;
+			}
+		}
+
+		&--guarantees {
+			.directions-card__visual {
+				width: 176px;
+			}
+		}
+	}
+}
+
+@media (max-width: 560px) {
+	.directions-card {
+		min-height: 254px;
+
+		&__visual {
+			right: -6px;
+		}
+
+		&__body {
+			padding: 16px 16px 14px;
+		}
+
+		&__title {
+			font-size: 21px;
+			letter-spacing: -0.84px;
+		}
+
+		&__description {
+			margin-top: 10px;
+			font-size: 16px;
+			letter-spacing: -0.64px;
+		}
+
+		&__link {
+			min-width: 92px;
+			height: 30px;
+			font-size: 14px;
+		}
+
+		&--marketplaces {
+			.directions-card__visual {
+				width: 134px;
+			}
+		}
+
+		&--procurement {
+			.directions-card__visual {
+				width: 164px;
+			}
+		}
+
+		&--guarantees {
+			.directions-card__visual {
+				width: 142px;
+			}
+		}
+	}
+}
+
+@media (max-width: 390px) {
+	.directions-card {
+		min-height: 236px;
+
+		&__body {
+			padding: 14px 14px 12px;
+		}
+
+		&__description {
+			margin: 8px 0 12px;
+		}
+
+		&--marketplaces {
+			.directions-card__visual {
+				width: 122px;
+			}
+		}
+
+		&--procurement {
+			.directions-card__visual {
+				width: 150px;
+			}
+		}
+
+		&--guarantees {
+			.directions-card__visual {
+				width: 130px;
+			}
+		}
+	}
+}

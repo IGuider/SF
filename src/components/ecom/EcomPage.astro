@@ -2,35 +2,34 @@
 import BlogSection from './BlogSection.astro';
 import CalculatorSection from './CalculatorSection.astro';
 import ClientsSection from './ClientsSection.astro';
-import FaqSection from './FaqSection.astro';
+import FaqSection from '../common/FaqSection.astro';
 import FeatureCardsSection from './FeatureCardsSection.astro';
 import HeroSection from '../common/HeroSection.astro';
+import StepsSection from '../common/StepsSection.astro';
 import ProductsSection from './ProductsSection.astro';
-import StepsSection from './StepsSection.astro';
-import heroGlowTop from '../../assets/hero-bg1.png';
-import heroGlowBottom from '../../assets/hero-bg2.png';
-import featureGlowTablet from '../../assets/feature-bg4.png';
+import heroBgMobile1 from '../../assets/hero-bg-mobile-1.png';
 import heroWarehouse from '../../assets/hero.jpg';
 ---
 
-<!--transition:name="page-content" transition:animate="slide"-->
-
 <main>
-	<HeroSection
-		variant="ecom"
-		titleLines={['Финансирование для роста бизнеса', 'на маркетплейсах']}
-		descriptionLines={['От 5 млн ₽ без залога для продавцов Wildberries, Ozon, Lamoda и других', 'площадок']}
-		buttonLabel="Узнать условия"
-		image={heroWarehouse}
-		glowTop={heroGlowTop}
-		glowTopMobile={featureGlowTablet}
-		glowBottom={heroGlowBottom}
-	/>
-	<FeatureCardsSection />
+	<div transition:name="page-content-top" transition:animate="slide">
+		<HeroSection
+			variant="ecom"
+			badges={['Wildberries', 'Ozon', 'Золотое яблоко', 'Lamoda']}
+			titleLines={['Финансирование для роста бизнеса', 'на маркетплейсах']}
+			descriptionLines={['До 65 млн ₽ за 1 день, без залога, полностью онлайн']}
+			buttonLabel="Узнать условия"
+			image={heroWarehouse}
+			mobileGlowBottom={heroBgMobile1}
+		/>
+		<FeatureCardsSection />
+	</div>
 	<CalculatorSection />
-	<ProductsSection />
-	<ClientsSection />
-	<StepsSection />
-	<BlogSection />
-	<FaqSection />
+	<div transition:name="page-content-bottom" transition:animate="slide">
+		<ProductsSection />
+		<ClientsSection />
+		<StepsSection />
+		<BlogSection />
+		<FaqSection />
+	</div>
 </main>

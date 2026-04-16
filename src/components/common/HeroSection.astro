@@ -1,0 +1,109 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import '../../styles/components/common/hero-section.scss';
+import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
+import Button from '../ui/Button.astro';
+
+interface Props {
+	id?: string;
+	variant?: 'ecom' | 'home';
+	badges?: string[];
+	titleLines: string[];
+	descriptionLines?: string[];
+	buttonLabel: string;
+	image: ImageMetadata;
+	mobileGlowBottom?: ImageMetadata;
+}
+
+const {
+	id = 'hero',
+	variant = 'ecom',
+	badges = [],
+	titleLines,
+	descriptionLines = [],
+	buttonLabel,
+	image,
+	mobileGlowBottom,
+}: Props = Astro.props;
+
+const sectionClass = ['hero-section', 'section', `hero-section--${variant}`].join(' ');
+---
+
+<section class={sectionClass} id={id}>
+	<div class="container">
+		<div class="hero-section__layout">
+			<div class="hero-section__content">
+				{
+					mobileGlowBottom && (
+						<span
+							class="hero-section__mobile-glow"
+							style={`--hero-mobile-glow-image: url(${mobileGlowBottom.src});`}
+							aria-hidden="true"
+						></span>
+					)
+				}
+				<div
+					class="hero-section__panel"
+				>
+					{
+						badges.length > 0 && (
+							<ul class="hero-section__badges" aria-label="Поддерживаемые площадки">
+								{badges.map((badge) => (
+									<li class="hero-section__badge">{badge}</li>
+								))}
+							</ul>
+						)
+					}
+					<h1
+						class="hero-section__title"
+					>
+						{titleLines.map((line, index) => (
+							<>
+								{index > 0 && <br />}
+								{line}
+							</>
+						))}
+					</h1>
+					{
+						descriptionLines.length > 0 && (
+							<p
+								class="hero-section__text"
+							>
+								{descriptionLines.map((line, index) => (
+									<>
+										{index > 0 && <br />}
+										{line}
+									</>
+								))}
+							</p>
+						)
+					}
+
+					<div>
+						<ConsultationDialogTrigger>
+							<Button variant="primary" size="xl" class="hero-section__button">
+								{buttonLabel}
+							</Button>
+						</ConsultationDialogTrigger>
+					</div>
+				</div>
+			</div>
+
+			<div
+				class="hero-section__visual"
+				aria-hidden="true"
+			>
+				<div class="hero-section__visual-frame">
+					<Image
+						class="hero-section__image"
+						src={image}
+						alt=""
+						loading="eager"
+						decoding="async"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

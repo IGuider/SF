@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import missionBg1 from '../../assets/mission-bg1.png';
+import '../../styles/components/home/mission-section.scss';
+import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
+import Button from '../ui/Button.astro';
+---
+
+<section class="mission-section section" id="mission" aria-labelledby="mission-title">
+	<div class="container">
+		<div class="mission-section__header">
+			<h2 class="mission-section__title" id="mission-title">Наша миссия</h2>
+		</div>
+
+		<div class="mission-section__card">
+			<div class="mission-section__visual" aria-hidden="true">
+				<Image class="mission-section__visual-image" src={missionBg1} alt="" loading="lazy" decoding="async" />
+			</div>
+
+			<div class="mission-section__content">
+				<svg
+					class="mission-section__quote"
+					width="144"
+					height="98"
+					viewBox="0 0 144 98"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-hidden="true"
+				>
+					<path
+						d="M131.056 -3.10296C139.146 5.79411 144 15.5 144 31.6765C144 59.9853 123.775 85.0588 95.4607 98L88.1798 87.4853C114.876 72.9265 120.539 54.3235 122.157 42.1912C118.112 44.6176 112.449 45.4265 106.787 44.6176C92.2247 43 80.8989 31.6765 80.8989 16.3088C80.8989 9.0294 84.1348 1.75 88.9888 -3.91177C94.6517 -9.57353 101.124 -12 109.213 -12C118.112 -12 126.202 -7.95589 131.056 -3.10296ZM50.1573 -3.10296C58.2472 5.79411 63.1011 15.5 63.1011 31.6765C63.1011 59.9853 42.8764 85.0588 14.5618 98L7.2809 87.4853C33.9775 72.9265 39.6404 54.3235 41.2584 42.1912C37.2135 44.6176 31.5506 45.4265 25.8876 44.6176C11.3258 43 0 31.6765 0 16.3088C0 9.0294 3.23596 1.75 8.08989 -3.91177C12.9438 -9.57353 20.2247 -12 28.3146 -12C37.2135 -12 45.3034 -7.95589 50.1573 -3.10296Z"
+					/>
+				</svg>
+
+				<h3 class="mission-section__name">Алексей Басенко</h3>
+				<p class="mission-section__role">Генеральный директор SimpleFinance</p>
+
+				<div class="mission-section__text">
+					<p>
+						Мы строим сервис, где предприниматель получает не просто финансирование, а понятный
+						путь от заявки до результата
+					</p>
+					<p>
+						Для нас важно, чтобы бизнесу было легче принимать решения, быстрее получать доступ к
+						нужным инструментам и работать с партнером, которому можно доверять
+					</p>
+				</div>
+
+				<ConsultationDialogTrigger>
+					<Button variant="secondary" size="lg" class="mission-section__button" type="button">
+						Связаться с нами
+					</Button>
+				</ConsultationDialogTrigger>
+			</div>
+		</div>
+	</div>
+</section>

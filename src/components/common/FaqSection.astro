@@ -30,11 +30,7 @@ const faqItems = (await getCollection('faq')).sort((left, right) => left.data.or
 							</span>
 						</button>
 
-						<div
-							class="faq-item__content"
-							id={`${item.id}-panel`}
-							hidden
-						>
+						<div class="faq-item__content" id={`${item.id}-panel`} hidden>
 							<div class="faq-item__content-inner">
 								<p class="faq-item__answer">{item.data.answer}</p>
 							</div>

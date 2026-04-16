@@ -36,8 +36,15 @@
 	}
 
 	&--lg {
-		height: 57px;
-		padding: 10px 16px;
+		height: 59px;
+		padding: 10px 26px;
+		border-radius: var(--radius-xs);
+		font-size: 24px;
+	}
+
+	&--xl {
+		height: 76px;
+		padding: 10px 25px;
 		border-radius: var(--radius-xs);
 		font-size: 26px;
 	}
@@ -57,6 +64,12 @@
 			padding-inline: 14px;
 			font-size: 22px;
 		}
+
+		&--xl {
+			height: 62px;
+			padding-inline: 20px;
+			font-size: 23px;
+		}
 	}
 }
 
@@ -72,6 +85,12 @@
 		&--lg {
 			height: 35px;
 			padding-inline: 10px;
+			font-size: 16px;
+		}
+
+		&--xl {
+			height: 46px;
+			padding-inline: 14px;
 			font-size: 16px;
 		}
 	}

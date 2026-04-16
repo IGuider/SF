@@ -1,0 +1,45 @@
+---
+import '../../styles/components/home/why-trust-section.scss';
+
+const items = [
+	{
+		title: 'Экспертиза',
+		description: 'Тысячи сделок в госзакупках и e-commerce',
+	},
+	{
+		title: 'Скорость',
+		description: 'Анализируем заявку<br> в течение 1 рабочего дня',
+	},
+	{
+		title: 'Прозрачность',
+		description: 'Все условия известны до подписания договора',
+	},
+];
+---
+
+<section class="why-trust-section section" id="advantages" aria-labelledby="why-trust-title">
+	<div class="container">
+		<div class="why-trust-section__header">
+			<h2 class="why-trust-section__title" id="why-trust-title">Почему нам доверяют</h2>
+		</div>
+
+		<div class="why-trust-section__grid">
+			{
+				items.map((item) => (
+					<article class="why-trust-card">
+						<div class="why-trust-card__headline">
+							<h3 class="why-trust-card__title">{item.title}</h3>
+							<span class="why-trust-card__icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="12" cy="12" r="12" fill="currentColor" />
+									<path d="M7.9 12.1L10.6 14.8L16.1 9.3" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</span>
+						</div>
+						<p class="why-trust-card__description" set:html={item.description}></p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

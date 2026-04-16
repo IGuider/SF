@@ -1,0 +1,66 @@
+---
+import '../../styles/components/home/company-stats-section.scss';
+
+const stats = [
+	{
+		value: 12500,
+		prefix: '',
+		postfix: '+',
+		subtitle: 'Компаний пользуются сервисом',
+		background: '12 500',
+		grouped: true,
+	},
+	{
+		value: 100,
+		prefix: '>',
+		postfix: '',
+		label: 'млрд ₽',
+		subtitle: 'Направлено на развитие бизнеса',
+		background: '>100',
+		grouped: false,
+	},
+	{
+		value: 2015,
+		prefix: 'с ',
+		postfix: '',
+		label: 'года',
+		subtitle: 'Работаем с малым и средним бизнесом',
+		background: '2015',
+		grouped: false,
+	},
+];
+---
+
+<section class="company-stats-section section" id="company-stats" aria-labelledby="company-stats-title">
+	<div class="container">
+		<div class="company-stats-section__header">
+			<h2 class="company-stats-section__title" id="company-stats-title">SimpleFinance в цифрах</h2>
+		</div>
+
+		<div class="company-stats-section__grid">
+			{
+				stats.map((stat) => (
+					<article class="company-stat-card">
+						<span class="company-stat-card__background" aria-hidden="true">
+							{stat.background}
+						</span>
+						<p class="company-stat-card__value">
+							<span
+								class="company-stat-card__value-number"
+								data-company-stat-number
+								data-target={stat.value}
+								data-prefix={stat.prefix}
+								data-postfix={stat.postfix}
+								data-grouped={String(stat.grouped)}
+							>
+								{stat.prefix}{stat.value}{stat.postfix}
+							</span>
+							{stat.label && <span class="company-stat-card__value-suffix">{stat.label}</span>}
+						</p>
+						<p class="company-stat-card__subtitle">{stat.subtitle}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

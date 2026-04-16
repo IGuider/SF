@@ -1,0 +1,284 @@
+@use '../ecom/shared-sections' as shared;
+
+.mission-section {
+	&__header {
+		@include shared.centered-section-header();
+	}
+
+	&__title {
+		@include shared.primary-section-title();
+	}
+
+	&__card {
+		background: linear-gradient(109deg, #E7EEFF 1.57%, rgba(231, 238, 255, 0.18) 117.3%);
+		position: relative;
+		min-height: 430px;
+		padding: 50px 75px;
+		border-radius: var(--radius-md);
+		overflow: visible;
+		isolation: isolate;
+	}
+
+	&__visual {
+		position: absolute;
+		left: 25px;
+		bottom: 0;
+		z-index: 1;
+		display: flex;
+		align-items: flex-end;
+		width: 400px;
+		pointer-events: none;
+	}
+
+	&__visual-image {
+		width: 100%;
+		max-width: none;
+		height: auto;
+	}
+
+	&__content {
+		z-index: 2;
+		display: grid;
+		align-content: center;
+		gap: 0;
+		min-height: 100%;
+		padding-left: 410px;
+	}
+
+	&__quote {
+		position: absolute;
+		top: 0;
+		right: 65px;
+		width: 144px;
+		height: auto;
+		pointer-events: none;
+	}
+
+	&__quote path {
+		fill: rgba(229, 237, 255, 0.5);
+	}
+
+	&__name {
+		font-size: 36px;
+		letter-spacing: -1.44px;
+		font-weight: var(--font-weight-medium);
+		color: var(--color-text-strong);
+	}
+
+	&__role {
+		margin-top: 9px;
+		font-size: 22px;
+		letter-spacing: -0.88px;
+		color: var(--color-text-subtle);
+	}
+
+	&__text {
+		display: grid;
+		gap: 22px;
+		margin-top: 22px;
+
+		p {
+			font-size: 29px;
+			letter-spacing: -1.16px;
+			color: var(--color-text-strong);
+		}
+	}
+
+	&__button {
+		margin-top: 40px;
+	}
+}
+
+@media (max-width: 1440px) {
+	.mission-section {
+		&__header {
+			margin-bottom: 65px;
+		}
+
+		&__title {
+			letter-spacing: -1.8px;
+			font-size: 45px;
+		}
+
+		&__card {
+			min-height: 390px;
+			padding: 0 40px;
+		}
+
+		&__visual {
+			left: 10px;
+			width: 310px;
+		}
+
+		&__content {
+			padding: 48px 0 42px 290px;
+		}
+
+		&__quote {
+			width: 118px;
+		}
+
+		&__name {
+			font-size: 34px;
+			letter-spacing: -1.2px;
+		}
+
+		&__role {
+			font-size: 20px;
+			letter-spacing: -0.64px;
+		}
+
+		&__text {
+			max-width: 620px;
+
+			p {
+				font-size: 22px;
+				letter-spacing: -0.88px;
+			}
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.mission-section {
+		&__header {
+			margin-bottom: 45px;
+		}
+
+		&__title {
+			letter-spacing: -1.2px;
+			font-size: 32px;
+		}
+
+		&__card {
+			min-height: 320px;
+			padding: 0 28px;
+		}
+
+		&__visual {
+			left: 6px;
+			width: 220px;
+		}
+
+		&__content {
+			padding: 34px 0 30px 205px;
+		}
+
+		&__quote {
+			width: 88px;
+			right: 0;
+		}
+
+		&__name {
+			font-size: 25px;
+			letter-spacing: -1px;
+		}
+
+		&__role {
+			margin-top: 6px;
+			font-size: 14px;
+			letter-spacing: -0.56px;
+		}
+
+		&__text {
+			gap: 14px;
+			margin-top: 18px;
+
+			p {
+				font-size: 18px;
+				letter-spacing: -0.72px;
+			}
+		}
+
+		&__button {
+			margin-top: 22px;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.mission-section {
+		&__card {
+			padding: 20px 20px 24px;
+		}
+
+		&__visual {
+			position: relative;
+			left: auto;
+			bottom: auto;
+			justify-content: center;
+			margin: 0 auto -6px;
+			width: 100%;
+			max-width: 250px;
+		}
+
+		&__visual-image {
+			transform: none;
+		}
+
+		&__content {
+			min-height: auto;
+			padding: 0;
+		}
+
+		&__quote {
+			top: -4px;
+			right: 0;
+			width: 74px;
+		}
+	}
+}
+
+@media (max-width: 540px) {
+	.mission-section {
+		&__header {
+			margin-bottom: 25px;
+		}
+
+		&__title {
+			letter-spacing: -1px;
+			font-size: 26px;
+		}
+
+		&__card {
+			padding: 18px 16px 20px;
+			border-radius: var(--radius-md-mobile);
+		}
+
+		&__visual {
+			max-width: 215px;
+			margin-bottom: -8px;
+		}
+
+		&__quote {
+			top: 2px;
+			width: 64px;
+			opacity: 0.75;
+		}
+
+		&__name {
+			font-size: 21px;
+			letter-spacing: -0.84px;
+		}
+
+		&__role {
+			font-size: 13px;
+			letter-spacing: -0.52px;
+		}
+
+		&__text {
+			gap: 12px;
+			margin-top: 16px;
+
+			p {
+				font-size: 16px;
+				letter-spacing: -0.64px;
+				text-wrap: pretty;
+			}
+		}
+
+		&__button {
+			margin-top: 18px;
+		}
+	}
+}

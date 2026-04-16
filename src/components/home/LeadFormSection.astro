@@ -1,0 +1,162 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../ui/Button.astro';
+import formBg from '../../assets/form-home-bg.png';
+import '../../styles/components/home/lead-form-section.scss';
+
+const turnoverOptions = [
+	'До 5 млн ₽ в месяц',
+	'5-20 млн ₽ в месяц',
+	'20-75 млн ₽ в месяц',
+	'75-150 млн ₽ в месяц',
+	'Более 150 млн ₽ в месяц',
+];
+---
+
+<section class="lead-form-section section" id="lead-form" aria-labelledby="lead-form-title">
+	<div class="container">
+		<div class="lead-form-section__panel">
+			<div class="lead-form-section__content" data-lead-form-content data-state="form">
+				<div class="lead-form-section__header">
+					<h2 class="lead-form-section__title" id="lead-form-title">Подберем решение под ваш бизнес</h2>
+					<p class="lead-form-section__description">
+						Оставьте заявку, и мы предложим<br> финансовый инструмент под вашу задачу
+					</p>
+				</div>
+
+				<form class="lead-form-section__form" data-lead-form novalidate>
+					<label class="lead-form-section__field" data-required-field>
+						<input
+							class="lead-form-section__input"
+							name="phone"
+							type="tel"
+							autocomplete="tel"
+							inputmode="tel"
+							placeholder=" "
+							maxlength="18"
+							required
+							data-lead-phone
+						/>
+						<span class="lead-form-section__field-label">Телефон</span>
+						<span class="lead-form-section__error">Необходимо заполнить поле</span>
+					</label>
+
+					<label class="lead-form-section__field" data-required-field>
+						<input
+							class="lead-form-section__input"
+							name="inn"
+							type="text"
+							inputmode="numeric"
+							autocomplete="off"
+							placeholder=" "
+							required
+						/>
+						<span class="lead-form-section__field-label">ИНН организации</span>
+						<span class="lead-form-section__error">Необходимо заполнить поле</span>
+					</label>
+
+					<div
+						class="lead-form-section__field lead-form-section__field--select"
+						data-dropdown-root
+						data-required-field
+						data-has-value="false"
+						data-invalid="false"
+					>
+						<input type="hidden" name="turnover" required data-dropdown-input />
+						<button
+							type="button"
+							class="lead-form-section__input lead-form-section__select"
+							data-dropdown-trigger
+							aria-expanded="false"
+							aria-controls="lead-form-turnover-options"
+						>
+							<span class="lead-form-section__select-label" data-dropdown-label></span>
+						</button>
+						<span class="lead-form-section__field-label lead-form-section__field-label--select">Обороты</span>
+						<span class="lead-form-section__select-icon" aria-hidden="true">
+							<svg viewBox="0 0 16 16" fill="none">
+								<path
+									d="M4 6L8 10L12 6"
+									stroke="currentColor"
+									stroke-width="1.6"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</span>
+						<div
+							class="lead-form-section__dropdown"
+							id="lead-form-turnover-options"
+							data-dropdown-menu
+							data-state="closed"
+							aria-hidden="true"
+						>
+							{
+								turnoverOptions.map((option) => (
+									<button
+										type="button"
+										class="lead-form-section__option"
+										data-dropdown-option
+										data-selected="false"
+										data-value={option}
+									>
+										{option}
+									</button>
+								))
+							}
+						</div>
+						<span class="lead-form-section__error">Необходимо заполнить поле</span>
+					</div>
+
+					<label class="lead-form-section__consent" data-required-field data-invalid="false">
+						<input class="lead-form-section__checkbox" name="consent" type="checkbox" required />
+						<span class="lead-form-section__consent-text">
+							Нажимая кнопку, я принимаю <a href="#privacy">условия оферты</a>
+							<br />
+							и соглашаюсь на <a href="#privacy">обработку персональных данных</a>
+						</span>
+						<span class="lead-form-section__checkbox-box" aria-hidden="true">
+							<svg
+								class="lead-form-section__checkbox-check"
+								viewBox="0 0 20 13"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031"
+									stroke="white"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</span>
+					</label>
+
+					<Button type="submit" variant="secondary" size="lg" class="lead-form-section__submit">
+						Подобрать решение
+					</Button>
+				</form>
+			</div>
+
+			<div class="lead-form-section__success" data-lead-form-success data-state="hidden" aria-live="polite">
+				<div class="lead-form-section__success-card">
+					<h3 class="lead-form-section__success-title">Спасибо!</h3>
+					<p class="lead-form-section__success-text">
+						Ваша заявка отправлена.
+						<br />
+						В ближайшее время менеджер свяжется с вами
+					</p>
+				</div>
+			</div>
+
+			<div class="lead-form-section__visual" aria-hidden="true">
+				<Image class="lead-form-section__visual-image" src={formBg} alt="" loading="lazy" decoding="async" />
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	import '../../scripts/common/home-lead-form.ts';
+</script>
