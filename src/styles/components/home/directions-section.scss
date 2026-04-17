@@ -1,14 +1,4 @@
-@use '../ecom/shared-sections' as shared;
-
 .directions-section {
-	&__header {
-		@include shared.centered-section-header();
-	}
-
-	&__title {
-		@include shared.primary-section-title();
-	}
-
 	&__grid {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) 512px minmax(0, 1fr);
@@ -32,10 +22,6 @@
 	}
 
 	&__image {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
 	}
 
 	&__body {
@@ -85,15 +71,6 @@
 
 @media (max-width: 1440px) {
 	.directions-section {
-		&__header {
-			margin-bottom: 44px;
-		}
-
-		&__title {
-			font-size: 45px;
-			letter-spacing: -1.8px;
-		}
-
 		&__grid {
 			grid-template-columns: minmax(0, 1fr) 420px minmax(0, 1fr);
 		}
@@ -145,15 +122,6 @@
 
 @media (max-width: 1024px) {
 	.directions-section {
-		&__header {
-			margin-bottom: 36px;
-		}
-
-		&__title {
-			font-size: 32px;
-			letter-spacing: -1.2px;
-		}
-
 		&__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
@@ -208,10 +176,6 @@
 
 @media (max-width: 768px) {
 	.directions-section {
-		&__header {
-			margin-bottom: 28px;
-		}
-
 		&__grid {
 			grid-template-columns: 1fr;
 		}

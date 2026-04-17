@@ -1,14 +1,4 @@
-@use '../ecom/shared-sections' as shared;
-
 .mission-section {
-	&__header {
-		@include shared.centered-section-header();
-	}
-
-	&__title {
-		@include shared.primary-section-title();
-	}
-
 	&__card {
 		background: linear-gradient(109deg, #E7EEFF 1.57%, rgba(231, 238, 255, 0.18) 117.3%);
 		position: relative;
@@ -91,15 +81,6 @@
 
 @media (max-width: 1440px) {
 	.mission-section {
-		&__header {
-			margin-bottom: 65px;
-		}
-
-		&__title {
-			letter-spacing: -1.8px;
-			font-size: 45px;
-		}
-
 		&__card {
 			min-height: 390px;
 			padding: 0 40px;
@@ -141,15 +122,6 @@
 
 @media (max-width: 1024px) {
 	.mission-section {
-		&__header {
-			margin-bottom: 45px;
-		}
-
-		&__title {
-			letter-spacing: -1.2px;
-			font-size: 32px;
-		}
-
 		&__card {
 			min-height: 320px;
 			padding: 0 28px;
@@ -231,15 +203,6 @@
 
 @media (max-width: 540px) {
 	.mission-section {
-		&__header {
-			margin-bottom: 25px;
-		}
-
-		&__title {
-			letter-spacing: -1px;
-			font-size: 26px;
-		}
-
 		&__card {
 			padding: 18px 16px 20px;
 			border-radius: var(--radius-md-mobile);

@@ -1,14 +1,4 @@
-@use './shared-sections' as shared;
-
 .clients-section {
-	&__header {
-		@include shared.centered-section-header();
-	}
-
-	&__title {
-		@include shared.primary-section-title();
-	}
-
 	&__slider {
 		overflow: hidden;
 	}
@@ -102,27 +92,16 @@
 	&__result {
 		align-self: flex-start;
 		margin-top: 36px;
-		padding: 10px 20px;
+		padding: 12px 26px;
 		border-radius: var(--radius-pill);
 		background: #ffe2ab;
-		font-size: 26px;
+		font-size: 22px;
 		letter-spacing: -1.08px;
 		color: var(--color-primary);
 	}
 }
 
 @media (max-width: 1440px) {
-	.clients-section {
-		&__header {
-			margin-bottom: 65px;
-		}
-
-		&__title {
-			letter-spacing: -1.8px;
-			font-size: 45px;
-		}
-	}
-
 	.client-case {
 		padding: 30px 20px;
 
@@ -158,17 +137,6 @@
 }
 
 @media (max-width: 1024px) {
-	.clients-section {
-		&__header {
-			margin-bottom: 45px;
-		}
-
-		&__title {
-			letter-spacing: -1.2px;
-			font-size: 32px;
-		}
-	}
-
 	.client-case {
 		padding: 27px 15px;
 
@@ -287,7 +255,7 @@
 @media (max-width: 560px) {
 	.clients-section {
 		--slide-size: 80%;
-		--slide-spacing: 10px;
+		--slide-spacing: 4px;
 
 		.container {
 			width: 100%;
@@ -375,7 +343,7 @@
 
 	.clients-section__slide {
 		.client-case {
-			transform: scale(0.94);
+			transform: scale(0.9);
 			opacity: 0.72;
 		}
 

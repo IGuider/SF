@@ -27,9 +27,9 @@ const cards = (await getCollection('products'))
 
 <section class="products-section products-section--pending section" id="products" aria-labelledby="products-title">
   <div class="container">
-    <div class="products-section__header">
+    <div class="products-section__header section-header section-header--spacious">
       <div class="products-section__heading-group">
-        <h2 class="products-section__title" id="products-title">Наши продукты</h2>
+        <h2 class="products-section__title section-title" id="products-title">Наши продукты</h2>
       </div>
     </div>
 
@@ -55,9 +55,9 @@ const cards = (await getCollection('products'))
                         <rect x="39" y="0" width="39" height="39" rx="19.5" transform="rotate(90 39 0)" fill="#F8A823" />
                         <path d="M13 20L25 20M25 20L19 14M25 20L19 26" stroke="white" stroke-width="2.22156" />
                       </svg>
-                      <svg class="products-card__link-icon-mobile" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
-                        <rect width="44" height="44" rx="10" fill="#0537C8"/>
-                        <path d="M22 15L22 29M22 29L29 22M22 29L15 22" stroke="white" stroke-width="2.10767"/>
+                      <svg class="products-card__link-icon-mobile" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="44" height="44" rx="10" fill="#0537C8"/>
+                          <path class="calculator-card__toggle-arrow" d="M20.9942 26.6823L20.9942 14.5102L22.9939 14.5102L22.9946 26.6816L28.358 21.3182L29.7722 22.7325L21.994 30.5106L14.2158 22.7324L15.6301 21.3182L20.9942 26.6823Z" fill="white"/>
                       </svg>
                     </span>
                     <span class="products-card__link-text">Подробнее</span>
@@ -65,7 +65,7 @@ const cards = (await getCollection('products'))
                 </div>
 
                 <div class:list={['products-card__visual', `products-card__visual--${card.modifier}`]} aria-hidden="true">
-                  <Image class="products-card__visual-image" src={card.image} alt="" loading="lazy" decoding="async" />
+                  <Image class="products-card__visual-image media-fill media-fit-contain" src={card.image} alt="" loading="lazy" decoding="async" />
                 </div>
               </div>
 

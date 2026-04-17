@@ -1,193 +1,271 @@
-@use './shared-sections' as shared;
-
 .steps-section {
-	&__header {
-		@include shared.centered-section-header();
-	}
-
-	&__title {
-		@include shared.primary-section-title();
-	}
+	position: relative;
 
 	&__grid {
-		@include shared.two-column-grid();
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		align-items: start;
+		gap: 18px;
+	}
+
+	&__timeline {
+		position: relative;
+		margin: 0 clamp(78px, 9vw, 122px) -86px;
+		height: 86px;
+		pointer-events: none;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50px;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: #fcab21;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: center;
+		margin-top: 75px;
 	}
 }
 
 .steps-card {
 	position: relative;
-	display: flex;
-	min-height: 360px;
-	padding: 40px 30px;
-	border-radius: var(--radius-md);
-	overflow: hidden;
-	@include shared.feature-surface-gradient();
+	display: grid;
+	align-content: start;
+	justify-items: center;
+	justify-content: center;
+	justify-self: center;
+	width: min(100%, 318px);
+	text-align: center;
 
-	&__content {
+	&__number {
 		position: relative;
 		z-index: 1;
 		display: grid;
-		align-content: start;
-		gap: 14px;
+		place-items: center;
+		width: 97px;
+		height: 97px;
+		margin-bottom: 40px;
+		border-radius: 10px;
+		background: #eef4ff;
+		font-size: 44px;
+		font-weight: 400;
+		line-height: 1;
+		color: var(--color-primary);
 	}
 
 	&__title {
-		@include shared.section-card-title();
-		line-height: 1.04;
+		margin-bottom: 19px;
+		font-size: 40px;
+		letter-spacing: -1.6px;
+		font-weight: var(--font-weight-medium);
+		color: var(--color-text-strong);
 	}
 
 	&__description {
-		@include shared.section-card-description();
+		font-size: 26px;
+		letter-spacing: -1.16px;
+		color: var(--color-primary);
 		text-wrap: balance;
-	}
-
-	&__actions {
-		margin-top: 24px;
-	}
-
-	&__number {
-		position: absolute;
-		right: 22px;
-		bottom: 0;
-		font-size: clamp(88px, 10vw, 190px);
-		font-weight: 300;
-		line-height: 0.85;
-		letter-spacing: -7.428px;
-		color: var(--color-secondary);
 	}
 }
 
 @media (max-width: 1440px) {
 	.steps-section {
+		&__timeline {
+			margin: 0 clamp(72px, 9vw, 108px) -82px;
+			height: 80px;
 
-		&__header {
-			margin-bottom: 65px;
+			&::before {
+				top: 45px;
+			}
 		}
 
-		&__title {
-			letter-spacing: -1.8px;
-			font-size: 45px;
+		&__grid {
+			gap: 16px;
 		}
 	}
 
 	.steps-card {
-		padding: 25px;
-
 		&__title {
-			font-size: 35px;
-			letter-spacing: -1.4px;
+			font-size: 30px;
+			letter-spacing: -1.2px;
+			margin-bottom: 16px;
 		}
 
 		&__description {
-			font-size: 26px;
-			letter-spacing: -1.04px;
+			font-size: 24px;
+			letter-spacing: -1px;
 		}
 
 		&__number {
-			font-size: 170px;
+			width: 90px;
+			height: 90px;
+			margin-bottom: 28px;
+			font-size: 38px;
 		}
 	}
 }
 
 @media (max-width: 1024px) {
 	.steps-section {
+		&__timeline {
+			margin: 0 74px -72px;
+			height: 72px;
 
-		&__header {
-			margin-bottom: 45px;
+			&::before {
+				top: 33px;
+			}
 		}
 
-		&__title {
-			letter-spacing: -1.2px;
-			font-size: 32px;
+		&__grid {
+			gap: 14px;
+		}
+
+		&__actions {
+			margin-top: 40px;
 		}
 	}
 
 	.steps-card {
-		padding: 25px;
-		min-height: 300px;
-
-		&__content {
-			gap: 12px;
-		}
-
 		&__title {
-			font-size: 25px;
+			margin-bottom: 10px;
+			font-size: 23px;
 			letter-spacing: -1px;
 		}
 
 		&__description {
-			font-size: 18px;
+			font-size: 16px;
 			letter-spacing: -0.72px;
 		}
 
 		&__number {
-			font-size: 140px;
+			width: 67px;
+			height: 67px;
+			margin-bottom: 22px;
+			font-size: 33px;
 		}
 	}
 }
 
 @media (max-width: 768px) {
 	.steps-section {
+		&__timeline {
+			margin: 0 74px -50px;
+			height: 50px;
+
+			&::before {
+				top: 26px;
+			}
+		}
+
 		&__grid {
-			grid-template-columns: 1fr;
+			gap: 7px;
+		}
+
+		&__actions {
+			margin-top: 30px;
 		}
 	}
 
 	.steps-card {
-		min-height: 190px;
-
-		&__content {
-			gap: 10px;
-		}
-
 		&__title {
-			font-size: 28px;
+			margin-bottom: 8px;
+			font-size: 20px;
+			letter-spacing: -0.75px;
 		}
 
 		&__description {
-			font-size: 17px;
+			font-size: 14px;
+			letter-spacing: -0.72px;
 		}
 
 		&__number {
-			font-size: 88px;
+			width: 50px;
+			height: 50px;
+			margin-bottom: 18px;
+			font-size: 26px;
 		}
 	}
 }
 
 @media (max-width: 560px) {
 	.steps-section {
-
-		&__header {
-			margin-bottom: 25px;
+		&__timeline {
+			display: none;
 		}
 
-		&__title {
-			letter-spacing: -1px;
-			font-size: 26px;
+		&__grid {
+			position: relative;
+			width: fit-content;
+			max-width: 100%;
+			margin: 0 auto;
+			grid-template-columns: minmax(0, 1fr);
+			gap: 24px;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 68px;
+				bottom: 68px;
+				left: 47px;
+				width: 3px;
+				border-radius: var(--radius-pill);
+				background: var(--color-primary);
+			}
+		}
+
+		&__actions {
+			margin-top: 26px;
 		}
 	}
 
 	.steps-card {
-		padding: 24px 22px 60px;
-		min-height: 180px;
-
-		&__content {
-			gap: 8px;
-		}
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: 94px minmax(0, 1fr);
+		column-gap: 24px;
+		align-items: start;
+		width: 100%;
+		padding: 0;
+		text-align: left;
+		justify-items: stretch;
+		justify-content: stretch;
 
 		&__title {
+			margin: 0 0 6px;
 			font-size: 21px;
 			letter-spacing: -0.84px;
 		}
 
 		&__description {
+			max-width: 230px;
 			font-size: 16px;
 			letter-spacing: -0.64px;
+			text-wrap: balance;
 		}
 
 		&__number {
-			font-size: 74px;
-			letter-spacing: normal;
+			grid-column: 1;
+			grid-row: 1 / span 2;
+			width: 77px;
+			height: 77px;
+			margin: 0 auto;
+			font-size: 36px;
+			color: var(--color-secondary);
+			font-weight: 300;
+		}
+
+		&__title,
+		&__description {
+			grid-column: 2;
 		}
 	}
 }

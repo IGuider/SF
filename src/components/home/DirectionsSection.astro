@@ -37,8 +37,8 @@ const cards = [
 
 <section class="directions-section section" id="directions" aria-labelledby="directions-title">
 	<div class="container">
-		<div class="directions-section__header">
-			<h2 class="directions-section__title" id="directions-title">Направления</h2>
+		<div class="directions-section__header section-header section-header--compact">
+			<h2 class="directions-section__title section-title" id="directions-title">Направления</h2>
 		</div>
 
 		<div class="directions-section__grid">
@@ -47,7 +47,7 @@ const cards = [
 					<article class:list={['directions-card', `directions-card--${card.modifier}`]}>
 						<div class="directions-card__visual" aria-hidden="true">
 							<Image
-								class="directions-card__image"
+								class="directions-card__image media-fill media-fit-contain"
 								src={card.image}
 								alt=""
 								loading="lazy"

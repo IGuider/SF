@@ -5,39 +5,39 @@ import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
 import Button from '../ui/Button.astro';
 
 const steps = (await getCollection('steps')).sort((left, right) => left.data.order - right.data.order);
+const ctaStep = steps.find((step) => step.data.ctaLabel);
 ---
 
 <section class="steps-section section" id="steps" aria-labelledby="steps-title">
 	<div class="container">
-		<div class="steps-section__header">
-			<h2 class="steps-section__title" id="steps-title">Как получить финансирование</h2>
+		<div class="steps-section__header section-header section-header--spacious">
+			<h2 class="steps-section__title section-title" id="steps-title">Как получить финансирование</h2>
 		</div>
+
+		<div class="steps-section__timeline" aria-hidden="true"></div>
 
 		<div class="steps-section__grid">
 			{
 				steps.map((step) => (
 					<article class="steps-card" aria-labelledby={`${step.id}-title`}>
-						<div class="steps-card__content">
-							<h3 class="steps-card__title" id={`${step.id}-title`}>{step.data.title}</h3>
-							<p class="steps-card__description">{step.data.description}</p>
-
-							{
-								step.data.ctaLabel && (
-									<div class="steps-card__actions">
-										<ConsultationDialogTrigger>
-											<Button variant="secondary" size="lg">{step.data.ctaLabel}</Button>
-										</ConsultationDialogTrigger>
-									</div>
-								)
-							}
-						</div>
-
 						<div class="steps-card__number" aria-hidden="true">
 							{step.data.number}
 						</div>
+						<h3 class="steps-card__title" id={`${step.id}-title`}>{step.data.title}</h3>
+						<p class="steps-card__description">{step.data.description}</p>
 					</article>
 				))
 			}
 		</div>
+
+		{
+			ctaStep && (
+				<div class="steps-section__actions">
+					<ConsultationDialogTrigger>
+						<Button variant="secondary" size="xl">{ctaStep.data.ctaLabel}</Button>
+					</ConsultationDialogTrigger>
+				</div>
+			)
+		}
 	</div>
 </section>

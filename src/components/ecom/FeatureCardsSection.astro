@@ -44,10 +44,10 @@ const cards = (await getCollection('featureCards'))
                 card.mobileImage ? (
                   <picture>
                     <source srcset={card.mobileImage.src} media="(max-width: 768px)" />
-                    <Image class="feature-card__media-image" src={card.image} alt="" loading={card.loading} decoding="async" />
+                    <Image class="feature-card__media-image media-fill media-fit-contain" src={card.image} alt="" loading={card.loading} decoding="async" />
                   </picture>
                 ) : (
-                  <Image class="feature-card__media-image" src={card.image} alt="" loading={card.loading} decoding="async" />
+                  <Image class="feature-card__media-image media-fill media-fit-contain" src={card.image} alt="" loading={card.loading} decoding="async" />
                 )
               }
             </div>

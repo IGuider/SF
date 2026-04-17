@@ -32,10 +32,11 @@
 	--color-primary-shadow-soft: rgba(5, 55, 200, 0.24);
 	--color-primary-shadow-strong: rgba(5, 55, 200, 0.28);
 	--color-primary-border-medium: rgba(5, 55, 200, 0.45);
-	--color-secondary: #f8a823;
+	--color-secondary: #FFA500;
 	--color-secondary-soft: rgba(248, 168, 35, 0.16);
 	--color-secondary-strong: #ffa412;
 	--color-secondary-hover: #ee9d18;
+	--color-secondary-button-hover: #e39300;
 	--color-secondary-shadow: rgba(246, 166, 35, 0.28);
 	--color-secondary-shadow-strong: rgba(246, 166, 35, 0.34);
 	--color-warning: #ffa500;
@@ -117,6 +118,43 @@ img {
 	margin-block: var(--section-offset);
 }
 
+.section-header {
+	display: flex;
+	justify-content: center;
+}
+
+.section-header--spacious {
+	margin-bottom: 75px;
+}
+
+.section-header--compact {
+	margin-bottom: 75px;
+}
+
+.section-title {
+	font-size: clamp(30px, 9vw, 52px);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: -2.08px;
+	color: var(--color-primary);
+	text-align: center;
+}
+
+.media-fill {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.media-fit-contain {
+	object-fit: contain;
+	object-position: center;
+}
+
+.media-fit-cover {
+	object-fit: cover;
+	object-position: center;
+}
+
 .visually-hidden {
 	position: absolute;
 	width: 1px;
@@ -150,12 +188,38 @@ img {
 		--container-max-width: 1200px;
 		--section-offset: 100px;
 	}
+
+	.section-header--spacious {
+		margin-bottom: 65px;
+	}
+
+	.section-header--compact {
+		margin-bottom: 44px;
+	}
+
+	.section-title {
+		font-size: 45px;
+		letter-spacing: -1.8px;
+	}
 }
 
 @media (max-width: 1024px) {
 	:root {
 		--container-max-width: 840px;
 		--section-offset: 90px;
+	}
+
+	.section-header--spacious {
+		margin-bottom: 45px;
+	}
+
+	.section-header--compact {
+		margin-bottom: 36px;
+	}
+
+	.section-title {
+		font-size: 32px;
+		letter-spacing: -1.2px;
 	}
 }
 
@@ -167,6 +231,10 @@ img {
 
 	html {
 		scroll-padding-top: 96px;
+	}
+
+	.section-header--compact {
+		margin-bottom: 28px;
 	}
 }
 
@@ -185,5 +253,17 @@ img {
 		--container-max-width: 100%;
 		--container-gutter: 16px;
 		--section-offset: 50px;
+	}
+}
+
+@media (max-width: 560px) {
+	.section-header--spacious,
+	.section-header--compact {
+		margin-bottom: 25px;
+	}
+
+	.section-title {
+		font-size: 26px;
+		letter-spacing: -1px;
 	}
 }

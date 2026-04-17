@@ -1,14 +1,6 @@
 @use '../ecom/shared-sections' as shared;
 
 .company-facts-section {
-	&__header {
-		@include shared.centered-section-header();
-	}
-
-	&__title {
-		@include shared.primary-section-title();
-	}
-
 	&__grid {
 		@include shared.two-column-grid(var(--gap-sm));
 	}
@@ -28,13 +20,6 @@
 		align-items: center;
 		min-height: 44px;
 		margin-bottom: 10px;
-
-		img {
-			display: block;
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-		}
 
 		&--fbk {
 			width: 150px;
@@ -76,17 +61,6 @@
 }
 
 @media (max-width: 1440px) {
-	.company-facts-section {
-		&__header {
-			margin-bottom: 44px;
-		}
-
-		&__title {
-			font-size: 45px;
-			letter-spacing: -1.8px;
-		}
-	}
-
 	.company-fact-card {
 		min-height: 204px;
 		padding: 28px 24px 24px;
@@ -104,17 +78,6 @@
 }
 
 @media (max-width: 1024px) {
-	.company-facts-section {
-		&__header {
-			margin-bottom: 36px;
-		}
-
-		&__title {
-			font-size: 32px;
-			letter-spacing: -1.2px;
-		}
-	}
-
 	.company-fact-card {
 		gap: 18px;
 		min-height: 188px;
@@ -164,10 +127,6 @@
 	.company-facts-section {
 		&__grid {
 			grid-template-columns: 1fr;
-		}
-
-		&__header {
-			margin-bottom: 28px;
 		}
 	}
 

@@ -1,14 +1,4 @@
-@use '../ecom/shared-sections' as shared;
-
 .why-trust-section {
-	&__header {
-		@include shared.centered-section-header();
-	}
-
-	&__title {
-		@include shared.primary-section-title();
-	}
-
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -65,17 +55,6 @@
 }
 
 @media (max-width: 1440px) {
-	.why-trust-section {
-		&__header {
-			margin-bottom: 44px;
-		}
-
-		&__title {
-			font-size: 45px;
-			letter-spacing: -1.8px;
-		}
-	}
-
 	.why-trust-card {
 		gap: 20px;
 
@@ -99,15 +78,6 @@
 
 @media (max-width: 1024px) {
 	.why-trust-section {
-		&__header {
-			margin-bottom: 36px;
-		}
-
-		&__title {
-			font-size: 32px;
-			letter-spacing: -1.2px;
-		}
-
 		&__grid {
 			grid-template-columns: 1fr;
 		}
@@ -140,12 +110,6 @@
 }
 
 @media (max-width: 768px) {
-	.why-trust-section {
-		&__header {
-			margin-bottom: 28px;
-		}
-	}
-
 	.why-trust-card {
 		&__headline {
 			min-height: 70px;

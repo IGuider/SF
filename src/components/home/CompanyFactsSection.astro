@@ -57,8 +57,8 @@ const facts = [
 
 <section class="company-facts-section section" id="company-facts" aria-labelledby="company-facts-title">
 	<div class="container">
-		<div class="company-facts-section__header">
-			<h2 class="company-facts-section__title" id="company-facts-title">Факты о компании</h2>
+		<div class="company-facts-section__header section-header section-header--compact">
+			<h2 class="company-facts-section__title section-title" id="company-facts-title">Факты о компании</h2>
 		</div>
 
 		<div class="company-facts-section__grid">
@@ -66,7 +66,7 @@ const facts = [
 				facts.map((fact) => (
 					<article class="company-fact-card">
 						<div class:list={['company-fact-card__logo', `company-fact-card__logo--${fact.modifier}`]}>
-							<Image src={fact.logo} alt={fact.logoAlt} loading="lazy" decoding="async" />
+							<Image class="media-fill media-fit-contain" src={fact.logo} alt={fact.logoAlt} loading="lazy" decoding="async" />
 						</div>
 						<h3 class="company-fact-card__title">{fact.title}</h3>
 						<p class="company-fact-card__description">{fact.description}</p>

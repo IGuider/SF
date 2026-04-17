@@ -5,11 +5,6 @@
 		@include shared.centered-section-header(75px);
 	}
 
-	&__title {
-		@include shared.primary-section-title();
-		letter-spacing: -2.073px;
-	}
-
 	&__grid {
 		@include shared.two-column-grid(24px);
 		align-items: start;
@@ -94,12 +89,6 @@
 
 @media (max-width: 1440px) {
 	.faq-section {
-
-		&__title {
-			letter-spacing: -1.8px;
-			font-size: 45px;
-		}
-
 		&__header {
 			margin-bottom: 65px;
 		}
@@ -122,16 +111,11 @@
 	}
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1024px) {
 	.faq-section {
 
 		&__grid {
 			gap: 14px;
-		}
-
-		&__title {
-			letter-spacing: -1.2px;
-			font-size: 32px;
 		}
 
 		&__header {
@@ -171,14 +155,8 @@
 
 @media (max-width: 560px) {
 	.faq-section {
-
 		&__grid {
 			gap: 10px;
-		}
-
-		&__title {
-			letter-spacing: -1px;
-			font-size: 26px;
 		}
 
 		&__header {
