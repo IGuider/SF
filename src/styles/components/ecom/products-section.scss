@@ -369,6 +369,10 @@
 			color: rgba(0, 0, 0, 0.55);
 			font-size: 16px;
 			letter-spacing: -0.64px;
+
+			br {
+				display: none;
+			}
 		}
 
 		&__link-text,

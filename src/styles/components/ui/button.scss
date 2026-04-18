@@ -37,7 +37,9 @@
 		color: var(--color-primary);
 
 		&:hover {
-			background: rgba(25, 74, 220, 0.04);
+			background: var(--color-primary-50);
+			border-color: transparent;
+			color: var(--color-white);
 		}
 	}
 

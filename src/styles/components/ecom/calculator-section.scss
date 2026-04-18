@@ -968,7 +968,7 @@
 
 	.calculator-section__cards {
 		margin-top: 33px;
-		gap: 20px;
+		gap: 25px;
 		grid-template-columns: repeat(1, minmax(0, 1fr));
 	}
 
@@ -982,6 +982,24 @@
 		gap: 5px;
 		background: transparent;
 		box-shadow: none;
+
+		&__badge {
+			display: block;
+			top: -15px;
+			right: 22px;
+			padding: 8px 12px;
+			border-radius: 16px;
+			font-size: 12px;
+			font-weight: var(--font-weight-regular);
+
+			&--profit {
+				background: var(--color-secondary-strong);
+			}
+		}
+
+		&__term {
+			font-weight: var(--font-weight-medium);
+		}
 
 		&__payment {
 			font-size: 34px;

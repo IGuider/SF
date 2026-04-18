@@ -6,7 +6,7 @@
 	position: fixed;
 	inset: 0;
 	display: none;
-	width: min(calc(100% - 2rem), 560px);
+	width: min(calc(100% - 2rem), 600px);
 	max-height: calc(100vh - 3rem);
 	margin: auto;
 	padding: 0;
@@ -37,7 +37,7 @@
 	&__panel {
 		position: relative;
 		width: 100%;
-		padding: 38px 40px;
+		padding: 44px;
 		border-radius: var(--radius-md);
 		background: linear-gradient(109deg, rgba(215, 226, 255, 0.80) 1.57%, rgba(215, 226, 255, 0.10) 100%);
 		backdrop-filter: blur(46px);
@@ -82,7 +82,7 @@
 	&__form {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 24px;
 	}
 
 	&__success {
