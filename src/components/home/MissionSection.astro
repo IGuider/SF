@@ -13,10 +13,6 @@ import Button from '../ui/Button.astro';
 		</div>
 
 		<div class="mission-section__card">
-			<div class="mission-section__visual" aria-hidden="true">
-				<Image class="mission-section__visual-image" src={missionBg1} alt="" loading="lazy" decoding="async" />
-			</div>
-
 			<div class="mission-section__content">
 				<svg
 					class="mission-section__quote"
@@ -32,8 +28,16 @@ import Button from '../ui/Button.astro';
 					/>
 				</svg>
 
-				<h3 class="mission-section__name">Алексей Басенко</h3>
-				<p class="mission-section__role">Генеральный директор SimpleFinance</p>
+				<div class="mission-section__intro">
+					<div class="mission-section__visual" aria-hidden="true">
+						<Image class="mission-section__visual-image" src={missionBg1} alt="" loading="lazy" decoding="async" />
+					</div>
+
+					<div class="mission-section__person">
+						<h3 class="mission-section__name">Алексей Басенко</h3>
+						<p class="mission-section__role">Генеральный директор SimpleFinance</p>
+					</div>
+				</div>
 
 				<div class="mission-section__text">
 					<p>

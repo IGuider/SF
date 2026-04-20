@@ -2,8 +2,11 @@
 import { Image } from 'astro:assets';
 import Button from '../ui/Button.astro';
 import directionsCard1 from '../../assets/directions-card1.png';
+import directionsCard1Mobile from '../../assets/directions-card1-m.png';
 import directionsCard2 from '../../assets/directions-card2.png';
+import directionsCard2Mobile from '../../assets/directions-card2-m.png';
 import directionsCard3 from '../../assets/directions-card3.png';
+import directionsCard3Mobile from '../../assets/directions-card3-m.png';
 import '../../styles/components/home/directions-section.scss';
 
 const basePath = import.meta.env.BASE_URL.endsWith('/')
@@ -15,6 +18,7 @@ const cards = [
 		title: 'Продавцам маркетплейсов',
 		description: 'Финансовые решения для закупки товара и роста оборота',
 		image: directionsCard1,
+		mobileImage: directionsCard1Mobile,
 		href: `${basePath}ecom`,
 		modifier: 'marketplaces',
 	},
@@ -22,6 +26,7 @@ const cards = [
 		title: 'Участникам государственных и коммерческих закупок',
 		description: 'Финансирование для участия в тендерах и исполнения контрактов',
 		image: directionsCard2,
+		mobileImage: directionsCard2Mobile,
 		href: `${basePath}ecom`,
 		modifier: 'procurement',
 	},
@@ -29,6 +34,7 @@ const cards = [
 		title: 'Банковские гарантии',
 		description: 'Обеспечение заявки и исполнения контракта',
 		image: directionsCard3,
+		mobileImage: directionsCard3Mobile,
 		href: `${basePath}ecom`,
 		modifier: 'guarantees',
 	},
@@ -46,13 +52,16 @@ const cards = [
 				cards.map((card) => (
 					<article class:list={['directions-card', `directions-card--${card.modifier}`]}>
 						<div class="directions-card__visual" aria-hidden="true">
-							<Image
-								class="directions-card__image media-fill media-fit-contain"
-								src={card.image}
-								alt=""
-								loading="lazy"
-								decoding="async"
-							/>
+							<picture class="directions-card__picture">
+								<source srcset={card.mobileImage.src} media="(max-width: 768px)" />
+								<Image
+									class="directions-card__image media-fill media-fit-contain"
+									src={card.image}
+									alt=""
+									loading="lazy"
+									decoding="async"
+								/>
+							</picture>
 						</div>
 
 						<div class="directions-card__body">

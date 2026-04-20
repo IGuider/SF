@@ -12,6 +12,7 @@ interface Props {
 	titleLines: string[];
 	descriptionLines?: string[];
 	buttonLabel: string;
+	buttonVariant?: 'primary' | 'secondary' | 'outline';
 	image: ImageMetadata;
 	mobileGlowBottom?: ImageMetadata;
 }
@@ -23,6 +24,7 @@ const {
 	titleLines,
 	descriptionLines = [],
 	buttonLabel,
+	buttonVariant = 'primary',
 	image,
 	mobileGlowBottom,
 }: Props = Astro.props;
@@ -82,7 +84,7 @@ const sectionClass = ['hero-section', 'section', `hero-section--${variant}`].joi
 
 					<div>
 						<ConsultationDialogTrigger>
-							<Button variant="primary" size="xl" class="hero-section__button">
+							<Button variant={buttonVariant} size="xl" class="hero-section__button">
 								{buttonLabel}
 							</Button>
 						</ConsultationDialogTrigger>

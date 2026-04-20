@@ -35,6 +35,14 @@
 		padding-left: 410px;
 	}
 
+	&__intro {
+		display: block;
+	}
+
+	&__person {
+		display: block;
+	}
+
 	&__quote {
 		position: absolute;
 		top: 0;
@@ -88,11 +96,11 @@
 
 		&__visual {
 			left: 10px;
-			width: 310px;
+			width: 336px;
 		}
 
 		&__content {
-			padding: 48px 0 42px 290px;
+			padding: 40px 0 40px 336px;
 		}
 
 		&__quote {
@@ -111,11 +119,16 @@
 
 		&__text {
 			max-width: 620px;
+			gap: 18px;
 
 			p {
-				font-size: 22px;
+				font-size: 21px;
 				letter-spacing: -0.88px;
 			}
+		}
+
+		&__button {
+			margin-top: 30px;
 		}
 	}
 }
@@ -123,17 +136,16 @@
 @media (max-width: 1024px) {
 	.mission-section {
 		&__card {
-			min-height: 320px;
+			min-height: 270px;
 			padding: 0 28px;
 		}
 
 		&__visual {
-			left: 6px;
-			width: 220px;
+			width: 240px;
 		}
 
 		&__content {
-			padding: 34px 0 30px 205px;
+			padding: 30px 0 30px 250px;
 		}
 
 		&__quote {
@@ -157,13 +169,13 @@
 			margin-top: 18px;
 
 			p {
-				font-size: 18px;
+				font-size: 16px;
 				letter-spacing: -0.72px;
 			}
 		}
 
 		&__button {
-			margin-top: 22px;
+			margin-top: 20px;
 		}
 	}
 }
@@ -171,7 +183,16 @@
 @media (max-width: 768px) {
 	.mission-section {
 		&__card {
-			padding: 20px 20px 24px;
+			padding: 45px 20px 24px;
+			min-height: auto;
+		}
+
+		&__intro {
+			display: grid;
+			grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+			align-items: flex-end;
+			column-gap: 20px;
+			margin-bottom: 24px;
 		}
 
 		&__visual {
@@ -179,13 +200,16 @@
 			left: auto;
 			bottom: auto;
 			justify-content: center;
-			margin: 0 auto -6px;
+			margin: 0;
 			width: 100%;
-			max-width: 250px;
+			max-width: 150px;
+			background: #fff;
+			border-radius: 20px;
 		}
 
 		&__visual-image {
 			transform: none;
+			margin-top: -30px;
 		}
 
 		&__content {
@@ -193,30 +217,69 @@
 			padding: 0;
 		}
 
+		&__person {
+			min-width: 0;
+		}
+
+		&__name {
+			font-size: 28px;
+			letter-spacing: -0.96px;
+		}
+
+		&__role {
+			margin-top: 6px;
+			font-size: 20px;
+			letter-spacing: -0.72px;
+		}
+
+		&__text {
+			margin-top: 0;
+
+			p {
+				font-size: 18px;
+			}
+		}
+
 		&__quote {
-			top: -4px;
-			right: 0;
-			width: 74px;
+			right: 42px;
+			width: 100px;
 		}
 	}
 }
 
-@media (max-width: 540px) {
+@media (max-width: 560px) {
 	.mission-section {
 		&__card {
-			padding: 18px 16px 20px;
-			border-radius: var(--radius-md-mobile);
+			padding: 35px 18px 20px;
+		}
+
+		&__intro {
+			grid-template-columns: minmax(0, 100px) minmax(0, 1fr);
+			column-gap: 12px;
+			margin-bottom: 20px;
 		}
 
 		&__visual {
-			max-width: 215px;
-			margin-bottom: -8px;
+			justify-content: center;
+			margin: 0;
+			width: 100%;
+			max-width: 100px;
+			border-radius: 7px;
+			padding: 11px 10px 0;
 		}
 
-		&__quote {
-			top: 2px;
-			width: 64px;
-			opacity: 0.75;
+		&__visual-image {
+			transform: none;
+			margin-top: -30px;
+		}
+
+		&__content {
+			min-height: auto;
+			padding: 0;
+		}
+
+		&__person {
+			min-width: 0;
 		}
 
 		&__name {
@@ -225,23 +288,23 @@
 		}
 
 		&__role {
+			margin-top: 3px;
 			font-size: 13px;
 			letter-spacing: -0.52px;
 		}
 
 		&__text {
-			gap: 12px;
-			margin-top: 16px;
+			margin-top: 0;
+			gap: 10px;
 
 			p {
-				font-size: 16px;
-				letter-spacing: -0.64px;
-				text-wrap: pretty;
+				font-size: 14px;
 			}
 		}
 
-		&__button {
-			margin-top: 18px;
+		&__quote {
+			right: 27px;
+			width: 70px;
 		}
 	}
 }

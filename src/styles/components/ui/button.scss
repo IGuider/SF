@@ -76,7 +76,7 @@
 
 		&--lg {
 			height: 50px;
-			padding-inline: 14px;
+			padding-inline: 16px;
 			font-size: 22px;
 		}
 
@@ -101,6 +101,29 @@
 			height: 35px;
 			padding-inline: 10px;
 			font-size: 16px;
+		}
+
+		&--xl {
+			height: 46px;
+			padding-inline: 14px;
+			font-size: 16px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.ui-button {
+
+		&--md {
+			height: 38px;
+			padding-inline: 12px;
+			font-size: 14px;
+		}
+
+		&--lg {
+			height: 40px;
+			padding-inline: 12px;
+			font-size: 14px;
 		}
 
 		&--xl {

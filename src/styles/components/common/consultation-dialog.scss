@@ -649,6 +649,10 @@
 			padding: 24px 20px;
 		}
 
+		&__form {
+			gap: 18px;
+		}
+
 		&__title {
 			font-size: 24px;
 		}
@@ -679,7 +683,7 @@
 
 		&__consent {
 			font-size: 12px;
-			margin-block: 6px;
+			margin-block: 0;
 		}
 
 		&__success {
