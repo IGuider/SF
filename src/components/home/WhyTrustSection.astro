@@ -1,20 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import '../../styles/components/home/why-trust-section.scss';
 
-const items = [
-	{
-		title: 'Экспертиза',
-		description: 'Тысячи сделок в госзакупках и e-commerce',
-	},
-	{
-		title: 'Скорость',
-		description: 'Анализируем заявку<br> в течение 1 рабочего дня',
-	},
-	{
-		title: 'Прозрачность',
-		description: 'Все условия известны до подписания договора',
-	},
-];
+const items = (await getCollection('homeTrustItems'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data);
 ---
 
 <section class="why-trust-section section" id="advantages" aria-labelledby="why-trust-title">

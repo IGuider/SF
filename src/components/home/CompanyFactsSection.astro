@@ -1,33 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import brLogo from '../../assets/banks/br.svg';
 import sbLogo from '../../assets/banks/sb.svg';
 import skLogo from '../../assets/banks/sk.svg';
 import '../../styles/components/home/company-facts-section.scss';
 
-const facts = [
-	{
-		title: 'Лицензия Центробанка',
-		description: 'Лицензированная организация<br> под надзором Банка России',
-		logo: brLogo,
-		logoAlt: 'Банк России',
-		logoWidth: '185px',
-	},
-	{
-		title: 'Резидент Сколково',
-		description: 'IT-платформа SimpleFinance,<br> технологический проект',
-		logo: skLogo,
-		logoAlt: 'Сколково',
-		logoWidth: '180px',
-	},
-	{
-		title: 'Партнер СберБизнес',
-		description: 'Топ-партнер<br> 3 года подряд',
-		logo: sbLogo,
-		logoAlt: 'СберБизнес',
-		logoWidth: '200px',
-	},
-];
+const factLogoMap = {
+	br: brLogo,
+	sk: skLogo,
+	sb: sbLogo,
+} as const;
+
+const facts = (await getCollection('homeFacts'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => ({
+		...item.data,
+		logo: factLogoMap[item.data.logo],
+	}));
 ---
 
 <section class="company-facts-section section" id="company-facts" aria-labelledby="company-facts-title">

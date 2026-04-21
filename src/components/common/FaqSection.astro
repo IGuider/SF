@@ -2,7 +2,13 @@
 import { getCollection } from 'astro:content';
 import '../../styles/components/ecom/faq-section.scss';
 
-const faqItems = (await getCollection('faq')).sort((left, right) => left.data.order - right.data.order);
+interface Props {
+	collection?: 'faq' | 'homeFaq';
+}
+
+const { collection = 'faq' } = Astro.props;
+
+const faqItems = (await getCollection(collection)).sort((left, right) => left.data.order - right.data.order);
 ---
 
 <section class="faq-section section" id="faq" aria-labelledby="faq-title">

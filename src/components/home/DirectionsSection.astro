@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import Button from '../ui/Button.astro';
 import directionsCard1 from '../../assets/directions-card1.png';
@@ -13,32 +14,28 @@ const basePath = import.meta.env.BASE_URL.endsWith('/')
 	? import.meta.env.BASE_URL
 	: `${import.meta.env.BASE_URL}/`;
 
-const cards = [
-	{
-		title: 'Продавцам маркетплейсов',
-		description: 'Финансовые решения для закупки товара и роста оборота',
+const directionImageMap = {
+	marketplaces: {
 		image: directionsCard1,
 		mobileImage: directionsCard1Mobile,
-		href: `${basePath}ecom`,
-		modifier: 'marketplaces',
 	},
-	{
-		title: 'Участникам государственных и коммерческих закупок',
-		description: 'Финансирование для участия в тендерах и исполнения контрактов',
+	procurement: {
 		image: directionsCard2,
 		mobileImage: directionsCard2Mobile,
-		href: `${basePath}ecom`,
-		modifier: 'procurement',
 	},
-	{
-		title: 'Банковские гарантии',
-		description: 'Обеспечение заявки и исполнения контракта',
+	guarantees: {
 		image: directionsCard3,
 		mobileImage: directionsCard3Mobile,
-		href: `${basePath}ecom`,
-		modifier: 'guarantees',
 	},
-];
+} as const;
+
+const cards = (await getCollection('homeDirections'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => ({
+		...item.data,
+		...directionImageMap[item.data.modifier],
+		href: `${basePath}${item.data.href}`,
+	}));
 ---
 
 <section class="directions-section section" id="directions" aria-labelledby="directions-title">

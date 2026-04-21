@@ -1,34 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import '../../styles/components/home/company-stats-section.scss';
 
-const stats = [
-	{
-		value: 12500,
-		prefix: '',
-		postfix: '+',
-		subtitle: 'Компаний пользуются сервисом',
-		background: '12 500',
-		grouped: true,
-	},
-	{
-		value: 100,
-		prefix: '>',
-		postfix: '',
-		label: 'млрд ₽',
-		subtitle: 'Направлено на развитие бизнеса',
-		background: '>100',
-		grouped: false,
-	},
-	{
-		value: 2015,
-		prefix: 'с ',
-		postfix: '',
-		label: 'года',
-		subtitle: 'Работаем с малым и средним бизнесом',
-		background: '2015',
-		grouped: false,
-	},
-];
+const stats = (await getCollection('homeStats'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data);
 ---
 
 <section class="company-stats-section section" id="company-stats" aria-labelledby="company-stats-title">
