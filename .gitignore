@@ -34,6 +34,9 @@ pnpm-debug.log*
 share-url.txt
 .devserver.log
 .devserver.err
+.devserver*
+.playwright-cli/
+.devserver/
 .ssh-tunnel.log
 .ssh-tunnel.err
 .localtunnel.log
@@ -41,3 +44,6 @@ share-url.txt
 .lt-test.log
 .bg-test.txt
 .cmd-test.txt
+github-pages-url.txt
+output/
+package/
