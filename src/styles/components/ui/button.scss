@@ -32,7 +32,7 @@
 	}
 
 	&--outline {
-		background: var(--color-white);
+		background: transparent;
 		border-color: var(--color-primary);
 		color: var(--color-primary);
 
@@ -98,7 +98,7 @@
 		}
 
 		&--lg {
-			height: 35px;
+			height: 43px;
 			padding-inline: 10px;
 			font-size: 16px;
 		}
@@ -121,7 +121,7 @@
 		}
 
 		&--lg {
-			height: 40px;
+			height: 41px;
 			padding-inline: 12px;
 			font-size: 14px;
 		}

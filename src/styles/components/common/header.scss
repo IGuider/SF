@@ -1,7 +1,16 @@
 .site-header {
 	padding-top: 40px;
-	position: relative;
+	position: sticky;
+	top: 0;
+	width: 100%;
 	z-index: 20;
+	transition:
+		padding-top var(--transition-duration-fast) ease,
+		padding-bottom var(--transition-duration-fast) ease,
+		background-color var(--transition-duration-fast) ease,
+		border-radius var(--transition-duration-fast) ease,
+		backdrop-filter var(--transition-duration-fast) ease,
+		box-shadow var(--transition-duration-fast) ease;
 
 	&__inner {
 		position: relative;
@@ -107,6 +116,16 @@
 		flex: 1 1 auto;
 		min-width: 0;
 	}
+
+	&.is-sticky-active:not(.is-menu-open) {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background: rgb(255 255 255 / 0.71);
+		border-bottom-left-radius: 18px;
+		border-bottom-right-radius: 18px;
+		backdrop-filter: blur(10px);
+		box-shadow: inset 0 0 0 1px rgb(221 221 221 / 0.35);
+	}
 }
 
 body.site-header-menu-open {
@@ -189,7 +208,8 @@ body.site-header-menu-open {
 			padding-bottom var(--transition-duration-fast) ease,
 			background-color var(--transition-duration-fast) ease,
 			border-radius var(--transition-duration-fast) ease,
-			backdrop-filter var(--transition-duration-fast) ease;
+			backdrop-filter var(--transition-duration-fast) ease,
+			box-shadow var(--transition-duration-fast) ease;
 
 		&.is-sticky-active:not(.is-menu-open) {
 			padding-top: 10px;
@@ -198,6 +218,7 @@ body.site-header-menu-open {
 			border-bottom-left-radius: 18px;
 			border-bottom-right-radius: 18px;
 			backdrop-filter: blur(10px);
+			box-shadow: inset 0 0 0 1px rgb(221 221 221 / 0.35);
 		}
 
 		&.is-menu-open {
@@ -595,6 +616,5 @@ body.site-header-menu-open {
 	.site-header.is-sticky-active:not(.is-menu-open) {
 		padding-top: 10px;
 		padding-bottom: 2px;
-		box-shadow: inset 0 0 0 1px #dddddd59;
 	}
 }

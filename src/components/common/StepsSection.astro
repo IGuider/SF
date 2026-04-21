@@ -14,13 +14,16 @@ const ctaStep = steps.find((step) => step.data.ctaLabel);
 			<h2 class="steps-section__title section-title" id="steps-title">Как получить финансирование</h2>
 		</div>
 
-		<div class="steps-section__timeline" aria-hidden="true"></div>
+		<div class="steps-section__timeline" aria-hidden="true">
+			<div class="steps-section__timeline-track"></div>
+			<div class="steps-section__timeline-fill"></div>
+		</div>
 
 		<div class="steps-section__grid">
 			{
 				steps.map((step) => (
 					<article class="steps-card" aria-labelledby={`${step.id}-title`}>
-						<div class="steps-card__number" aria-hidden="true">
+						<div class="steps-card__number" aria-hidden="true" data-steps-number>
 							{step.data.number}
 						</div>
 						<h3 class="steps-card__title" id={`${step.id}-title`}>{step.data.title}</h3>
@@ -41,3 +44,10 @@ const ctaStep = steps.find((step) => step.data.ctaLabel);
 		}
 	</div>
 </section>
+
+<script>
+	import { initStepsSection } from '../../scripts/common/steps-section';
+
+	initStepsSection();
+	document.addEventListener('astro:after-swap', initStepsSection);
+</script>

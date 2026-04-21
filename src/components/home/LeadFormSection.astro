@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Button from '../ui/Button.astro';
 import formBg from '../../assets/form-home-bg.png';
+import formBgTablet from '../../assets/form-home-bg-t.png';
 import '../../styles/components/home/lead-form-section.scss';
 
 const turnoverOptions = [
@@ -16,7 +17,7 @@ const turnoverOptions = [
 <section class="lead-form-section section" id="lead-form" aria-labelledby="lead-form-title">
 	<div class="container">
 		<div class="lead-form-section__panel">
-			<div class="lead-form-section__content" data-lead-form-content data-state="form">
+			<div class="lead-form-section__content" data-lead-form-content>
 				<div class="lead-form-section__header">
 					<h2 class="lead-form-section__title" id="lead-form-title">Подберем решение под ваш бизнес</h2>
 					<p class="lead-form-section__description">
@@ -24,7 +25,7 @@ const turnoverOptions = [
 					</p>
 				</div>
 
-				<form class="lead-form-section__form" data-lead-form novalidate>
+				<form class="lead-form-section__form" data-lead-form data-state="visible" novalidate>
 					<label class="lead-form-section__field" data-required-field>
 						<input
 							class="lead-form-section__input"
@@ -137,21 +138,44 @@ const turnoverOptions = [
 						Подобрать решение
 					</Button>
 				</form>
-			</div>
 
-			<div class="lead-form-section__success" data-lead-form-success data-state="hidden" aria-live="polite">
-				<div class="lead-form-section__success-card">
-					<h3 class="lead-form-section__success-title">Спасибо!</h3>
-					<p class="lead-form-section__success-text">
-						Ваша заявка отправлена.
-						<br />
-						В ближайшее время менеджер свяжется с вами
-					</p>
+				<div class="lead-form-section__success" data-lead-form-success data-state="hidden" aria-live="polite">
+					<div class="lead-form-section__success-card">
+						<button
+							type="button"
+							class="lead-form-section__success-close"
+							data-lead-form-success-close
+							aria-label="Закрыть сообщение"
+						>
+							<svg
+								class="lead-form-section__success-close-icon"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								aria-hidden="true"
+							>
+								<path d="M18 6 6 18" />
+								<path d="m6 6 12 12" />
+							</svg>
+						</button>
+						<h3 class="lead-form-section__success-title">Спасибо!</h3>
+						<p class="lead-form-section__success-text">
+							Ваша заявка отправлена.
+							<br />
+							В ближайшее время менеджер свяжется с вами
+						</p>
+					</div>
 				</div>
 			</div>
 
-			<div class="lead-form-section__visual" aria-hidden="true">
-				<Image class="lead-form-section__visual-image media-fill media-fit-contain" src={formBg} alt="" loading="lazy" decoding="async" />
+			<div class="lead-form-section__visual-clip" aria-hidden="true">
+				<div class="lead-form-section__visual">
+					<Image class="lead-form-section__visual-image lead-form-section__visual-image--desktop media-fill media-fit-contain" src={formBg} alt="" loading="lazy" decoding="async" />
+					<Image class="lead-form-section__visual-image lead-form-section__visual-image--tablet media-fill media-fit-contain" src={formBgTablet} alt="" loading="lazy" decoding="async" />
+				</div>
 			</div>
 		</div>
 	</div>

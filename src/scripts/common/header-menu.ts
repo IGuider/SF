@@ -102,10 +102,9 @@ export const initHeaderMenu = () => {
 	const closeTimerRef = { current: null as number | null };
 
 	const syncStickyState = () => {
-		const isMobileViewport = window.innerWidth <= MOBILE_BREAKPOINT;
 		const isScrolled = window.scrollY > 0;
 
-		header.classList.toggle(HEADER_STICKY_ACTIVE_CLASS, isMobileViewport && isScrolled);
+		header.classList.toggle(HEADER_STICKY_ACTIVE_CLASS, isScrolled);
 	};
 
 	const handleToggleClick = () => {

@@ -135,6 +135,19 @@ const setFieldInvalidState = (field: HTMLElement | null, isInvalid: boolean) => 
 	field.dataset.invalid = isInvalid ? 'true' : 'false';
 };
 
+const setDropdownPanelState = (root: HTMLElement, isOpen: boolean) => {
+	const panel = root.closest<HTMLElement>('.lead-form-section__panel');
+	const section = root.closest<HTMLElement>('.lead-form-section');
+
+	if (panel) {
+		panel.dataset.dropdownOpen = isOpen ? 'true' : 'false';
+	}
+
+	if (section) {
+		section.dataset.dropdownOpen = isOpen ? 'true' : 'false';
+	}
+};
+
 const closeDropdown = (root: HTMLElement) => {
 	const trigger = root.querySelector<HTMLElement>('[data-dropdown-trigger]');
 	const menu = root.querySelector<HTMLElement>('[data-dropdown-menu]');
@@ -146,12 +159,38 @@ const closeDropdown = (root: HTMLElement) => {
 	trigger.setAttribute('aria-expanded', 'false');
 	menu.dataset.state = 'closed';
 	menu.setAttribute('aria-hidden', 'true');
+	setDropdownPanelState(root, false);
 };
 
 const syncSelectedDropdownOption = (root: HTMLElement, value: string) => {
 	root.querySelectorAll<HTMLElement>('[data-dropdown-option]').forEach((option) => {
 		option.dataset.selected = option.dataset.value === value ? 'true' : 'false';
 	});
+};
+
+const resetLeadFormState = (
+	section: HTMLElement,
+	form: HTMLFormElement,
+	dropdownRoot: HTMLElement | null,
+	dropdownLabel: HTMLElement | null,
+) => {
+	form.reset();
+	form.dataset.state = 'visible';
+	form.dataset.animate = 'true';
+
+	section.querySelectorAll<HTMLElement>('[data-required-field]').forEach((field) => {
+		setFieldInvalidState(field, false);
+	});
+
+	if (dropdownRoot) {
+		dropdownRoot.dataset.hasValue = 'false';
+		syncSelectedDropdownOption(dropdownRoot, '');
+		closeDropdown(dropdownRoot);
+	}
+
+	if (dropdownLabel) {
+		dropdownLabel.textContent = '';
+	}
 };
 
 const validateField = (field: HTMLElement, phoneInput: HTMLInputElement | null) => {
@@ -190,8 +229,8 @@ const setupHomeLeadForm = () => {
 		}
 
 		const form = section.querySelector<HTMLFormElement>('[data-lead-form]');
-		const content = section.querySelector<HTMLElement>('[data-lead-form-content]');
 		const success = section.querySelector<HTMLElement>('[data-lead-form-success]');
+		const successClose = section.querySelector<HTMLButtonElement>('[data-lead-form-success-close]');
 		const phoneInput = section.querySelector<HTMLInputElement>('[data-lead-phone]');
 		const dropdownRoot = section.querySelector<HTMLElement>('[data-dropdown-root]');
 		const dropdownTrigger = section.querySelector<HTMLElement>('[data-dropdown-trigger]');
@@ -199,13 +238,19 @@ const setupHomeLeadForm = () => {
 		const dropdownLabel = section.querySelector<HTMLElement>('[data-dropdown-label]');
 		const dropdownInput = section.querySelector<HTMLInputElement>('[data-dropdown-input]');
 
-		if (!(form instanceof HTMLFormElement) || !(content instanceof HTMLElement) || !(success instanceof HTMLElement)) {
+		if (!(form instanceof HTMLFormElement) || !(success instanceof HTMLElement)) {
 			continue;
 		}
 
 		const showSuccessState = () => {
-			content.dataset.state = 'success';
+			delete form.dataset.animate;
+			form.dataset.state = 'hidden';
 			success.dataset.state = 'visible';
+		};
+
+		const showFormState = () => {
+			success.dataset.state = 'hidden';
+			resetLeadFormState(section, form, dropdownRoot ?? null, dropdownLabel ?? null);
 		};
 
 		form.addEventListener('submit', (event) => {
@@ -224,7 +269,18 @@ const setupHomeLeadForm = () => {
 			}
 
 			showSuccessState();
-			form.reset();
+		});
+
+		successClose?.addEventListener('click', () => {
+			showFormState();
+		});
+
+		form.addEventListener('animationend', (event) => {
+			if (!(event instanceof AnimationEvent) || event.animationName !== 'lead-form-form-enter') {
+				return;
+			}
+
+			delete form.dataset.animate;
 		});
 
 		section.querySelectorAll<HTMLElement>('[data-required-field]').forEach((field) => {
@@ -259,6 +315,7 @@ const setupHomeLeadForm = () => {
 				dropdownTrigger.setAttribute('aria-expanded', 'true');
 				dropdownMenu.dataset.state = 'open';
 				dropdownMenu.setAttribute('aria-hidden', 'false');
+				setDropdownPanelState(dropdownRoot, true);
 			});
 
 			dropdownMenu.querySelectorAll<HTMLElement>('[data-dropdown-option]').forEach((option) => {

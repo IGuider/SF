@@ -1,56 +1,31 @@
 ---
 import { Image } from 'astro:assets';
-import brLogo from '../../assets/banks/br.png';
-import fbkLogo from '../../assets/banks/fbk.jpg';
-import gboLogo from '../../assets/banks/gbo.jpg';
-import hpaLogo from '../../assets/banks/hpa.jpg';
-import sbiLogo from '../../assets/banks/sbi.png';
-import skLogo from '../../assets/banks/sk.png';
+import brLogo from '../../assets/banks/br.svg';
+import sbLogo from '../../assets/banks/sb.svg';
+import skLogo from '../../assets/banks/sk.svg';
 import '../../styles/components/home/company-facts-section.scss';
 
 const facts = [
 	{
-		title: 'Независимый аудит',
-		description: 'Ежегодная проверка компанией «ФБК»',
-		logo: fbkLogo,
-		logoAlt: 'ФБК',
-		modifier: 'fbk',
-	},
-	{
 		title: 'Лицензия Центробанка',
-		description: 'Лицензированная организация под надзором Банка России',
+		description: 'Лицензированная организация<br> под надзором Банка России',
 		logo: brLogo,
 		logoAlt: 'Банк России',
-		modifier: 'br',
+		logoWidth: '185px',
 	},
 	{
 		title: 'Резидент Сколково',
-		description: 'IT-платформа SimpleFinance, признанный технологический проект',
+		description: 'IT-платформа SimpleFinance,<br> технологический проект',
 		logo: skLogo,
 		logoAlt: 'Сколково',
-		modifier: 'sk',
+		logoWidth: '180px',
 	},
 	{
-		title: 'Признание в отрасли',
-		description:
-			'Лучшая финтех-компания по версии Global Business Outlook и «Финансовая элита России»',
-		logo: gboLogo,
-		logoAlt: 'Global Business Outlook',
-		modifier: 'gbo',
-	},
-	{
-		title: '№1 среди небанковских кредиторов МСБ',
-		description: 'Ренкинг НРА',
-		logo: hpaLogo,
-		logoAlt: 'НРА',
-		modifier: 'hpa',
-	},
-	{
-		title: 'Международные партнеры',
-		description: 'Работаем с SBI Group',
-		logo: sbiLogo,
-		logoAlt: 'SBI Holdings',
-		modifier: 'sbi',
+		title: 'Партнер СберБизнес',
+		description: 'Топ-партнер<br> 3 года подряд',
+		logo: sbLogo,
+		logoAlt: 'СберБизнес',
+		logoWidth: '200px',
 	},
 ];
 ---
@@ -65,11 +40,11 @@ const facts = [
 			{
 				facts.map((fact) => (
 					<article class="company-fact-card">
-						<div class:list={['company-fact-card__logo', `company-fact-card__logo--${fact.modifier}`]}>
+						<div class="company-fact-card__logo" style={`--company-fact-logo-width: ${fact.logoWidth};`}>
 							<Image class="media-fill media-fit-contain" src={fact.logo} alt={fact.logoAlt} loading="lazy" decoding="async" />
 						</div>
 						<h3 class="company-fact-card__title">{fact.title}</h3>
-						<p class="company-fact-card__description">{fact.description}</p>
+						<p class="company-fact-card__description" set:html={fact.description} />
 					</article>
 				))
 			}

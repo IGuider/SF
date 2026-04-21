@@ -18,6 +18,16 @@
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+@mixin feature-card-grid($columns: 3, $gap: var(--gap-sm), $collapse-at: 768px) {
+	display: grid;
+	gap: $gap;
+	grid-template-columns: repeat($columns, minmax(0, 1fr));
+
+	@media (max-width: $collapse-at) {
+		grid-template-columns: 1fr;
+	}
+}
+
 @mixin feature-surface-gradient() {
 	background: var(--gradient-surface-feature);
 }
