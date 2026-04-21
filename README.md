@@ -5,6 +5,7 @@
 ## Коротко
 - Проект: статический маркетинговый сайт на Astro
 - Основные страницы: `src/pages/index.astro`, `src/pages/ecom.astro`
+- Компоновка страниц: `src/components/home/HomePage.astro`, `src/components/ecom/EcomPage.astro`
 - Контент для повторяющихся блоков: `src/content/*`
 - Компоненты интерфейса: `src/components/*`
 - Клиентская интерактивность: `src/scripts/*`
@@ -15,6 +16,10 @@
 Сайт состоит из двух основных страниц:
 - главная страница `src/pages/index.astro`
 - страница направления ECOM `src/pages/ecom.astro`
+
+Маршруты остаются тонкими и в основном собирают страницу из крупных компонентов:
+- `src/pages/index.astro` -> `src/components/home/HomePage.astro`
+- `src/pages/ecom.astro` -> `src/components/ecom/EcomPage.astro`
 
 Проект построен как статический сайт с серверным рендерингом Astro и небольшими клиентскими улучшениями для интерактивных блоков.
 
@@ -72,6 +77,11 @@ scripts/         Вспомогательные скрипты проекта
 ## Где что менять
 Если нужно изменить тексты, карточки, FAQ, шаги, клиентов, ссылки на соцсети или статьи, в первую очередь смотрите:
 - `src/content/faq`
+- `src/content/home-faq`
+- `src/content/home-directions`
+- `src/content/home-trust-items`
+- `src/content/home-stats`
+- `src/content/home-facts`
 - `src/content/products`
 - `src/content/clients`
 - `src/content/steps`
@@ -80,6 +90,15 @@ scripts/         Вспомогательные скрипты проекта
 - `src/content/feature-cards`
 
 Схемы этих данных описаны в `src/content.config.ts`. Если меняется структура JSON, нужно синхронно обновлять и схему, и компоненты, которые читают данные.
+
+Соответствие основных коллекций и секций:
+- `src/content/home-directions` -> `src/components/home/DirectionsSection.astro`
+- `src/content/home-trust-items` -> `src/components/home/WhyTrustSection.astro`
+- `src/content/home-stats` -> `src/components/home/CompanyStatsSection.astro`
+- `src/content/home-facts` -> `src/components/home/CompanyFactsSection.astro`
+- `src/content/home-faq` -> `src/components/common/FaqSection.astro` на главной
+- `src/content/faq` -> `src/components/common/FaqSection.astro` на ECOM-странице
+- `src/content/steps` -> `src/components/common/StepsSection.astro`
 
 Если нужно изменить логику калькулятора, смотрите:
 - `src/lib/calculator.ts`
@@ -101,6 +120,10 @@ scripts/         Вспомогательные скрипты проекта
 
 ## Работа с интерактивностью
 В проекте используются небольшие клиентские скрипты, которые инициализируются из Astro-компонентов через inline `<script>`.
+
+Пример общей секции с повторным использованием логики:
+- `src/components/common/StepsSection.astro`
+- `src/scripts/common/steps-section.ts`
 
 Важно:
 - учитывать повторную инициализацию после `astro:after-swap`
@@ -134,6 +157,11 @@ scripts/         Вспомогательные скрипты проекта
 - `dist/`
 - `.astro/`
 - `node_modules/`
+- `.devserver*`
+- `.playwright-cli/`
+- `output/`
+- `package/`
+- `github-pages-url.txt`
 - локальные логи
 - tunnel/debug-файлы
 - временные служебные файлы IDE и локальных инструментов
