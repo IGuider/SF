@@ -65,7 +65,7 @@ const cards = (await getCollection('homeDirections'))
 
 						<div class="directions-card__body">
 							<h3 class="directions-card__title">{card.title}</h3>
-							<p class="directions-card__description">{card.description}</p>
+							<p class="directions-card__description" set:html={card.description}></p>
 							<Button
 								as="a"
 								href={card.href}

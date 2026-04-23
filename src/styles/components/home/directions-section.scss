@@ -193,6 +193,10 @@
 			margin: 14px 0;
 			font-size: 18px;
 			letter-spacing: -0.64px;
+
+			br {
+				display: none;
+			}
 		}
 
 		&--marketplaces {
