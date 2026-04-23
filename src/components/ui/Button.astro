@@ -4,6 +4,8 @@ import '../../styles/components/ui/button.scss';
 interface Props {
 	as?: 'button' | 'a';
 	href?: string;
+	target?: '_blank' | '_self' | '_parent' | '_top';
+	rel?: string;
 	type?: 'button' | 'submit' | 'reset';
 	variant?: 'primary' | 'secondary' | 'outline';
 	size?: 'md' | 'lg' | 'xl';
@@ -13,6 +15,8 @@ interface Props {
 const {
 	as = 'button',
 	href,
+	target,
+	rel,
 	type = 'button',
 	variant = 'primary',
 	size = 'md',
@@ -26,7 +30,7 @@ const componentClass = ['ui-button', `ui-button--${variant}`, `ui-button--${size
 
 {
 	as === 'a' ? (
-		<a class={componentClass} href={href}>
+		<a class={componentClass} href={href} target={target} rel={rel}>
 			<slot />
 		</a>
 	) : (

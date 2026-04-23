@@ -3,5 +3,6 @@
 	"description": "Финансовые решения для закупки товара и роста оборота",
 	"modifier": "marketplaces",
 	"href": "ecom",
+	"buttonVariant": "primary",
 	"order": 1
 }

@@ -76,7 +76,7 @@
 @media (max-width: 1440px) {
 	.directions-section {
 		&__grid {
-			grid-template-columns: minmax(0, 1fr) 460px minmax(0, 1fr);
+			grid-template-columns: minmax(0, 1fr) 440px minmax(0, 1fr);
 		}
 	}
 
@@ -220,8 +220,8 @@
 		min-height: 207px;
 
 		&__body {
-			padding: 27px 20px 27px;
-			max-width: 200px;
+			padding: 27px 15px 27px 20px;
+			max-width: 225px;
 		}
 
 		&__title {
@@ -233,10 +233,6 @@
 			margin-top: 10px;
 			font-size: 16px;
 			letter-spacing: -0.64px;
-		}
-
-		&__link {
-			display: none;
 		}
 
 		&--marketplaces {

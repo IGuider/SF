@@ -42,6 +42,18 @@ const turnoverOptions = [
 						<span class="lead-form-section__error">Необходимо заполнить поле</span>
 					</label>
 
+					<label class="lead-form-section__field">
+						<input
+							class="lead-form-section__input"
+							name="email"
+							type="email"
+							autocomplete="email"
+							inputmode="email"
+							placeholder=" "
+						/>
+						<span class="lead-form-section__field-label">Почта</span>
+					</label>
+
 					<label class="lead-form-section__field" data-required-field>
 						<input
 							class="lead-form-section__input"
@@ -112,9 +124,7 @@ const turnoverOptions = [
 					<label class="lead-form-section__consent" data-required-field data-invalid="false">
 						<input class="lead-form-section__checkbox" name="consent" type="checkbox" required />
 						<span class="lead-form-section__consent-text">
-							Нажимая кнопку, я принимаю <a href="#privacy">условия оферты</a>
-							<br />
-							и соглашаюсь на <a href="#privacy">обработку персональных данных</a>
+							Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
 						</span>
 						<span class="lead-form-section__checkbox-box" aria-hidden="true">
 							<svg

@@ -27,6 +27,9 @@ const homeDirections = defineCollection({
 		description: z.string(),
 		modifier: z.enum(['marketplaces', 'procurement', 'guarantees']),
 		href: z.string(),
+		ctaLabel: z.string().optional(),
+		buttonVariant: z.enum(['primary', 'secondary', 'outline']).optional(),
+		openInNewTab: z.boolean().optional(),
 		order: z.number().int().positive(),
 	}),
 });

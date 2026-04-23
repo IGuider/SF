@@ -29,12 +29,14 @@ const directionImageMap = {
 	},
 } as const;
 
+const isAbsoluteUrl = (href: string) => /^(?:[a-z][a-z\d+\-.]*:)?\/\//i.test(href);
+
 const cards = (await getCollection('homeDirections'))
 	.sort((left, right) => left.data.order - right.data.order)
 	.map((item) => ({
 		...item.data,
 		...directionImageMap[item.data.modifier],
-		href: `${basePath}${item.data.href}`,
+		href: isAbsoluteUrl(item.data.href) ? item.data.href : `${basePath}${item.data.href}`,
 	}));
 ---
 
@@ -64,8 +66,16 @@ const cards = (await getCollection('homeDirections'))
 						<div class="directions-card__body">
 							<h3 class="directions-card__title">{card.title}</h3>
 							<p class="directions-card__description">{card.description}</p>
-							<Button as="a" href={card.href} variant="secondary" size="lg" class="directions-card__link">
-								Подробнее
+							<Button
+								as="a"
+								href={card.href}
+								target={card.openInNewTab ? '_blank' : undefined}
+								rel={card.openInNewTab ? 'noreferrer' : undefined}
+								variant={card.buttonVariant ?? 'secondary'}
+								size="lg"
+								class="directions-card__link"
+							>
+								{card.ctaLabel ?? 'Подробнее'}
 							</Button>
 						</div>
 					</article>

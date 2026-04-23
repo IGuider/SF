@@ -1,7 +1,10 @@
 {
-	"title": "Банковские гарантии",
-	"description": "Обеспечение заявки и исполнения контракта",
+	"title": "Платформа для агентов",
+	"description": "Все клиенты на одной удобной платформе",
 	"modifier": "guarantees",
-	"href": "ecom",
+	"href": "https://platform.simplefinance.ru/",
+	"ctaLabel": "Перейти на платформу",
+	"buttonVariant": "secondary",
+	"openInNewTab": true,
 	"order": 3
 }

@@ -8,22 +8,22 @@
 
 .why-trust-card {
 	display: grid;
-	gap: 26px;
+	gap: 20px;
+	border-radius: var(--radius-md);
+	background: var(--gradient-surface-feature);
+	padding: 22px 35px;
 
 	&__headline {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 16px;
-		padding: 22px 28px;
-		border-radius: var(--radius-md);
-		background: var(--color-surface-card);
+		gap: 14px;
 	}
 
 	&__title {
 		margin: 0;
-		font-size: 50px;
-		letter-spacing: -2.109px;
+		font-size: 48px;
+		letter-spacing: -2px;
 		font-weight: var(--font-weight-medium);
 		color: var(--color-primary);
 		text-align: center;
@@ -46,7 +46,6 @@
 
 	&__description {
 		margin: 0;
-		padding-inline: 22px;
 		font-size: 26px;
 		letter-spacing: -1.16px;
 		color: var(--color-text-strong);
@@ -56,11 +55,8 @@
 
 @media (max-width: 1440px) {
 	.why-trust-card {
-		gap: 20px;
-
-		&__headline {
-			padding: 20px 22px;
-		}
+		gap: 18px;
+		padding: 22px 28px;
 
 		&__title {
 			font-size: 37px;
@@ -75,7 +71,7 @@
 		}
 
 		&__description {
-			padding-inline: 22px;
+			padding: 0;
 			font-size: 21px;
 			letter-spacing: -1.04px;
 		}
@@ -84,9 +80,10 @@
 @media (max-width: 1024px) {
 	.why-trust-card {
 		gap: 14px;
+		padding: 18px 19px;
 
 		&__headline {
-			padding: 18px 19px;
+			padding: 0;
 			gap: 8px;
 		}
 
@@ -101,7 +98,7 @@
 		}
 
 		&__description {
-			padding-inline: 19px;
+			padding: 0;
 			font-size: 18px;
 			letter-spacing: -0.82px;
 		}
@@ -119,7 +116,7 @@
 	.why-trust-card {
 		border-radius: var(--radius-md);
 		background: var(--color-surface-card);
-		padding: 20px 22px;
+		padding: 22px 30px;
 
 		&__headline {
 			padding: 0;
