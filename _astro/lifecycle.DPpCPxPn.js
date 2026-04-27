@@ -1,0 +1,1 @@
+const a=new WeakSet,t=new WeakMap,o=e=>{const n=t.get(e);n&&(n(),t.delete(e))},c=e=>{if(a.has(e))return;a.add(e);const n=()=>{o(e);const s=e();typeof s=="function"&&t.set(e,s)};document.addEventListener("astro:after-swap",n),document.addEventListener("astro:before-swap",()=>o(e)),n()};export{c as r};
