@@ -1,8 +1,8 @@
 {
-	"title": "Продавцам маркетплейсов",
-	"description": "Финансовые решения для закупки товара<br> и роста оборота",
-	"modifier": "marketplaces",
-	"href": "ecom",
-	"buttonVariant": "primary",
-	"order": 1
+  "title": "Продавцам маркетплейсов",
+  "description": "Финансовые решения для закупки товара<br> и роста оборота",
+  "modifier": "marketplaces",
+  "href": "ecom",
+  "buttonVariant": "primary",
+  "order": 1
 }

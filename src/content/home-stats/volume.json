@@ -1,10 +1,10 @@
 {
-	"value": 100,
-	"prefix": ">",
-	"postfix": "",
-	"label": "млрд ₽",
-	"subtitle": "Направлено на развитие бизнеса",
-	"background": ">100",
-	"grouped": false,
-	"order": 2
+  "value": 100,
+  "prefix": ">",
+  "postfix": "",
+  "label": "млрд ₽",
+  "subtitle": "Направлено на развитие бизнеса",
+  "background": ">100",
+  "grouped": false,
+  "order": 2
 }

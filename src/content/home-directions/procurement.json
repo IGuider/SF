@@ -1,8 +1,8 @@
 {
-	"title": "Участникам гос- \u2028и коммерческих закупок",
-	"description": "Финансирование для участия в тендерах и исполнения контрактов",
-	"modifier": "procurement",
-	"href": "ecom",
-	"buttonVariant": "primary",
-	"order": 2
+  "title": "Участникам гос- \u2028и коммерческих закупок",
+  "description": "Финансирование для участия в тендерах и исполнения контрактов",
+  "modifier": "procurement",
+  "href": "ecom",
+  "buttonVariant": "primary",
+  "order": 2
 }

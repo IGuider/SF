@@ -1,17 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import Button from '../ui/Button.astro';
 import formBg from '../../assets/form-home-bg.png';
 import formBgTablet from '../../assets/form-home-bg-t.png';
 import '../../styles/components/home/lead-form-section.scss';
 
-const turnoverOptions = [
-	'До 5 млн ₽ в месяц',
-	'5-20 млн ₽ в месяц',
-	'20-75 млн ₽ в месяц',
-	'75-150 млн ₽ в месяц',
-	'Более 150 млн ₽ в месяц',
-];
+const turnoverOptions = (await getCollection('turnoverOptions'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data.label);
 ---
 
 <section class="lead-form-section section" id="lead-form" aria-labelledby="lead-form-title">
@@ -42,7 +39,7 @@ const turnoverOptions = [
 						<span class="lead-form-section__error">Необходимо заполнить поле</span>
 					</label>
 
-					<label class="lead-form-section__field">
+					<label class="lead-form-section__field" data-required-field>
 						<input
 							class="lead-form-section__input"
 							name="email"
@@ -50,8 +47,10 @@ const turnoverOptions = [
 							autocomplete="email"
 							inputmode="email"
 							placeholder=" "
+							required
 						/>
 						<span class="lead-form-section__field-label">Почта</span>
+						<span class="lead-form-section__error">Введите корректную почту</span>
 					</label>
 
 					<label class="lead-form-section__field" data-required-field>
@@ -62,10 +61,12 @@ const turnoverOptions = [
 							inputmode="numeric"
 							autocomplete="off"
 							placeholder=" "
+							pattern="[0-9]{10}|[0-9]{12}"
+							maxlength="12"
 							required
 						/>
 						<span class="lead-form-section__field-label">ИНН организации</span>
-						<span class="lead-form-section__error">Необходимо заполнить поле</span>
+						<span class="lead-form-section__error">Введите корректный ИНН</span>
 					</label>
 
 					<div
@@ -123,9 +124,6 @@ const turnoverOptions = [
 
 					<label class="lead-form-section__consent" data-required-field data-invalid="false">
 						<input class="lead-form-section__checkbox" name="consent" type="checkbox" required />
-						<span class="lead-form-section__consent-text">
-							Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
-						</span>
 						<span class="lead-form-section__checkbox-box" aria-hidden="true">
 							<svg
 								class="lead-form-section__checkbox-check"
@@ -141,6 +139,9 @@ const turnoverOptions = [
 									stroke-linejoin="round"
 								/>
 							</svg>
+						</span>
+						<span class="lead-form-section__consent-text">
+							Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
 						</span>
 					</label>
 

@@ -1,86 +1,98 @@
 const DURATION = 1400;
 
 const formatNumber = (value: number, grouped: boolean) =>
-	grouped ? new Intl.NumberFormat('ru-RU').format(value) : String(value);
+  grouped ? new Intl.NumberFormat("ru-RU").format(value) : String(value);
 
 const renderNumber = (node: HTMLElement, value: number) => {
-	const prefix = node.dataset.prefix || '';
-	const postfix = node.dataset.postfix || '';
-	const grouped = node.dataset.grouped === 'true';
+  const prefix = node.dataset.prefix || "";
+  const postfix = node.dataset.postfix || "";
+  const grouped = node.dataset.grouped === "true";
 
-	node.textContent = `${prefix}${formatNumber(value, grouped)}${postfix}`;
+  node.textContent = `${prefix}${formatNumber(value, grouped)}${postfix}`;
 };
 
 const animateNumber = (node: HTMLElement) => {
-	const target = Number.parseInt(node.dataset.target || '0', 10);
+  const target = Number.parseInt(node.dataset.target || "0", 10);
 
-	if (!Number.isFinite(target)) {
-		return;
-	}
+  if (!Number.isFinite(target)) {
+    return;
+  }
 
-	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-		renderNumber(node, target);
-		return;
-	}
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    renderNumber(node, target);
+    return;
+  }
 
-	const startedAt = performance.now();
+  const startedAt = performance.now();
 
-	const tick = (timestamp: number) => {
-		const progress = Math.min((timestamp - startedAt) / DURATION, 1);
-		const nextValue = Math.round(target * (1 - (1 - progress) ** 3));
-		renderNumber(node, nextValue);
+  const tick = (timestamp: number) => {
+    const progress = Math.min((timestamp - startedAt) / DURATION, 1);
+    const nextValue = Math.round(target * (1 - (1 - progress) ** 3));
+    renderNumber(node, nextValue);
 
-		if (progress < 1) {
-			requestAnimationFrame(tick);
-			return;
-		}
+    if (progress < 1) {
+      requestAnimationFrame(tick);
+      return;
+    }
 
-		renderNumber(node, target);
-	};
+    renderNumber(node, target);
+  };
 
-	requestAnimationFrame(tick);
+  requestAnimationFrame(tick);
 };
 
 export const initCompanyStatsCounter = () => {
-	for (const section of document.querySelectorAll('.company-stats-section')) {
-		if (!(section instanceof HTMLElement) || section.dataset.counterStarted === 'true') {
-			continue;
-		}
+  const observers: IntersectionObserver[] = [];
 
-		const numbers = [...section.querySelectorAll('[data-company-stat-number]')].filter(
-			(node): node is HTMLElement => node instanceof HTMLElement,
-		);
+  for (const section of document.querySelectorAll(".company-stats-section")) {
+    if (
+      !(section instanceof HTMLElement) ||
+      section.dataset.counterStarted === "true"
+    ) {
+      continue;
+    }
 
-		if (!numbers.length) {
-			continue;
-		}
+    const numbers = [
+      ...section.querySelectorAll("[data-company-stat-number]"),
+    ].filter((node): node is HTMLElement => node instanceof HTMLElement);
 
-		for (const number of numbers) {
-			renderNumber(number, 0);
-		}
+    if (!numbers.length) {
+      continue;
+    }
 
-		if (!('IntersectionObserver' in window)) {
-			numbers.forEach(animateNumber);
-			section.dataset.counterStarted = 'true';
-			continue;
-		}
+    for (const number of numbers) {
+      renderNumber(number, 0);
+    }
 
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (!entries.some((entry) => entry.isIntersecting)) {
-					return;
-				}
+    if (!("IntersectionObserver" in window)) {
+      numbers.forEach(animateNumber);
+      section.dataset.counterStarted = "true";
+      continue;
+    }
 
-				numbers.forEach(animateNumber);
-				section.dataset.counterStarted = 'true';
-				observer.disconnect();
-			},
-			{
-				threshold: 0.25,
-				rootMargin: '0px 0px -12% 0px',
-			},
-		);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) {
+          return;
+        }
 
-		observer.observe(section);
-	}
+        numbers.forEach(animateNumber);
+        section.dataset.counterStarted = "true";
+        observer.disconnect();
+      },
+      {
+        threshold: 0.25,
+        rootMargin: "0px 0px -12% 0px",
+      },
+    );
+
+    observer.observe(section);
+    observers.push(observer);
+  }
+
+  return () => {
+    for (const observer of observers) {
+      observer.disconnect();
+    }
+  };
 };

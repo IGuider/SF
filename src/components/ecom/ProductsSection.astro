@@ -114,8 +114,8 @@ const cards = (await getCollection('products'))
 </noscript>
 
 <script>
+  import { runOnPageLoad } from '../../scripts/common/lifecycle';
   import { initProductsSection } from '../../scripts/ecom/products-section';
 
-  initProductsSection();
-  document.addEventListener('astro:after-swap', initProductsSection);
+  runOnPageLoad(initProductsSection);
 </script>

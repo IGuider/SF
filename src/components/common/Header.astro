@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import logo from '../../assets/sf-logo.svg';
 import menuDecorTop from '../../assets/menu-bg1.png';
 import menuDecorBottom from '../../assets/menu-bg2.png';
@@ -25,12 +26,10 @@ const defaultNavItems = [
 	{ label: 'Контакты', href: '#contacts' },
 ];
 
-const socialLinks = [
-	{ label: 'Telegram', href: '#', icon: 'telegram' },
-	{ label: 'Max', href: '#', icon: 'max' },
-	{ label: 'VK', href: '#', icon: 'vk' },
-	{ label: 'Email', href: 'mailto:info@simplefinance.ru', icon: 'mail' },
-] as const;
+const socialLinks = (await getCollection('socialLinks'))
+	.filter((item) => item.data.contexts.includes('header'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data);
 
 const basePath = import.meta.env.BASE_URL.endsWith('/')
 	? import.meta.env.BASE_URL
@@ -99,7 +98,7 @@ const {
 						{
 							socialLinks.map((item) => (
 								<li>
-									<a href={item.href} aria-label={item.label}>
+									<a href={item.href} aria-label={item.label} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noreferrer' : undefined}>
 										<SocialIcon icon={item.icon} />
 									</a>
 								</li>
@@ -121,9 +120,8 @@ const {
 <script>
 	import { initActiveNav } from '../../scripts/common/active-nav';
 	import { initHeaderMenu } from '../../scripts/common/header-menu';
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
 
-	initHeaderMenu();
-	initActiveNav();
-	document.addEventListener('astro:after-swap', initHeaderMenu);
-	document.addEventListener('astro:after-swap', initActiveNav);
+	runOnPageLoad(initHeaderMenu);
+	runOnPageLoad(initActiveNav);
 </script>

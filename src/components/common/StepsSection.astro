@@ -46,8 +46,8 @@ const ctaStep = steps.find((step) => step.data.ctaLabel);
 </section>
 
 <script>
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
 	import { initStepsSection } from '../../scripts/common/steps-section';
 
-	initStepsSection();
-	document.addEventListener('astro:after-swap', initStepsSection);
+	runOnPageLoad(initStepsSection);
 </script>

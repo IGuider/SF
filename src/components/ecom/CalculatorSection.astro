@@ -248,8 +248,8 @@ import Button from '../ui/Button.astro';
 </noscript>
 
 <script>
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
 	import { initCalculatorSections } from '../../scripts/ecom/calculator-section';
 
-	initCalculatorSections();
-	document.addEventListener('astro:after-swap', initCalculatorSections);
+	runOnPageLoad(initCalculatorSections);
 </script>

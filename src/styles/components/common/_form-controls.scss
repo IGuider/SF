@@ -1,0 +1,333 @@
+@mixin floating-field(
+  $block,
+  $height,
+  $padding,
+  $font-size,
+  $label-top,
+  $error-top,
+  $border-color,
+  $background,
+  $floating-top: 6px,
+  $floating-font-size: 13px,
+  $select-padding: $padding,
+  $select-icon-top: $label-top,
+  $select-label-font-size: $font-size,
+  $dropdown-border-color: var(--color-primary-border-medium),
+  $dropdown-radius: var(--radius-xs),
+  $dropdown-shadow: var(--shadow-soft)
+) {
+  &__field {
+    position: relative;
+    display: block;
+    padding-bottom: 0;
+    transition: padding-bottom var(--transition-duration-fast) ease;
+
+    &[data-invalid="true"] {
+      padding-bottom: 10px;
+
+      #{$block}__input {
+        border-color: var(--color-warning);
+        background: var(--color-control-invalid-bg);
+      }
+
+      #{$block}__field-label,
+      #{$block}__field-label--select,
+      #{$block}__select-icon {
+        color: var(--color-primary-70);
+      }
+
+      #{$block}__error {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 24px;
+      }
+    }
+  }
+
+  &__field-label {
+    position: absolute;
+    top: $label-top;
+    left: 16px;
+    pointer-events: none;
+    font-size: $font-size;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-primary-50);
+    transform: translateY(-50%);
+    transform-origin: left top;
+    transition:
+      top 0.16s ease,
+      transform 0.16s ease,
+      font-size 0.16s ease,
+      color 0.16s ease,
+      opacity 0.16s ease;
+  }
+
+  &__error {
+    position: absolute;
+    top: $error-top;
+    left: 0;
+    padding-left: 8px;
+    font-size: 14px;
+    color: var(--color-warning-dark);
+    opacity: 0;
+    transform: translateY(-4px);
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      max-height 0.2s ease;
+  }
+
+  &__input {
+    width: 100%;
+    height: $height;
+    padding: $padding;
+    border: 1px solid $border-color;
+    border-radius: var(--radius-xs);
+    outline: none;
+    background: $background;
+    font-size: $font-size;
+    font-weight: var(--font-weight-regular);
+    line-height: 1.2;
+    color: var(--color-text-strong);
+    transition:
+      border-color var(--transition-duration-fast) ease,
+      box-shadow var(--transition-duration-fast) ease,
+      background-color var(--transition-duration-fast) ease;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus {
+      border-color: var(--color-primary);
+    }
+
+    &:required:invalid {
+      box-shadow: none;
+    }
+  }
+
+  input#{$block}__input:focus + &__field-label,
+  input#{$block}__input:not(:placeholder-shown) + &__field-label {
+    top: $floating-top;
+    transform: translateY(0);
+    font-size: $floating-font-size;
+    color: var(--color-primary-80);
+    letter-spacing: normal;
+  }
+
+  &__field--select {
+    position: relative;
+  }
+
+  &__field-label--select {
+    z-index: 1;
+  }
+
+  &__select {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: $select-padding;
+    color: var(--color-primary-50);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &__select-label {
+    display: block;
+    width: 100%;
+    font-size: $select-label-font-size;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-strong);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__select:focus + &__field-label--select,
+  &__field--select:focus-within &__field-label--select,
+  &__field--select[data-has-value="true"] &__field-label--select {
+    top: $floating-top;
+    transform: translateY(0);
+    font-size: $floating-font-size;
+    color: var(--color-primary-80);
+    letter-spacing: normal;
+  }
+
+  &__field--select:focus-within &__select-icon,
+  &__field--select[data-has-value="true"] &__select-icon {
+    color: var(--color-primary-80);
+  }
+
+  &__select-icon {
+    position: absolute;
+    top: $select-icon-top;
+    right: 15px;
+    width: 16px;
+    height: 16px;
+    color: var(--color-primary-50);
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition:
+      transform var(--transition-duration-fast) ease,
+      color var(--transition-duration-fast) ease;
+  }
+
+  &__select[aria-expanded="true"] ~ &__select-icon {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    padding: 6px;
+    border: 1px solid $dropdown-border-color;
+    border-radius: $dropdown-radius;
+    background: var(--color-white);
+    box-shadow: $dropdown-shadow;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition:
+      opacity var(--transition-duration-fast) ease,
+      transform var(--transition-duration-fast) ease,
+      visibility var(--transition-duration-fast) ease;
+
+    &[data-state="open"] {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+  }
+
+  &__option {
+    padding: 12px 16px;
+    border: 0;
+    border-radius: var(--radius-xs);
+    background: transparent;
+    font-size: 16px;
+    color: var(--color-text-strong);
+    text-align: left;
+    cursor: pointer;
+    transition:
+      background-color var(--transition-duration-fast) ease,
+      color var(--transition-duration-fast) ease;
+
+    &:hover {
+      background: var(--color-option-hover-bg);
+      color: var(--color-option-hover-text);
+    }
+
+    &[data-selected="true"] {
+      background: var(--color-option-selected-bg);
+      color: var(--color-option-selected-text);
+    }
+  }
+}
+
+@mixin consent(
+  $block,
+  $checkbox-size,
+  $font-size,
+  $gap,
+  $line-height,
+  $margin-block,
+  $checkbox-border-color
+) {
+  &__consent {
+    display: flex;
+    gap: $gap;
+    align-items: center;
+    position: relative;
+    margin-block: $margin-block;
+    padding-bottom: 0;
+    font-size: $font-size;
+    line-height: $line-height;
+    color: var(--color-primary);
+    transition: padding-bottom var(--transition-duration-fast) ease;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 1px;
+    }
+
+    &[data-invalid="true"] {
+      color: var(--color-warning-dark);
+
+      #{$block}__checkbox-box {
+        border-color: var(--color-warning);
+        background: var(--color-control-invalid-bg);
+      }
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__consent-text {
+    flex: 1 1 auto;
+  }
+
+  &__checkbox-box {
+    flex: 0 0 $checkbox-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    margin-top: 1px;
+    border: 1px solid $checkbox-border-color;
+    border-radius: 5px;
+    background: var(--color-white);
+    cursor: pointer;
+    transition:
+      border-color var(--transition-duration-fast) ease,
+      background-color var(--transition-duration-fast) ease,
+      box-shadow var(--transition-duration-fast) ease;
+  }
+
+  &__checkbox-check {
+    width: 13px;
+    height: 13px;
+    opacity: 0;
+    transform: scale(0.1);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  &__checkbox:focus-visible + &__checkbox-box {
+    box-shadow: 0 0 0 3px var(--color-control-border-soft);
+  }
+
+  &__checkbox:checked + &__checkbox-box {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+  }
+
+  &__checkbox:checked + &__checkbox-box &__checkbox-check {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

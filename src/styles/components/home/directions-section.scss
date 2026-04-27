@@ -1,286 +1,286 @@
 .directions-section {
-	&__grid {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) 512px minmax(0, 1fr);
-		gap: var(--gap-sm);
-	}
+  &__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 512px minmax(0, 1fr);
+    gap: var(--gap-sm);
+  }
 }
 
 .directions-card {
-	display: flex;
-	flex-direction: column;
-	min-height: 714px;
-	border-radius: var(--radius-md);
-	overflow: hidden;
-	position: relative;
-	background: var(--gradient-surface-feature);
+  display: flex;
+  flex-direction: column;
+  min-height: 714px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  background: var(--gradient-surface-feature);
 
-	&__visual {
-		position: absolute;
-		right: 0;
-		top: 0;
-	}
+  &__visual {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 
-	&__image {
-	}
+  &__image {
+  }
 
-	&__picture {
-		display: block;
-	}
+  &__picture {
+    display: block;
+  }
 
-	&__body {
-		display: flex;
-		flex: 1 1 auto;
-		flex-direction: column;
-		align-items: flex-start;
-		padding: 40px;
-	}
+  &__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+  }
 
-	&__title {
-		margin-top: auto;
-		font-size: 40px;
-		letter-spacing: -1.6px;
-		font-weight: var(--font-weight-medium);
-		color: var(--color-text-strong);
-	}
+  &__title {
+    margin-top: auto;
+    font-size: 40px;
+    letter-spacing: -1.6px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-strong);
+  }
 
-	&__description {
-		margin: 24px 0;
-		font-size: 29px;
-		letter-spacing: -1.16px;
-		color: var(--color-text-muted);
-	}
+  &__description {
+    margin: 24px 0;
+    font-size: 29px;
+    letter-spacing: -1.16px;
+    color: var(--color-text-muted);
+  }
 
-	&--marketplaces {
-		.directions-card__visual {
-			width: 250px;
-			height: auto;
-		}
-	}
+  &--marketplaces {
+    .directions-card__visual {
+      width: 250px;
+      height: auto;
+    }
+  }
 
-	&--procurement {
-		.directions-card__visual {
-			width: 350px;
-			height: auto;
-		}
-	}
+  &--procurement {
+    .directions-card__visual {
+      width: 350px;
+      height: auto;
+    }
+  }
 
-	&--guarantees {
-		.directions-card__visual {
-			width: 255px;
-			height: auto;
-		}
-	}
+  &--guarantees {
+    .directions-card__visual {
+      width: 255px;
+      height: auto;
+    }
+  }
 }
 
 @media (max-width: 1440px) {
-	.directions-section {
-		&__grid {
-			grid-template-columns: minmax(0, 1fr) 440px minmax(0, 1fr);
-		}
-	}
+  .directions-section {
+    &__grid {
+      grid-template-columns: minmax(0, 1fr) 440px minmax(0, 1fr);
+    }
+  }
 
-	.directions-card {
-		min-height: 580px;
+  .directions-card {
+    min-height: 580px;
 
-		&__body {
-			padding: 30px;
-		}
+    &__body {
+      padding: 30px;
+    }
 
-		&__title {
-			font-size: 33px;
-			letter-spacing: -1.4px;
-		}
+    &__title {
+      font-size: 33px;
+      letter-spacing: -1.4px;
+    }
 
-		&__description {
-			margin: 20px 0;
-			font-size: 22px;
-			letter-spacing: -1.04px;
-		}
+    &__description {
+      margin: 20px 0;
+      font-size: 22px;
+      letter-spacing: -1.04px;
+    }
 
-		&--marketplaces {
-			.directions-card__visual {
-				width: 200px;
-			}
-		}
+    &--marketplaces {
+      .directions-card__visual {
+        width: 200px;
+      }
+    }
 
-		&--procurement {
-			.directions-card__visual {
-				width: 280px;
-			}
-		}
+    &--procurement {
+      .directions-card__visual {
+        width: 280px;
+      }
+    }
 
-		&--guarantees {
-			.directions-card__visual {
-				width: 210px;
-			}
-		}
-	}
+    &--guarantees {
+      .directions-card__visual {
+        width: 210px;
+      }
+    }
+  }
 }
 
 @media (max-width: 1024px) {
-	.directions-section {
-		&__grid {
-			grid-template-columns: minmax(0, 1fr) 300px minmax(0, 1fr);
-		}
-	}
+  .directions-section {
+    &__grid {
+      grid-template-columns: minmax(0, 1fr) 300px minmax(0, 1fr);
+    }
+  }
 
-	.directions-card {
-		min-height: 500px;
+  .directions-card {
+    min-height: 500px;
 
-		&__body {
-			padding: 24px;
-		}
+    &__body {
+      padding: 24px;
+    }
 
-		&__title {
-			font-size: 25px;
-			letter-spacing: -1px;
-		}
+    &__title {
+      font-size: 25px;
+      letter-spacing: -1px;
+    }
 
-		&__description {
-			margin: 14px 0;
-			font-size: 18px;
-			letter-spacing: -0.72px;
-		}
+    &__description {
+      margin: 14px 0;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
 
-		&--marketplaces {
-			.directions-card__visual {
-				width: 180px;
-			}
-		}
+    &--marketplaces {
+      .directions-card__visual {
+        width: 180px;
+      }
+    }
 
-		&--procurement {
-			.directions-card__visual {
-				width: 260px;
-			}
-		}
+    &--procurement {
+      .directions-card__visual {
+        width: 260px;
+      }
+    }
 
-		&--guarantees {
-			.directions-card__visual {
-				width: 190px;
-			}
-		}
-	}
+    &--guarantees {
+      .directions-card__visual {
+        width: 190px;
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
-	.directions-section {
-		&__grid {
-			grid-template-columns: repeat(1, minmax(0, 1fr));
-		}
-	}
+  .directions-section {
+    &__grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
 
-	.directions-card {
-		min-height: 250px;
+  .directions-card {
+    min-height: 250px;
 
-		&__visual {
-			top: 50%;
-			transform: translateY(-50%);
-		}
+    &__visual {
+      top: 50%;
+      transform: translateY(-50%);
+    }
 
-		&__body {
-			padding: 30px 27px 30px 27px;
-			max-width: 330px;
-		}
+    &__body {
+      padding: 30px 27px 30px 27px;
+      max-width: 330px;
+    }
 
-		&__title {
-			font-size: 24px;
-			letter-spacing: -0.84px;
-			margin-top: 0;
-		}
+    &__title {
+      font-size: 24px;
+      letter-spacing: -0.84px;
+      margin-top: 0;
+    }
 
-		&__description {
-			margin: 14px 0;
-			font-size: 18px;
-			letter-spacing: -0.64px;
+    &__description {
+      margin: 14px 0;
+      font-size: 18px;
+      letter-spacing: -0.64px;
 
-			br {
-				display: none;
-			}
-		}
+      br {
+        display: none;
+      }
+    }
 
-		&--marketplaces {
-			.directions-card__visual {
-				width: 150px;
-			}
-		}
+    &--marketplaces {
+      .directions-card__visual {
+        width: 150px;
+      }
+    }
 
-		&--procurement {
-			.directions-card__visual {
-				width: 170px;
-			}
-		}
+    &--procurement {
+      .directions-card__visual {
+        width: 170px;
+      }
+    }
 
-		&--guarantees {
-			.directions-card__visual {
-				width: 156px;
-			}
-		}
-	}
+    &--guarantees {
+      .directions-card__visual {
+        width: 156px;
+      }
+    }
+  }
 }
 
 @media (max-width: 560px) {
-	.directions-card {
-		min-height: 207px;
+  .directions-card {
+    min-height: 207px;
 
-		&__body {
-			padding: 27px 15px 27px 20px;
-			max-width: 225px;
-		}
+    &__body {
+      padding: 27px 15px 27px 20px;
+      max-width: 225px;
+    }
 
-		&__title {
-			font-size: 21px;
-			letter-spacing: -0.84px;
-		}
+    &__title {
+      font-size: 21px;
+      letter-spacing: -0.84px;
+    }
 
-		&__description {
-			margin-top: 10px;
-			font-size: 16px;
-			letter-spacing: -0.64px;
-		}
+    &__description {
+      margin-top: 10px;
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
 
-		&--marketplaces {
-			.directions-card__visual {
-				width: 134px;
-			}
-		}
+    &--marketplaces {
+      .directions-card__visual {
+        width: 134px;
+      }
+    }
 
-		&--procurement {
-			.directions-card__visual {
-				width: 164px;
-			}
-		}
+    &--procurement {
+      .directions-card__visual {
+        width: 164px;
+      }
+    }
 
-		&--guarantees {
-			.directions-card__visual {
-				width: 142px;
-			}
-		}
-	}
+    &--guarantees {
+      .directions-card__visual {
+        width: 142px;
+      }
+    }
+  }
 }
 
 @media (max-width: 390px) {
-	.directions-card {
-		&__description {
-			margin: 8px 0 12px;
-		}
+  .directions-card {
+    &__description {
+      margin: 8px 0 12px;
+    }
 
-		&--marketplaces {
-			.directions-card__visual {
-				width: 122px;
-			}
-		}
+    &--marketplaces {
+      .directions-card__visual {
+        width: 122px;
+      }
+    }
 
-		&--procurement {
-			.directions-card__visual {
-				width: 137px;
-			}
-		}
+    &--procurement {
+      .directions-card__visual {
+        width: 137px;
+      }
+    }
 
-		&--guarantees {
-			.directions-card__visual {
-				width: 130px;
-			}
-		}
-	}
+    &--guarantees {
+      .directions-card__visual {
+        width: 130px;
+      }
+    }
+  }
 }

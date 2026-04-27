@@ -1,40 +1,19 @@
 ---
+import { getCollection } from 'astro:content';
 import sfLogo from '../../assets/sf-logo.svg';
 import sfpLogo from '../../assets/sfp-logo.svg';
 import skLogo from '../../assets/Sk-logo.svg';
 import '../../styles/components/common/footer.scss';
 import SocialIcon from '../ui/SocialIcon.astro';
 
-const footerLinks = [
-	{ label: 'Наш блог', href: '#blog' },
-	{ label: 'Реквизиты', href: '#requisites' },
-	{ label: 'Контакты', href: '#contacts' },
-	{ label: 'Политика конфиденциальности', href: '#privacy' },
-	{ label: 'Юридические документы', href: '#documents' },
-];
+const footerLinks = (await getCollection('footerLinks'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data);
 
-const socialLinks = [
-	{
-		label: 'Telegram',
-		href: '#',
-		icon: 'telegram',
-	},
-	{
-		label: 'Max',
-		href: '#',
-		icon: 'max',
-	},
-	{
-		label: 'VK',
-		href: '#',
-		icon: 'vk',
-	},
-	{
-		label: 'Email',
-		href: 'mailto:info@simplefinance.ru',
-		icon: 'mail',
-	},
-] as const;
+const socialLinks = (await getCollection('socialLinks'))
+	.filter((item) => item.data.contexts.includes('footer'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data);
 ---
 
 <footer class="site-footer" id="contacts">
@@ -122,6 +101,7 @@ const socialLinks = [
 
 <script>
 	import { initFooterDisclosure } from '../../scripts/common/footer-disclosure';
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
 
-	initFooterDisclosure();
+	runOnPageLoad(initFooterDisclosure);
 </script>

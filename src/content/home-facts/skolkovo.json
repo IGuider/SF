@@ -1,8 +1,8 @@
 {
-	"title": "Резидент Сколково",
-	"description": "IT-платформа SimpleFinance,<br> технологический проект",
-	"logo": "sk",
-	"logoAlt": "Сколково",
-	"logoWidth": "180px",
-	"order": 2
+  "title": "Резидент Сколково",
+  "description": "IT-платформа SimpleFinance,<br> технологический проект",
+  "logo": "sk",
+  "logoAlt": "Сколково",
+  "logoWidth": "180px",
+  "order": 2
 }

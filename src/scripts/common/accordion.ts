@@ -3,149 +3,171 @@ const animationFrames = new WeakMap<HTMLElement, number>();
 const resizeHandlers = new Map<string, EventListener>();
 
 const clearScheduledState = (panel: HTMLElement) => {
-	const transitionHandler = transitionHandlers.get(panel);
+  const transitionHandler = transitionHandlers.get(panel);
 
-	if (transitionHandler) {
-		panel.removeEventListener('transitionend', transitionHandler);
-		transitionHandlers.delete(panel);
-	}
+  if (transitionHandler) {
+    panel.removeEventListener("transitionend", transitionHandler);
+    transitionHandlers.delete(panel);
+  }
 
-	const animationFrame = animationFrames.get(panel);
+  const animationFrame = animationFrames.get(panel);
 
-	if (animationFrame !== undefined) {
-		cancelAnimationFrame(animationFrame);
-		animationFrames.delete(panel);
-	}
+  if (animationFrame !== undefined) {
+    cancelAnimationFrame(animationFrame);
+    animationFrames.delete(panel);
+  }
 };
 
 export type AccordionConfig = {
-	rootSelector: string;
-	itemSelector: string;
-	triggerSelector: string;
-	panelSelector: string;
-	panelInnerSelector: string;
-	openClass: string;
+  rootSelector: string;
+  itemSelector: string;
+  triggerSelector: string;
+  panelSelector: string;
+  panelInnerSelector: string;
+  openClass: string;
 };
 
-const setPanelState = (item: Element, expanded: boolean, config: AccordionConfig) => {
-	const trigger = item.querySelector(config.triggerSelector);
-	const panel = item.querySelector(config.panelSelector);
-	const panelInner = item.querySelector(config.panelInnerSelector);
+const setPanelState = (
+  item: Element,
+  expanded: boolean,
+  config: AccordionConfig,
+) => {
+  const trigger = item.querySelector(config.triggerSelector);
+  const panel = item.querySelector(config.panelSelector);
+  const panelInner = item.querySelector(config.panelInnerSelector);
 
-	if (!(trigger instanceof HTMLButtonElement) || !(panel instanceof HTMLElement) || !(panelInner instanceof HTMLElement)) {
-		return;
-	}
+  if (
+    !(trigger instanceof HTMLButtonElement) ||
+    !(panel instanceof HTMLElement) ||
+    !(panelInner instanceof HTMLElement)
+  ) {
+    return;
+  }
 
-	clearScheduledState(panel);
-	trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  clearScheduledState(panel);
+  trigger.setAttribute("aria-expanded", expanded ? "true" : "false");
 
-	const onTransitionEnd: EventListener = (event) => {
-		if (!(event instanceof TransitionEvent) || event.propertyName !== 'height') {
-			return;
-		}
+  const onTransitionEnd: EventListener = (event) => {
+    if (
+      !(event instanceof TransitionEvent) ||
+      event.propertyName !== "height"
+    ) {
+      return;
+    }
 
-		panel.removeEventListener('transitionend', onTransitionEnd);
-		transitionHandlers.delete(panel);
+    panel.removeEventListener("transitionend", onTransitionEnd);
+    transitionHandlers.delete(panel);
 
-		if (expanded) {
-			panel.style.height = 'auto';
-			return;
-		}
+    if (expanded) {
+      panel.style.height = "auto";
+      return;
+    }
 
-		panel.hidden = true;
-	};
+    panel.hidden = true;
+  };
 
-	transitionHandlers.set(panel, onTransitionEnd);
-	panel.addEventListener('transitionend', onTransitionEnd);
+  transitionHandlers.set(panel, onTransitionEnd);
+  panel.addEventListener("transitionend", onTransitionEnd);
 
-	if (expanded) {
-		panel.hidden = false;
-		panel.style.height = '0px';
-		void panel.offsetHeight;
-		item.classList.add(config.openClass);
+  if (expanded) {
+    panel.hidden = false;
+    panel.style.height = "0px";
+    void panel.offsetHeight;
+    item.classList.add(config.openClass);
 
-		const animationFrame = requestAnimationFrame(() => {
-			panel.style.height = `${panelInner.offsetHeight}px`;
-			animationFrames.delete(panel);
-		});
+    const animationFrame = requestAnimationFrame(() => {
+      panel.style.height = `${panelInner.offsetHeight}px`;
+      animationFrames.delete(panel);
+    });
 
-		animationFrames.set(panel, animationFrame);
-		return;
-	}
+    animationFrames.set(panel, animationFrame);
+    return;
+  }
 
-	panel.style.height = `${panelInner.offsetHeight}px`;
-	void panel.offsetHeight;
-	item.classList.remove(config.openClass);
+  panel.style.height = `${panelInner.offsetHeight}px`;
+  void panel.offsetHeight;
+  item.classList.remove(config.openClass);
 
-	const animationFrame = requestAnimationFrame(() => {
-		panel.style.height = '0px';
-		animationFrames.delete(panel);
-	});
+  const animationFrame = requestAnimationFrame(() => {
+    panel.style.height = "0px";
+    animationFrames.delete(panel);
+  });
 
-	animationFrames.set(panel, animationFrame);
+  animationFrames.set(panel, animationFrame);
 };
 
 export const initAccordionGroup = (config: AccordionConfig) => {
-	const accordions = Array.from(document.querySelectorAll(`${config.rootSelector} ${config.itemSelector}`));
+  const accordions = Array.from(
+    document.querySelectorAll(`${config.rootSelector} ${config.itemSelector}`),
+  );
 
-	accordions.forEach((item) => {
-		const trigger = item.querySelector(config.triggerSelector);
-		const panel = item.querySelector(config.panelSelector);
-		const panelInner = item.querySelector(config.panelInnerSelector);
+  accordions.forEach((item) => {
+    const trigger = item.querySelector(config.triggerSelector);
+    const panel = item.querySelector(config.panelSelector);
+    const panelInner = item.querySelector(config.panelInnerSelector);
 
-		if (!(trigger instanceof HTMLButtonElement) || !(panel instanceof HTMLElement) || !(panelInner instanceof HTMLElement)) {
-			return;
-		}
+    if (
+      !(trigger instanceof HTMLButtonElement) ||
+      !(panel instanceof HTMLElement) ||
+      !(panelInner instanceof HTMLElement)
+    ) {
+      return;
+    }
 
-		if (item instanceof HTMLElement && item.dataset.accordionBound === 'true') {
-			return;
-		}
+    if (item instanceof HTMLElement && item.dataset.accordionBound === "true") {
+      return;
+    }
 
-		if (item.classList.contains(config.openClass)) {
-			panel.hidden = false;
-			panel.style.height = 'auto';
-		} else {
-			panel.hidden = true;
-			panel.style.height = '0px';
-		}
+    if (item.classList.contains(config.openClass)) {
+      panel.hidden = false;
+      panel.style.height = "auto";
+    } else {
+      panel.hidden = true;
+      panel.style.height = "0px";
+    }
 
-		trigger.addEventListener('click', () => {
-			const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-			setPanelState(item, !isExpanded, config);
-		});
+    trigger.addEventListener("click", () => {
+      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+      setPanelState(item, !isExpanded, config);
+    });
 
-		if (item instanceof HTMLElement) {
-			item.dataset.accordionBound = 'true';
-		}
-	});
+    if (item instanceof HTMLElement) {
+      item.dataset.accordionBound = "true";
+    }
+  });
 
-	const existingResizeHandler = resizeHandlers.get(config.rootSelector);
+  const existingResizeHandler = resizeHandlers.get(config.rootSelector);
 
-	if (existingResizeHandler) {
-		window.removeEventListener('resize', existingResizeHandler);
-	}
+  if (existingResizeHandler) {
+    window.removeEventListener("resize", existingResizeHandler);
+  }
 
-	const resizeHandler: EventListener = () => {
-		accordions.forEach((item) => {
-			if (!item.classList.contains(config.openClass)) {
-				return;
-			}
+  const resizeHandler: EventListener = () => {
+    accordions.forEach((item) => {
+      if (!item.classList.contains(config.openClass)) {
+        return;
+      }
 
-			const panel = item.querySelector(config.panelSelector);
-			const panelInner = item.querySelector(config.panelInnerSelector);
+      const panel = item.querySelector(config.panelSelector);
+      const panelInner = item.querySelector(config.panelInnerSelector);
 
-			if (panel instanceof HTMLElement && panelInner instanceof HTMLElement) {
-				panel.style.height = `${panelInner.offsetHeight}px`;
+      if (panel instanceof HTMLElement && panelInner instanceof HTMLElement) {
+        panel.style.height = `${panelInner.offsetHeight}px`;
 
-				requestAnimationFrame(() => {
-					if (item.classList.contains(config.openClass)) {
-						panel.style.height = 'auto';
-					}
-				});
-			}
-		});
-	};
+        requestAnimationFrame(() => {
+          if (item.classList.contains(config.openClass)) {
+            panel.style.height = "auto";
+          }
+        });
+      }
+    });
+  };
 
-	resizeHandlers.set(config.rootSelector, resizeHandler);
-	window.addEventListener('resize', resizeHandler);
+  resizeHandlers.set(config.rootSelector, resizeHandler);
+  window.addEventListener("resize", resizeHandler);
+
+  return () => {
+    window.removeEventListener("resize", resizeHandler);
+    resizeHandlers.delete(config.rootSelector);
+  };
 };

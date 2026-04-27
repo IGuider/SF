@@ -49,8 +49,8 @@ const faqItems = (await getCollection(collection)).sort((left, right) => left.da
 </section>
 
 <script>
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
 	import { initFaqSections } from '../../scripts/ecom/faq-section';
 
-	initFaqSections();
-	document.addEventListener('astro:after-swap', initFaqSections);
+	runOnPageLoad(initFaqSections);
 </script>

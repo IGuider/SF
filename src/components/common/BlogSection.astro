@@ -6,7 +6,9 @@ import '../../styles/components/common/blog-section.scss';
 import SocialIcon from '../ui/SocialIcon.astro';
 
 const posts = (await getCollection('blogPosts')).sort((left, right) => left.data.order - right.data.order);
-const socials = (await getCollection('socialLinks')).sort((left, right) => left.data.order - right.data.order);
+const socials = (await getCollection('socialLinks'))
+	.filter((item) => item.data.contexts.includes('blog'))
+	.sort((left, right) => left.data.order - right.data.order);
 ---
 
 <section class="blog-section section" id="blog" aria-labelledby="blog-title">

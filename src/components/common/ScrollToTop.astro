@@ -9,8 +9,8 @@ import '../../styles/components/common/scroll-to-top.scss';
 </button>
 
 <script>
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
 	import { initScrollToTop } from '../../scripts/common/scroll-to-top';
 
-	initScrollToTop();
-	document.addEventListener('astro:after-swap', initScrollToTop);
+	runOnPageLoad(initScrollToTop);
 </script>

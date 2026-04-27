@@ -68,10 +68,12 @@ const { id = 'consultation-dialog' } = Astro.props;
             inputmode="numeric"
             placeholder=" "
             autocomplete="off"
+            pattern="[0-9]{10}|[0-9]{12}"
+            maxlength="12"
             required
           />
           <span class="consultation-dialog__field-label">ИНН организации</span>
-          <span class="consultation-dialog__error">Необходимо заполнить поле</span>
+          <span class="consultation-dialog__error">Введите корректный ИНН</span>
         </label>
 
         <label
@@ -89,14 +91,11 @@ const { id = 'consultation-dialog' } = Astro.props;
             required
           />
           <span class="consultation-dialog__field-label">Почта</span>
-          <span class="consultation-dialog__error">Необходимо заполнить поле</span>
+          <span class="consultation-dialog__error">Введите корректную почту</span>
         </label>
 
         <label class="consultation-dialog__consent" data-required-field data-invalid="false">
           <input class="consultation-dialog__checkbox" name="consent" type="checkbox" required />
-          <span class="consultation-dialog__consent-text">
-            Отправляя заявку вы соглашаетесь <a href="#privacy">с условиями политики конфиденциальности и обработки персональных данных</a>
-          </span>
           <span class="consultation-dialog__checkbox-box" aria-hidden="true">
             <svg
               class="consultation-dialog__checkbox-check"
@@ -112,6 +111,9 @@ const { id = 'consultation-dialog' } = Astro.props;
                 stroke-linejoin="round"
               />
             </svg>
+          </span>
+          <span class="consultation-dialog__consent-text">
+            Отправляя заявку вы соглашаетесь <a href="#privacy">с условиями политики конфиденциальности и обработки персональных данных</a>
           </span>
         </label>
 

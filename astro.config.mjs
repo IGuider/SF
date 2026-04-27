@@ -1,10 +1,10 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
-const repository = process.env.GITHUB_REPOSITORY ?? '';
-const repositoryOwner = process.env.GITHUB_REPOSITORY_OWNER ?? '';
-const repositoryName = repository.split('/')[1] ?? '';
+const repository = process.env.GITHUB_REPOSITORY ?? "";
+const repositoryOwner = process.env.GITHUB_REPOSITORY_OWNER ?? "";
+const repositoryName = repository.split("/")[1] ?? "";
 const isUserSite = repositoryName === `${repositoryOwner}.github.io`;
 const githubPagesSite = repositoryOwner
   ? `https://${repositoryOwner}.github.io`
@@ -23,7 +23,7 @@ export default defineConfig({
     },
   },
   server: {
-    host: '127.0.0.1',
-    allowedHosts: ['.lhr.life'],
+    host: "127.0.0.1",
+    allowedHosts: [".lhr.life"],
   },
 });

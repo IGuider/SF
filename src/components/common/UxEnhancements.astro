@@ -1,9 +1,8 @@
 <script>
 	import { initCompanyStatsCounter } from '../../scripts/common/company-stats-counter';
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
 	import { initScrollReveal } from '../../scripts/common/scroll-reveal';
 
-	initScrollReveal();
-	initCompanyStatsCounter();
-	document.addEventListener('astro:after-swap', initScrollReveal);
-	document.addEventListener('astro:after-swap', initCompanyStatsCounter);
+	runOnPageLoad(initScrollReveal);
+	runOnPageLoad(initCompanyStatsCounter);
 </script>

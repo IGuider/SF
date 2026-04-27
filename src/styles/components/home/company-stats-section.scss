@@ -1,175 +1,175 @@
-@use '../ecom/shared-sections' as shared;
+@use "../common/section-mixins" as shared;
 
 .company-stats-section {
-	&__grid {
-		@include shared.feature-card-grid();
-	}
+  &__grid {
+    @include shared.feature-card-grid();
+  }
 }
 
 .company-stat-card {
-	position: relative;
-	display: grid;
-	align-content: space-between;
-	gap: 38px;
-	min-height: 380px;
-	padding: 44px 20px 34px 37px;
-	border-radius: var(--radius-md);
-	background: var(--gradient-surface-feature);
-	overflow: hidden;
-	isolation: isolate;
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  gap: 38px;
+  min-height: 380px;
+  padding: 44px 20px 34px 37px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-surface-feature);
+  overflow: hidden;
+  isolation: isolate;
 
-	&__background {
-		position: absolute;
-		top: -46px;
-		right: -28px;
-		z-index: -1;
-		font-size: 150px;
-		letter-spacing: -5.44px;
-		color: rgba(229, 237, 255, 0.7);
-		white-space: nowrap;
-		pointer-events: none;
-		font-weight: 600;
-	}
+  &__background {
+    position: absolute;
+    top: -46px;
+    right: -28px;
+    z-index: -1;
+    font-size: 150px;
+    letter-spacing: -5.44px;
+    color: rgba(229, 237, 255, 0.7);
+    white-space: nowrap;
+    pointer-events: none;
+    font-weight: 600;
+  }
 
-	&__value {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: baseline;
-		gap: 8px;
-		margin: 67px 0 0;
-		font-size: 90px;
-		font-style: normal;
-		font-weight: 300;
-		letter-spacing: -3.6px;
-		color: var(--color-primary);
-	}
+  &__value {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    margin: 67px 0 0;
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: -3.6px;
+    color: var(--color-primary);
+  }
 
-	&__value-suffix {
-		font-size: clamp(32px, 3.2vw, 54px);
-		letter-spacing: -2.2px;
-	}
+  &__value-suffix {
+    font-size: clamp(32px, 3.2vw, 54px);
+    letter-spacing: -2.2px;
+  }
 
-	&__subtitle {
-		margin: 0;
-		max-width: 340px;
-		font-size: clamp(18px, 1.7vw, 29px);
-		letter-spacing: -1.16px;
-		color: var(--color-text-strong);
-	}
+  &__subtitle {
+    margin: 0;
+    max-width: 340px;
+    font-size: clamp(18px, 1.7vw, 29px);
+    letter-spacing: -1.16px;
+    color: var(--color-text-strong);
+  }
 }
 
 @media (max-width: 1440px) {
-	.company-stat-card {
-		min-height: 280px;
-		padding: 30px 27px 24px;
-		gap: 28px;
+  .company-stat-card {
+    min-height: 280px;
+    padding: 30px 27px 24px;
+    gap: 28px;
 
-		&__background {
-			top: -35px;
-			right: -11px;
-			font-size: 100px;
-			letter-spacing: -4px;
-		}
+    &__background {
+      top: -35px;
+      right: -11px;
+      font-size: 100px;
+      letter-spacing: -4px;
+    }
 
-		&__value {
-			margin-top: 40px;
-			font-size: clamp(52px, 5.5vw, 70px);
-			letter-spacing: -2.48px;
-		}
+    &__value {
+      margin-top: 40px;
+      font-size: clamp(52px, 5.5vw, 70px);
+      letter-spacing: -2.48px;
+    }
 
-		&__subtitle {
-			font-size: 26px;
-			letter-spacing: -1.04px;
-		}
-	}
+    &__subtitle {
+      font-size: 26px;
+      letter-spacing: -1.04px;
+    }
+  }
 }
 
 @media (max-width: 1024px) {
-	.company-stat-card {
-		min-height: 220px;
-		padding: 24px 20px 22px;
-		gap: 20px;
+  .company-stat-card {
+    min-height: 220px;
+    padding: 24px 20px 22px;
+    gap: 20px;
 
-		&__background {
-			top: -35px;
-			right: -11px;
-			font-size: 90px;
-		}
+    &__background {
+      top: -35px;
+      right: -11px;
+      font-size: 90px;
+    }
 
-		&__value {
-			margin-top: 28px;
-			font-size: clamp(46px, 5.5vw, 54px);
-			letter-spacing: -2.16px;
-		}
+    &__value {
+      margin-top: 28px;
+      font-size: clamp(46px, 5.5vw, 54px);
+      letter-spacing: -2.16px;
+    }
 
-		&__value-suffix {
-			font-size: clamp(28px, 3.6vw, 36px);
-			letter-spacing: -1.44px;
-		}
+    &__value-suffix {
+      font-size: clamp(28px, 3.6vw, 36px);
+      letter-spacing: -1.44px;
+    }
 
-		&__subtitle {
-			font-size: clamp(16px, 1.8vw, 18px);
-			letter-spacing: -0.72px;
-			max-width: 420px;
-		}
-	}
+    &__subtitle {
+      font-size: clamp(16px, 1.8vw, 18px);
+      letter-spacing: -0.72px;
+      max-width: 420px;
+    }
+  }
 }
 
 @media (max-width: 768px) {
-	.company-stat-card {
-		min-height: 176px;
-		padding: 20px 22px;
-		border-radius: var(--radius-md-mobile);
+  .company-stat-card {
+    min-height: 176px;
+    padding: 20px 22px;
+    border-radius: var(--radius-md-mobile);
 
-		&__background {
-			font-size: 100px;
-		}
+    &__background {
+      font-size: 100px;
+    }
 
-		&__value {
-			margin-top: 24px;
-			font-size: 62px;
-			letter-spacing: -1.84px;
-		}
+    &__value {
+      margin-top: 24px;
+      font-size: 62px;
+      letter-spacing: -1.84px;
+    }
 
-		&__value-suffix {
-			font-size: 50px;
-			letter-spacing: -1.44px;
-		}
+    &__value-suffix {
+      font-size: 50px;
+      letter-spacing: -1.44px;
+    }
 
-		&__subtitle {
-			font-size: 20px;
-			letter-spacing: -0.64px;
-		}
-	}
+    &__subtitle {
+      font-size: 20px;
+      letter-spacing: -0.64px;
+    }
+  }
 }
 
 @media (max-width: 560px) {
-	.company-stat-card {
-		min-height: 130px;
-		padding: 20px 22px;
-		border-radius: var(--radius-md-mobile);
-		gap: 14px;
+  .company-stat-card {
+    min-height: 130px;
+    padding: 20px 22px;
+    border-radius: var(--radius-md-mobile);
+    gap: 14px;
 
-		&__background {
-			top: -31px;
-			right: -13px;
-			font-size: 90px;
-		}
+    &__background {
+      top: -31px;
+      right: -13px;
+      font-size: 90px;
+    }
 
-		&__value {
-			margin-top: 14px;
-			font-size: 45px;
-			letter-spacing: -1.8px;
-		}
+    &__value {
+      margin-top: 14px;
+      font-size: 45px;
+      letter-spacing: -1.8px;
+    }
 
-		&__value-suffix {
-			font-size: 36px;
-			letter-spacing: -1.2px;
-		}
+    &__value-suffix {
+      font-size: 36px;
+      letter-spacing: -1.2px;
+    }
 
-		&__subtitle {
-			font-size: 16px;
-			letter-spacing: -0.64px;
-		}
-	}
+    &__subtitle {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+  }
 }

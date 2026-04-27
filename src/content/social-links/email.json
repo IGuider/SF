@@ -1,0 +1,7 @@
+{
+  "label": "Email",
+  "href": "mailto:info@simplefinance.ru",
+  "icon": "mail",
+  "contexts": ["header", "footer"],
+  "order": 4
+}

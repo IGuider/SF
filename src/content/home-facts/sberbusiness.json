@@ -1,8 +1,8 @@
 {
-	"title": "Партнер СберБизнес",
-	"description": "Топ-партнер<br> 3 года подряд",
-	"logo": "sb",
-	"logoAlt": "СберБизнес",
-	"logoWidth": "200px",
-	"order": 3
+  "title": "Партнер СберБизнес",
+  "description": "Топ-партнер<br> 3 года подряд",
+  "logo": "sb",
+  "logoAlt": "СберБизнес",
+  "logoWidth": "200px",
+  "order": 3
 }

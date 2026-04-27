@@ -1,10 +1,10 @@
 {
-	"title": "Платформа для агентов",
-	"description": "Все клиенты<br> на одной удобной платформе",
-	"modifier": "guarantees",
-	"href": "https://platform.simplefinance.ru/",
-	"ctaLabel": "Перейти на платформу",
-	"buttonVariant": "secondary",
-	"openInNewTab": true,
-	"order": 3
+  "title": "Платформа для агентов",
+  "description": "Все клиенты<br> на одной удобной платформе",
+  "modifier": "guarantees",
+  "href": "https://platform.simplefinance.ru/",
+  "ctaLabel": "Перейти на платформу",
+  "buttonVariant": "secondary",
+  "openInNewTab": true,
+  "order": 3
 }
