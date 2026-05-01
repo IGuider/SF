@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ru" data-astro-transition-scope="astro-tyfwoq7n-3">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Astro v6.1.1">
+    <meta name="description" content="Статьи SimpleFinance для участников маркетплейсов и госзакупок.">
+    <link rel="icon" type="image/png" sizes="32x32" href="/SF/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/SF/favicon-16x16.png">
+    <title>Блог SimpleFinance</title>
+    
+<meta name="astro-view-transitions-enabled" content="true">
+<meta name="astro-view-transitions-fallback" content="animate">
+<script type="module" src="/SF/_astro/ClientRouter.astro_astro_type_script_index_0_lang.D2-1vWZC.js"></script>
+  <link rel="stylesheet" href="/SF/_astro/blog.BKbLY6XQ.css">
+<link rel="stylesheet" href="/SF/_astro/blog@_@astro.ZDc5VNMH.css">
+<style>.blog-card-item[hidden] {
+  display: none;
+}
+.blog-card-item--revealed {
+  animation: blog-card-reveal 360ms ease both;
+}
+.blog-card-item--filter-revealed {
+  animation: blog-card-filter-reveal 380ms ease-in-out both;
+  animation-delay: calc(var(--blog-card-reveal-index, 0) * 95ms);
+}
+
+@keyframes blog-card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes blog-sentinel-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes blog-card-filter-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.blog-card {
+  display: grid;
+  gap: 22px;
+  color: inherit;
+  padding: 10px 40px;
+}
+.blog-card--pinned {
+  min-height: 292px;
+  padding: 50px 40px;
+  gap: 32px;
+  border-radius: 16px;
+  background: #FFE6BC;
+}
+.blog-card__date {
+  color: var(--color-text-strong-muted);
+  font-size: 22px;
+  letter-spacing: -0.88px;
+}
+.blog-card__title {
+  margin: 0;
+  color: var(--color-text-strong);
+  font-size: 34px;
+  letter-spacing: -1.36px;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-duration-fast) ease;
+}
+.blog-card--pinned .blog-card__title {
+  color: var(--color-primary);
+  font-size: 44px;
+  font-style: normal;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: -1.76px;
+}
+.blog-card--pinned .blog-card__date {
+  display: none;
+}
+.blog-card__excerpt {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: var(--color-text-strong);
+  font-size: 29px;
+  letter-spacing: -1.16px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.blog-card--pinned .blog-card__excerpt {
+  font-size: 29px;
+  letter-spacing: -1.16px;
+}
+.blog-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 2px;
+}
+.blog-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.blog-card__tags li {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 10px;
+  background: #F3F6FF;
+  color: rgba(5, 55, 200, 0.55);
+  font-size: 22px;
+  letter-spacing: -0.88px;
+}
+.blog-card__tags li[hidden] {
+  display: none;
+}
+.blog-card__tags li[data-blog-tag=category] {
+  border-radius: 50px;
+}
+.blog-card--pinned .blog-card__tags li {
+  background: #F3F6FF;
+  color: rgba(0, 0, 0, 0.55);
+}
+.blog-card__read {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex: 0 0 auto;
+  color: var(--color-text-strong);
+  font-size: 22px;
+  letter-spacing: -0.88px;
+}
+.blog-card__read svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+  transition: transform var(--transition-duration-fast) ease;
+}
+.blog-card:hover .blog-card__title {
+  color: var(--color-primary);
+}
+.blog-card:hover .blog-card__read svg {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-card-item--revealed,
+  .blog-card-item--filter-revealed {
+    animation: none;
+  }
+}
+@media (max-width: 768px) {
+  .blog-card {
+    gap: 14px;
+  }
+  .blog-card--pinned {
+    min-height: 0;
+    padding: 28px 22px;
+  }
+  .blog-card__title, .blog-card--pinned .blog-card__title {
+    font-size: 25px;
+  }
+  .blog-card__excerpt, .blog-card--pinned .blog-card__excerpt {
+    font-size: 18px;
+  }
+  .blog-card__meta {
+    display: grid;
+    justify-content: stretch;
+  }
+  .blog-card__read {
+    justify-content: space-between;
+  }
+}
+@media (max-width: 430px) {
+  .blog-card__tags li {
+    min-height: 28px;
+    padding-inline: 12px;
+    font-size: 13px;
+  }
+}</style><style>[data-astro-transition-scope="astro-3yfyrmfw-1"] { view-transition-name: page-content; }@layer astro { ::view-transition-old(page-content) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(page-content) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(page-content) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(page-content) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-3yfyrmfw-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-3yfyrmfw-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-3yfyrmfw-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-3yfyrmfw-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-3yfyrmfw-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-3yfyrmfw-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-3yfyrmfw-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-3yfyrmfw-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-o3uvwbk5-2"] { view-transition-name: site-brand; }@layer astro { ::view-transition-old(site-brand) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(site-brand) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(site-brand) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(site-brand) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-o3uvwbk5-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-o3uvwbk5-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-o3uvwbk5-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-o3uvwbk5-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-o3uvwbk5-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-o3uvwbk5-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-o3uvwbk5-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-o3uvwbk5-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-tyfwoq7n-3"] { view-transition-name: root; }@layer astro { ::view-transition-old(root) { animation: none; opacity: 0; mix-blend-mode: normal; }::view-transition-new(root) { animation: none; mix-blend-mode: normal; }::view-transition-group(root) { animation: none } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-tyfwoq7n-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-tyfwoq7n-3"] { animation: none; mix-blend-mode: normal; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-tyfwoq7n-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-tyfwoq7n-3"] { animation: none; mix-blend-mode: normal; }</style></head>
+  <body>
+    
+	<header class="site-header">
+	<div class="container site-header__inner">
+		<a class="site-header__brand" href="/SF/" aria-label="SimpleFinance" data-astro-transition-scope="astro-o3uvwbk5-2">
+			<img class="site-header__logo" src="/SF/_astro/sf-logo.DMG_1NIQ.svg" alt="SimpleFinance">
+		</a>
+
+		<button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="site-header-menu" aria-label="Открыть меню">
+			<span class="site-header__toggle-line"></span>
+			<span class="site-header__toggle-line"></span>
+			<span class="site-header__toggle-line"></span>
+		</button>
+
+		<div class="site-header__menu" id="site-header-menu">
+			<div class="site-header__menu-container">
+				<nav class="site-header__nav" aria-label="Основная навигация">
+					<ul class="site-header__nav-list site-header__nav-list--desktop">
+						<li>
+									<a href="/SF/ecom">О компании</a>
+								</li><li>
+									<a href="/SF/ecom#products">Продукты</a>
+								</li><li>
+									<a href="/SF/blog/">Блог</a>
+								</li><li>
+									<a href="#contacts">Контакты</a>
+								</li>
+					</ul>
+
+					<ul class="site-header__nav-list site-header__nav-list--mobile">
+						<li>
+									<a href="/SF/ecom">О компании</a>
+								</li><li>
+									<a href="/SF/ecom#products">Продукты</a>
+								</li><li>
+									<a href="/SF/blog/">Блог</a>
+								</li><li>
+									<a href="#contacts">Контакты</a>
+								</li>
+					</ul>
+				</nav>
+
+				<div class="site-header__actions">
+					<a class="site-header__phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+					<span class="consultation-dialog-trigger">
+  
+						<button class="ui-button ui-button--outline ui-button--md site-header__button" type="button">
+			Перезвоните мне
+		</button>
+					
+</span>
+				</div>
+
+				<div class="site-header__mobile-footer">
+					<a class="site-header__mobile-phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+
+					<ul class="site-header__socials" aria-label="Социальные сети">
+						<li>
+									<a href="#" aria-label="ВКонтакте">
+										
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path d="M20 0C16.0444 0 12.1776 1.17298 8.8886 3.37061C5.59962 5.56823 3.03617 8.69181 1.52242 12.3463C0.00866575 16.0009 -0.387401 20.0222 0.384303 23.9018C1.15601 27.7814 3.06082 31.3451 5.85787 34.1421C8.65492 36.9392 12.2186 38.844 16.0982 39.6157C19.9778 40.3874 23.9991 39.9913 27.6537 38.4776C31.3082 36.9638 34.4318 34.4004 36.6294 31.1114C38.827 27.8224 40 23.9556 40 20C40 14.6957 37.8929 9.60859 34.1421 5.85786C30.3914 2.10714 25.3043 0 20 0ZM31.5273 27.8273C30.9455 27.9091 28.1 27.8273 27.9523 27.8273C27.2167 27.8369 26.507 27.556 25.9773 27.0455C25.3773 26.4659 24.8409 25.8295 24.2545 25.2273C24.0818 25.0424 23.894 24.8721 23.6932 24.7182C23.225 24.3591 22.7614 24.4386 22.5409 24.9932C22.3688 25.59 22.2486 26.2006 22.1818 26.8182C22.1432 27.3773 21.7886 27.7273 21.1614 27.7659C20.7727 27.7864 20.3841 27.7955 20 27.7841C18.6001 27.7764 17.222 27.436 15.9795 26.7909C14.6348 26.0423 13.4631 25.0185 12.5409 23.7864C11.025 21.85 9.81364 19.7227 8.73182 17.5295C8.67501 17.4182 7.56592 15.0591 7.53864 14.9477C7.43864 14.5773 7.53864 14.2205 7.84546 14.0955C8.04092 14.0205 11.6955 14.0955 11.7568 14.0955C12.0287 14.0936 12.2941 14.1783 12.5148 14.3372C12.7354 14.4961 12.8997 14.7211 12.9841 14.9795C13.6603 16.7091 14.5852 18.3307 15.7296 19.7932C15.8899 19.988 16.0774 20.1587 16.2864 20.3C16.5841 20.5045 16.8659 20.4341 16.9886 20.0886C17.1343 19.6125 17.2198 19.1201 17.2432 18.6227C17.2636 17.6364 17.2432 16.9886 17.1886 16.0023C17.1523 15.3705 16.9296 14.8182 15.9977 14.6386C15.7114 14.5864 15.6864 14.35 15.8705 14.1136C16.2546 13.625 16.7796 13.5455 17.3682 13.5159C18.2455 13.4659 19.1227 13.5 20 13.5159H20.1909C20.5727 13.5145 20.9536 13.5534 21.3273 13.6318C21.5483 13.6769 21.749 13.7922 21.8992 13.9605C22.0495 14.1288 22.1415 14.3412 22.1614 14.5659C22.2065 14.8148 22.2255 15.0676 22.2182 15.3205C22.1955 16.3955 22.1432 17.4727 22.1318 18.5477C22.1213 18.9743 22.1601 19.4006 22.2477 19.8182C22.3727 20.3909 22.7659 20.5341 23.1568 20.1205C23.6634 19.5869 24.1277 19.0147 24.5455 18.4091C25.2859 17.3052 25.896 16.1192 26.3636 14.875C26.6182 14.2364 26.8182 14.0955 27.5 14.0955H31.3773C31.6078 14.0914 31.8377 14.1221 32.0591 14.1864C32.1375 14.207 32.2107 14.2435 32.2743 14.2937C32.3379 14.344 32.3905 14.4068 32.4287 14.4783C32.4668 14.5497 32.4899 14.6283 32.4963 14.7091C32.5027 14.7899 32.4924 14.8711 32.4659 14.9477C32.275 15.7977 31.8159 16.5227 31.3295 17.2205C30.5409 18.3364 29.7091 19.425 28.9023 20.5273C28.8052 20.6698 28.7164 20.8177 28.6364 20.9704C28.3318 21.5205 28.3545 21.8273 28.7955 22.2818C29.5 23.0068 30.2523 23.6841 30.9318 24.4295C31.4302 24.9719 31.8804 25.5567 32.2773 26.1773C32.7614 26.9591 32.4545 27.6954 31.5273 27.8273Z" fill="#0537C8"></path>
+		</svg>
+
+
+									</a>
+								</li><li>
+									<a href="#" aria-label="Telegram">
+										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95469 0 0 8.95469 0 20C0 31.0453 8.95469 40 20 40C31.0453 40 40 31.0453 40 20C40 8.95469 31.0453 0 20 0ZM29.2703 13.6016C28.9695 16.7641 27.6672 24.4383 27.0047 27.9805C26.7242 29.4797 26.1719 29.982 25.6375 30.0312C24.4766 30.1383 23.5945 29.2633 22.4695 28.5258C20.7094 27.3719 19.7148 26.6539 18.0063 25.5281C16.0312 24.2266 17.3117 23.5117 18.4367 22.343C18.7313 22.0367 23.8484 17.382 23.9477 16.9602C23.9602 16.907 23.9719 16.7102 23.8547 16.6063C23.7375 16.5023 23.5648 16.5383 23.4406 16.5664C23.2641 16.6063 20.4516 18.4648 15.0047 22.1422C14.2063 22.6906 13.4836 22.957 12.8352 22.9437C12.1211 22.9281 10.7477 22.5398 9.72656 22.2078C8.47422 21.8008 7.47891 21.5852 7.56562 20.8937C7.61016 20.5336 8.10625 20.1656 9.05312 19.7891C14.8836 17.2484 18.7711 15.5742 20.7164 14.7648C26.271 12.4548 27.425 12.0531 28.1773 12.0398C29.1196 12.0232 29.347 12.801 29.2703 13.6016Z" fill="#0537C8"></path>
+		</svg>
+
+
+
+
+
+
+									</a>
+								</li><li>
+									<a href="#" aria-label="MAX">
+										
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95469 0 0 8.95469 0 20C0 31.0453 8.95469 40 20 40C31.0453 40 40 31.0453 40 20C40 8.95469 31.0453 0 20 0ZM29.2703 13.6016C28.9695 16.7641 27.6672 24.4383 27.0047 27.9805C26.7242 29.4797 26.1719 29.982 25.6375 30.0312C24.4766 30.1383 23.5945 29.2633 22.4695 28.5258C20.7094 27.3719 19.7148 26.6539 18.0063 25.5281C16.0312 24.2266 17.3117 23.5117 18.4367 22.343C18.7313 22.0367 23.8484 17.382 23.9477 16.9602C23.9602 16.907 23.9719 16.7102 23.8547 16.6063C23.7375 16.5023 23.5648 16.5383 23.4406 16.5664C23.2641 16.6063 20.4516 18.4648 15.0047 22.1422C14.2063 22.6906 13.4836 22.957 12.8352 22.9437C12.1211 22.9281 10.7477 22.5398 9.72656 22.2078C8.47422 21.8008 7.47891 21.5852 7.56562 20.8937C7.61016 20.5336 8.10625 20.1656 9.05312 19.7891C14.8836 17.2484 18.7711 15.5742 20.7164 14.7648C26.271 12.4548 27.425 12.0531 28.1773 12.0398C29.1196 12.0232 29.347 12.801 29.2703 13.6016Z" fill="#0537C8"></path>
+			<circle cx="20.5" cy="20.5" r="13.5" fill="#0537C8"></circle>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M19.7041 28.9458C17.8395 28.9458 16.973 28.6724 15.4668 27.5788C14.5141 28.8091 11.4971 29.7705 11.3656 28.1256C11.3656 26.8908 11.0934 25.8474 10.7849 24.7083C10.4174 23.3049 10 21.742 10 19.4775C10 14.0689 14.4188 10 19.6542 10C24.8942 10 28.9999 14.2694 28.9999 19.5276C29.0175 24.7044 24.8585 28.9182 19.7041 28.9458ZM19.7813 14.6749C17.2316 14.5428 15.2445 16.3153 14.8044 19.0947C14.4415 21.3957 15.0857 24.1979 15.6346 24.3438C15.8978 24.4075 16.5602 23.8699 16.973 23.4552C17.6557 23.9289 18.4506 24.2134 19.2777 24.28C21.9195 24.4076 24.1769 22.3876 24.3543 19.7372C24.4576 17.0811 22.4235 14.8315 19.7813 14.6795V14.6749Z" fill="white"></path>
+		</svg>
+
+
+
+
+									</a>
+								</li><li>
+									<a href="mailto:info@simplefinance.ru" aria-label="Email">
+										
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path d="M39 20.5C39 9.73045 30.2696 1 19.5 1C8.73045 1 0 9.73045 0 20.5C0 31.2696 8.73045 40 19.5 40C30.2696 40 39 31.2696 39 20.5Z" fill="#0537C8"></path>
+			<path d="M27.7696 13.0522H11.2319C10.9505 13.0524 10.6734 13.1174 10.4245 13.2416C10.1756 13.3659 9.96256 13.5456 9.80371 13.7653L18.0717 19.3101C18.4894 19.5893 18.9884 19.7393 19.4999 19.7393C20.0114 19.7393 20.5104 19.5893 20.9281 19.3101L29.1952 13.7653C29.0366 13.546 28.8239 13.3664 28.5756 13.2422C28.3272 13.1179 28.0506 13.0528 27.7696 13.0522Z" fill="white"></path>
+			<path d="M21.6432 20.2647C21.0164 20.6844 20.2675 20.9097 19.4996 20.9097C18.7317 20.9097 17.9827 20.6844 17.356 20.2647L9.5 14.9966V25.4149C9.5 25.8492 9.68239 26.2657 10.007 26.5727C10.3317 26.8798 10.772 27.0523 11.2312 27.0523H27.7688C28.228 27.0523 28.6683 26.8798 28.993 26.5727C29.3176 26.2657 29.5 25.8492 29.5 25.4149V14.9966L21.6432 20.2647Z" fill="white"></path>
+		</svg>
+									</a>
+								</li>
+					</ul>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="site-header__decor" aria-hidden="true">
+			<img class="site-header__decor-item site-header__decor-item--top" src="/SF/_astro/menu-bg1.sRjCXtST.png" alt="">
+			<img class="site-header__decor-item site-header__decor-item--bottom" src="/SF/_astro/menu-bg2.CNJEz8gR.png" alt="">
+		</div>
+	</div>
+</header>
+
+<script type="module" src="/SF/_astro/Header.astro_astro_type_script_index_0_lang.BY6g8rwH.js"></script>
+	
+	<main class="blog-page" data-astro-transition-scope="astro-3yfyrmfw-1">
+	<section class="blog-page__hero" aria-labelledby="blog-page-title">
+		<div class="container blog-page__container">
+			<div class="blog-page__header">
+				<div>
+					<h1 class="blog-page__title" id="blog-page-title">Блог SimpleFinance</h1>
+					<p class="blog-page__subtitle">Полезное для участников рынков маркетплейсов и госзакупок</p>
+				</div>
+			</div>
+
+			<div class="blog-page__layout" data-blog-list>
+				<div class="blog-page__main" data-blog-main>
+					<nav class="blog-page__directions" aria-label="Направления блога">
+						<a class="blog-page__direction is-active" data-blog-direction-filter="all" href="/SF/blog/" aria-current="page">
+								Все статьи
+							</a><a class="blog-page__direction" data-blog-direction-filter="marketplaces" href="/SF/blog/?direction=marketplaces">
+								Маркетплейсы
+							</a><a class="blog-page__direction" data-blog-direction-filter="procurement" href="/SF/blog/?direction=procurement">
+								Госзакупки
+							</a>
+					</nav>
+
+					<ul class="blog-page__pinned-list" aria-label="Закреплённая статья">
+							<li class="blog-card-item blog-card-item--pinned" data-blog-item data-blog-direction="marketplaces" data-blog-category="finance" data-blog-title="что такое api-ключ маркетплейса? зачем он нужен и как его получить">
+	<a class="blog-card blog-card--pinned" href="/SF/blog/api-key-wildberries-ozon/" aria-label="Открыть статью: Что такое API-ключ маркетплейса? Зачем он нужен и как его получить">
+		
+
+		<h2 class="blog-card__title">Что такое API-ключ маркетплейса? Зачем он нужен и как его получить</h2>
+		<p class="blog-card__excerpt">Чтобы получить финансирование, не нужно вручную выгружать отчёты и отправлять их менеджеру. Достаточно один раз настроить API-ключ — и данные о ваших продажах, остатках и оборотах будут передаваться автоматически.</p>
+
+		<div class="blog-card__meta">
+			<ul class="blog-card__tags" aria-label="Теги статьи">
+				<li data-blog-tag="direction">Маркетплейсы</li><li data-blog-tag="category">Финансы</li>
+			</ul>
+
+			<span class="blog-card__read">
+				<span>Читать статью</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none">
+				  <path d="M3 20L25 20M25 20L19 14M25 20L19 26" stroke="#2C2C2C" stroke-width="2"></path>
+				</svg>
+			</span>
+		</div>
+	</a>
+</li>
+						</ul>
+
+					<div class="blog-page__empty" data-blog-empty hidden>
+						<h2>Пока нет статей</h2>
+						<p>В этом направлении или категории материалы появятся позже.</p>
+					</div>
+
+					<ul class="blog-page__list" aria-label="Статьи блога">
+							<li class="blog-card-item" data-blog-item data-blog-direction="marketplaces" data-blog-category="cases" data-blog-title="как перейти с карго на белый импорт из китая - опыт селлера">
+	<a class="blog-card" href="/SF/blog/white-import-china/" aria-label="Открыть статью: Как перейти с карго на белый импорт из Китая - опыт селлера">
+		<time class="blog-card__date" datetime="2026-04-28">28 апреля 2026 г.</time>
+
+		<h2 class="blog-card__title">Как перейти с карго на белый импорт из Китая - опыт селлера</h2>
+		<p class="blog-card__excerpt">Переход с карго на белый импорт часто пугает селлеров: кажется, что себестоимость неизбежно вырастет, а сроки поставки растянутся на месяцы.</p>
+
+		<div class="blog-card__meta">
+			<ul class="blog-card__tags" aria-label="Теги статьи">
+				<li data-blog-tag="direction">Маркетплейсы</li><li data-blog-tag="category">Кейсы</li>
+			</ul>
+
+			<span class="blog-card__read">
+				<span>Читать статью</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none">
+				  <path d="M3 20L25 20M25 20L19 14M25 20L19 26" stroke="#2C2C2C" stroke-width="2"></path>
+				</svg>
+			</span>
+		</div>
+	</a>
+</li><li class="blog-card-item" data-blog-item data-blog-direction="procurement" data-blog-category="law" data-blog-title="рнп в госзакупках: за что блокируют на 2 года и как этого избежать">
+	<a class="blog-card" href="/SF/blog/rnp-procurement-block/" aria-label="Открыть статью: РНП в госзакупках: за что блокируют на 2 года и как этого избежать">
+		<time class="blog-card__date" datetime="2026-04-28">28 апреля 2026 г.</time>
+
+		<h2 class="blog-card__title">РНП в госзакупках: за что блокируют на 2 года и как этого избежать</h2>
+		<p class="blog-card__excerpt">Три буквы - и доступ к государственным контрактам закрыт на два года. РНП, или Реестр недобросовестных поставщиков, - это черный список участников закупок.</p>
+
+		<div class="blog-card__meta">
+			<ul class="blog-card__tags" aria-label="Теги статьи">
+				<li data-blog-tag="direction">Госзаказ</li><li data-blog-tag="category">Законодательство</li>
+			</ul>
+
+			<span class="blog-card__read">
+				<span>Читать статью</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none">
+				  <path d="M3 20L25 20M25 20L19 14M25 20L19 26" stroke="#2C2C2C" stroke-width="2"></path>
+				</svg>
+			</span>
+		</div>
+	</a>
+</li><li class="blog-card-item" data-blog-item data-blog-direction="procurement" data-blog-category="finance" data-blog-title="отказ банка по банковской гарантии: как повысить шансы на одобрение">
+	<a class="blog-card" href="/SF/blog/bank-guarantee-rejection/" aria-label="Открыть статью: Отказ банка по банковской гарантии: как повысить шансы на одобрение">
+		<time class="blog-card__date" datetime="2026-04-28">28 апреля 2026 г.</time>
+
+		<h2 class="blog-card__title">Отказ банка по банковской гарантии: как повысить шансы на одобрение</h2>
+		<p class="blog-card__excerpt">Получили отказ по банковской гарантии? Не спешите расстраиваться. В 50% случаев причина отказа - техническая ошибка или неверная интерпретация документов.</p>
+
+		<div class="blog-card__meta">
+			<ul class="blog-card__tags" aria-label="Теги статьи">
+				<li data-blog-tag="direction">Госзаказ</li><li data-blog-tag="category">Финансы</li>
+			</ul>
+
+			<span class="blog-card__read">
+				<span>Читать статью</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none">
+				  <path d="M3 20L25 20M25 20L19 14M25 20L19 26" stroke="#2C2C2C" stroke-width="2"></path>
+				</svg>
+			</span>
+		</div>
+	</a>
+</li><li class="blog-card-item" data-blog-item data-blog-direction="procurement" data-blog-category="finance" data-blog-title="как банк решает, выдавать ли банковскую гарантию: 7 ключевых критериев оценки">
+	<a class="blog-card" href="/SF/blog/bank-guarantee-criteria/" aria-label="Открыть статью: Как банк решает, выдавать ли банковскую гарантию: 7 ключевых критериев оценки">
+		<time class="blog-card__date" datetime="2026-04-28">28 апреля 2026 г.</time>
+
+		<h2 class="blog-card__title">Как банк решает, выдавать ли банковскую гарантию: 7 ключевых критериев оценки</h2>
+		<p class="blog-card__excerpt">Что проверяет банк перед выдачей банковской гарантии? Почему одним компаниям одобряют заявку за несколько часов, а другим отказывают даже при похожих вводных?</p>
+
+		<div class="blog-card__meta">
+			<ul class="blog-card__tags" aria-label="Теги статьи">
+				<li data-blog-tag="direction">Госзаказ</li><li data-blog-tag="category">Финансы</li>
+			</ul>
+
+			<span class="blog-card__read">
+				<span>Читать статью</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none">
+				  <path d="M3 20L25 20M25 20L19 14M25 20L19 26" stroke="#2C2C2C" stroke-width="2"></path>
+				</svg>
+			</span>
+		</div>
+	</a>
+</li>
+						</ul>
+
+					<div class="blog-page__sentinel" data-blog-sentinel aria-hidden="true">
+						<span class="blog-page__sentinel-spinner"></span>
+						<span data-blog-sentinel-text>Прокрутите ниже, чтобы загрузить ещё</span>
+					</div>
+				</div>
+
+				<aside class="blog-page__sidebar" aria-label="Категории блога">
+					<form class="blog-page__search" action="/SF/blog/" method="get">
+						<label class="visually-hidden" for="blog-search">Поиск по статьям</label>
+						<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+							<path d="M25.3654 22.3017L19.8653 16.8016C21.0017 15.0888 21.6669 13.0381 21.6669 10.8334C21.6669 4.85988 16.807 0 10.8334 0C4.85988 0 0 4.85988 0 10.8334C0 16.807 4.85988 21.6669 10.8334 21.6669C13.0381 21.6669 15.0888 21.0017 16.8016 19.8653L22.3017 25.3654C23.1467 26.2115 24.5204 26.2115 25.3654 25.3654C26.2115 24.5193 26.2115 23.1478 25.3654 22.3017ZM3.25003 10.8334C3.25003 6.65174 6.65174 3.25003 10.8334 3.25003C15.0152 3.25003 18.4169 6.65174 18.4169 10.8334C18.4169 15.0152 15.0152 18.4169 10.8334 18.4169C6.65174 18.4169 3.25003 15.0152 3.25003 10.8334Z" fill="#0537C8" fill-opacity="0.5"></path>
+						</svg>
+						<input id="blog-search" type="search" name="q" value placeholder="Поиск" data-blog-search>
+					</form>
+
+					<nav class="blog-page__categories" aria-label="Категории блога">
+						<a class="blog-page__category blog-page__category--layers is-active" data-blog-category-link="all" href="/SF/blog/" aria-current="page">
+								<span class="blog-page__category-icon" aria-hidden="true">
+									<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M14.512 1.43486C13.5601 0.966212 12.4412 0.966211 11.4893 1.43486L2.00795 6.10297C0.776 6.7095 0.775993 8.45723 2.00795 9.06378L11.4893 13.7318C12.4412 14.2006 13.5601 14.2006 14.512 13.7319L23.9933 9.06378C25.2253 8.45725 25.2253 6.70951 23.9933 6.10297L14.512 1.43486ZM2.06234 11.4928C2.21321 11.4185 2.39001 11.4185 2.54086 11.4928L11.4893 15.8985C12.4412 16.3671 13.5601 16.3671 14.512 15.8985L23.4604 11.4928C23.6112 11.4185 23.788 11.4185 23.939 11.4928L23.9933 11.5196C25.2253 12.1261 25.2253 13.8739 23.9933 14.4804L14.512 19.1485C13.5601 19.6171 12.4412 19.6171 11.4893 19.1485L2.00795 14.4804C0.775993 13.8739 0.776 12.1261 2.00795 11.5196L2.06234 11.4928ZM2.54086 16.9096C2.39001 16.8353 2.21321 16.8353 2.06234 16.9096L2.00795 16.9363C0.776 17.5429 0.775993 19.2906 2.00795 19.8972L11.4893 24.5653C12.4412 25.0339 13.5601 25.0339 14.512 24.5653L23.9933 19.8972C25.2253 19.2906 25.2253 17.5429 23.9933 16.9363L23.939 16.9096C23.788 16.8353 23.6112 16.8353 23.4604 16.9096L14.512 21.3153C13.5601 21.7839 12.4412 21.7839 11.4893 21.3153L2.54086 16.9096Z" fill="currentColor"></path>
+	</svg>
+
+
+
+
+
+
+
+
+
+
+								</span>
+								<span>Все</span>
+							</a><a class="blog-page__category blog-page__category--book" data-blog-category-link="news" href="/SF/blog/?category=news">
+								<span class="blog-page__category-icon" aria-hidden="true">
+									
+
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<g clip-path="url(#blog-category-book)">
+			<path d="M11.5393 3.52206C11.4664 3.45543 11.392 3.38875 11.3149 3.32208C9.81546 2.02381 7.20784 0.476196 3.30078 0.476196C2.88011 0.476196 2.53906 0.817243 2.53906 1.23792V1.78259C6.35248 1.99115 9.50777 2.82874 11.5393 3.52206Z" fill="currentColor"></path>
+			<path d="M16.723 2.7777C18.8654 2.22429 21.1249 1.88954 23.4604 1.77696V1.23792C23.4604 0.817243 23.1194 0.476196 22.6987 0.476196C18.7917 0.476196 16.1841 2.02381 14.6846 3.32208C14.6446 3.35676 14.6054 3.39145 14.5664 3.42613C15.1856 3.21183 15.9059 2.9888 16.723 2.7777Z" fill="currentColor"></path>
+			<path d="M25.2383 3.2572C18.6089 3.2572 14.2557 5.09665 13 5.70354V5.71832C11.7243 5.14885 7.01523 3.2572 0.761719 3.2572C0.341047 3.2572 0 3.59825 0 4.01892V22.2231C0 22.6438 0.341047 22.9848 0.761719 22.9848C7.57646 22.9848 12.5894 25.4092 12.6622 25.4449C12.7689 25.4977 12.8846 25.5239 12.9999 25.5239H13C13.0167 25.5239 13.0334 25.5233 13.0501 25.5221C13.0555 25.5218 13.0609 25.5211 13.0663 25.5206C13.0776 25.5197 13.0889 25.5186 13.1002 25.5171C13.1065 25.5162 13.1129 25.5151 13.1192 25.5141C13.1294 25.5125 13.1396 25.5108 13.1498 25.5088C13.1566 25.5074 13.1634 25.5058 13.1701 25.5043C13.1798 25.5021 13.1894 25.4998 13.1989 25.4972C13.2059 25.4953 13.2128 25.4932 13.2197 25.4912C13.229 25.4884 13.2382 25.4854 13.2474 25.4823C13.2543 25.4799 13.2613 25.4774 13.2682 25.4748C13.2772 25.4714 13.2861 25.4678 13.2949 25.4641C13.3019 25.4612 13.3088 25.4582 13.3157 25.4551C13.3244 25.4511 13.333 25.4469 13.3417 25.4425C13.3484 25.4391 13.3552 25.4358 13.3619 25.4322C13.3644 25.4308 13.367 25.4296 13.3695 25.4282C13.4136 25.4038 17.8588 22.9848 25.2383 22.9848C25.659 22.9848 26 22.6438 26 22.2231V4.01892C26 3.5982 25.659 3.2572 25.2383 3.2572ZM3.02164 7.20245C3.02164 6.98846 3.11162 6.78432 3.26965 6.64C3.42763 6.49567 3.63878 6.42453 3.85221 6.44383C6.06414 6.64462 8.18421 7.05671 10.1534 7.66872C10.472 7.76775 10.689 8.06253 10.689 8.39611V11.443C10.689 11.6851 10.5739 11.9128 10.379 12.0564C10.2466 12.1539 10.0879 12.2047 9.92733 12.2047C9.85156 12.2047 9.77539 12.1934 9.7013 12.1704C7.83418 11.5901 5.81994 11.199 3.7145 11.0078C3.32211 10.9722 3.02164 10.6432 3.02164 10.2493V7.20245ZM10.6548 20.8097C10.5533 21.1362 10.2524 21.3455 9.92758 21.3455C9.85268 21.3455 9.77656 21.3344 9.7013 21.311C7.83418 20.7307 5.81994 20.3396 3.7145 20.1485C3.29555 20.1104 2.9867 19.74 3.02473 19.321C3.06277 18.902 3.43352 18.5931 3.85216 18.6313C6.06409 18.8321 8.18416 19.2442 10.1534 19.8562C10.5552 19.9811 10.7796 20.408 10.6548 20.8097ZM10.6548 17.7628C10.5533 18.0893 10.2524 18.2987 9.92758 18.2987C9.85268 18.2987 9.77656 18.2875 9.7013 18.2641C7.83418 17.6839 5.81994 17.2927 3.7145 17.1016C3.29555 17.0636 2.9867 16.6931 3.02473 16.2742C3.06277 15.8552 3.43352 15.5463 3.85216 15.5844C6.06409 15.7852 8.18416 16.1973 10.1534 16.8093C10.5552 16.9342 10.7796 17.3611 10.6548 17.7628ZM10.6548 14.7159C10.5533 15.0424 10.2524 15.2518 9.92758 15.2518C9.85268 15.2518 9.77656 15.2407 9.7013 15.2173C7.83418 14.637 5.81994 14.2459 3.7145 14.0547C3.29555 14.0167 2.9867 13.6462 3.02473 13.2273C3.06277 12.8083 3.43352 12.4991 3.85216 12.5375C6.06409 12.7383 8.18416 13.1504 10.1534 13.7624C10.5552 13.8873 10.7796 14.3142 10.6548 14.7159ZM22.2601 20.1486C20.1547 20.3397 18.1405 20.7308 16.2733 21.3111C16.1981 21.3345 16.1219 21.3456 16.047 21.3456C15.7222 21.3456 15.4213 21.1363 15.3198 20.8098C15.195 20.4081 15.4194 19.9812 15.8212 19.8563C17.7905 19.2443 19.9105 18.8322 22.1224 18.6314C22.541 18.5934 22.9118 18.9022 22.9498 19.3212C22.9879 19.74 22.6791 20.1105 22.2601 20.1486ZM22.2601 17.1017C20.1547 17.2928 18.1405 17.684 16.2733 18.2642C16.1981 18.2876 16.1219 18.2988 16.047 18.2988C15.7222 18.2988 15.4213 18.0894 15.3198 17.7629C15.195 17.3612 15.4194 16.9343 15.8212 16.8094C17.7905 16.1974 19.9105 15.7853 22.1224 15.5846C22.541 15.5463 22.9118 15.8553 22.9498 16.2743C22.9879 16.6932 22.6791 17.0637 22.2601 17.1017ZM22.2601 14.0548C20.1547 14.246 18.1405 14.6371 16.2733 15.2174C16.1981 15.2407 16.1219 15.2519 16.047 15.2519C15.7222 15.2519 15.4213 15.0425 15.3198 14.716C15.195 14.3143 15.4194 13.8874 15.8212 13.7626C17.7905 13.1506 19.9105 12.7385 22.1224 12.5377C22.541 12.4996 22.9118 12.8084 22.9498 13.2274C22.9879 13.6463 22.6791 14.0168 22.2601 14.0548ZM22.2601 11.0079C20.1547 11.199 18.1405 11.5902 16.2733 12.1704C16.1981 12.1938 16.1219 12.205 16.047 12.205C15.7222 12.205 15.4213 11.9956 15.3198 11.6691C15.195 11.2674 15.4194 10.8405 15.8212 10.7156C17.7905 10.1036 19.9105 9.69154 22.1224 9.49075C22.541 9.45246 22.9118 9.76147 22.9498 10.1805C22.9879 10.5994 22.6791 10.9699 22.2601 11.0079ZM22.2601 7.96102C20.1547 8.15216 18.1405 8.54328 16.2733 9.12355C16.1981 9.14691 16.1219 9.15809 16.047 9.15809C15.7222 9.15809 15.4213 8.94871 15.3198 8.62224C15.195 8.22051 15.4194 7.79364 15.8212 7.66877C17.7905 7.05676 19.9105 6.64467 22.1224 6.44388C22.541 6.40579 22.9118 6.71464 22.9498 7.13364C22.9879 7.55253 22.6791 7.92298 22.2601 7.96102Z" fill="currentColor"></path>
+		</g>
+		<defs>
+			<clipPath id="blog-category-book">
+				<rect width="26" height="26" fill="white"></rect>
+			</clipPath>
+		</defs>
+	</svg>
+
+
+
+
+
+
+
+
+								</span>
+								<span>Новости</span>
+							</a><a class="blog-page__category blog-page__category--coins" data-blog-category-link="finance" href="/SF/blog/?category=finance">
+								<span class="blog-page__category-icon" aria-hidden="true">
+									
+
+
+
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<path d="M8.66614 8.66652C13.6262 8.66652 17.3324 6.70574 17.3324 4.95248C17.3324 3.19939 13.6261 1.23853 8.66614 1.23853C3.7062 1.23853 0 3.19939 0 4.95248C0 6.70574 3.70611 8.66652 8.66614 8.66652Z" fill="currentColor"></path>
+		<path d="M8.66614 23.5231C9.3901 23.5231 10.0869 23.481 10.7497 23.4044C10.191 22.6863 9.72896 21.8896 9.38283 21.0339C9.14501 21.0419 8.90636 21.0474 8.66606 21.0474C5.83191 21.0474 3.14792 20.4858 1.10871 19.4662C0.707196 19.2654 0.337707 19.0497 0 18.8214V19.8092C0 21.5623 3.70611 23.5231 8.66614 23.5231Z" fill="currentColor"></path>
+		<path d="M8.66623 18.571C8.69165 18.571 8.71666 18.5706 8.74201 18.5705C8.69124 18.1647 8.66474 17.7514 8.66474 17.332C8.66474 16.9128 8.69116 16.4998 8.74201 16.0943C8.71666 16.0943 8.69157 16.0952 8.66623 16.0952C5.83208 16.0952 3.14817 15.5336 1.10888 14.514C0.707279 14.3132 0.337707 14.0975 0 13.8693V14.857C8.25489e-05 16.6101 3.7062 18.571 8.66623 18.571Z" fill="currentColor"></path>
+		<path d="M8.66623 13.6186C8.91189 13.6186 9.15425 13.6137 9.39356 13.6043C9.77791 12.6613 10.3032 11.7904 10.9436 11.0179C10.2021 11.0997 9.44012 11.143 8.66623 11.143C5.83208 11.143 3.14817 10.5814 1.10888 9.56178C0.707279 9.36094 0.337707 9.14532 0 8.91699V9.90477C8.25489e-05 11.6579 3.7062 13.6186 8.66623 13.6186Z" fill="currentColor"></path>
+		<path d="M12.3803 13.2279C11.8445 14.0333 11.4617 14.9487 11.2734 15.9324C11.1865 16.3858 11.1406 16.8536 11.1406 17.332C11.1406 17.6916 11.1669 18.0453 11.2165 18.3914C11.3384 19.2418 11.6048 20.0458 11.99 20.7782C12.3941 21.5468 12.9288 22.2365 13.5647 22.8173C14.8861 24.0242 16.6436 24.7614 18.57 24.7614C22.6666 24.7614 25.9994 21.4286 25.9994 17.332C25.9994 13.2353 22.6666 9.90259 18.57 9.90259C18.1466 9.90259 17.7315 9.93874 17.3272 10.0071C15.2677 10.3554 13.4939 11.5539 12.3803 13.2279Z" fill="currentColor"></path>
+	</svg>
+
+
+
+
+
+
+								</span>
+								<span>Финансы</span>
+							</a><a class="blog-page__category blog-page__category--chain" data-blog-category-link="cash-gap" href="/SF/blog/?category=cash-gap">
+								<span class="blog-page__category-icon" aria-hidden="true">
+									
+
+
+
+
+
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<g clip-path="url(#blog-category-chain)">
+			<path d="M2.76667 1.68938L1.68945 2.7666L5.10062 6.17776L6.17784 5.10054L2.76667 1.68938Z" fill="currentColor"></path>
+			<path d="M8.91406 0.0349121H7.39062V3.8435H8.91406V0.0349121Z" fill="currentColor"></path>
+			<path d="M3.84374 7.39062H0.0351562V8.91406H3.84374V7.39062Z" fill="currentColor"></path>
+			<path d="M20.8995 19.8222L19.8223 20.8994L23.2334 24.3106L24.3106 23.2334L20.8995 19.8222Z" fill="currentColor"></path>
+			<path d="M25.9648 17.0858H22.1562V18.6093H25.9648V17.0858Z" fill="currentColor"></path>
+			<path d="M18.6094 22.1562H17.0859V25.9648H18.6094V22.1562Z" fill="currentColor"></path>
+			<path d="M17.8401 8.15989C17.658 7.97784 17.4679 7.80864 17.2714 7.65137L13.9771 10.9456C14.2055 11.0544 14.4195 11.2028 14.6084 11.3916C15.4993 12.2826 15.4994 13.7323 14.6084 14.6233L8.46815 20.7635C7.57714 21.6544 6.12744 21.6544 5.23644 20.7635C4.34543 19.8725 4.34548 18.4228 5.23644 17.5318L5.69088 17.0773C4.7434 15.3788 4.43247 13.4182 4.75742 11.5474L2.00473 14.3001C-0.668242 16.9731 -0.668242 21.3222 2.00473 23.9952C4.67769 26.6681 9.02685 26.6681 11.6998 23.9952L17.84 17.855C20.513 15.182 20.513 10.8328 17.8401 8.15989Z" fill="currentColor"></path>
+			<path d="M23.9962 2.00473C21.3232 -0.668242 16.9741 -0.668242 14.3011 2.00473L8.16098 8.14488C5.48801 10.8178 5.48801 15.167 8.16098 17.84C8.34145 18.0204 8.53188 18.1895 8.73013 18.348L12.0239 15.0543C11.7955 14.9455 11.5814 14.7971 11.3926 14.6083C10.5045 13.7202 10.5019 12.2771 11.3842 11.3855C11.384 11.3853 17.5328 5.23644 17.5328 5.23644C18.4238 4.34543 19.8735 4.34548 20.7645 5.23644C21.6555 6.12739 21.6555 7.57715 20.7645 8.46815L23.9962 11.6998C26.6692 9.02685 26.6692 4.67769 23.9962 2.00473Z" fill="currentColor"></path>
+		</g>
+		<defs>
+			<clipPath id="blog-category-chain">
+				<rect width="26" height="26" fill="white"></rect>
+			</clipPath>
+		</defs>
+	</svg>
+
+
+
+
+								</span>
+								<span>Кассовый разрыв</span>
+							</a><a class="blog-page__category blog-page__category--gavel" data-blog-category-link="law" href="/SF/blog/?category=law">
+								<span class="blog-page__category-icon" aria-hidden="true">
+									
+
+
+
+
+
+
+
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<path d="M23.5849 18.205L14.8234 10.4246L13.1113 12.1367L20.8917 20.8982C21.6226 21.7272 22.8981 21.7664 23.6781 20.9865C24.4581 20.2064 24.414 18.931 23.5849 18.205Z" fill="currentColor"></path>
+		<path d="M13.1054 20.1231C13.1054 19.245 12.394 18.5386 11.5209 18.5386H5.06499C4.1918 18.5386 3.48047 19.245 3.48047 20.1231V20.8295H13.1054V20.1231Z" fill="currentColor"></path>
+		<path d="M13.238 21.3201H3.34819C2.475 21.3201 1.76367 22.0265 1.76367 22.9046V24.1556C1.76367 24.4548 2.00896 24.7001 2.30819 24.7001H14.278C14.5822 24.7001 14.8225 24.4548 14.8225 24.1556V22.9046C14.8225 22.0265 14.1112 21.3201 13.238 21.3201Z" fill="currentColor"></path>
+		<path d="M6.43555 8.74976L11.4424 3.74292L16.1204 8.42096L11.1136 13.4278L6.43555 8.74976Z" fill="currentColor"></path>
+		<path d="M16.5663 8.17671C17.0269 8.63737 17.7725 8.6374 18.2332 8.17671C18.6938 7.71606 18.6938 6.97051 18.2332 6.50986L13.3659 1.64258C13.1356 1.41224 12.8325 1.29708 12.5325 1.30011C12.2324 1.29708 11.9294 1.41224 11.699 1.64258C11.2383 2.10327 11.2383 2.84879 11.699 3.30947L16.5663 8.17671Z" fill="currentColor"></path>
+		<path d="M9.19909 15.5443C9.65975 16.005 10.4053 16.005 10.866 15.5443C11.3266 15.0836 11.3266 14.3381 10.866 13.8774L5.99871 9.01017C5.76836 8.77983 5.46529 8.66467 5.1683 8.66467C4.86523 8.66467 4.56216 8.77983 4.33182 9.01017C3.87116 9.47083 3.87116 10.2164 4.33182 10.677L9.19909 15.5443Z" fill="currentColor"></path>
+	</svg>
+
+
+								</span>
+								<span>Законодательство</span>
+							</a><a class="blog-page__category blog-page__category--briefcase" data-blog-category-link="cases" href="/SF/blog/?category=cases">
+								<span class="blog-page__category-icon" aria-hidden="true">
+									
+
+
+
+
+
+
+
+
+
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<path d="M23.4065 5.8994H17.8068V3.64299C17.8068 2.5686 16.9328 1.69458 15.8584 1.69458H10.1412C9.06682 1.69458 8.19275 2.5686 8.19275 3.64299V5.8994H2.59306C1.16658 5.8994 0.00600782 7.05997 0.00600782 8.48645C0.00600782 9.78219 -0.126692 10.9459 0.855224 12.2545C1.41078 12.9949 2.17423 13.5231 3.063 13.7818L11.6936 16.2946C12.548 16.5434 13.4513 16.5435 14.3059 16.2946L22.9365 13.7818C23.8253 13.523 24.5887 12.9949 25.1443 12.2545C26.1306 10.94 25.9935 9.76435 25.9935 8.48645C25.9935 7.05997 24.833 5.8994 23.4065 5.8994ZM9.84311 3.64299C9.84311 3.47862 9.97684 3.34494 10.1412 3.34494H15.8584C16.0227 3.34494 16.1565 3.47868 16.1565 3.64299V5.8994H9.84311V3.64299Z" fill="currentColor"></path>
+		<path d="M23.3977 15.3663C14.0886 18.0767 14.2091 18.1316 12.9996 18.1316C11.7987 18.1316 12.0836 18.1271 2.60152 15.3664C1.60176 15.0752 0.716341 14.5387 0.00585938 13.799V21.7184C0.00585938 23.1449 1.16638 24.3054 2.59291 24.3054H23.4063C24.8328 24.3054 25.9934 23.1449 25.9934 21.7184V13.799C25.2828 14.5386 24.3974 15.0752 23.3977 15.3663Z" fill="currentColor"></path>
+	</svg>
+								</span>
+								<span>Кейсы</span>
+							</a>
+					</nav>
+				</aside>
+			</div>
+		</div>
+	</section>
+</main>
+
+<script type="module" src="/SF/_astro/BlogIndexPage.astro_astro_type_script_index_0_lang.BvkT9Whs.js"></script>
+
+	<dialog id="consultation-dialog" class="consultation-dialog" aria-labelledby="consultation-dialog-title" data-lead-form-root>
+  <div class="consultation-dialog__panel">
+    <button type="button" class="consultation-dialog__close" data-dialog-close aria-label="Закрыть форму">
+      <svg class="consultation-dialog__close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+
+    <section>
+      <div class="consultation-dialog__content" data-dialog-content data-state="form">
+        <div class="consultation-dialog__header">
+          <h2 class="consultation-dialog__title" id="consultation-dialog-title">
+            Вы в одном клике
+            <br>
+            от финансирования
+          </h2>
+        </div>
+
+        <form class="consultation-dialog__form" data-lead-form data-state="visible" novalidate>
+	<label class="consultation-dialog__field" data-required-field>
+				<input id="consultation-phone" class="consultation-dialog__input" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " maxlength="18" required data-lead-phone="true">
+				<span class="consultation-dialog__field-label">Телефон</span>
+				<span class="consultation-dialog__error">Необходимо заполнить поле</span>
+			</label><label class="consultation-dialog__field" data-required-field>
+				<input id="consultation-inn" class="consultation-dialog__input" name="inn" type="text" autocomplete="off" inputmode="numeric" placeholder=" " maxlength="12" pattern="[0-9]{10}|[0-9]{12}" required>
+				<span class="consultation-dialog__field-label">ИНН организации</span>
+				<span class="consultation-dialog__error">Введите корректный ИНН</span>
+			</label><label class="consultation-dialog__field" data-required-field>
+				<input id="consultation-email" class="consultation-dialog__input" name="email" type="email" autocomplete="email" inputmode="email" placeholder=" " required>
+				<span class="consultation-dialog__field-label">Почта</span>
+				<span class="consultation-dialog__error">Введите корректную почту</span>
+			</label>
+
+	<label class="consultation-dialog__consent" data-required-field data-invalid="false">
+		<input class="consultation-dialog__checkbox" name="consent" type="checkbox" required>
+		<span class="consultation-dialog__checkbox-box" aria-hidden="true">
+			<svg class="consultation-dialog__checkbox-check" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+			</svg>
+		</span>
+		<span class="consultation-dialog__consent-text">
+			Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
+		</span>
+	</label>
+
+	<button class="consultation-dialog__submit" type="submit">Отправить заявку</button>
+</form>
+      </div>
+
+      <div class="consultation-dialog__success" data-dialog-success data-lead-form-success data-state="hidden" aria-live="polite">
+        <div class="consultation-dialog__success-card">
+          <h3 class="consultation-dialog__success-title">Спасибо!</h3>
+          <p class="consultation-dialog__success-text">
+            Ваша заявка отправлена.
+            <br>
+            В ближайшее время менеджер свяжется с вами
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</dialog>
+
+<script type="module" src="/SF/_astro/ConsultationDialog.astro_astro_type_script_index_0_lang.fodW90IP.js"></script>
+	<footer class="site-footer" id="contacts">
+	<div class="container site-footer__inner">
+		<div class="site-footer__top">
+			<a class="site-footer__phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+
+			<nav class="site-footer__nav" aria-label="Навигация в футере">
+				<ul class="site-footer__nav-list">
+					<li>
+								<a href="/SF/blog/">Наш блог</a>
+							</li><li>
+								<a href="#requisites">Реквизиты</a>
+							</li><li>
+								<a href="#contacts">Контакты</a>
+							</li><li>
+								<a href="#privacy">Политика конфиденциальности</a>
+							</li><li>
+								<a href="#documents">Юридические документы</a>
+							</li>
+				</ul>
+			</nav>
+
+			<ul class="site-footer__socials" aria-label="Социальные сети">
+				<li>
+							<a href="#" aria-label="ВКонтакте">
+								
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path d="M20 0C16.0444 0 12.1776 1.17298 8.8886 3.37061C5.59962 5.56823 3.03617 8.69181 1.52242 12.3463C0.00866575 16.0009 -0.387401 20.0222 0.384303 23.9018C1.15601 27.7814 3.06082 31.3451 5.85787 34.1421C8.65492 36.9392 12.2186 38.844 16.0982 39.6157C19.9778 40.3874 23.9991 39.9913 27.6537 38.4776C31.3082 36.9638 34.4318 34.4004 36.6294 31.1114C38.827 27.8224 40 23.9556 40 20C40 14.6957 37.8929 9.60859 34.1421 5.85786C30.3914 2.10714 25.3043 0 20 0ZM31.5273 27.8273C30.9455 27.9091 28.1 27.8273 27.9523 27.8273C27.2167 27.8369 26.507 27.556 25.9773 27.0455C25.3773 26.4659 24.8409 25.8295 24.2545 25.2273C24.0818 25.0424 23.894 24.8721 23.6932 24.7182C23.225 24.3591 22.7614 24.4386 22.5409 24.9932C22.3688 25.59 22.2486 26.2006 22.1818 26.8182C22.1432 27.3773 21.7886 27.7273 21.1614 27.7659C20.7727 27.7864 20.3841 27.7955 20 27.7841C18.6001 27.7764 17.222 27.436 15.9795 26.7909C14.6348 26.0423 13.4631 25.0185 12.5409 23.7864C11.025 21.85 9.81364 19.7227 8.73182 17.5295C8.67501 17.4182 7.56592 15.0591 7.53864 14.9477C7.43864 14.5773 7.53864 14.2205 7.84546 14.0955C8.04092 14.0205 11.6955 14.0955 11.7568 14.0955C12.0287 14.0936 12.2941 14.1783 12.5148 14.3372C12.7354 14.4961 12.8997 14.7211 12.9841 14.9795C13.6603 16.7091 14.5852 18.3307 15.7296 19.7932C15.8899 19.988 16.0774 20.1587 16.2864 20.3C16.5841 20.5045 16.8659 20.4341 16.9886 20.0886C17.1343 19.6125 17.2198 19.1201 17.2432 18.6227C17.2636 17.6364 17.2432 16.9886 17.1886 16.0023C17.1523 15.3705 16.9296 14.8182 15.9977 14.6386C15.7114 14.5864 15.6864 14.35 15.8705 14.1136C16.2546 13.625 16.7796 13.5455 17.3682 13.5159C18.2455 13.4659 19.1227 13.5 20 13.5159H20.1909C20.5727 13.5145 20.9536 13.5534 21.3273 13.6318C21.5483 13.6769 21.749 13.7922 21.8992 13.9605C22.0495 14.1288 22.1415 14.3412 22.1614 14.5659C22.2065 14.8148 22.2255 15.0676 22.2182 15.3205C22.1955 16.3955 22.1432 17.4727 22.1318 18.5477C22.1213 18.9743 22.1601 19.4006 22.2477 19.8182C22.3727 20.3909 22.7659 20.5341 23.1568 20.1205C23.6634 19.5869 24.1277 19.0147 24.5455 18.4091C25.2859 17.3052 25.896 16.1192 26.3636 14.875C26.6182 14.2364 26.8182 14.0955 27.5 14.0955H31.3773C31.6078 14.0914 31.8377 14.1221 32.0591 14.1864C32.1375 14.207 32.2107 14.2435 32.2743 14.2937C32.3379 14.344 32.3905 14.4068 32.4287 14.4783C32.4668 14.5497 32.4899 14.6283 32.4963 14.7091C32.5027 14.7899 32.4924 14.8711 32.4659 14.9477C32.275 15.7977 31.8159 16.5227 31.3295 17.2205C30.5409 18.3364 29.7091 19.425 28.9023 20.5273C28.8052 20.6698 28.7164 20.8177 28.6364 20.9704C28.3318 21.5205 28.3545 21.8273 28.7955 22.2818C29.5 23.0068 30.2523 23.6841 30.9318 24.4295C31.4302 24.9719 31.8804 25.5567 32.2773 26.1773C32.7614 26.9591 32.4545 27.6954 31.5273 27.8273Z" fill="#0537C8"></path>
+		</svg>
+
+
+							</a>
+						</li><li>
+							<a href="#" aria-label="Telegram">
+								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95469 0 0 8.95469 0 20C0 31.0453 8.95469 40 20 40C31.0453 40 40 31.0453 40 20C40 8.95469 31.0453 0 20 0ZM29.2703 13.6016C28.9695 16.7641 27.6672 24.4383 27.0047 27.9805C26.7242 29.4797 26.1719 29.982 25.6375 30.0312C24.4766 30.1383 23.5945 29.2633 22.4695 28.5258C20.7094 27.3719 19.7148 26.6539 18.0063 25.5281C16.0312 24.2266 17.3117 23.5117 18.4367 22.343C18.7313 22.0367 23.8484 17.382 23.9477 16.9602C23.9602 16.907 23.9719 16.7102 23.8547 16.6063C23.7375 16.5023 23.5648 16.5383 23.4406 16.5664C23.2641 16.6063 20.4516 18.4648 15.0047 22.1422C14.2063 22.6906 13.4836 22.957 12.8352 22.9437C12.1211 22.9281 10.7477 22.5398 9.72656 22.2078C8.47422 21.8008 7.47891 21.5852 7.56562 20.8937C7.61016 20.5336 8.10625 20.1656 9.05312 19.7891C14.8836 17.2484 18.7711 15.5742 20.7164 14.7648C26.271 12.4548 27.425 12.0531 28.1773 12.0398C29.1196 12.0232 29.347 12.801 29.2703 13.6016Z" fill="#0537C8"></path>
+		</svg>
+
+
+
+
+
+
+							</a>
+						</li><li>
+							<a href="#" aria-label="MAX">
+								
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95469 0 0 8.95469 0 20C0 31.0453 8.95469 40 20 40C31.0453 40 40 31.0453 40 20C40 8.95469 31.0453 0 20 0ZM29.2703 13.6016C28.9695 16.7641 27.6672 24.4383 27.0047 27.9805C26.7242 29.4797 26.1719 29.982 25.6375 30.0312C24.4766 30.1383 23.5945 29.2633 22.4695 28.5258C20.7094 27.3719 19.7148 26.6539 18.0063 25.5281C16.0312 24.2266 17.3117 23.5117 18.4367 22.343C18.7313 22.0367 23.8484 17.382 23.9477 16.9602C23.9602 16.907 23.9719 16.7102 23.8547 16.6063C23.7375 16.5023 23.5648 16.5383 23.4406 16.5664C23.2641 16.6063 20.4516 18.4648 15.0047 22.1422C14.2063 22.6906 13.4836 22.957 12.8352 22.9437C12.1211 22.9281 10.7477 22.5398 9.72656 22.2078C8.47422 21.8008 7.47891 21.5852 7.56562 20.8937C7.61016 20.5336 8.10625 20.1656 9.05312 19.7891C14.8836 17.2484 18.7711 15.5742 20.7164 14.7648C26.271 12.4548 27.425 12.0531 28.1773 12.0398C29.1196 12.0232 29.347 12.801 29.2703 13.6016Z" fill="#0537C8"></path>
+			<circle cx="20.5" cy="20.5" r="13.5" fill="#0537C8"></circle>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M19.7041 28.9458C17.8395 28.9458 16.973 28.6724 15.4668 27.5788C14.5141 28.8091 11.4971 29.7705 11.3656 28.1256C11.3656 26.8908 11.0934 25.8474 10.7849 24.7083C10.4174 23.3049 10 21.742 10 19.4775C10 14.0689 14.4188 10 19.6542 10C24.8942 10 28.9999 14.2694 28.9999 19.5276C29.0175 24.7044 24.8585 28.9182 19.7041 28.9458ZM19.7813 14.6749C17.2316 14.5428 15.2445 16.3153 14.8044 19.0947C14.4415 21.3957 15.0857 24.1979 15.6346 24.3438C15.8978 24.4075 16.5602 23.8699 16.973 23.4552C17.6557 23.9289 18.4506 24.2134 19.2777 24.28C21.9195 24.4076 24.1769 22.3876 24.3543 19.7372C24.4576 17.0811 22.4235 14.8315 19.7813 14.6795V14.6749Z" fill="white"></path>
+		</svg>
+
+
+
+
+							</a>
+						</li><li>
+							<a href="mailto:info@simplefinance.ru" aria-label="Email">
+								
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path d="M39 20.5C39 9.73045 30.2696 1 19.5 1C8.73045 1 0 9.73045 0 20.5C0 31.2696 8.73045 40 19.5 40C30.2696 40 39 31.2696 39 20.5Z" fill="#0537C8"></path>
+			<path d="M27.7696 13.0522H11.2319C10.9505 13.0524 10.6734 13.1174 10.4245 13.2416C10.1756 13.3659 9.96256 13.5456 9.80371 13.7653L18.0717 19.3101C18.4894 19.5893 18.9884 19.7393 19.4999 19.7393C20.0114 19.7393 20.5104 19.5893 20.9281 19.3101L29.1952 13.7653C29.0366 13.546 28.8239 13.3664 28.5756 13.2422C28.3272 13.1179 28.0506 13.0528 27.7696 13.0522Z" fill="white"></path>
+			<path d="M21.6432 20.2647C21.0164 20.6844 20.2675 20.9097 19.4996 20.9097C18.7317 20.9097 17.9827 20.6844 17.356 20.2647L9.5 14.9966V25.4149C9.5 25.8492 9.68239 26.2657 10.007 26.5727C10.3317 26.8798 10.772 27.0523 11.2312 27.0523H27.7688C28.228 27.0523 28.6683 26.8798 28.993 26.5727C29.3176 26.2657 29.5 25.8492 29.5 25.4149V14.9966L21.6432 20.2647Z" fill="white"></path>
+		</svg>
+							</a>
+						</li>
+			</ul>
+		</div>
+
+		<div class="site-footer__content">
+			<article class="site-footer__disclosure">
+				<button class="site-footer__entity" type="button" aria-expanded="false" aria-controls="footer-requisites-panel">
+					<span>
+						Общество с ограниченной ответственностью микрокредитная компания
+						«СимплФинанс»
+					</span>
+					<span class="site-footer__entity-icon" aria-hidden="true">
+						<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M0.822266 0.822266L5.09845 6.43053C5.42747 6.86204 6.07692 6.86204 6.40595 6.43053L10.6821 0.822266" stroke="#2C2C2C" stroke-opacity="0.5" stroke-width="1.64421" stroke-linecap="round"></path>
+						</svg>
+					</span>
+				</button>
+
+				<div class="site-footer__details" id="footer-requisites-panel" hidden>
+					<div class="site-footer__details-inner" id="requisites">
+						<p>ИНН 7703381419, ОГРН 1157746499547</p>
+						<p>Дата внесения в реестр микрофинансовых организаций 23.10.2015</p>
+						<p>Регистрационный номер записи 001503045007061</p>
+						<p>Сайт Банка России</p>
+						<p>Интернет-приемная Банка России</p>
+						<p>Член СРО «МиР» с 15.12.2015, регистрационный номер в реестре 77000229.</p>
+						<p style="margin-bottom: 10px;">107078, г. Москва Орликов переулок, д.5, стр.1, этаж 2, пом.11</p>
+						<p>
+							Вы можете обратиться в Службу финансового уполномоченного: 8 (800) 200-00-10,
+							https://finombudsman.ru/
+						</p>
+						<p>119017, г. Москва, Старомонетный пер., д.3</p>
+						<p>или направить нам заявление на оспаривание своей кредитной истории в SimpleFinance (СимплФинанс)</p>
+						<p>«Вся представленная информация на сайте носит информационно-справочный характер и не является рекламой»</p>
+					</div>
+				</div>
+			</article>
+
+			<div class="site-footer__partners">
+				<img src="/SF/_astro/sf-logo.DMG_1NIQ.svg" alt="SimpleFinance">
+				<img src="/SF/_astro/sfp-logo.CMCMXRMy.svg" alt="SimpleFinance Platform">
+				<img src="/SF/_astro/Sk-logo.DcZEXjg4.svg" alt="Сколково участник">
+			</div>
+		</div>
+
+		<div class="site-footer__bottom">
+			<p>© 2015-2026 ООО МКК «СимплФинанс» 115191, г. Москва, Холодильный переулок, д.3</p>
+			<p>© 2026 Simplefinance Platform — единая платформа для компаний, участвующих в тендерах. Резидент Сколково с 2018 года</p>
+		</div>
+	</div>
+</footer>
+
+<script type="module" src="/SF/_astro/Footer.astro_astro_type_script_index_0_lang.B8YHPcXd.js"></script>
+	<button class="scroll-to-top" type="button" aria-label="Вернуться наверх" data-scroll-to-top>
+	<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+		<path d="M12 5.5 5.75 11.75l1.42 1.42L11 9.33V19h2V9.33l3.83 3.84 1.42-1.42L12 5.5Z"></path>
+	</svg>
+</button>
+
+<script type="module" src="/SF/_astro/ScrollToTop.astro_astro_type_script_index_0_lang.CMhACyYi.js"></script>
+	<script type="module" src="/SF/_astro/UxEnhancements.astro_astro_type_script_index_0_lang.BxiIX3Ot.js"></script>
+
+  </body></html>
