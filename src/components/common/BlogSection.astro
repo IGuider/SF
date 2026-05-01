@@ -4,11 +4,15 @@ import { Image } from 'astro:assets';
 import blogPhoto from '../../assets/blog.jpg';
 import '../../styles/components/common/blog-section.scss';
 import SocialIcon from '../ui/SocialIcon.astro';
+import { getBlogPostPath } from '../../lib/blog';
 
 const posts = (await getCollection('blogPosts')).sort((left, right) => left.data.order - right.data.order);
 const socials = (await getCollection('socialLinks'))
 	.filter((item) => item.data.contexts.includes('blog'))
 	.sort((left, right) => left.data.order - right.data.order);
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
 ---
 
 <section class="blog-section section" id="blog" aria-labelledby="blog-title">
@@ -31,7 +35,7 @@ const socials = (await getCollection('socialLinks'))
 					{
 						posts.map((post) => (
 							<li>
-								<a class="blog-post" href={post.data.href} aria-label={`Открыть статью: ${post.data.title}`}>
+								<a class="blog-post" href={`${basePath}${getBlogPostPath(post)}`} aria-label={`Открыть статью: ${post.data.title}`}>
 									<span class="blog-post__title">{post.data.title}</span>
 									<span class="blog-post__icon" aria-hidden="true">
 										<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

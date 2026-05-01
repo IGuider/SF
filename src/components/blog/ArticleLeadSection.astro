@@ -1,0 +1,40 @@
+---
+import Button from '../ui/Button.astro';
+import Consent from '../ui/Consent.astro';
+import Input from '../ui/Input.astro';
+---
+
+<section class="article-page__lead" aria-labelledby="article-lead-title" data-lead-form-root>
+	<h2 id="article-lead-title">Закроем разрыв за 1 день</h2>
+	<p>Рассчитаем лимит и условия онлайн</p>
+	<form class="article-page__lead-form" data-lead-form data-state="visible" novalidate>
+		<Input
+			class="article-page__lead-field"
+			name="phone"
+			type="tel"
+			label="Телефон"
+			placeholder="Телефон"
+			autocomplete="tel"
+			inputmode="tel"
+			maxlength={18}
+			error="Введите корректный телефон"
+			variant="floating"
+			size="sm"
+			dataLeadPhone
+			required
+		/>
+		<Consent class="article-page__lead-consent" required>
+			Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
+		</Consent>
+		<Button size="lg" type="submit" variant="secondary" class="article-page__lead-submit">Перезвоните мне</Button>
+	</form>
+	<div class="article-page__lead-success" data-lead-form-success data-state="hidden" aria-live="polite">
+		<strong>Спасибо!</strong>
+		<span>Ваша заявка отправлена. В ближайшее время менеджер свяжется с вами</span>
+		<button type="button" data-lead-form-success-close>Отправить ещё раз</button>
+	</div>
+</section>
+
+<script>
+	import '../../scripts/common/lead-form';
+</script>

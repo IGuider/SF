@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogCard from './BlogCard.astro';
+import { sortBlogPosts, type BlogPost } from '../../lib/blog';
+
+interface Props {
+	post: BlogPost;
+	relatedPosts: CollectionEntry<'blogPosts'>[];
+	basePath: string;
+}
+
+const { post, relatedPosts, basePath } = Astro.props;
+const sortedRelatedPosts = sortBlogPosts(relatedPosts).filter((item) => item.data.slug !== post.data.slug).slice(0, 4);
+---
+
+{sortedRelatedPosts.length > 0 && (
+	<section class="article-page__related" aria-labelledby="article-related-title">
+		<h2 id="article-related-title">Читайте также</h2>
+		<ul>
+			{sortedRelatedPosts.map((relatedPost) => (
+				<BlogCard post={relatedPost} basePath={basePath} directionFilter="all" />
+			))}
+		</ul>
+		<a class="article-page__related-more" href={`${basePath}blog/`} aria-label="Перейти ко всем статьям блога">
+			<span>Больше статей</span>
+			<svg xmlns="http://www.w3.org/2000/svg" width="31" height="20" viewBox="0 0 31 20" fill="none" aria-hidden="true">
+				<path d="M19 18L28.0016 11.1966C28.5132 10.8099 28.5338 10.0484 28.0437 9.6347L19 2" stroke="#0537C8" stroke-width="2" stroke-linecap="round"/>
+				<path d="M28.5 10.5H2" stroke="#0537C8" stroke-width="2" stroke-linecap="round"/>
+			</svg>
+		</a>
+	</section>
+)}

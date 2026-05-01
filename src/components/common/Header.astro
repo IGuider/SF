@@ -19,10 +19,14 @@ interface Props {
 	mobileNavItems?: NavItem[];
 }
 
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
 const defaultNavItems = [
 	{ label: 'О компании', href: '#about' },
 	{ label: 'Продукты', href: '#products' },
-	{ label: 'Блог', href: '#blog' },
+	{ label: 'Блог', href: `${basePath}blog/` },
 	{ label: 'Контакты', href: '#contacts' },
 ];
 
@@ -30,10 +34,6 @@ const socialLinks = (await getCollection('socialLinks'))
 	.filter((item) => item.data.contexts.includes('header'))
 	.sort((left, right) => left.data.order - right.data.order)
 	.map((item) => item.data);
-
-const basePath = import.meta.env.BASE_URL.endsWith('/')
-	? import.meta.env.BASE_URL
-	: `${import.meta.env.BASE_URL}/`;
 
 const {
 	brandHref = basePath,

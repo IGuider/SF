@@ -1,0 +1,147 @@
+---
+import { getCollection } from 'astro:content';
+import BlogCard from './BlogCard.astro';
+import Icon from '../ui/Icon.astro';
+import {
+	BLOG_CATEGORIES,
+	BLOG_DIRECTIONS,
+	sortBlogPosts,
+	type BlogCategoryFilter,
+	type BlogDirectionFilter,
+} from '../../lib/blog';
+import '../../styles/components/blog/blog-index-page.scss';
+import '../../styles/components/blog/blog-card.scss';
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const direction: BlogDirectionFilter = 'all';
+const category: BlogCategoryFilter = 'all';
+const query = '';
+
+const makeBlogUrl = (next: {
+	direction?: BlogDirectionFilter;
+	category?: BlogCategoryFilter;
+	q?: string;
+}) => {
+	const params = new URLSearchParams();
+	const nextDirection = next.direction ?? direction;
+	const nextCategory = next.category ?? category;
+	const nextQuery = next.q ?? query;
+
+	if (nextDirection !== 'all') {
+		params.set('direction', nextDirection);
+	}
+
+	if (nextCategory !== 'all') {
+		params.set('category', nextCategory);
+	}
+
+	if (nextQuery) {
+		params.set('q', nextQuery);
+	}
+
+	const suffix = params.toString();
+	return `${basePath}blog/${suffix ? `?${suffix}` : ''}`;
+};
+
+const posts = sortBlogPosts(await getCollection('blogPosts'));
+
+const [pinnedPost, ...regularPosts] = posts;
+const initialRegularCount = 6;
+---
+
+<main class="blog-page" transition:name="page-content">
+	<section class="blog-page__hero" aria-labelledby="blog-page-title">
+		<div class="container blog-page__container">
+			<div class="blog-page__header">
+				<div>
+					<h1 class="blog-page__title" id="blog-page-title">Блог SimpleFinance</h1>
+					<p class="blog-page__subtitle">Полезное для участников рынков маркетплейсов и госзакупок</p>
+				</div>
+			</div>
+
+			<div class="blog-page__layout" data-blog-list>
+				<div class="blog-page__main" data-blog-main>
+					<nav class="blog-page__directions" aria-label="Направления блога">
+						{BLOG_DIRECTIONS.map((item) => (
+							<a
+								class:list={['blog-page__direction', { 'is-active': direction === item.value }]}
+								data-blog-direction-filter={item.value}
+								href={makeBlogUrl({ direction: item.value, category: 'all' })}
+								aria-current={direction === item.value ? 'page' : undefined}
+							>
+								{item.label}
+							</a>
+						))}
+					</nav>
+
+					{pinnedPost ? (
+						<ul class="blog-page__pinned-list" aria-label="Закреплённая статья">
+							<BlogCard post={pinnedPost} basePath={basePath} directionFilter={direction} pinned />
+						</ul>
+					) : (
+						<ul class="blog-page__pinned-list" aria-label="Закреплённая статья"></ul>
+					)}
+
+					<div class="blog-page__empty" data-blog-empty hidden>
+						<h2>Пока нет статей</h2>
+						<p>В этом направлении или категории материалы появятся позже.</p>
+					</div>
+
+					{regularPosts.length > 0 && (
+						<ul class="blog-page__list" aria-label="Статьи блога">
+							{regularPosts.map((post, index) => (
+								<BlogCard
+									post={post}
+									basePath={basePath}
+									directionFilter={direction}
+									hidden={index >= initialRegularCount}
+								/>
+							))}
+						</ul>
+					)}
+
+					<div class="blog-page__sentinel" data-blog-sentinel aria-hidden="true">
+						<span class="blog-page__sentinel-spinner"></span>
+						<span data-blog-sentinel-text>Прокрутите ниже, чтобы загрузить ещё</span>
+					</div>
+				</div>
+
+				<aside class="blog-page__sidebar" aria-label="Категории блога">
+					<form class="blog-page__search" action={`${basePath}blog/`} method="get">
+						<label class="visually-hidden" for="blog-search">Поиск по статьям</label>
+						<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+							<path d="M25.3654 22.3017L19.8653 16.8016C21.0017 15.0888 21.6669 13.0381 21.6669 10.8334C21.6669 4.85988 16.807 0 10.8334 0C4.85988 0 0 4.85988 0 10.8334C0 16.807 4.85988 21.6669 10.8334 21.6669C13.0381 21.6669 15.0888 21.0017 16.8016 19.8653L22.3017 25.3654C23.1467 26.2115 24.5204 26.2115 25.3654 25.3654C26.2115 24.5193 26.2115 23.1478 25.3654 22.3017ZM3.25003 10.8334C3.25003 6.65174 6.65174 3.25003 10.8334 3.25003C15.0152 3.25003 18.4169 6.65174 18.4169 10.8334C18.4169 15.0152 15.0152 18.4169 10.8334 18.4169C6.65174 18.4169 3.25003 15.0152 3.25003 10.8334Z" fill="#0537C8" fill-opacity="0.5" />
+						</svg>
+						<input id="blog-search" type="search" name="q" value={query} placeholder="Поиск" data-blog-search />
+					</form>
+
+					<nav class="blog-page__categories" aria-label="Категории блога">
+						{BLOG_CATEGORIES.map((item) => (
+							<a
+								class:list={['blog-page__category', `blog-page__category--${item.icon}`, { 'is-active': category === item.value }]}
+								data-blog-category-link={item.value}
+								href={makeBlogUrl({ category: item.value })}
+								aria-current={category === item.value ? 'page' : undefined}
+							>
+								<span class="blog-page__category-icon" aria-hidden="true">
+									<Icon name={item.icon} />
+								</span>
+								<span>{item.label}</span>
+							</a>
+						))}
+					</nav>
+				</aside>
+			</div>
+		</div>
+	</section>
+</main>
+
+<script>
+	import { initBlogList } from '../../scripts/common/blog-list';
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
+
+	runOnPageLoad(initBlogList);
+</script>

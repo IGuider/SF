@@ -1,0 +1,119 @@
+@keyframes ui-consent-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-6px);
+  }
+
+  40% {
+    transform: translateX(6px);
+  }
+
+  60% {
+    transform: translateX(-4px);
+  }
+
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+.ui-consent {
+  position: relative;
+  display: flex;
+  gap: var(--ui-consent-gap, 10px);
+  align-items: var(--ui-consent-align, center);
+  width: 100%;
+  color: var(--ui-consent-color, var(--color-primary));
+  font-family: "Commissioner", Arial, sans-serif;
+  font-size: var(--ui-consent-font-size, 15px);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--ui-consent-line-height, 1.15);
+  text-align: left;
+  cursor: pointer;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 1px;
+  }
+
+  &[data-invalid="true"] {
+    color: var(--color-warning-dark);
+  }
+
+  &[data-invalid="true"] &__box {
+    border-color: var(--color-warning);
+    background: var(--color-control-invalid-bg);
+  }
+
+  &[data-shake="true"] &__box {
+    animation: ui-consent-shake 360ms ease;
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: var(--ui-consent-size, 25px);
+    height: var(--ui-consent-size, 25px);
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__box {
+    flex: 0 0 var(--ui-consent-size, 25px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ui-consent-size, 25px);
+    height: var(--ui-consent-size, 25px);
+    margin-top: var(--ui-consent-box-offset, 1px);
+    border: 1px solid var(--ui-consent-border-color, var(--color-primary-track));
+    border-radius: var(--ui-consent-radius, 5px);
+    background: var(--color-white);
+    transition:
+      border-color var(--transition-duration-fast) ease,
+      background-color var(--transition-duration-fast) ease,
+      box-shadow var(--transition-duration-fast) ease;
+  }
+
+  &__check {
+    width: calc(var(--ui-consent-size, 25px) * 0.52);
+    height: calc(var(--ui-consent-size, 25px) * 0.52);
+    opacity: 0;
+    transform: scale(0.1);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  &__text {
+    flex: 1 1 auto;
+  }
+
+  &__input:focus-visible + &__box {
+    box-shadow: 0 0 0 3px var(--color-control-border-soft);
+  }
+
+  &__input:checked + &__box {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+  }
+
+  &__input:checked + &__box &__check {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-consent[data-shake="true"] .ui-consent__box {
+    animation: none;
+  }
+}

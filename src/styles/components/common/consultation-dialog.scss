@@ -4,6 +4,29 @@
   overflow: hidden;
 }
 
+@keyframes consultation-dialog-field-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-6px);
+  }
+
+  40% {
+    transform: translateX(6px);
+  }
+
+  60% {
+    transform: translateX(-4px);
+  }
+
+  80% {
+    transform: translateX(4px);
+  }
+}
+
 .consultation-dialog {
   position: fixed;
   inset: 0;
@@ -234,6 +257,11 @@
     var(--color-control-border)
   );
 
+  &__field[data-shake="true"],
+  &__consent[data-shake="true"] {
+    animation: consultation-dialog-field-shake 360ms ease;
+  }
+
   &__submit {
     height: 60px;
     padding: 0 1rem;
@@ -247,6 +275,15 @@
 
     &:hover {
       background: var(--color-primary-50);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consultation-dialog {
+    &__field[data-shake="true"],
+    &__consent[data-shake="true"] {
+      animation: none;
     }
   }
 }

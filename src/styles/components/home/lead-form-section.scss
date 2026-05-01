@@ -24,6 +24,29 @@
   }
 }
 
+@keyframes lead-form-field-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-6px);
+  }
+
+  40% {
+    transform: translateX(6px);
+  }
+
+  60% {
+    transform: translateX(-4px);
+  }
+
+  80% {
+    transform: translateX(4px);
+  }
+}
+
 .lead-form-section {
   position: relative;
   z-index: 1;
@@ -111,6 +134,11 @@
     16px,
     var(--color-primary-track)
   );
+
+  &__field[data-shake="true"],
+  &__consent[data-shake="true"] {
+    animation: lead-form-field-shake 360ms ease;
+  }
 
   &__submit {
     width: fit-content;
@@ -210,6 +238,15 @@
   &__visual-image {
     &--tablet {
       display: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-form-section {
+    &__field[data-shake="true"],
+    &__consent[data-shake="true"] {
+      animation: none;
     }
   }
 }

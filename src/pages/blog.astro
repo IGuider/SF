@@ -1,0 +1,25 @@
+---
+import SiteShell from '../components/common/SiteShell.astro';
+import BlogIndexPage from '../components/blog/BlogIndexPage.astro';
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const blogNavItems = [
+	{ label: 'О компании', href: `${basePath}ecom` },
+	{ label: 'Продукты', href: `${basePath}ecom#products` },
+	{ label: 'Контакты', href: '#contacts' },
+	{ label: 'Блог', href: `${basePath}blog/` },
+];
+---
+
+<SiteShell
+	title="Блог SimpleFinance"
+	description="Статьи SimpleFinance для участников маркетплейсов и госзакупок."
+	headerBrandHref={basePath}
+	headerNavItems={blogNavItems}
+	headerMobileNavItems={blogNavItems}
+>
+	<BlogIndexPage />
+</SiteShell>

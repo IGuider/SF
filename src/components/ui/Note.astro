@@ -1,0 +1,22 @@
+---
+import '../../styles/components/ui/note.scss';
+
+interface Props {
+	tone?: 'info' | 'warning' | 'success';
+	class?: string;
+}
+
+const {
+	tone = 'info',
+	class: className,
+} = Astro.props;
+
+const componentClass = ['ui-note', `ui-note--${tone}`, className]
+	.filter(Boolean)
+	.join(' ');
+---
+
+<aside class={componentClass}>
+	<slot name="title" />
+	<slot />
+</aside>

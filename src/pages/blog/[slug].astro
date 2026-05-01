@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import SiteShell from '../../components/common/SiteShell.astro';
+import BlogArticlePage from '../../components/blog/BlogArticlePage.astro';
+import { getBlogBlockText } from '../../lib/blog';
+
+export const getStaticPaths = async () => {
+	const posts = await getCollection('blogPosts');
+
+	return posts.map((post) => ({
+		params: { slug: post.data.slug },
+		props: { post },
+	}));
+};
+
+const { post } = Astro.props;
+const relatedPosts = await getCollection('blogPosts');
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+const blogNavItems = [
+	{ label: 'О компании', href: `${basePath}ecom` },
+	{ label: 'Продукты', href: `${basePath}ecom#products` },
+	{ label: 'Контакты', href: '#contacts' },
+	{ label: 'Блог', href: `${basePath}blog/` },
+];
+---
+
+<SiteShell
+	title={`${post.data.title} | SimpleFinance`}
+	description={getBlogBlockText(post.data.body.find((block) => block.type === 'paragraph')) || post.data.title}
+	headerBrandHref={basePath}
+	headerNavItems={blogNavItems}
+	headerMobileNavItems={blogNavItems}
+>
+	<BlogArticlePage post={post} relatedPosts={relatedPosts} />
+</SiteShell>

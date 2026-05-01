@@ -1,4 +1,5 @@
 ---
+import LeadForm from './LeadForm.astro';
 import '../../styles/components/common/consultation-dialog.scss';
 
 interface Props {
@@ -9,7 +10,7 @@ const { id = 'consultation-dialog' } = Astro.props;
 
 ---
 
-<dialog id={id} class="consultation-dialog" aria-labelledby={`${id}-title`}>
+<dialog id={id} class="consultation-dialog" aria-labelledby={`${id}-title`} data-lead-form-root>
   <div class="consultation-dialog__panel">
     <button
       type="button"
@@ -42,88 +43,19 @@ const { id = 'consultation-dialog' } = Astro.props;
           </h2>
         </div>
 
-        <form class="consultation-dialog__form" data-dialog-form novalidate>
-        <label class="consultation-dialog__field" data-required-field>
-          <input
-            id="consultation-phone"
-            class="consultation-dialog__input"
-            name="phone"
-            type="tel"
-            autocomplete="tel"
-            inputmode="tel"
-            placeholder=" "
-            maxlength="18"
-            required
-          />
-          <span class="consultation-dialog__field-label">Телефон</span>
-          <span class="consultation-dialog__error">Необходимо заполнить поле</span>
-        </label>
-
-        <label class="consultation-dialog__field" data-required-field>
-          <input
-            id="consultation-inn"
-            class="consultation-dialog__input"
-            name="inn"
-            type="text"
-            inputmode="numeric"
-            placeholder=" "
-            autocomplete="off"
-            pattern="[0-9]{10}|[0-9]{12}"
-            maxlength="12"
-            required
-          />
-          <span class="consultation-dialog__field-label">ИНН организации</span>
-          <span class="consultation-dialog__error">Введите корректный ИНН</span>
-        </label>
-
-        <label
-          class="consultation-dialog__field"
-          data-required-field
-        >
-          <input
-            id="consultation-email"
-            class="consultation-dialog__input"
-            name="email"
-            type="email"
-            inputmode="email"
-            placeholder=" "
-            autocomplete="email"
-            required
-          />
-          <span class="consultation-dialog__field-label">Почта</span>
-          <span class="consultation-dialog__error">Введите корректную почту</span>
-        </label>
-
-        <label class="consultation-dialog__consent" data-required-field data-invalid="false">
-          <input class="consultation-dialog__checkbox" name="consent" type="checkbox" required />
-          <span class="consultation-dialog__checkbox-box" aria-hidden="true">
-            <svg
-              class="consultation-dialog__checkbox-check"
-              viewBox="0 0 20 13"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031"
-                stroke="white"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </span>
-          <span class="consultation-dialog__consent-text">
-            Отправляя заявку вы соглашаетесь <a href="#privacy">с условиями политики конфиденциальности и обработки персональных данных</a>
-          </span>
-        </label>
-
-          <button class="consultation-dialog__submit" type="submit">Отправить заявку</button>
-        </form>
+        <LeadForm
+          block="consultation-dialog"
+          fields={['phone', 'inn', 'email']}
+          submitLabel="Отправить заявку"
+          submitClass="consultation-dialog__submit"
+          button="native"
+        />
       </div>
 
       <div
         class="consultation-dialog__success"
         data-dialog-success
+        data-lead-form-success
         data-state="hidden"
         aria-live="polite"
       >
@@ -141,5 +73,6 @@ const { id = 'consultation-dialog' } = Astro.props;
 </dialog>
 
 <script>
+  import '../../scripts/common/lead-form.ts';
   import '../../scripts/common/consultation-dialog.ts';
 </script>

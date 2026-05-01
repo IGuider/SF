@@ -1,0 +1,171 @@
+---
+import Button from '../ui/Button.astro';
+
+type LeadFormField = 'phone' | 'email' | 'inn' | 'turnover';
+
+interface Props {
+	block: string;
+	fields: LeadFormField[];
+	submitLabel: string;
+	submitClass?: string;
+	submitVariant?: 'primary' | 'secondary' | 'outline';
+	submitSize?: 'md' | 'lg' | 'xl';
+	turnoverOptions?: string[];
+	turnoverMenuId?: string;
+	button?: 'ui' | 'native';
+}
+
+const {
+	block,
+	fields,
+	submitLabel,
+	submitClass,
+	submitVariant = 'secondary',
+	submitSize = 'lg',
+	turnoverOptions = [],
+	turnoverMenuId = `${block}-turnover-options`,
+	button = 'ui',
+} = Astro.props;
+
+const fieldConfig = {
+	phone: {
+		id: block === 'consultation-dialog' ? 'consultation-phone' : undefined,
+		name: 'phone',
+		type: 'tel',
+		autocomplete: 'tel',
+		inputmode: 'tel',
+		label: 'Телефон',
+		error: 'Необходимо заполнить поле',
+		maxlength: '18',
+		pattern: undefined,
+		dataLeadPhone: true,
+	},
+	email: {
+		id: block === 'consultation-dialog' ? 'consultation-email' : undefined,
+		name: 'email',
+		type: 'email',
+		autocomplete: 'email',
+		inputmode: 'email',
+		label: 'Почта',
+		error: 'Введите корректную почту',
+		maxlength: undefined,
+		pattern: undefined,
+		dataLeadPhone: false,
+	},
+	inn: {
+		id: block === 'consultation-dialog' ? 'consultation-inn' : undefined,
+		name: 'inn',
+		type: 'text',
+		autocomplete: 'off',
+		inputmode: 'numeric',
+		label: 'ИНН организации',
+		error: 'Введите корректный ИНН',
+		maxlength: '12',
+		pattern: '[0-9]{10}|[0-9]{12}',
+		dataLeadPhone: false,
+	},
+};
+---
+
+<form class={`${block}__form`} data-lead-form data-state="visible" novalidate>
+	{fields.map((field) => {
+		const config = field === 'turnover' ? undefined : fieldConfig[field];
+
+		return field === 'turnover' ? (
+			<div
+				class={`${block}__field ${block}__field--select`}
+				data-dropdown-root
+				data-required-field
+				data-has-value="false"
+				data-invalid="false"
+			>
+				<input id={block === 'consultation-dialog' ? 'consultation-turnover' : undefined} type="hidden" name="turnover" required data-dropdown-input />
+				<button
+					type="button"
+					class={`${block}__input ${block}__select`}
+					data-dropdown-trigger
+					aria-expanded="false"
+					aria-controls={turnoverMenuId}
+				>
+					<span class={`${block}__select-label`} data-dropdown-label></span>
+				</button>
+				<span class={`${block}__field-label ${block}__field-label--select`}>Обороты</span>
+				<span class={`${block}__select-icon`} aria-hidden="true">
+					<svg viewBox="0 0 16 16" fill="none">
+						<path
+							d="M4 6L8 10L12 6"
+							stroke="currentColor"
+							stroke-width="1.6"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</span>
+				<div
+					class={`${block}__dropdown`}
+					id={turnoverMenuId}
+					data-dropdown-menu
+					data-state="closed"
+					aria-hidden="true"
+				>
+					{turnoverOptions.map((option) => (
+						<button
+							type="button"
+							class={`${block}__option`}
+							data-dropdown-option
+							data-selected="false"
+							data-value={option}
+						>
+							{option}
+						</button>
+					))}
+				</div>
+				<span class={`${block}__error`}>Необходимо заполнить поле</span>
+			</div>
+		) : (
+			<label class={`${block}__field`} data-required-field>
+				<input
+					id={config.id}
+					class={`${block}__input`}
+					name={config.name}
+					type={config.type}
+					autocomplete={config.autocomplete}
+					inputmode={config.inputmode}
+					placeholder=" "
+					maxlength={config.maxlength}
+					pattern={config.pattern}
+					required
+					data-lead-phone={config.dataLeadPhone ? true : undefined}
+				/>
+				<span class={`${block}__field-label`}>{config.label}</span>
+				<span class={`${block}__error`}>{config.error}</span>
+			</label>
+		);
+	})}
+
+	<label class={`${block}__consent`} data-required-field data-invalid="false">
+		<input class={`${block}__checkbox`} name="consent" type="checkbox" required />
+		<span class={`${block}__checkbox-box`} aria-hidden="true">
+			<svg class={`${block}__checkbox-check`} viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031"
+					stroke="white"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
+		</span>
+		<span class={`${block}__consent-text`}>
+			Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
+		</span>
+	</label>
+
+	{button === 'ui' ? (
+		<Button type="submit" variant={submitVariant} size={submitSize} class={submitClass}>
+			{submitLabel}
+		</Button>
+	) : (
+		<button class={submitClass} type="submit">{submitLabel}</button>
+	)}
+</form>

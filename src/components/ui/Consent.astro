@@ -1,0 +1,29 @@
+---
+import '../../styles/components/ui/consent.scss';
+
+interface Props {
+	name?: string;
+	required?: boolean;
+	class?: string;
+}
+
+const { name = 'consent', required = false, class: className } = Astro.props;
+---
+
+<label class:list={['ui-consent', className]} data-required-field={required ? true : undefined}>
+	<input class="ui-consent__input" type="checkbox" name={name} required={required} />
+	<span class="ui-consent__box" aria-hidden="true">
+		<svg class="ui-consent__check" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031"
+				stroke="white"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+		</svg>
+	</span>
+	<span class="ui-consent__text">
+		<slot />
+	</span>
+</label>

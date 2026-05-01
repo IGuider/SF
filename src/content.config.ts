@@ -99,11 +99,96 @@ const clients = defineCollection({
   }),
 });
 
+const articleInlineMark = z.enum(["strong"]);
+const articleInlineContent = z
+  .array(
+    z.object({
+      text: z.string(),
+      marks: z.array(articleInlineMark).optional(),
+    }),
+  )
+  .min(1);
+const articleListItem: z.ZodTypeAny = z.lazy(() =>
+  z.object({
+    children: articleInlineContent,
+    blocks: z.array(articleBlock).optional(),
+  }),
+);
+const articleBlock: z.ZodTypeAny = z.lazy(() =>
+  z.discriminatedUnion("type", [
+    z.object({
+      type: z.literal("paragraph"),
+      text: z.string().optional(),
+      strong: z.array(z.string()).optional(),
+      children: articleInlineContent.optional(),
+    }),
+    z.object({
+      type: z.literal("heading"),
+      text: z.string().optional(),
+      children: articleInlineContent.optional(),
+      level: z.enum(["2", "3"]).optional(),
+      tocLabel: z.string().optional(),
+      includeInToc: z.boolean().optional(),
+    }),
+    z.object({
+      type: z.literal("subheading"),
+      text: z.string(),
+    }),
+    z.object({
+      type: z.literal("list"),
+      style: z.enum(["bullet", "ordered"]).optional(),
+      items: z.array(z.union([z.string(), articleListItem])).min(1),
+    }),
+    z.object({
+      type: z.literal("orderedList"),
+      items: z.array(z.string()).min(1),
+    }),
+    z.object({
+      type: z.literal("note"),
+      title: z.string().optional(),
+      text: z.string(),
+      tone: z.enum(["info", "warning", "success"]).default("info"),
+    }),
+    z.object({
+      type: z.literal("callout"),
+      title: articleInlineContent.optional(),
+      children: articleInlineContent,
+      tone: z.enum(["info", "warning", "success"]).default("info"),
+    }),
+    z.object({
+      type: z.literal("table"),
+      headers: z.array(z.string()).min(1),
+      rows: z.array(z.array(z.string()).min(1)).min(1),
+    }),
+    z.object({
+      type: z.literal("image"),
+      src: z.enum(["table-api-key-wildberries-ozon"]),
+      alt: z.string(),
+    }),
+  ]),
+);
+
 const blogPosts = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/blog-posts" }),
   schema: z.object({
+    slug: z.string(),
     title: z.string(),
-    href: z.string(),
+    direction: z.enum(["marketplaces", "procurement"]),
+    category: z.enum([
+      "news",
+      "finance",
+      "cash-gap",
+      "law",
+      "cases",
+    ]),
+    publishedAt: z.string(),
+    author: z
+      .object({
+        name: z.string(),
+        role: z.string(),
+      })
+      .optional(),
+    body: z.array(articleBlock).min(1),
     order: z.number().int().positive(),
   }),
 });

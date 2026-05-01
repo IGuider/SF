@@ -1,0 +1,126 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import ArticleContent from './ArticleContent.astro';
+import ArticleLeadSection from './ArticleLeadSection.astro';
+import ArticleRelatedSection from './ArticleRelatedSection.astro';
+import sokolovaPhoto from '../../assets/article/sokolova.jpg';
+import {
+	formatBlogDate,
+	getBlogPostTags,
+	type BlogPost,
+} from '../../lib/blog';
+import '../../styles/components/blog/article-page.scss';
+import '../../styles/components/blog/blog-card.scss';
+
+interface Props {
+	post: BlogPost;
+	relatedPosts: CollectionEntry<'blogPosts'>[];
+}
+
+const { post, relatedPosts } = Astro.props;
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+const tags = getBlogPostTags(post, 'all');
+const getBlockText = (block: any) =>
+	block.text ?? block.children?.map((child: { text: string }) => child.text).join('') ?? '';
+const getHeadingId = (text: string) =>
+	text
+		.toLowerCase()
+		.replace(/[^a-zа-яё0-9]+/gi, '-')
+		.replace(/^-|-$/g, '');
+const getTocLabel = (text: string) => {
+	const labels: Record<string, string> = {
+		'Что такое API-ключ Wildberries и OZON': 'API-ключ: что это такое',
+		'Какая разница между API-ключом и токеном': 'Разница между API-ключем и токеном',
+		'Какая разница между API-ключем и токеном': 'Разница между API-ключем и токеном',
+		'Как получить API-ключ Wildberries': 'Как получить API-ключ',
+		'Чек-лист: что нужно отправить менеджеру SimpleFinance': 'Чек-лист: что нужно отправить менеджеру',
+	};
+
+	return labels[text] ?? text;
+};
+const articleBody = post.data.body.map((block) => {
+	if (block.type !== 'heading') {
+		return block;
+	}
+
+	const text = getBlockText(block);
+
+	return {
+		...block,
+		id: getHeadingId(text),
+	};
+});
+const tocHeadings = articleBody
+	.filter((block) => block.type === 'heading' && block.level !== '3' && block.includeInToc !== false && getBlockText(block) !== 'Как получить API-ключ OZON')
+	.map((block) => ({
+		id: block.id,
+		label: block.tocLabel ?? getTocLabel(getBlockText(block)),
+	}));
+---
+
+<main class="article-page" transition:name="page-content">
+	<div class="container article-page__container">
+		<a class="article-page__back" href={`${basePath}blog/`}>
+			<svg xmlns="http://www.w3.org/2000/svg" width="31" height="20" viewBox="0 0 31 20" fill="none">
+				<path d="M12 18L2.99841 11.1966C2.48679 10.8099 2.46625 10.0484 2.95629 9.6347L12 2" stroke="#0537C8" stroke-width="2" stroke-linecap="round"/>
+				<path d="M2.5 10.5H29" stroke="#0537C8" stroke-width="2" stroke-linecap="round"/>
+			</svg>
+			<span>Вернуться в блог</span>
+		</a>
+
+		<div class="article-page__grid">
+			<article class="article-page__article">
+				<header class="article-page__header">
+					<ul class="article-page__tags" aria-label="Теги статьи">
+						{tags.map((tag) => <li data-blog-tag={tag.value === post.data.direction ? 'direction' : 'category'}>{tag.label}</li>)}
+					</ul>
+					<time datetime={post.data.publishedAt}>{formatBlogDate(post.data.publishedAt)}</time>
+					<h1>{post.data.title}</h1>
+				</header>
+
+				<ArticleContent blocks={articleBody} />
+			</article>
+
+			<aside class="article-page__aside">
+				{tocHeadings.length > 0 && (
+					<nav class="article-page__toc" aria-label="Содержание статьи" data-article-toc>
+						<h2>Содержание</h2>
+						<ul>
+							{tocHeadings.map((heading) => <li><a href={`#${heading.id}`} data-article-toc-link>{heading.label}</a></li>)}
+						</ul>
+					</nav>
+				)}
+
+				{post.data.author && (
+					<div class="article-page__author">
+						<Image
+							class="article-page__avatar"
+							src={sokolovaPhoto}
+							alt=""
+							loading="lazy"
+							decoding="async"
+						/>
+						<div>
+							<strong class="article-page__author-name">{post.data.author.name}</strong>
+							<span class="article-page__author-role">{post.data.author.role}</span>
+						</div>
+					</div>
+				)}
+			</aside>
+		</div>
+
+		<ArticleLeadSection />
+
+		<ArticleRelatedSection post={post} relatedPosts={relatedPosts} basePath={basePath} />
+	</div>
+</main>
+
+<script>
+	import { initArticleToc } from '../../scripts/common/article-toc';
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
+
+	runOnPageLoad(initArticleToc);
+</script>

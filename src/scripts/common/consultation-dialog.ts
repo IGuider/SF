@@ -1,12 +1,8 @@
-import { setupDropdown } from "./dropdown";
 import {
   formatAmountValue,
-  getFormPayload,
-  isTextInputValid,
   setFieldInvalidState,
 } from "./form-state";
 import { runOnPageLoad } from "./lifecycle";
-import { bindPhoneInput, normalizePhoneDigits } from "./phone-mask";
 
 const triggerSelector = ".consultation-dialog-trigger";
 const closeAnimationDuration = 220;
@@ -75,20 +71,6 @@ const setupConsultationDialog = () => {
     closeTimeoutId = null;
   };
 
-  const dropdownRoot = dialog.querySelector<HTMLElement>(
-    "[data-dropdown-root]",
-  );
-  const dropdown = dropdownRoot
-    ? setupDropdown(dropdownRoot, {
-        inputSelector: "#consultation-turnover",
-        onChange: () => setFieldInvalidState(dropdownRoot, false),
-      })
-    : null;
-
-  if (dropdown) {
-    cleanupTasks.push(dropdown.cleanup);
-  }
-
   const setDialogView = (view: "form" | "success") => {
     if (content) {
       content.dataset.state = view;
@@ -100,11 +82,16 @@ const setupConsultationDialog = () => {
   };
 
   const resetFormState = () => {
-    const form = dialog.querySelector<HTMLFormElement>("[data-dialog-form]");
+    const form = dialog.querySelector<HTMLFormElement>("[data-lead-form]");
 
     clearSuccessTimeout();
     setDialogView("form");
-    form?.reset();
+
+    if (form) {
+      form.reset();
+      form.dataset.state = "visible";
+      delete form.dataset.animate;
+    }
 
     if (phoneInput) {
       phoneInput.value = "";
@@ -119,8 +106,6 @@ const setupConsultationDialog = () => {
       .forEach((field) => {
         setFieldInvalidState(field, false);
       });
-
-    dropdown?.reset();
   };
 
   const closeDialog = () => {
@@ -130,7 +115,6 @@ const setupConsultationDialog = () => {
 
     clearSuccessTimeout();
     clearCloseTimeout();
-    dropdown?.close();
     dialog.dataset.state = "closing";
 
     closeTimeoutId = window.setTimeout(() => {
@@ -164,57 +148,6 @@ const setupConsultationDialog = () => {
     dialog.dataset.state = "open";
     dialog.showModal();
     document.body.classList.add("consultation-dialog-open");
-  };
-
-  const validateField = (field: HTMLElement) => {
-    if (field.matches(".consultation-dialog__consent")) {
-      const checkbox = field.querySelector<HTMLInputElement>(
-        'input[type="checkbox"]',
-      );
-      const isValid = Boolean(checkbox?.checked);
-      setFieldInvalidState(field, !isValid);
-      return isValid;
-    }
-
-    const input = field.querySelector<HTMLInputElement>(
-      'input:not([type="hidden"]):not([disabled])',
-    );
-
-    if (input) {
-      const isPhoneField = input === phoneInput;
-      const isPhoneValid =
-        !isPhoneField || normalizePhoneDigits(input.value).length === 11;
-      const isValid = isTextInputValid(input) && isPhoneValid;
-
-      setFieldInvalidState(field, !isValid);
-      return isValid;
-    }
-
-    if (field.matches("[data-dropdown-root]")) {
-      const dropdownInput = field.querySelector<HTMLInputElement>(
-        "#consultation-turnover",
-      );
-      const isValid = Boolean(dropdownInput?.value.trim());
-      setFieldInvalidState(field, !isValid);
-      return isValid;
-    }
-
-    return true;
-  };
-
-  const validateForm = () => {
-    const requiredFields = dialog.querySelectorAll<HTMLElement>(
-      "[data-required-field]",
-    );
-    let isValid = true;
-
-    requiredFields.forEach((field) => {
-      if (!validateField(field)) {
-        isValid = false;
-      }
-    });
-
-    return isValid;
   };
 
   document.querySelectorAll<HTMLElement>(triggerSelector).forEach((trigger) => {
@@ -251,19 +184,17 @@ const setupConsultationDialog = () => {
       button.dataset.consultationBound = "true";
     });
 
-  const form = dialog.querySelector<HTMLFormElement>("[data-dialog-form]");
+  const form = dialog.querySelector<HTMLFormElement>("[data-lead-form]");
 
   if (form && form.dataset.consultationBound !== "true") {
-    addListener(form, "submit", ((event: SubmitEvent) => {
-      event.preventDefault();
-
-      if (!validateForm()) {
-        return;
-      }
-
+    addListener(form, "simplefinance:lead-form-submit", ((event: Event) => {
+      const detail =
+        event instanceof CustomEvent && typeof event.detail === "object"
+          ? event.detail
+          : {};
       form.dispatchEvent(
         new CustomEvent("simplefinance:consultation-form-submit", {
-          detail: getFormPayload(form),
+          detail,
           bubbles: true,
         }),
       );
@@ -273,46 +204,6 @@ const setupConsultationDialog = () => {
     form.dataset.consultationBound = "true";
     cleanupTasks.push(() => {
       delete form.dataset.consultationBound;
-    });
-  }
-
-  dialog
-    .querySelectorAll<HTMLElement>("[data-required-field]")
-    .forEach((field) => {
-      if (field.dataset.validationBound === "true") {
-        return;
-      }
-
-      const input = field.querySelector<HTMLInputElement>(
-        'input:not([type="hidden"]):not([disabled])',
-      );
-      const checkbox = field.querySelector<HTMLInputElement>(
-        'input[type="checkbox"]',
-      );
-
-      if (input && input !== checkbox) {
-        addListener(input, "input", (() =>
-          validateField(field)) as EventListener);
-        addListener(input, "blur", (() =>
-          validateField(field)) as EventListener);
-      }
-
-      if (checkbox) {
-        addListener(checkbox, "change", (() =>
-          validateField(field)) as EventListener);
-      }
-
-      field.dataset.validationBound = "true";
-      cleanupTasks.push(() => {
-        delete field.dataset.validationBound;
-      });
-    });
-
-  if (phoneInput && phoneInput.dataset.consultationBound !== "true") {
-    cleanupTasks.push(bindPhoneInput(phoneInput));
-    phoneInput.dataset.consultationBound = "true";
-    cleanupTasks.push(() => {
-      delete phoneInput.dataset.consultationBound;
     });
   }
 
@@ -335,15 +226,6 @@ const setupConsultationDialog = () => {
       return;
     }
 
-    const target = event.target;
-
-    if (!(target instanceof Node)) {
-      return;
-    }
-
-    if (dropdownRoot && !dropdownRoot.contains(target)) {
-      dropdown?.close();
-    }
   }) as EventListener);
 
   addListener(dialog, "cancel", ((event: Event) => {
@@ -353,7 +235,6 @@ const setupConsultationDialog = () => {
 
   addListener(dialog, "close", (() => {
     resetFormState();
-    dropdown?.close();
     dialog.dataset.state = "closed";
     document.body.classList.remove("consultation-dialog-open");
   }) as EventListener);

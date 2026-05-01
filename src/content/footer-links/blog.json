@@ -1,5 +1,5 @@
 {
   "label": "Наш блог",
-  "href": "#blog",
+  "href": "/blog/",
   "order": 1
 }

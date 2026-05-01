@@ -1,0 +1,62 @@
+---
+import '../../styles/components/ui/input.scss';
+
+interface Props {
+	id?: string;
+	name: string;
+	label: string;
+	type?: 'text' | 'email' | 'tel' | 'number' | 'search';
+	placeholder?: string;
+	autocomplete?: string;
+	inputmode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+	required?: boolean;
+	maxlength?: number;
+	pattern?: string;
+	error?: string;
+	hideLabel?: boolean;
+	variant?: 'default' | 'floating';
+	size?: 'md' | 'sm';
+	dataLeadPhone?: boolean;
+	class?: string;
+}
+
+const {
+	id,
+	name,
+	label,
+	type = 'text',
+	placeholder,
+	autocomplete,
+	inputmode,
+	required,
+	maxlength,
+	pattern,
+	error,
+	hideLabel = false,
+	variant = 'default',
+	size = 'md',
+	dataLeadPhone = false,
+	class: className,
+} = Astro.props;
+
+const inputId = id ?? name;
+const inputPlaceholder = variant === 'floating' ? ' ' : placeholder;
+---
+
+<label class:list={['ui-input', `ui-input--${variant}`, `ui-input--${size}`, className]} data-required-field={required ? true : undefined}>
+	<input
+		class="ui-input__control"
+		id={inputId}
+		name={name}
+		type={type}
+		placeholder={inputPlaceholder}
+		autocomplete={autocomplete}
+		inputmode={inputmode}
+		required={required}
+		maxlength={maxlength}
+		pattern={pattern}
+		data-lead-phone={dataLeadPhone ? true : undefined}
+	/>
+	<span class:list={['ui-input__label', { 'visually-hidden': hideLabel }]}>{label}</span>
+	{error && <span class="ui-input__error">{error}</span>}
+</label>
