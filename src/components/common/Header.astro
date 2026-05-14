@@ -11,6 +11,7 @@ import SocialIcon from '../ui/SocialIcon.astro';
 interface NavItem {
 	label: string;
 	href: string;
+	children?: NavItem[];
 }
 
 interface Props {
@@ -30,6 +31,40 @@ const defaultNavItems = [
 	{ label: 'Контакты', href: '#contacts' },
 ];
 
+const productSubmenuItems: NavItem[] = [
+	{
+		label: 'Гос- и коммерческие закупки',
+		href: `${basePath}ecom#products`,
+		children: [
+			{ label: 'Банковская гарантия', href: `${basePath}ecom#products` },
+			{ label: 'Тендерный заем', href: `${basePath}ecom#products` },
+			{ label: 'Исполнение контракта', href: `${basePath}ecom#products` },
+		],
+	},
+	{
+		label: 'Поставщикам маркетплейсов',
+		href: `${basePath}ecom#products`,
+		children: [{ label: 'Общие условия', href: `${basePath}ecom#products` }],
+	},
+	{
+		label: 'Агентам',
+		href: 'https://platform.simplefinance.ru/',
+		children: [{ label: 'Платформа SimpleFinance', href: 'https://platform.simplefinance.ru/' }],
+	},
+];
+
+const withProductSubmenu = (items: NavItem[]) =>
+	items.map((item) => {
+		if (item.label !== 'Продукты' || item.children?.length) {
+			return item;
+		}
+
+		return {
+			...item,
+			children: productSubmenuItems,
+		};
+	});
+
 const socialLinks = (await getCollection('socialLinks'))
 	.filter((item) => item.data.contexts.includes('header'))
 	.sort((left, right) => left.data.order - right.data.order)
@@ -40,6 +75,9 @@ const {
 	navItems = defaultNavItems,
 	mobileNavItems = navItems,
 } = Astro.props;
+
+const desktopNavItems = withProductSubmenu(navItems);
+const mobileMenuItems = withProductSubmenu(mobileNavItems);
 ---
 
 <header class="site-header">
@@ -65,9 +103,39 @@ const {
 				<nav class="site-header__nav" aria-label="Основная навигация">
 					<ul class="site-header__nav-list site-header__nav-list--desktop">
 						{
-							navItems.map((item) => (
-								<li>
-									<a href={item.href}>{item.label}</a>
+							desktopNavItems.map((item) => (
+								<li class:list={['site-header__nav-item', item.children?.length && 'site-header__nav-item--has-submenu']}>
+									<a
+										class="site-header__nav-link"
+										href={item.href}
+										aria-haspopup={item.children?.length ? 'true' : undefined}
+									>
+										{item.label}
+									</a>
+									{item.children?.length && (
+										<div class="site-header__submenu" aria-label={`Раздел ${item.label}`}>
+											<ul class="site-header__submenu-list">
+												{item.children.map((group) => (
+													<li class="site-header__submenu-group">
+														<a class="site-header__submenu-link site-header__submenu-link--group" href={group.href}>
+															{group.label}
+														</a>
+														{group.children?.length && (
+															<ul class="site-header__submenu-list site-header__submenu-list--nested">
+																{group.children.map((child) => (
+																	<li>
+																		<a class="site-header__submenu-link site-header__submenu-link--child" href={child.href}>
+																			{child.label}
+																		</a>
+																	</li>
+																))}
+															</ul>
+														)}
+													</li>
+												))}
+											</ul>
+										</div>
+									)}
 								</li>
 							))
 						}
@@ -75,9 +143,33 @@ const {
 
 					<ul class="site-header__nav-list site-header__nav-list--mobile">
 						{
-							mobileNavItems.map((item) => (
-								<li>
-									<a href={item.href}>{item.label}</a>
+							mobileMenuItems.map((item) => (
+								<li class:list={['site-header__nav-item', item.children?.length && 'site-header__nav-item--has-submenu']}>
+									<a class="site-header__nav-link" href={item.href}>{item.label}</a>
+									{item.children?.length && (
+										<div class="site-header__submenu" aria-label={`Раздел ${item.label}`}>
+											<ul class="site-header__submenu-list">
+												{item.children.map((group) => (
+													<li class="site-header__submenu-group">
+														<a class="site-header__submenu-link site-header__submenu-link--group" href={group.href}>
+															{group.label}
+														</a>
+														{group.children?.length && (
+															<ul class="site-header__submenu-list site-header__submenu-list--nested">
+																{group.children.map((child) => (
+																	<li>
+																		<a class="site-header__submenu-link site-header__submenu-link--child" href={child.href}>
+																			{child.label}
+																		</a>
+																	</li>
+																))}
+															</ul>
+														)}
+													</li>
+												))}
+											</ul>
+										</div>
+									)}
 								</li>
 							))
 						}

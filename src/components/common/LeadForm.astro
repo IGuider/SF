@@ -1,7 +1,7 @@
 ---
 import Button from '../ui/Button.astro';
 
-type LeadFormField = 'phone' | 'email' | 'inn' | 'turnover';
+type LeadFormField = 'name' | 'phone' | 'email' | 'inn' | 'turnover';
 
 interface Props {
 	block: string;
@@ -28,6 +28,19 @@ const {
 } = Astro.props;
 
 const fieldConfig = {
+	name: {
+		id: block === 'consultation-dialog' ? 'consultation-name' : undefined,
+		name: 'name',
+		type: 'text',
+		autocomplete: 'name',
+		inputmode: undefined,
+		label: 'ФИО',
+		error: '',
+		maxlength: '120',
+		pattern: undefined,
+		dataLeadPhone: false,
+		required: false,
+	},
 	phone: {
 		id: block === 'consultation-dialog' ? 'consultation-phone' : undefined,
 		name: 'phone',
@@ -39,6 +52,7 @@ const fieldConfig = {
 		maxlength: '18',
 		pattern: undefined,
 		dataLeadPhone: true,
+		required: true,
 	},
 	email: {
 		id: block === 'consultation-dialog' ? 'consultation-email' : undefined,
@@ -51,6 +65,7 @@ const fieldConfig = {
 		maxlength: undefined,
 		pattern: undefined,
 		dataLeadPhone: false,
+		required: true,
 	},
 	inn: {
 		id: block === 'consultation-dialog' ? 'consultation-inn' : undefined,
@@ -63,6 +78,7 @@ const fieldConfig = {
 		maxlength: '12',
 		pattern: '[0-9]{10}|[0-9]{12}',
 		dataLeadPhone: false,
+		required: true,
 	},
 };
 ---
@@ -123,7 +139,7 @@ const fieldConfig = {
 				<span class={`${block}__error`}>Необходимо заполнить поле</span>
 			</div>
 		) : (
-			<label class={`${block}__field`} data-required-field>
+			<label class={`${block}__field`} data-required-field={config.required ? true : undefined}>
 				<input
 					id={config.id}
 					class={`${block}__input`}
@@ -134,11 +150,11 @@ const fieldConfig = {
 					placeholder=" "
 					maxlength={config.maxlength}
 					pattern={config.pattern}
-					required
+					required={config.required ? true : undefined}
 					data-lead-phone={config.dataLeadPhone ? true : undefined}
 				/>
 				<span class={`${block}__field-label`}>{config.label}</span>
-				<span class={`${block}__error`}>{config.error}</span>
+				{config.error && <span class={`${block}__error`}>{config.error}</span>}
 			</label>
 		);
 	})}

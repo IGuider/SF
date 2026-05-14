@@ -9,6 +9,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 interface NavItem {
 	label: string;
 	href: string;
+	children?: NavItem[];
 }
 
 interface Props {
