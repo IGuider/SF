@@ -281,8 +281,14 @@ export const initBlogList = () => {
         return matchesDirection && matchesCategory && matchesQuery;
       };
 
-      const pinnedVisibleItem = pinnedItem && matchesState(pinnedItem) ? pinnedItem : null;
-      const regularItems = allItems.filter((item) => item !== pinnedItem && matchesState(item));
+      const shouldShowPinnedItem = state.direction === ALL_FILTER;
+      const pinnedVisibleItem =
+        shouldShowPinnedItem && pinnedItem && matchesState(pinnedItem)
+          ? pinnedItem
+          : null;
+      const regularItems = allItems.filter(
+        (item) => item !== pinnedVisibleItem && matchesState(item),
+      );
 
       pinnedList.replaceChildren();
       regularList.replaceChildren();

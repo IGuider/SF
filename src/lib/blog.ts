@@ -67,7 +67,17 @@ export const formatBlogDate = (value: string) =>
   }).format(new Date(`${value}T00:00:00`));
 
 export const sortBlogPosts = (posts: BlogPost[]) =>
-  [...posts].sort((left, right) => left.data.order - right.data.order);
+  [...posts].sort((left, right) => {
+    const publishedAtCompare = right.data.publishedAt.localeCompare(
+      left.data.publishedAt,
+    );
+
+    if (publishedAtCompare !== 0) {
+      return publishedAtCompare;
+    }
+
+    return left.data.order - right.data.order;
+  });
 
 export const isBlogDirectionFilter = (
   value: string | null,

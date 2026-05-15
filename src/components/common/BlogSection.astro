@@ -4,9 +4,9 @@ import { Image } from 'astro:assets';
 import blogPhoto from '../../assets/blog.jpg';
 import '../../styles/components/common/blog-section.scss';
 import SocialIcon from '../ui/SocialIcon.astro';
-import { getBlogPostPath } from '../../lib/blog';
+import { getBlogPostPath, sortBlogPosts } from '../../lib/blog';
 
-const posts = (await getCollection('blogPosts')).sort((left, right) => left.data.order - right.data.order);
+const posts = sortBlogPosts(await getCollection('blogPosts'));
 const socials = (await getCollection('socialLinks'))
 	.filter((item) => item.data.contexts.includes('blog'))
 	.sort((left, right) => left.data.order - right.data.order);
