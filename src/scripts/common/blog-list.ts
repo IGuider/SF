@@ -288,6 +288,7 @@ export const initBlogList = () => {
       regularList.replaceChildren();
 
       empty?.toggleAttribute("hidden", Boolean(pinnedVisibleItem) || regularItems.length > 0);
+      pinnedList.toggleAttribute("hidden", !pinnedVisibleItem);
       setDirectionTagsVisible(allItems, state.direction === ALL_FILTER);
 
       if (pinnedVisibleItem) {

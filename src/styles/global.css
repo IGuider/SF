@@ -124,6 +124,15 @@ body {
   overflow-x: clip;
 }
 
+a,
+button,
+[role="button"],
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
 img {
   height: auto;
 }

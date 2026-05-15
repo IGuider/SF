@@ -36,13 +36,21 @@ const tags = getBlogPostTags(post, directionFilter);
 	hidden={hidden}
 >
 	<a class:list={['blog-card', { 'blog-card--pinned': pinned }]} href={href} aria-label={`Открыть статью: ${post.data.title}`}>
-		{!pinned && <time class="blog-card__date" datetime={post.data.publishedAt}>{formatBlogDate(post.data.publishedAt)}</time>}
+		{!pinned && <time class="blog-card__date blog-card__date--desktop" datetime={post.data.publishedAt}>{formatBlogDate(post.data.publishedAt)}</time>}
+
+		<div class="blog-card__mobile-head">
+			<ul class="blog-card__tags blog-card__tags--mobile" aria-label="Теги статьи">
+				{tags.map((tag) => <li data-blog-tag={tag.value === post.data.direction ? 'direction' : 'category'}>{tag.label}</li>)}
+			</ul>
+
+			{!pinned && <time class="blog-card__date blog-card__date--mobile" datetime={post.data.publishedAt}>{formatBlogDate(post.data.publishedAt)}</time>}
+		</div>
 
 		<h2 class="blog-card__title">{post.data.title}</h2>
 		<p class="blog-card__excerpt">{getBlogPostExcerpt(post)}</p>
 
 		<div class="blog-card__meta">
-			<ul class="blog-card__tags" aria-label="Теги статьи">
+			<ul class="blog-card__tags blog-card__tags--desktop" aria-label="Теги статьи">
 				{tags.map((tag) => <li data-blog-tag={tag.value === post.data.direction ? 'direction' : 'category'}>{tag.label}</li>)}
 			</ul>
 
