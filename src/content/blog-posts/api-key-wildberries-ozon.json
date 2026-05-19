@@ -660,9 +660,29 @@
       "tocLabel": "Чек-лист: что нужно отправить менеджеру"
     },
     {
-      "type": "image",
-      "src": "table-api-key-wildberries-ozon",
-      "alt": "Чек-лист данных для отправки менеджеру SimpleFinance"
+      "type": "table",
+      "headers": [
+        "Что отправить",
+        "Где взять"
+      ],
+      "rows": [
+        [
+          "Seller ID",
+          "Раздел Seller API"
+        ],
+        [
+          "API-ключ (Admin read only)",
+          "Сгенерировать в разделе API key"
+        ],
+        [
+          "Client ID",
+          "Раздел Performance API → созданный аккаунт → ключи"
+        ],
+        [
+          "Client Secret",
+          "Раздел Performance API → созданный аккаунт → ключи"
+        ]
+      ]
     },
     {
       "type": "paragraph",

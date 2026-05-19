@@ -45,6 +45,8 @@
   }
 
   &__title {
+    position: relative;
+    z-index: 1;
     display: block;
     margin-bottom: 10px;
     color: var(--color-text-strong);
@@ -61,5 +63,150 @@
     font-weight: var(--font-weight-regular);
     line-height: 1.4;
     letter-spacing: -1.1px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .ui-note {
+    margin: 26px 0;
+    padding: 36px 36px 36px 28px;
+
+    &::after {
+      right: 18px;
+      width: 58px;
+      height: 39px;
+    }
+
+    &--warning::after {
+      right: 12px;
+      width: 64px;
+      height: 56px;
+    }
+
+    &--success::after {
+      right: 14px;
+      width: 62px;
+      height: 52px;
+    }
+
+    &__title {
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+
+    & > &__content {
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .ui-note {
+    margin: 24px 0;
+    padding: 28px 28px 28px 22px;
+    border-left-width: 8px;
+    border-radius: 10px;
+
+    &::after {
+      right: 14px;
+      width: 46px;
+      height: 31px;
+    }
+
+    &--warning::after {
+      right: 10px;
+      width: 52px;
+      height: 46px;
+    }
+
+    &--success::after {
+      right: 12px;
+      width: 52px;
+      height: 44px;
+    }
+
+    &__title {
+      margin-bottom: 8px;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+
+    & > &__content {
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ui-note {
+    padding: 26px 24px 26px 20px;
+
+    &::after {
+      right: 12px;
+      width: 42px;
+      height: 28px;
+    }
+
+    &--warning::after {
+      width: 48px;
+      height: 42px;
+    }
+
+    &--success::after {
+      width: 48px;
+      height: 40px;
+    }
+
+    &__title {
+      font-size: 17px;
+      letter-spacing: -0.68px;
+    }
+
+    & > &__content {
+      font-size: 17px;
+      letter-spacing: -0.68px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .ui-note {
+    margin: 22px 0;
+    padding: 24px 18px 24px 16px;
+    border-left-width: 10px;
+
+    &::after {
+      right: 10px;
+      width: 36px;
+      height: 24px;
+    }
+
+    &--warning {
+      &::after {
+        right: 8px;
+        width: 42px;
+        height: 37px;
+      }
+    }
+
+    &--success {
+      &::after {
+        right: 8px;
+        width: 42px;
+        height: 35px;
+      }
+    }
+
+    &__title {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+
+    & > &__content {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
   }
 }

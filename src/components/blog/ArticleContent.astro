@@ -117,7 +117,18 @@ const articleImages = {
 					</thead>
 					<tbody>
 						{block.rows.map((row: string[]) => (
-							<tr>{row.map((cell) => <td>{cell}</td>)}</tr>
+							<tr>
+								{row.map((cell, index) => (
+									<td data-label={block.headers[index]}>
+										{cell.split('→').map((part, index, parts) => (
+											<>
+												{part}
+												{index < parts.length - 1 && <span class="article-table__arrow" aria-hidden="true">→</span>}
+											</>
+										))}
+									</td>
+								))}
+							</tr>
 						))}
 					</tbody>
 				</table>
