@@ -13,6 +13,11 @@ const compactCardsMedia = window.matchMedia("(max-width: 540px)");
 const touchTooltipMedia = window.matchMedia(
   "(hover: none) and (pointer: coarse)",
 );
+const mobileTooltipMedia = window.matchMedia("(max-width: 540px)");
+const isTooltipModalMode = () =>
+  mobileTooltipMedia.matches ||
+  touchTooltipMedia.matches ||
+  navigator.maxTouchPoints > 0;
 const countDigits = (value: string) => String(value).replace(/\D/g, "").length;
 const trimDigits = (value: string, maxDigits: number) =>
   String(value).replace(/\D/g, "").slice(0, maxDigits);
@@ -289,18 +294,19 @@ export const initCalculatorSections = () => {
     const closePerkTooltips = (animate = true) => {
       clearPerkTooltipCloseTimeout();
 
+      const currentTooltip = activePerkTooltip;
       const shouldAnimate =
-        animate && activePerkTooltip && !prefersReducedMotion.matches;
+        animate && currentTooltip && !prefersReducedMotion.matches;
 
       if (!shouldAnimate) {
         finishPerkTooltipClose();
         return;
       }
 
-      activePerkTooltip.bubble.classList.remove(
+      currentTooltip.bubble.classList.remove(
         "ui-tooltip__bubble--modal-visible",
       );
-      activePerkTooltip.bubble.classList.add(
+      currentTooltip.bubble.classList.add(
         "ui-tooltip__bubble--modal-closing",
       );
       perkTooltipBackdrop?.classList.remove("ui-tooltip__backdrop--visible");
@@ -347,7 +353,7 @@ export const initCalculatorSections = () => {
     };
 
     const openPerkTooltip = (perkLabel: HTMLElement) => {
-      if (!touchTooltipMedia.matches) {
+      if (!isTooltipModalMode()) {
         return;
       }
 
@@ -382,7 +388,7 @@ export const initCalculatorSections = () => {
     };
 
     const handleDocumentPointerDown = (event: PointerEvent) => {
-      if (!touchTooltipMedia.matches) {
+      if (!isTooltipModalMode()) {
         return;
       }
 
@@ -405,7 +411,7 @@ export const initCalculatorSections = () => {
     };
 
     const handleTouchTooltipMediaChange = () => {
-      if (!touchTooltipMedia.matches) {
+      if (!isTooltipModalMode()) {
         closePerkTooltips();
       }
     };
@@ -418,7 +424,7 @@ export const initCalculatorSections = () => {
       }
 
       const handlePerkTextClick = (event: MouseEvent) => {
-        if (!touchTooltipMedia.matches) {
+        if (!isTooltipModalMode()) {
           return;
         }
 
@@ -439,10 +445,18 @@ export const initCalculatorSections = () => {
       "change",
       handleTouchTooltipMediaChange,
     );
+    mobileTooltipMedia.addEventListener(
+      "change",
+      handleTouchTooltipMediaChange,
+    );
     cleanupTasks.push(() => {
       document.removeEventListener("pointerdown", handleDocumentPointerDown);
       document.removeEventListener("keydown", handleEscapeKey);
       touchTooltipMedia.removeEventListener(
+        "change",
+        handleTouchTooltipMediaChange,
+      );
+      mobileTooltipMedia.removeEventListener(
         "change",
         handleTouchTooltipMediaChange,
       );
