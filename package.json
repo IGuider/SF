@@ -1,5 +1,6 @@
 {
-  "name": "",
+  "name": "simplefinance",
+  "private": true,
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -17,10 +18,11 @@
     "publish:pages": "node ./scripts/publish-pages.mjs"
   },
   "dependencies": {
-    "astro": "^6.1.1",
+    "astro": "^6.3.6",
     "embla-carousel": "^8.6.0"
   },
   "devDependencies": {
+    "@types/node": "^25.9.1",
     "prettier": "^3.8.2",
     "sass": "^1.98.0"
   }

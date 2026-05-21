@@ -2,7 +2,10 @@
 import { getCollection } from 'astro:content';
 import SiteShell from '../../components/common/SiteShell.astro';
 import BlogArticlePage from '../../components/blog/BlogArticlePage.astro';
-import { getBlogBlockText } from '../../lib/blog';
+import { getBlogBlockText, type BlogPost } from '../../lib/blog';
+
+const isParagraphBlock = (block: unknown): block is { type: 'paragraph' } =>
+	typeof block === 'object' && block !== null && 'type' in block && block.type === 'paragraph';
 
 export const getStaticPaths = async () => {
 	const posts = await getCollection('blogPosts');
@@ -13,7 +16,7 @@ export const getStaticPaths = async () => {
 	}));
 };
 
-const { post } = Astro.props;
+const { post } = Astro.props as { post: BlogPost };
 const relatedPosts = await getCollection('blogPosts');
 const basePath = import.meta.env.BASE_URL.endsWith('/')
 	? import.meta.env.BASE_URL
@@ -28,7 +31,7 @@ const blogNavItems = [
 
 <SiteShell
 	title={`${post.data.title} | SimpleFinance`}
-	description={getBlogBlockText(post.data.body.find((block) => block.type === 'paragraph')) || post.data.title}
+	description={getBlogBlockText(post.data.body.find(isParagraphBlock)) || post.data.title}
 	headerBrandHref={basePath}
 	headerNavItems={blogNavItems}
 	headerMobileNavItems={blogNavItems}

@@ -2,6 +2,7 @@
 import NestedArticleContent from './ArticleContent.astro';
 import Note from '../ui/Note.astro';
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import tableApiKeyWildberriesOzon from '../../assets/article/table-api-key-wildberries-ozon.png';
 
 interface InlineNode {
@@ -9,8 +10,85 @@ interface InlineNode {
 	marks?: string[];
 }
 
+type ArticleImageKey = 'table-api-key-wildberries-ozon';
+
+interface ArticleInlineBlock {
+	text?: string;
+	strong?: string[];
+	children?: InlineNode[];
+}
+
+interface ArticleParagraphBlock extends ArticleInlineBlock {
+	type: 'paragraph';
+}
+
+interface ArticleHeadingBlock extends ArticleInlineBlock {
+	type: 'heading';
+	id?: string;
+	level?: '2' | '3';
+	tocLabel?: string;
+	includeInToc?: boolean;
+}
+
+interface ArticleSubheadingBlock {
+	type: 'subheading';
+	text: string;
+}
+
+interface ArticleListItem extends ArticleInlineBlock {
+	blocks?: ArticleBlock[];
+}
+
+interface ArticleListBlock {
+	type: 'list';
+	style?: 'bullet' | 'ordered';
+	items: Array<string | ArticleListItem>;
+}
+
+interface ArticleOrderedListBlock {
+	type: 'orderedList';
+	items: string[];
+}
+
+interface ArticleNoteBlock {
+	type: 'note';
+	title?: string;
+	text: string;
+	tone?: 'info' | 'warning' | 'success';
+}
+
+interface ArticleCalloutBlock {
+	type: 'callout';
+	title?: InlineNode[];
+	children: InlineNode[];
+	tone?: 'info' | 'warning' | 'success';
+}
+
+interface ArticleImageBlock {
+	type: 'image';
+	src: ArticleImageKey;
+	alt: string;
+}
+
+interface ArticleTableBlock {
+	type: 'table';
+	headers: string[];
+	rows: string[][];
+}
+
+type ArticleBlock =
+	| ArticleParagraphBlock
+	| ArticleHeadingBlock
+	| ArticleSubheadingBlock
+	| ArticleListBlock
+	| ArticleOrderedListBlock
+	| ArticleNoteBlock
+	| ArticleCalloutBlock
+	| ArticleImageBlock
+	| ArticleTableBlock;
+
 interface Props {
-	blocks: any[];
+	blocks: ArticleBlock[];
 	nested?: boolean;
 }
 
@@ -40,13 +118,13 @@ const textToInline = (text = '', strongPhrases: string[] = []): InlineNode[] => 
 	});
 };
 
-const getInlineContent = (value: { children?: InlineNode[]; text?: string; strong?: string[] }) =>
+const getInlineContent = (value: ArticleInlineBlock) =>
 	value.children ?? textToInline(value.text, value.strong);
 
-const getListItemContent = (item: string | { children?: InlineNode[]; text?: string }) =>
+const getListItemContent = (item: string | ArticleListItem) =>
 	typeof item === 'string' ? textToInline(item) : getInlineContent(item);
 
-const articleImages = {
+const articleImages: Record<ArticleImageKey, ImageMetadata> = {
 	'table-api-key-wildberries-ozon': tableApiKeyWildberriesOzon,
 };
 ---
@@ -75,18 +153,14 @@ const articleImages = {
 		if (block.type === 'list' || block.type === 'orderedList') {
 			const items = block.items;
 			const isOrdered = block.type === 'orderedList' || block.style === 'ordered';
-			const ListTag = isOrdered ? 'ol' : 'ul';
+			const listItems = items.map((item) => (
+				<li>
+					{getListItemContent(item).map((child) => child.marks?.includes('strong') ? <strong>{child.text}</strong> : child.text)}
+					{typeof item !== 'string' && item.blocks && <NestedArticleContent blocks={item.blocks} nested />}
+				</li>
+			));
 
-			return (
-				<ListTag>
-					{items.map((item: string | { children?: InlineNode[]; text?: string; blocks?: any[] }) => (
-						<li>
-							{getListItemContent(item).map((child) => child.marks?.includes('strong') ? <strong>{child.text}</strong> : child.text)}
-							{typeof item !== 'string' && item.blocks && <NestedArticleContent blocks={item.blocks} nested />}
-						</li>
-					))}
-				</ListTag>
-			);
+			return isOrdered ? <ol>{listItems}</ol> : <ul>{listItems}</ul>;
 		}
 
 		if (block.type === 'note' || block.type === 'callout') {
@@ -109,7 +183,8 @@ const articleImages = {
 			);
 		}
 
-		return (
+		if (block.type === 'table') {
+			return (
 			<div class="article-table">
 				<table>
 					<thead>
@@ -133,6 +208,9 @@ const articleImages = {
 					</tbody>
 				</table>
 			</div>
-		);
+			);
+		}
+
+		return null;
 	})}
 </div>
