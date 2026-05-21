@@ -1,0 +1,195 @@
+.ui-tooltip {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+
+  &__trigger {
+    display: inline;
+  }
+
+  &__bubble {
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    box-sizing: border-box;
+    width: max-content;
+    max-width: var(--ui-tooltip-max-width, min(360px, calc(100vw - 32px)));
+    padding: var(--ui-tooltip-padding, 20px 18px);
+    border-radius: var(--ui-tooltip-radius, 18px);
+    background: var(--color-white);
+    box-shadow: var(--shadow-focus-soft);
+    color: var(--color-black);
+    font-size: var(--ui-tooltip-font-size, 24px);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.2;
+    letter-spacing: var(--ui-tooltip-letter-spacing, -0.96px);
+    white-space: normal;
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity var(--transition-duration-fast) ease,
+      visibility var(--transition-duration-fast) ease,
+      transform var(--transition-duration-fast) ease;
+  }
+
+  &__title {
+    display: none;
+  }
+
+  &[data-tooltip-placement="top"] &__bubble {
+    bottom: calc(100% + var(--ui-tooltip-gap, 14px));
+    transform: translateY(6px);
+  }
+
+  &[data-tooltip-placement="bottom"] &__bubble {
+    top: calc(100% + var(--ui-tooltip-gap, 14px));
+    transform: translateY(-6px);
+  }
+
+  &:hover &__bubble,
+  &:focus-within &__bubble {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.ui-tooltip__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(32, 41, 88, 0.45);
+  cursor: pointer;
+  opacity: 0;
+  touch-action: none;
+  transition: opacity 180ms ease;
+}
+
+.ui-tooltip__backdrop--visible {
+  opacity: 1;
+}
+
+.ui-tooltip__backdrop--closing {
+  opacity: 0;
+}
+
+body.ui-tooltip-modal-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .ui-tooltip {
+    &__bubble {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: 100;
+      width: calc(100vw - 48px);
+      max-width: 382px;
+      padding: 24px 32px 22px;
+      border-radius: 8px;
+      font-size: 16px;
+      line-height: 1.2;
+      letter-spacing: -0.64px;
+      text-align: center;
+      transform: translate(-50%, calc(-50% + 8px));
+    }
+
+    &__title {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+      font-size: 20px;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.1;
+      letter-spacing: -0.8px;
+    }
+
+    &[data-tooltip-placement="top"] &__bubble,
+    &[data-tooltip-placement="bottom"] &__bubble {
+      top: 50%;
+      bottom: auto;
+      transform: translate(-50%, calc(-50% + 8px));
+    }
+
+    &:hover &__bubble,
+    &:focus-within &__bubble {
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .ui-tooltip__bubble--modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    width: calc(100vw - 48px);
+    max-width: 382px;
+    padding: 20px 22px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.64px;
+    text-align: center;
+    opacity: 0;
+    visibility: visible;
+    transform: translate(-50%, calc(-50% + 10px)) scale(0.98);
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+  }
+
+  .ui-tooltip__bubble--modal-visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .ui-tooltip__bubble--modal-closing {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 8px)) scale(0.985);
+  }
+
+  .ui-tooltip__bubble--modal .ui-tooltip__title {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--color-primary);
+    font-size: 20px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.2;
+    letter-spacing: -0.84px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-tooltip__backdrop,
+  .ui-tooltip__bubble--modal {
+    transition: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ui-tooltip {
+    &__bubble {
+      --ui-tooltip-max-width: 300px;
+      --ui-tooltip-padding: 16px;
+      --ui-tooltip-radius: 14px;
+      --ui-tooltip-font-size: 18px;
+      --ui-tooltip-letter-spacing: -0.72px;
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .ui-tooltip {
+    &__bubble {
+      --ui-tooltip-max-width: calc(100vw - 44px);
+      --ui-tooltip-padding: 14px;
+      --ui-tooltip-font-size: 16px;
+      --ui-tooltip-letter-spacing: -0.64px;
+    }
+  }
+}

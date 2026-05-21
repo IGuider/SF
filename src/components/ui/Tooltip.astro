@@ -1,0 +1,31 @@
+---
+import '../../styles/components/ui/tooltip.scss';
+
+interface Props {
+	id?: string;
+	text: string;
+	title?: string;
+	placement?: 'top' | 'bottom';
+	class?: string;
+}
+
+const {
+	id,
+	text,
+	title,
+	placement = 'top',
+	class: className,
+} = Astro.props;
+
+const componentClass = ['ui-tooltip', className].filter(Boolean).join(' ');
+---
+
+<span class={componentClass} data-tooltip-placement={placement}>
+	<span class="ui-tooltip__trigger">
+		<slot />
+	</span>
+	<span id={id} class="ui-tooltip__bubble" role="tooltip">
+		{title && <span class="ui-tooltip__title">{title}</span>}
+		{text}
+	</span>
+</span>

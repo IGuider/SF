@@ -13,6 +13,7 @@ import {
 } from '../../lib/calculator';
 import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
 import Button from '../ui/Button.astro';
+import Tooltip from '../ui/Tooltip.astro';
 ---
 
 <section id="calculator" class="calculator-section calculator-section--pending section">
@@ -108,8 +109,17 @@ import Button from '../ui/Button.astro';
 											name="perks"
 											type="checkbox"
 											value={perk.label}
+											aria-describedby={`calculator-perk-tooltip-${index + 1}`}
 										/>
-										<span class="calculator-section__perk-text">{perk.label}</span>
+										<Tooltip
+											id={`calculator-perk-tooltip-${index + 1}`}
+											class="calculator-section__perk-text"
+											title={`«${perk.label}»`}
+											text={perk.tooltip.text}
+											placement={perk.tooltip.placement}
+										>
+											{perk.label}
+										</Tooltip>
 										<span class="calculator-section__perk-box" aria-hidden="true">
 											<svg
 												class="calculator-section__perk-check"

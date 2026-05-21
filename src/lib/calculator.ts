@@ -34,6 +34,10 @@ export type CalculatorAmountConfig = {
 
 export type CalculatorPerk = {
   label: string;
+  tooltip: {
+    text: string;
+    placement: "top" | "bottom";
+  };
 };
 
 // Границы и шаг для поля/слайдера суммы кредита.
@@ -47,9 +51,27 @@ export const CALCULATOR_AMOUNT_CONFIG: Readonly<CalculatorAmountConfig> = {
 
 // Список акций. Каждая выбранная акция уменьшает ставку на 1 п.п.
 export const CALCULATOR_PERKS: readonly CalculatorPerk[] = [
-  { label: "Приведи друга" },
-  { label: "Добросовестный заемщик" },
-  { label: "Взрывной рост" },
+  {
+    label: "Приведи друга",
+    tooltip: {
+      text: "Приведите 3 и\u00A0более новых заемщиков (продавцов МП) и\u00A0получите 1% годовых с\u00A0процентов",
+      placement: "top",
+    },
+  },
+  {
+    label: "Добросовестный заемщик",
+    tooltip: {
+      text: "Погашайте займы строго в\u00A0срок и\u00A0без нарушений — получите 1% годовых с\u00A0процентов по\u00A0каждому договору займа",
+      placement: "bottom",
+    },
+  },
+  {
+    label: "Взрывной рост",
+    tooltip: {
+      text: "Увеличьте продажи на\u00A0МП на\u00A030% после получения займа и\u00A0получите 1% годовых с\u00A0процентов по\u00A0займу",
+      placement: "bottom",
+    },
+  },
 ];
 
 // Тарифы калькулятора: подписи карточек и параметры расчета для каждого срока.
