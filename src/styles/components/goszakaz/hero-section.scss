@@ -1,0 +1,857 @@
+@use "../common/form-controls" as form;
+
+.procurement-hero {
+  position: relative;
+  z-index: 1;
+
+  &[data-dropdown-open="true"] {
+    z-index: 10;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__content {
+    min-width: 0;
+    padding: 50px 40px 50px 40px;
+  }
+
+  &__title {
+    font-size: 65px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.1;
+    letter-spacing: -2.6px;
+    color: var(--color-primary);
+  }
+
+  &__description {
+    margin-top: 18px;
+    font-size: 29px;
+    font-weight: var(--font-weight-regular);
+    line-height: 1.2;
+    letter-spacing: -1.16px;
+    color: var(--color-text-muted);
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 28px;
+  }
+
+  &__badge {
+    min-height: 45px;
+    padding: 8px 15px;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-pill);
+    color: var(--color-primary);
+    font-size: 22px;
+    line-height: 1.4;
+    letter-spacing: -0.88px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  &__panel {
+    position: relative;
+    min-width: 0;
+    min-height: 330px;
+    padding: 45px 73px 45px 40px;
+    border-radius: 20px;
+    background: linear-gradient(109deg, rgba(215, 226, 255, 0.80) 1.57%, rgba(215, 226, 255, 0.10) 100%);
+
+    &[data-dropdown-open="true"] {
+      z-index: 2;
+    }
+  }
+
+  &__panel-content {
+    width: 100%;
+  }
+
+  &__form-title {
+    margin-bottom: 30px;
+    color: var(--color-text-strong);
+    font-size: 29px;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: -1.16px;
+  }
+
+  &__form {
+    display: grid;
+    gap: 0;
+    width: 100%;
+    min-width: 0;
+    transition:
+      opacity var(--transition-duration-medium) ease,
+      transform var(--transition-duration-medium) ease,
+      visibility var(--transition-duration-medium) ease;
+
+    &[data-state="hidden"] {
+      display: none;
+    }
+
+    &[data-animate="true"] {
+      animation: lead-form-form-enter var(--transition-duration-medium)
+        ease;
+    }
+  }
+
+  @include form.floating-field(
+    ".procurement-hero",
+    70px,
+    27px 16px 11px,
+    27px,
+    35px,
+    73px,
+    var(--color-control-border),
+    var(--color-surface-98),
+    8px,
+    14px,
+    27px 44px 11px 16px,
+    35px,
+    27px
+  );
+
+  @include form.consent(
+    ".procurement-hero",
+    25px,
+    12px,
+    15px,
+    1.2,
+    10px 0 8px,
+    var(--color-primary-track)
+  );
+
+  &__field[data-shake="true"],
+  &__consent[data-shake="true"] {
+    animation: lead-form-field-shake 360ms ease;
+  }
+
+  &__field {
+    margin-bottom: 19px;
+  }
+
+  &__field--select {
+    margin-bottom: 30px;
+  }
+
+  &__consent {
+    align-items: center;
+    margin: 0 0 30px;
+    color: var(--color-primary);
+    font-size: 20px;
+    font-weight: var(--font-weight-regular);
+    line-height: normal;
+    letter-spacing: -0.8px;
+
+    a {
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__checkbox {
+    width: 35px;
+    height: 34px;
+  }
+
+  &__checkbox-box {
+    flex: 0 0 35px;
+    width: 35px;
+    height: 34px;
+    border: 1px solid var(--color-control-border);
+    border-radius: 5px;
+    background: var(--color-white);
+  }
+
+  &__checkbox-check {
+    width: 18px;
+    height: 18px;
+  }
+
+  &__submit {
+    width: fit-content;
+  }
+
+  &__mobile-action {
+    display: none;
+  }
+
+  &__success {
+    width: 100%;
+
+    &[data-state="hidden"] {
+      display: none;
+    }
+
+    &[data-state="visible"] {
+      display: block;
+      animation: lead-form-success-enter
+        var(--transition-duration-medium) ease;
+    }
+  }
+
+  &__success-card {
+    position: relative;
+    width: 100%;
+    min-height: 240px;
+    padding: 34px 34px 32px;
+    border-radius: var(--radius-sm);
+    background:
+      linear-gradient(
+        180deg,
+        rgb(255 255 255 / 88%) 0%,
+        rgb(255 255 255 / 72%) 100%
+      ),
+      var(--color-surface-98);
+  }
+
+  &__success-title {
+    margin-bottom: 14px;
+    font-size: 40px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.05;
+    letter-spacing: -1.6px;
+    color: var(--color-primary);
+  }
+
+  &__success-text {
+    max-width: 320px;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.88px;
+    color: var(--color-text-muted);
+  }
+
+  &__success-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--color-control-close);
+    cursor: pointer;
+    transition:
+      color var(--transition-duration-fast) ease,
+      background-color var(--transition-duration-fast) ease;
+
+    &:hover {
+      background: var(--color-control-close-hover-bg);
+      color: var(--color-control-close-hover);
+    }
+  }
+
+  &__success-close-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .procurement-hero {
+    &__field[data-shake="true"],
+    &__consent[data-shake="true"] {
+      animation: none;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .procurement-hero {
+    &__layout {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 550px);
+      align-items: start;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    &__content {
+      min-height: 433px;
+      padding: 35px 30px;
+    }
+
+    &__title {
+      max-width: 562px;
+      font-size: 58px;
+      line-height: 1.2;
+      letter-spacing: -2.32px;
+    }
+
+    &__description {
+      margin-top: 20px;
+      font-size: 26px;
+      line-height: 1.2;
+      letter-spacing: -1.04px;
+    }
+
+    &__badges {
+      gap: 6px;
+      margin-top: 30px;
+    }
+
+    &__badge {
+      min-height: 42px;
+      padding: 8px 13px;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+    }
+
+    &__panel {
+      min-height: 433px;
+      padding: 45px 30px;
+      border-radius: 20px;
+    }
+
+    &__form-title {
+      margin-bottom: 25px;
+      color: var(--color-primary);
+      font-size: 26px;
+      line-height: 1.2;
+      letter-spacing: -1.04px;
+    }
+
+    &__field {
+      margin-bottom: 15px;
+    }
+
+    &__field--select {
+      margin-bottom: 21px;
+    }
+
+    &__input {
+      height: 64px;
+      padding: 15px 18px;
+      border-radius: 6px;
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    &__field-label {
+      left: 18px;
+      top: 32px;
+      font-size: 23px;
+    }
+
+    input.procurement-hero__input:focus + &__field-label,
+    input.procurement-hero__input:not(:placeholder-shown) + &__field-label {
+      top: 5px;
+      font-size: 12px;
+    }
+
+    &__error {
+      top: 66px;
+    }
+
+    &__select {
+      padding: 15px 50px 15px 18px;
+    }
+
+    &__select-label {
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    &__select:focus + &__field-label--select,
+    &__field--select:focus-within &__field-label--select,
+    &__field--select[data-has-value="true"] &__field-label--select {
+      top: 5px;
+      font-size: 12px;
+    }
+
+    &__select-icon {
+      top: 34px;
+      right: 27px;
+    }
+
+    &__consent {
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 26px;
+      font-size: 15px;
+      line-height: 1.2;
+      letter-spacing: -0.6px;
+    }
+
+    &__checkbox {
+      width: 26px;
+      height: 26px;
+    }
+
+    &__checkbox-box {
+      flex-basis: 26px;
+      width: 26px;
+      height: 26px;
+    }
+
+    &__checkbox-check {
+      width: 14px;
+      height: 14px;
+    }
+
+    &__submit {
+      min-width: 224px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .procurement-hero {
+    &__layout {
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    }
+
+    &__content {
+      min-height: 0;
+      padding: 34px 20px;
+    }
+
+    &__title {
+      max-width: 100%;
+      font-size: 50px;
+      letter-spacing: -2px;
+    }
+
+    &__description {
+      font-size: 22px;
+      letter-spacing: -0.88px;
+    }
+
+    &__badges {
+      gap: 6px;
+      margin-top: 26px;
+    }
+
+    &__badge {
+      min-height: 38px;
+      padding: 7px 13px;
+      font-size: 17px;
+      letter-spacing: -0.72px;
+    }
+
+    &__panel {
+      min-height: 0;
+      padding: 38px 28px;
+    }
+
+    &__form-title {
+      margin-bottom: 22px;
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+
+    &__field {
+      margin-bottom: 14px;
+    }
+
+    &__field--select {
+      margin-bottom: 19px;
+    }
+
+    &__input {
+      height: 58px;
+      padding: 14px 16px;
+      font-size: 20px;
+    }
+
+    &__field-label {
+      left: 16px;
+      top: 29px;
+      font-size: 20px;
+    }
+
+    input.procurement-hero__input:focus + &__field-label,
+    input.procurement-hero__input:not(:placeholder-shown) + &__field-label {
+      top: 6px;
+      font-size: 12px;
+    }
+
+    &__error {
+      top: 60px;
+    }
+
+    &__select {
+      padding: 14px 44px 14px 16px;
+    }
+
+    &__select-label {
+      font-size: 20px;
+    }
+
+    &__select:focus + &__field-label--select,
+    &__field--select:focus-within &__field-label--select,
+    &__field--select[data-has-value="true"] &__field-label--select {
+      top: 6px;
+      font-size: 12px;
+    }
+
+    &__select-icon {
+      top: 30px;
+      right: 22px;
+    }
+
+    &__consent {
+      gap: 12px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      letter-spacing: -0.52px;
+    }
+
+    &__checkbox {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__checkbox-box {
+      flex-basis: 24px;
+      width: 24px;
+      height: 24px;
+    }
+
+    &__submit {
+      min-width: 218px;
+      height: 56px;
+      padding-inline: 18px;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .procurement-hero {
+    &.section {
+      margin-top: 48px;
+      margin-bottom: 90px;
+    }
+
+    &__layout {
+      grid-template-columns: minmax(0, 428px) minmax(0, 402px);
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    &__content {
+      min-height: 335px;
+      padding: 30px 20px;
+    }
+
+    &__title {
+      max-width: 353px;
+      font-size: 40px;
+      line-height: 1.2;
+      letter-spacing: -1.6px;
+
+      br {
+        display: none;
+      }
+    }
+
+    &__description {
+      margin-top: 25px;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: -0.72px;
+    }
+
+    &__badges {
+      margin-top: 25px;
+    }
+
+    &__badge {
+      min-height: 29px;
+      padding: 5px 7px;
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: -0.56px;
+    }
+
+    &__panel {
+      min-height: 330px;
+      padding: 35px 25px;
+      border-radius: 15px;
+    }
+
+    &__form-title {
+      margin-bottom: 20px;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -0.88px;
+    }
+
+    &__field {
+      margin-bottom: 15px;
+    }
+
+    &__field--select {
+      margin-bottom: 20px;
+    }
+
+    &__consent {
+      margin-bottom: 22px;
+    }
+
+    &__consent {
+      gap: 8px;
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: -0.48px;
+    }
+
+    &__checkbox {
+      width: 18px;
+      height: 18px;
+    }
+
+    &__checkbox-box {
+      flex-basis: 18px;
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+    }
+
+    &__checkbox-check {
+      width: 12px;
+      height: 12px;
+    }
+
+    &__input {
+      height: 43px;
+      padding: 12px 18px 7px;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    &__field-label {
+      left: 18px;
+      top: 21px;
+      font-size: 14px;
+      letter-spacing: -0.56px;
+    }
+
+    input.procurement-hero__input:focus + &__field-label,
+    input.procurement-hero__input:not(:placeholder-shown) + &__field-label {
+      top: 4px;
+      font-size: 10px;
+    }
+
+    &__error {
+      top: 45px;
+    }
+
+    &__select {
+      padding: 12px 18px 7px 18px;
+    }
+
+    &__select-label {
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: -0.56px;
+    }
+
+    &__select:focus + &__field-label--select,
+    &__field--select:focus-within &__field-label--select,
+    &__field--select[data-has-value="true"] &__field-label--select {
+      top: 4px;
+      font-size: 10px;
+    }
+
+    &__select-icon {
+      top: 22px;
+      right: 16px;
+      width: 13px;
+      height: 11px;
+    }
+
+    &__submit {
+      min-width: 184px;
+      height: 46px;
+      padding-inline: 15px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    &__success-card {
+      min-height: 220px;
+      padding: 24px 22px;
+    }
+
+    &__success-title {
+      margin-bottom: 9px;
+      font-size: 30px;
+      letter-spacing: -1px;
+    }
+
+    &__success-text {
+      max-width: 100%;
+      font-size: 18px;
+      letter-spacing: -0.78px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .procurement-hero {
+    &.section {
+      margin-top: 94px;
+      margin-bottom: 65px;
+    }
+
+    &__layout {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    &__content {
+      width: 100%;
+      min-height: 0;
+      padding: 38px 30px;
+      border: 1px solid rgb(255 255 255 / 80%);
+      border-radius: 10px;
+      background:
+        linear-gradient(
+          110deg,
+          rgb(201 201 201 / 24%) 1.57%,
+          rgb(196 196 196 / 3%) 100%
+        ),
+        var(--color-white);
+      backdrop-filter: blur(9.8px);
+    }
+
+    &__title {
+      max-width: 100%;
+      font-size: 42px;
+      line-height: 1.2;
+      letter-spacing: -1.68px;
+    }
+
+    &__description br {
+      display: block;
+    }
+
+    &__description {
+      margin-top: 16px;
+      max-width: 100%;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: -0.72px;
+      overflow-wrap: anywhere;
+    }
+
+    &__badges {
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    &__badge {
+      min-height: 29px;
+      padding: 5px 9px;
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: -0.56px;
+      white-space: nowrap;
+    }
+
+    &__panel {
+      display: none;
+    }
+
+    &__mobile-action {
+      display: block;
+      margin-top: 18px;
+    }
+
+    &__mobile-button {
+      height: 48px;
+      min-width: 190px;
+      padding: 6px 14px;
+      border-radius: 5px;
+      font-size: 17px;
+    }
+
+    &__success-card {
+      min-height: 180px;
+      padding: 18px;
+    }
+
+    &__success-title {
+      font-size: 22px;
+    }
+
+    &__success-close {
+      top: 10px;
+      right: 10px;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    &__success-close-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    &__success-text {
+      font-size: 14px;
+      letter-spacing: -0.72px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .procurement-hero {
+    &__content {
+      padding: 35px 20px 35px 21px;
+    }
+
+    &__title {
+      font-size: 32px;
+      letter-spacing: -1.4px;
+    }
+
+    &__description {
+      margin-top: 14px;
+      font-size: 15px;
+      letter-spacing: -0.64px;
+
+      br {
+        display: none;
+      }
+    }
+
+    &__badges {
+      margin-top: 14px;
+      gap: 4px;
+    }
+
+    &__badge {
+      min-height: 26px;
+      padding: 5px 9px;
+      font-size: 12px;
+      line-height: 1;
+      white-space: wrap;
+    }
+
+    &__mobile-action {
+      margin-top: 16px;
+    }
+
+    &__mobile-button {
+      height: 45px;
+      min-width: 170px;
+      font-size: 16px;
+    }
+  }
+}

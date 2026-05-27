@@ -20,6 +20,15 @@ const homeFaq = defineCollection({
   }),
 });
 
+const goszakazFaq = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/goszakaz-faq" }),
+  schema: z.object({
+    question: z.string(),
+    answer: z.string(),
+    order: z.number().int().positive(),
+  }),
+});
+
 const homeDirections = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/home-directions" }),
   schema: z.object({
@@ -250,6 +259,7 @@ const steps = defineCollection({
 export const collections = {
   faq,
   homeFaq,
+  goszakazFaq,
   homeDirections,
   homeTrustItems,
   homeStats,

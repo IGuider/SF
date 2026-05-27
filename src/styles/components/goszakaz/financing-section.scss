@@ -1,0 +1,393 @@
+.procurement-financing {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+  }
+
+  &__body {
+    display: grid;
+    gap: 45px;
+    overflow-x: clip;
+  }
+
+  &__tabs {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__tab {
+    flex: 0 0 auto;
+    padding: 0 0 10px;
+    border: 0;
+    border-bottom: 2px solid var(--color-primary-border-strong);
+    background: transparent;
+    color: var(--color-primary-border-strong);
+    font: inherit;
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -1.08px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      border-color var(--transition-duration-fast) ease,
+      color var(--transition-duration-fast) ease;
+
+    &[aria-selected="true"] {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--color-primary-focus-strong);
+      outline-offset: 6px;
+    }
+  }
+
+  &__panel {
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: minmax(0, 620px) minmax(0, 1fr);
+    gap: 24px;
+    min-height: 398px;
+  }
+
+  &[data-financing-motion="settling"] {
+    .procurement-financing__panel[data-state="active"] {
+      transform: translateX(var(--procurement-financing-slide-offset, 24px));
+    }
+  }
+
+  &[data-financing-motion="settled"] {
+    .procurement-financing__panel[data-state="active"] {
+      transform: translateX(0);
+      transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  }
+
+  &[data-financing-direction="previous"] {
+    --procurement-financing-slide-offset: -14px;
+  }
+
+  &[data-financing-direction="next"] {
+    --procurement-financing-slide-offset: 14px;
+  }
+}
+
+.procurement-financing-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    111deg,
+    rgba(215, 226, 255, 0.1) 1.49%,
+    rgba(215, 226, 255, 0.8) 149.5%
+  );
+
+  &--summary {
+    min-height: 398px;
+    padding: 51px 38px 40px;
+  }
+
+  &--details {
+    min-height: 398px;
+    padding: 40px;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+  }
+
+  &__title {
+    color: var(--color-text-strong);
+    font-size: 34px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.2;
+    letter-spacing: -1.4px;
+  }
+
+  &__facts {
+    display: grid;
+    gap: 22px;
+    margin-top: 30px;
+  }
+
+  &__fact {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--color-primary);
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -1.08px;
+
+    &::before {
+      width: 11px;
+      height: 11px;
+      margin-top: 6px;
+      border-radius: var(--radius-pill);
+      background: var(--color-secondary);
+      content: "";
+      flex: 0 0 auto;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 350px;
+    pointer-events: none;
+
+    &--tender-loan {
+      right: 0;
+      bottom: 0;
+      width: 350px;
+    }
+
+    &--bank-guarantee {
+      right: 0;
+      bottom: 0;
+      width: 415px;
+    }
+
+    &--credit-line {
+      right: 0;
+      bottom: 0;
+      width: 317px;
+    }
+
+    &--guarantee-commission-loan {
+      right: 0;
+      bottom: 0;
+      width: 319px;
+    }
+  }
+
+  &__text {
+    max-width: 625px;
+    margin-top: 22px;
+    color: var(--color-text-strong);
+    font-size: 29px;
+    line-height: 1.2;
+    letter-spacing: -1.16px;
+  }
+
+  &__button {
+    margin-top: 23px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .procurement-financing {
+    &__content {
+      gap: 56px;
+    }
+
+    &__tabs {
+      gap: 34px;
+    }
+
+    &__tab {
+      font-size: 21px;
+      letter-spacing: -0.7px;
+    }
+
+    &__cards {
+      grid-template-columns: minmax(0, 46%) minmax(0, 1fr);
+    }
+  }
+
+  .procurement-financing-card {
+    &--summary,
+    &--details {
+      min-height: 340px;
+      padding: 32px;
+    }
+
+    &__title {
+      font-size: 31px;
+      letter-spacing: -1px;
+    }
+
+    &__fact {
+      font-size: 23px;
+      letter-spacing: -0.7px;
+    }
+
+    &__text {
+      font-size: 24px;
+      letter-spacing: -0.7px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .procurement-financing {
+    &__content {
+      gap: 36px;
+    }
+
+    &__body {
+      gap: 30px;
+    }
+
+    &__tabs {
+      gap: 24px;
+      padding-bottom: 4px;
+    }
+
+    &__tab {
+      font-size: 17px;
+      letter-spacing: -0.3px;
+    }
+
+    &__cards {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+  }
+
+  .procurement-financing-card {
+    &--summary,
+    &--details {
+      min-height: 260px;
+      padding: 28px 24px;
+    }
+
+    &__title {
+      font-size: 26px;
+      letter-spacing: -0.8px;
+    }
+
+    &__facts {
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    &__fact {
+      font-size: 19px;
+      letter-spacing: -0.4px;
+    }
+
+    &__image {
+      right: 8px;
+      bottom: -70px;
+      width: min(45%, 300px);
+    }
+
+    &__text {
+      font-size: 19px;
+      letter-spacing: -0.3px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .procurement-financing {
+    &__tabs {
+      margin-inline: calc(var(--container-gutter) * -1);
+      padding-inline: var(--container-gutter);
+      scroll-padding-inline: var(--container-gutter);
+    }
+  }
+
+  .procurement-financing-card {
+    border-radius: var(--radius-md-mobile);
+
+    &--summary,
+    &--details {
+      min-height: 230px;
+      padding: 24px 18px;
+    }
+
+    &__image {
+      right: -48px;
+      width: 235px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .procurement-financing {
+    &__content {
+      gap: 26px;
+    }
+
+    &__body {
+      gap: 22px;
+    }
+
+    &__tab {
+      font-size: 15px;
+    }
+  }
+
+  .procurement-financing-card {
+    &--summary {
+      min-height: 285px;
+      padding-bottom: 132px;
+    }
+
+    &--details {
+      min-height: 0;
+    }
+
+    &__title {
+      font-size: 23px;
+      letter-spacing: -0.5px;
+    }
+
+    &__fact {
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    &__image {
+      right: -34px;
+      bottom: -52px;
+      width: 245px;
+    }
+
+    &__text {
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .procurement-financing {
+    &[data-financing-motion="settling"],
+    &[data-financing-motion="settled"] {
+      .procurement-financing__panel[data-state="active"] {
+        transform: none;
+        transition: none;
+      }
+    }
+
+    &__tab {
+      transition: none;
+    }
+  }
+}

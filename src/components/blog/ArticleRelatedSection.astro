@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import BlogCard from './BlogCard.astro';
+import BlogRelatedCards from './BlogRelatedCards.astro';
 import { sortBlogPosts, type BlogPost } from '../../lib/blog';
 
 interface Props {
@@ -16,11 +16,7 @@ const sortedRelatedPosts = sortBlogPosts(relatedPosts).filter((item) => item.dat
 {sortedRelatedPosts.length > 0 && (
 	<section class="article-page__related" aria-labelledby="article-related-title">
 		<h2 id="article-related-title">Читайте также</h2>
-		<ul>
-			{sortedRelatedPosts.map((relatedPost) => (
-				<BlogCard post={relatedPost} basePath={basePath} directionFilter="all" />
-			))}
-		</ul>
+		<BlogRelatedCards posts={sortedRelatedPosts} basePath={basePath} directionFilter="all" />
 		<a class="article-page__related-more" href={`${basePath}blog/`} aria-label="Перейти ко всем статьям блога">
 			<span>Больше статей</span>
 			<svg xmlns="http://www.w3.org/2000/svg" width="31" height="20" viewBox="0 0 31 20" fill="none" aria-hidden="true">

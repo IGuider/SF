@@ -1,7 +1,19 @@
 ---
 import Button from '../ui/Button.astro';
 
-type LeadFormField = 'name' | 'phone' | 'email' | 'inn' | 'turnover';
+export type LeadFormField = 'name' | 'phone' | 'email' | 'inn' | 'procurement' | 'turnover' | 'product';
+
+type TextLeadFormField = Exclude<LeadFormField, 'turnover' | 'product'>;
+type LeadFormFieldOverride = Partial<{
+	label: string;
+	error: string;
+	required: boolean;
+	validate: boolean;
+	maxlength: string;
+	pattern: string;
+}>;
+
+export type LeadFormFieldOverrides = Partial<Record<TextLeadFormField, LeadFormFieldOverride>>;
 
 interface Props {
 	block: string;
@@ -11,8 +23,11 @@ interface Props {
 	submitVariant?: 'primary' | 'secondary' | 'outline';
 	submitSize?: 'md' | 'lg' | 'xl';
 	turnoverOptions?: string[];
+	productOptions?: string[];
 	turnoverMenuId?: string;
+	productMenuId?: string;
 	button?: 'ui' | 'native';
+	fieldOverrides?: LeadFormFieldOverrides;
 }
 
 const {
@@ -23,11 +38,27 @@ const {
 	submitVariant = 'secondary',
 	submitSize = 'lg',
 	turnoverOptions = [],
+	productOptions = [],
 	turnoverMenuId = `${block}-turnover-options`,
+	productMenuId = `${block}-product-options`,
 	button = 'ui',
+	fieldOverrides = {},
 } = Astro.props;
 
-const fieldConfig = {
+const fieldConfig: Record<TextLeadFormField, {
+	id: string | undefined;
+	name: string;
+	type: string;
+	autocomplete: string;
+	inputmode: 'tel' | 'email' | 'numeric' | undefined;
+	label: string;
+	error: string;
+	maxlength: string | undefined;
+	pattern: string | undefined;
+	dataLeadPhone: boolean;
+	required: boolean;
+	validate: boolean;
+}> = {
 	name: {
 		id: block === 'consultation-dialog' ? 'consultation-name' : undefined,
 		name: 'name',
@@ -40,6 +71,7 @@ const fieldConfig = {
 		pattern: undefined,
 		dataLeadPhone: false,
 		required: false,
+		validate: false,
 	},
 	phone: {
 		id: block === 'consultation-dialog' ? 'consultation-phone' : undefined,
@@ -53,6 +85,7 @@ const fieldConfig = {
 		pattern: undefined,
 		dataLeadPhone: true,
 		required: true,
+		validate: false,
 	},
 	email: {
 		id: block === 'consultation-dialog' ? 'consultation-email' : undefined,
@@ -66,6 +99,7 @@ const fieldConfig = {
 		pattern: undefined,
 		dataLeadPhone: false,
 		required: true,
+		validate: false,
 	},
 	inn: {
 		id: block === 'consultation-dialog' ? 'consultation-inn' : undefined,
@@ -79,15 +113,55 @@ const fieldConfig = {
 		pattern: '[0-9]{10}|[0-9]{12}',
 		dataLeadPhone: false,
 		required: true,
+		validate: false,
+	},
+	procurement: {
+		id: undefined,
+		name: 'procurement',
+		type: 'text',
+		autocomplete: 'off',
+		inputmode: undefined,
+		label: 'Закупка (название или номер)',
+		error: '',
+		maxlength: '180',
+		pattern: undefined,
+		dataLeadPhone: false,
+		required: false,
+		validate: false,
+	},
+};
+
+const getFieldConfig = (field: TextLeadFormField) => ({
+	...fieldConfig[field],
+	...(fieldOverrides[field] ?? {}),
+});
+
+const selectFieldConfig = {
+	turnover: {
+		id: block === 'consultation-dialog' ? 'consultation-turnover' : undefined,
+		name: 'turnover',
+		label: 'Обороты',
+		error: 'Необходимо заполнить поле',
+		options: turnoverOptions,
+		menuId: turnoverMenuId,
+	},
+	product: {
+		id: undefined,
+		name: 'product',
+		label: 'Продукт',
+		error: 'Необходимо заполнить поле',
+		options: productOptions,
+		menuId: productMenuId,
 	},
 };
 ---
 
 <form class={`${block}__form`} data-lead-form data-state="visible" novalidate>
 	{fields.map((field) => {
-		const config = field === 'turnover' ? undefined : fieldConfig[field];
+		const config = field === 'turnover' || field === 'product' ? undefined : getFieldConfig(field);
+		const selectConfig = field === 'turnover' || field === 'product' ? selectFieldConfig[field] : undefined;
 
-		return field === 'turnover' ? (
+		return selectConfig ? (
 			<div
 				class={`${block}__field ${block}__field--select`}
 				data-dropdown-root
@@ -95,17 +169,17 @@ const fieldConfig = {
 				data-has-value="false"
 				data-invalid="false"
 			>
-				<input id={block === 'consultation-dialog' ? 'consultation-turnover' : undefined} type="hidden" name="turnover" required data-dropdown-input />
+				<input id={selectConfig.id} type="hidden" name={selectConfig.name} required data-dropdown-input />
 				<button
 					type="button"
 					class={`${block}__input ${block}__select`}
 					data-dropdown-trigger
 					aria-expanded="false"
-					aria-controls={turnoverMenuId}
+					aria-controls={selectConfig.menuId}
 				>
 					<span class={`${block}__select-label`} data-dropdown-label></span>
 				</button>
-				<span class={`${block}__field-label ${block}__field-label--select`}>Обороты</span>
+				<span class={`${block}__field-label ${block}__field-label--select`}>{selectConfig.label}</span>
 				<span class={`${block}__select-icon`} aria-hidden="true">
 					<svg viewBox="0 0 16 16" fill="none">
 						<path
@@ -119,12 +193,12 @@ const fieldConfig = {
 				</span>
 				<div
 					class={`${block}__dropdown`}
-					id={turnoverMenuId}
+					id={selectConfig.menuId}
 					data-dropdown-menu
 					data-state="closed"
 					aria-hidden="true"
 				>
-					{turnoverOptions.map((option) => (
+					{selectConfig.options.map((option) => (
 						<button
 							type="button"
 							class={`${block}__option`}
@@ -136,10 +210,14 @@ const fieldConfig = {
 						</button>
 					))}
 				</div>
-				<span class={`${block}__error`}>Необходимо заполнить поле</span>
+				<span class={`${block}__error`}>{selectConfig.error}</span>
 			</div>
 		) : (
-			<label class={`${block}__field`} data-required-field={config.required ? true : undefined}>
+			<label
+				class={`${block}__field`}
+				data-required-field={config.required ? true : undefined}
+				data-validate-field={config.validate ? true : undefined}
+			>
 				<input
 					id={config.id}
 					class={`${block}__input`}

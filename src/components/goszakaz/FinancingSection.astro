@@ -1,0 +1,154 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
+import Button from '../ui/Button.astro';
+import tab1BgImage from '../../assets/tab1-bg.png';
+import tab2BgImage from '../../assets/tab2-bg.png';
+import tab3BgImage from '../../assets/tab3-bg.png';
+import tab4BgImage from '../../assets/tab4-bg.png';
+import '../../styles/components/goszakaz/financing-section.scss';
+
+type FinancingTab = {
+	id: string;
+	label: string;
+	summaryTitle: string;
+	facts: string[];
+	detailsTitle: string;
+	description: string;
+	image: ImageMetadata;
+	imageModifier: string;
+};
+
+const financingTabs: FinancingTab[] = [
+	{
+		id: 'tender-loan',
+		label: 'Тендерный заем',
+		summaryTitle: 'Тендерный заем',
+		facts: ['до 60 дней', 'до 500 млн ₽', 'от 3% в месяц'],
+		detailsTitle: 'Обеспечение для закупок',
+		description:
+			'Тендерный заем помогает получить обеспечение заявки и контракта для участия в закупках по 44-ФЗ, 223-ФЗ и 615-ПП без вывода собственных средств из оборота',
+		image: tab1BgImage,
+		imageModifier: 'tender-loan',
+	},
+	{
+		id: 'bank-guarantee',
+		label: 'Банковская гарантия',
+		summaryTitle: 'Банковская гарантия',
+		facts: ['до 1 млрд ₽', 'от 1,5% годовых', 'выдача за 1 день'],
+		detailsTitle: 'Гарантия участия и исполнения',
+		description:
+			'Участие, исполнение, ГО, возврат аванса, коммерция, закрытые торги. Помогаем на всех этапах получения. Для одобрения нужно от двух документов',
+		image: tab2BgImage,
+		imageModifier: 'bank-guarantee',
+	},
+	{
+		id: 'credit-line',
+		label: 'Возобновляемая кредитная линия',
+		summaryTitle: 'Возобновляемая кредитная линия',
+		facts: ['до 65 млн ₽', 'от 22,9% годовых', 'выдача за 1 день'],
+		detailsTitle: 'Для исполнения контракта',
+		description:
+			'Пополнение оборотных средств для исполнения отдельного контракта, всей контрактной базы и обязательств по госзаказу',
+		image: tab3BgImage,
+		imageModifier: 'credit-line',
+	},
+	{
+		id: 'guarantee-commission-loan',
+		label: 'Заем на оплату комиссии БГ',
+		summaryTitle: 'Заем на оплату комиссии БГ',
+		facts: ['до 30 млн ₽', 'до 3 месяцев', '2 документа'],
+		detailsTitle: 'На комиссию по гарантии',
+		description:
+			'Деньги на оплату комиссии или депозит по банковской гарантии без вывода крупной суммы из оборотных средств',
+		image: tab4BgImage,
+		imageModifier: 'guarantee-commission-loan',
+	},
+];
+---
+
+<section class="procurement-financing section" id="financing" aria-labelledby="procurement-financing-title" data-financing-tabs-root>
+	<div class="container">
+		<div class="procurement-financing__content">
+			<div class="section-header">
+				<h2 class="section-title" id="procurement-financing-title">Финансирование для госзаказа</h2>
+			</div>
+
+			<div class="procurement-financing__body">
+				<div class="procurement-financing__tabs" role="tablist" aria-label="Виды финансирования для госзаказа">
+					{
+						financingTabs.map((tab, index) => (
+							<button
+								class="procurement-financing__tab"
+								id={`procurement-financing-tab-${tab.id}`}
+								type="button"
+								role="tab"
+								aria-selected={index === 0 ? 'true' : 'false'}
+								aria-controls={`procurement-financing-panel-${tab.id}`}
+								tabindex={index === 0 ? 0 : -1}
+								data-financing-tab={tab.id}
+							>
+								{tab.label}
+							</button>
+						))
+					}
+				</div>
+
+				{
+					financingTabs.map((tab, index) => (
+						<div
+							class="procurement-financing__panel"
+							id={`procurement-financing-panel-${tab.id}`}
+							role="tabpanel"
+							aria-labelledby={`procurement-financing-tab-${tab.id}`}
+							data-financing-panel={tab.id}
+							data-state={index === 0 ? 'active' : 'idle'}
+							hidden={index !== 0}
+						>
+							<div class="procurement-financing__cards">
+								<article class="procurement-financing-card procurement-financing-card--summary">
+									<div class="procurement-financing-card__content">
+										<h3 class="procurement-financing-card__title">{tab.summaryTitle}</h3>
+										<ul class="procurement-financing-card__facts" aria-label={`Условия: ${tab.summaryTitle}`}>
+											{tab.facts.map((fact) => (
+												<li class="procurement-financing-card__fact">{fact}</li>
+											))}
+										</ul>
+									</div>
+
+									<Image
+										class:list={[
+											'procurement-financing-card__image',
+											`procurement-financing-card__image--${tab.imageModifier}`,
+										]}
+										src={tab.image}
+										alt=""
+										loading={index === 0 ? 'eager' : 'lazy'}
+										decoding="async"
+									/>
+								</article>
+
+								<article class="procurement-financing-card procurement-financing-card--details">
+									<div class="procurement-financing-card__content">
+										<h3 class="procurement-financing-card__title">{tab.detailsTitle}</h3>
+										<p class="procurement-financing-card__text">{tab.description}</p>
+										<ConsultationDialogTrigger>
+											<Button class="procurement-financing-card__button" variant="secondary" size="xl">
+												Оставить заявку
+											</Button>
+										</ConsultationDialogTrigger>
+									</div>
+								</article>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	import '../../scripts/goszakaz/financing-tabs.ts';
+</script>

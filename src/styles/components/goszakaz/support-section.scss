@@ -1,0 +1,116 @@
+.procurement-support {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+.procurement-support-card {
+  position: relative;
+  min-height: 266px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: linear-gradient(109deg, rgba(215, 226, 255, 0.8) -58.52%, rgba(215, 226, 255, 0.1) 100%);
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: inherit;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+  }
+
+  &__eyebrow {
+    margin-bottom: 10px;
+    color: var(--color-primary);
+    font-size: 26px;
+    font-weight: var(--font-weight-regular);
+    line-height: 1.2;
+    letter-spacing: -1.04px;
+  }
+
+  &__title {
+    max-width: 565px;
+    color: var(--color-text-strong);
+    font-size: 36px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.2;
+    letter-spacing: -1.44px;
+  }
+
+  &__text {
+    max-width: 565px;
+    color: var(--color-text-muted);
+    font-size: 29px;
+    line-height: 1.2;
+    letter-spacing: -1.16px;
+
+    span {
+      color: var(--color-primary);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .procurement-support-card {
+    min-height: 230px;
+
+    &__content {
+      padding: 24px;
+    }
+
+    &__eyebrow {
+      font-size: 20px;
+      letter-spacing: -0.6px;
+    }
+
+    &__title {
+      font-size: 24px;
+      letter-spacing: -0.7px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .procurement-support {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .procurement-support-card {
+    min-height: 220px;
+    border-radius: var(--radius-md-mobile);
+  }
+}
+
+@media (max-width: 560px) {
+  .procurement-support-card {
+    &__content {
+      gap: 16px;
+      padding: 22px 18px;
+    }
+
+    &__eyebrow {
+      margin-bottom: 4px;
+      font-size: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    &__title {
+      font-size: 21px;
+    }
+
+    &__text {
+      font-size: 15px;
+      letter-spacing: -0.2px;
+    }
+  }
+}

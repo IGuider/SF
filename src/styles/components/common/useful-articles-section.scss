@@ -1,0 +1,21 @@
+.useful-articles-section {
+  &__header {
+    margin-bottom: 75px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .useful-articles-section {
+    &__header {
+      margin-bottom: 56px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .useful-articles-section {
+    &__header {
+      margin-bottom: 36px;
+    }
+  }
+}

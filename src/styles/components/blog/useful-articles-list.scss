@@ -1,0 +1,235 @@
+.useful-articles-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .blog-card {
+    min-height: 135px;
+    align-content: start;
+    gap: 20px;
+    padding: 40px 30px;
+    border: 1px solid #e8f0fc;
+    border-radius: 16px;
+    background: #f3f9ff;
+    transition: background-color var(--transition-duration-fast) ease;
+
+    &:hover {
+      background: #e8f0fc;
+
+      .blog-card__tags li {
+        background: #f3f9ff;
+      }
+    }
+  }
+
+  .blog-card__date,
+  .blog-card__excerpt,
+  .blog-card__read {
+    display: none;
+  }
+
+  .blog-card__title {
+    color: var(--color-primary);
+    font-size: 33px;
+    font-weight: var(--font-weight-regular);
+    letter-spacing: -1.32px;
+  }
+
+  .blog-card__meta {
+    order: -1;
+    display: grid;
+    align-items: start;
+    margin: 0;
+  }
+
+  .blog-card__tags {
+    gap: 12px;
+
+    li {
+      padding: 8px 20px;
+      border-radius: 8px;
+      background: #eef4ff;
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 20px;
+      letter-spacing: -0.88px;
+
+      &[data-blog-tag="category"] {
+        border-radius: 50px;
+        color: rgba(5, 55, 200, 0.55);
+      }
+    }
+  }
+
+  &--with-read {
+    .blog-card {
+      min-height: 230px;
+      gap: 32px;
+      padding: 40px 30px;
+      border: 0;
+      border-radius: 15px;
+    }
+
+    .blog-card__read {
+      display: inline-flex;
+      order: 2;
+      gap: 15px;
+      color: var(--color-text-strong);
+      font-size: 22px;
+      letter-spacing: -0.88px;
+
+      svg {
+        width: 39px;
+        height: 39px;
+      }
+
+      path {
+        stroke: var(--color-primary);
+      }
+    }
+
+    .blog-card__meta {
+      display: contents;
+    }
+
+    .blog-card__tags {
+      order: -1;
+
+      li {
+        padding: 8px 20px;
+        font-size: 22px;
+        letter-spacing: -0.88px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .useful-articles-list {
+    .blog-card {
+      gap: 18px;
+      padding: 34px 26px;
+    }
+
+    .blog-card__title {
+      font-size: 29px;
+      letter-spacing: -1.16px;
+    }
+
+    .blog-card__tags li {
+      padding: 7px 18px;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+
+    &--with-read {
+      .blog-card {
+        min-height: 210px;
+        gap: 26px;
+        padding: 34px 26px;
+      }
+
+      .blog-card__read {
+        font-size: 20px;
+        letter-spacing: -0.8px;
+
+        svg {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .useful-articles-list {
+    .blog-card {
+      min-height: 0;
+      gap: 14px;
+      padding: 28px 22px;
+      border-radius: 10px;
+    }
+
+    .blog-card__title {
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+
+    .blog-card__tags {
+      gap: 8px;
+    }
+
+    .blog-card__tags li {
+      padding: 6px 14px;
+      font-size: 14px;
+      letter-spacing: -0.56px;
+    }
+
+    &--with-read {
+      .blog-card {
+        min-height: 180px;
+        gap: 18px;
+        padding: 28px 22px;
+      }
+
+      .blog-card__read {
+        font-size: 16px;
+        letter-spacing: -0.72px;
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .useful-articles-list {
+    grid-template-columns: 1fr;
+
+    .blog-card {
+      padding: 26px 22px;
+    }
+
+    .blog-card__title {
+      font-size: 25px;
+      letter-spacing: -1px;
+    }
+
+    &--with-read {
+      .blog-card {
+        min-height: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .useful-articles-list {
+    .blog-card {
+      padding: 24px 19px;
+    }
+
+    .blog-card__title {
+      font-size: 22px;
+      letter-spacing: -0.84px;
+    }
+
+    .blog-card__tags li {
+      min-height: 28px;
+      padding-inline: 12px;
+      font-size: 13px;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .useful-articles-list:not(.useful-articles-list--with-read) .blog-card__meta {
+    display: none;
+  }
+}

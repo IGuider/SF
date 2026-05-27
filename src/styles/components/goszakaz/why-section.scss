@@ -1,0 +1,151 @@
+.procurement-why {
+  &__header {
+    margin-bottom: 75px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 21px;
+  }
+}
+
+.procurement-why-card {
+  display: flex;
+  min-height: 343px;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 40px;
+  padding: 40px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(116deg, rgba(215, 226, 255, 0.1) 1.57%, rgba(215, 226, 255, 0.8) 100%);
+
+  &__icon {
+    flex: 0 0 auto;
+
+    &--documents {
+      width: 89px;
+      height: 89px;
+    }
+
+    &--decision {
+      width: 80px;
+      height: 91px;
+    }
+
+    &--laws {
+      width: 94px;
+      height: 86px;
+    }
+  }
+
+  &__title {
+    color: var(--color-text-strong);
+    font-size: 36px;
+    font-weight: var(--font-weight-regular);
+    line-height: 1.2;
+    letter-spacing: -1.44px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .procurement-why {
+    &__header {
+      margin-bottom: 56px;
+    }
+  }
+
+  .procurement-why-card {
+    min-height: 292px;
+    gap: 32px;
+    padding: 32px;
+
+    &__title {
+      font-size: 30px;
+      letter-spacing: -1.1px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .procurement-why {
+    &__header {
+      margin-bottom: 36px;
+    }
+
+    &__grid {
+      gap: 16px;
+    }
+  }
+
+  .procurement-why-card {
+    min-height: 220px;
+    gap: 24px;
+    padding: 24px;
+
+    &__icon {
+      &--documents {
+        width: 64px;
+        height: 64px;
+      }
+
+      &--decision {
+        width: 58px;
+        height: 66px;
+      }
+
+      &--laws {
+        width: 68px;
+        height: 62px;
+      }
+    }
+
+    &__title {
+      font-size: 22px;
+      letter-spacing: -0.7px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .procurement-why {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .procurement-why-card {
+    min-height: 190px;
+    border-radius: var(--radius-md-mobile);
+  }
+}
+
+@media (max-width: 560px) {
+  .procurement-why-card {
+    min-height: 164px;
+    gap: 18px;
+    padding: 22px 18px;
+
+    &__icon {
+      &--documents {
+        width: 52px;
+        height: 52px;
+      }
+
+      &--decision {
+        width: 48px;
+        height: 55px;
+      }
+
+      &--laws {
+        width: 56px;
+        height: 52px;
+      }
+    }
+
+    &__title {
+      font-size: 21px;
+      letter-spacing: -0.5px;
+    }
+  }
+}

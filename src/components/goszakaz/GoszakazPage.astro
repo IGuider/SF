@@ -1,0 +1,44 @@
+---
+import ProcurementHeroSection from './ProcurementHeroSection.astro';
+import FinancingSection from './FinancingSection.astro';
+import WhySimpleFinanceSection from './WhySimpleFinanceSection.astro';
+import PersonalManagerSection from './PersonalManagerSection.astro';
+import ProcurementSupportSection from './ProcurementSupportSection.astro';
+import StepsSection from '../common/StepsSection.astro';
+import UsefulArticlesSection from '../common/UsefulArticlesSection.astro';
+import LeadFormSection from '../common/LeadFormSection.astro';
+import FaqSection from '../common/FaqSection.astro';
+
+const usefulArticleSlugs = [
+	'bank-guarantee-criteria',
+	'rnp-procurement-block',
+	'bank-guarantee-rejection',
+	'belyy-vvoz-iz-kitaya-opyt-sellera',
+];
+---
+
+<main transition:name="page-content" transition:animate="slide">
+	<ProcurementHeroSection />
+	<ProcurementSupportSection />
+	<FinancingSection />
+	<WhySimpleFinanceSection />
+	<StepsSection />
+	<PersonalManagerSection />
+	<UsefulArticlesSection
+		id="procurement-useful"
+		title="Полезное для участников госзакупок"
+		postSlugs={usefulArticleSlugs}
+	/>
+	<LeadFormSection
+		id="procurement-lead-form"
+		title="Подберём решение под ваш бизнес"
+		fields={['name', 'phone', 'email', 'inn', 'procurement']}
+		submitLabel="Оставить заявку"
+		fieldOverrides={{
+			name: { label: 'ФИО' },
+			inn: { label: 'ИНН организации', required: false, validate: true },
+			procurement: { label: 'Закупка (название или номер)' },
+		}}
+	/>
+	<FaqSection collection="goszakazFaq" />
+</main>

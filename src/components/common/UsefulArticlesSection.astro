@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BlogRelatedCards from '../blog/BlogRelatedCards.astro';
+import { type BlogDirectionFilter } from '../../lib/blog';
+import '../../styles/components/common/useful-articles-section.scss';
+
+interface Props {
+	title: string;
+	postSlugs: string[];
+	directionFilter?: BlogDirectionFilter;
+	id?: string;
+}
+
+const {
+	title,
+	postSlugs,
+	directionFilter = 'all',
+	id = 'useful-articles',
+} = Astro.props;
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+const posts = await getCollection('blogPosts');
+const postBySlug = new Map(posts.map((post) => [post.data.slug, post]));
+const selectedPosts = postSlugs.map((slug) => postBySlug.get(slug)).filter(Boolean);
+---
+
+{selectedPosts.length > 0 && (
+	<section class="useful-articles-section section" id={id} aria-labelledby={`${id}-title`}>
+		<div class="container">
+			<div class="useful-articles-section__header section-header">
+				<h2 class="section-title" id={`${id}-title`}>{title}</h2>
+			</div>
+
+			<BlogRelatedCards posts={selectedPosts} basePath={basePath} directionFilter={directionFilter} showReadLink />
+		</div>
+	</section>
+)}

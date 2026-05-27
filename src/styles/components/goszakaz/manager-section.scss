@@ -1,0 +1,183 @@
+.procurement-manager {
+  &__header {
+    margin-bottom: 69px;
+  }
+
+  &__panel {
+    position: relative;
+    display: grid;
+    min-height: 350px;
+    grid-template-columns: minmax(320px, 488px) minmax(0, 1fr);
+    align-items: center;
+    border-radius: 23px;
+    background: linear-gradient(143deg, rgba(215, 226, 255, 0.8) 37.62%, rgba(215, 226, 255, 0.1) 99.57%);
+  }
+
+  &__visual {
+    position: absolute;
+    left: 40px;
+    bottom: 0;
+    width: 434px;
+    height: 429px;
+    pointer-events: none;
+  }
+
+  &__image {
+    object-position: center top;
+  }
+
+  &__content {
+    grid-column: 2;
+    max-width: 870px;
+    padding: 56px 40px 56px 0;
+  }
+
+  &__title {
+    color: var(--color-primary);
+    font-size: 36px;
+    font-weight: var(--font-weight-regular);
+    line-height: 1.2;
+    letter-spacing: -1.44px;
+  }
+
+  &__text {
+    max-width: 870px;
+    margin-top: 26px;
+    color: var(--color-text-strong);
+    font-size: 29px;
+    line-height: 1.2;
+    letter-spacing: -1.16px;
+
+    strong {
+      font-weight: var(--font-weight-medium);
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .procurement-manager {
+    &__header {
+      margin-bottom: 56px;
+    }
+
+    &__panel {
+      grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+    }
+
+    &__visual {
+      left: 30px;
+      width: 360px;
+      height: 356px;
+    }
+
+    &__content {
+      padding: 48px 34px 48px 0;
+    }
+
+    &__title {
+      font-size: 31px;
+      letter-spacing: -1px;
+    }
+
+    &__text {
+      font-size: 24px;
+      letter-spacing: -0.7px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .procurement-manager {
+    &__header {
+      margin-bottom: 36px;
+    }
+
+    &__panel {
+      min-height: 280px;
+      grid-template-columns: minmax(220px, 310px) minmax(0, 1fr);
+      border-radius: var(--radius-md);
+    }
+
+    &__visual {
+      left: 18px;
+      width: 270px;
+      height: 294px;
+    }
+
+    &__content {
+      padding: 34px 24px 34px 0;
+    }
+
+    &__title {
+      font-size: 24px;
+      letter-spacing: -0.7px;
+    }
+
+    &__text {
+      margin-top: 18px;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .procurement-manager {
+    &__panel {
+      min-height: 0;
+      grid-template-columns: 1fr;
+      padding: 0;
+      border-radius: var(--radius-md-mobile);
+    }
+
+    &__visual {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      width: min(100%, 330px);
+      height: 300px;
+      margin: -28px auto -18px;
+    }
+
+    &__content {
+      grid-column: 1;
+      padding: 0 24px 28px;
+    }
+
+    &__title {
+      font-size: 23px;
+      letter-spacing: -0.6px;
+
+      br {
+        display: none;
+      }
+    }
+
+    &__text {
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .procurement-manager {
+    &__visual {
+      width: min(100%, 280px);
+      height: 255px;
+    }
+
+    &__content {
+      padding: 0 18px 24px;
+    }
+
+    &__title {
+      font-size: 21px;
+    }
+
+    &__text {
+      margin-top: 14px;
+      font-size: 15px;
+    }
+  }
+}

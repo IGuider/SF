@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import '../../styles/components/ecom/faq-section.scss';
+import '../../styles/components/common/faq-section.scss';
 
 interface Props {
-	collection?: 'faq' | 'homeFaq';
+	collection?: 'faq' | 'homeFaq' | 'goszakazFaq';
 }
 
 const { collection = 'faq' } = Astro.props;
@@ -50,7 +50,7 @@ const faqItems = (await getCollection(collection)).sort((left, right) => left.da
 
 <script>
 	import { runOnPageLoad } from '../../scripts/common/lifecycle';
-	import { initFaqSections } from '../../scripts/ecom/faq-section';
+	import { initFaqSections } from '../../scripts/common/faq-section';
 
 	runOnPageLoad(initFaqSections);
 </script>

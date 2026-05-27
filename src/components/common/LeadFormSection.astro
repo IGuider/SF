@@ -1,36 +1,62 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import LeadForm from '../common/LeadForm.astro';
+import LeadForm, { type LeadFormField, type LeadFormFieldOverrides } from './LeadForm.astro';
 import formBg from '../../assets/form-home-bg.png';
 import formBgTablet from '../../assets/form-home-bg-t.png';
-import '../../styles/components/home/lead-form-section.scss';
+import '../../styles/components/common/lead-form-section.scss';
+
+interface Props {
+	id?: string;
+	title?: string;
+	descriptionLines?: string[];
+	fields?: LeadFormField[];
+	submitLabel?: string;
+	fieldOverrides?: LeadFormFieldOverrides;
+}
+
+const {
+	id = 'lead-form',
+	title = 'Подберем решение под ваш бизнес',
+	descriptionLines = ['Оставьте заявку, и мы предложим', 'финансовый инструмент под вашу задачу'],
+	fields = ['phone', 'email', 'inn', 'turnover'],
+	submitLabel = 'Подобрать решение',
+	fieldOverrides = {},
+} = Astro.props;
+
+const titleId = `${id}-title`;
 
 const turnoverOptions = (await getCollection('turnoverOptions'))
 	.sort((left, right) => left.data.order - right.data.order)
 	.map((item) => item.data.label);
 ---
 
-<section class="lead-form-section section" id="lead-form" aria-labelledby="lead-form-title" data-lead-form-root>
+<section class="lead-form-section section" id={id} aria-labelledby={titleId} data-lead-form-root>
 	<div class="container">
 		<div class="lead-form-section__panel" data-lead-form-panel>
 			<div class="lead-form-section__content" data-lead-form-content>
 				<div class="lead-form-section__header">
-					<h2 class="lead-form-section__title" id="lead-form-title">Подберем решение под ваш бизнес</h2>
+					<h2 class="lead-form-section__title" id={titleId}>{title}</h2>
 					<p class="lead-form-section__description">
-						Оставьте заявку, и мы предложим<br> финансовый инструмент под вашу задачу
+						{descriptionLines.map((line, index) => (
+							<>
+								{index > 0 && <br />}
+								{line}
+							</>
+						))}
 					</p>
 				</div>
 
 				<LeadForm
 					block="lead-form-section"
-					fields={['phone', 'email', 'inn', 'turnover']}
-					submitLabel="Подобрать решение"
+					fields={fields}
+					submitLabel={submitLabel}
 					submitClass="lead-form-section__submit"
 					submitVariant="secondary"
 					submitSize="lg"
 					turnoverOptions={turnoverOptions}
-					turnoverMenuId="lead-form-turnover-options"
+					turnoverMenuId={`${id}-turnover-options`}
+					fieldOverrides={fieldOverrides}
 				/>
 
 				<div class="lead-form-section__success" data-lead-form-success data-state="hidden" aria-live="polite">

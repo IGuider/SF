@@ -1,4 +1,4 @@
-import { initAccordionGroup } from "../common/accordion";
+import { initAccordionGroup } from "./accordion";
 
 export const initFaqSections = () => {
   return initAccordionGroup({

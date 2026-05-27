@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogCard from './BlogCard.astro';
+import type { BlogDirectionFilter } from '../../lib/blog';
+import '../../styles/components/blog/blog-card.scss';
+import '../../styles/components/blog/useful-articles-list.scss';
+
+interface Props {
+	posts: CollectionEntry<'blogPosts'>[];
+	basePath: string;
+	directionFilter?: BlogDirectionFilter;
+	showReadLink?: boolean;
+}
+
+const {
+	posts,
+	basePath,
+	directionFilter = 'all',
+	showReadLink = false,
+} = Astro.props;
+---
+
+<ul class:list={['useful-articles-list', { 'useful-articles-list--with-read': showReadLink }]}>
+	{posts.map((post) => <BlogCard post={post} basePath={basePath} directionFilter={directionFilter} />)}
+</ul>
