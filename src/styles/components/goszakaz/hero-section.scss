@@ -825,25 +825,19 @@
 
     &__badges {
       margin-top: 14px;
-      gap: 4px;
+      gap: 6px;
     }
 
     &__badge {
-      min-height: 26px;
-      padding: 5px 9px;
-      font-size: 12px;
+      min-height: 29px;
+      padding: 6px 10px;
+      font-size: 14px;
       line-height: 1;
       white-space: wrap;
     }
 
     &__mobile-action {
-      margin-top: 16px;
-    }
-
-    &__mobile-button {
-      height: 45px;
-      min-width: 170px;
-      font-size: 16px;
+      margin-top: 20px;
     }
   }
 }
