@@ -1,5 +1,5 @@
 {
   "label": "Контакты",
-  "href": "#contacts",
+  "href": "/contacts/",
   "order": 3
 }

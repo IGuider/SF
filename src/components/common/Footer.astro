@@ -32,7 +32,7 @@ const resolveFooterHref = (href: string) => href.startsWith('/') ? `${basePath}$
 					{
 						footerLinks.map((item) => (
 							<li>
-								<a id={item.href === '#privacy' ? 'privacy' : undefined} href={resolveFooterHref(item.href)}>{item.label}</a>
+								<a href={resolveFooterHref(item.href)}>{item.label}</a>
 							</li>
 						))
 					}

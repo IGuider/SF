@@ -1,5 +1,4 @@
 const ACTIVE_NAV_SELECTOR = ".site-header__nav a[href]";
-const ACTIVE_SECTION_OFFSET = 120;
 let cleanupActiveNav: (() => void) | null = null;
 
 const getAnchorParts = (link: HTMLAnchorElement) => {
@@ -14,11 +13,33 @@ const getAnchorParts = (link: HTMLAnchorElement) => {
 const getCurrentPathname = () =>
   window.location.pathname.replace(/\/index\.html$/, "/");
 
-const setActiveLink = (activeLink: HTMLAnchorElement | null) => {
+const isPrimaryNavLink = (link: HTMLAnchorElement) =>
+  link.classList.contains("site-header__nav-link") ||
+  link.classList.contains("site-header__submenu-link--group");
+
+const getEquivalentLinks = (activeLink: HTMLAnchorElement | null) => {
+  if (!activeLink) {
+    return [];
+  }
+
+  const activeParts = getAnchorParts(activeLink);
+
+  return [
+    ...document.querySelectorAll<HTMLAnchorElement>(ACTIVE_NAV_SELECTOR),
+  ].filter((link) => {
+    const parts = getAnchorParts(link);
+
+    return parts.pathname === activeParts.pathname && parts.hash === activeParts.hash;
+  });
+};
+
+const setActiveLinks = (activeLinks: HTMLAnchorElement[]) => {
+  const activeSet = new Set(activeLinks);
+
   document
     .querySelectorAll<HTMLAnchorElement>(ACTIVE_NAV_SELECTOR)
     .forEach((link) => {
-      if (link === activeLink) {
+      if (activeSet.has(link)) {
         link.setAttribute("aria-current", "page");
         return;
       }
@@ -29,68 +50,37 @@ const setActiveLink = (activeLink: HTMLAnchorElement | null) => {
 
 const findPageLink = () => {
   const currentPathname = getCurrentPathname();
-
-  return (
-    [...document.querySelectorAll<HTMLAnchorElement>(ACTIVE_NAV_SELECTOR)].find(
-      (link) => {
-        const { hash, pathname } = getAnchorParts(link);
-
-        return !hash && pathname === currentPathname;
-      },
-    ) ?? null
-  );
-};
-
-const findSectionLink = () => {
-  const currentPathname = getCurrentPathname();
-  const sectionLinks = [
+  const matchingLinks = [
     ...document.querySelectorAll<HTMLAnchorElement>(ACTIVE_NAV_SELECTOR),
   ].filter((link) => {
     const { hash, pathname } = getAnchorParts(link);
 
-    return (
-      Boolean(hash) &&
-      pathname === currentPathname &&
-      document.querySelector(hash)
-    );
+    return !hash && pathname === currentPathname;
   });
 
-  let activeLink: HTMLAnchorElement | null = null;
-  let closestOffset = Number.NEGATIVE_INFINITY;
+  const primaryLink = matchingLinks.find(isPrimaryNavLink);
 
-  for (const link of sectionLinks) {
-    const { hash } = getAnchorParts(link);
-    const section = document.querySelector(hash);
-
-    if (!(section instanceof HTMLElement)) {
-      continue;
-    }
-
-    const offset = section.getBoundingClientRect().top - ACTIVE_SECTION_OFFSET;
-
-    if (offset <= 0 && offset > closestOffset) {
-      activeLink = link;
-      closestOffset = offset;
-    }
-  }
-
-  return activeLink;
+  return primaryLink ?? matchingLinks[0] ?? null;
 };
 
 export const initActiveNav = () => {
   cleanupActiveNav?.();
 
   const syncActiveNav = () => {
-    setActiveLink(findSectionLink() ?? findPageLink());
+    const activeLink = findPageLink();
+    const equivalentLinks = getEquivalentLinks(activeLink);
+    const activeLinks =
+      equivalentLinks.some(isPrimaryNavLink) && activeLink && isPrimaryNavLink(activeLink)
+        ? equivalentLinks.filter(isPrimaryNavLink)
+        : equivalentLinks;
+
+    setActiveLinks(activeLinks);
   };
 
   syncActiveNav();
-  window.addEventListener("scroll", syncActiveNav, { passive: true });
-  window.addEventListener("hashchange", syncActiveNav);
 
   cleanupActiveNav = () => {
-    window.removeEventListener("scroll", syncActiveNav);
-    window.removeEventListener("hashchange", syncActiveNav);
+    setActiveLinks([]);
   };
 
   return cleanupActiveNav;
