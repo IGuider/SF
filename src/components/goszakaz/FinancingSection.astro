@@ -4,9 +4,13 @@ import type { ImageMetadata } from 'astro';
 import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
 import Button from '../ui/Button.astro';
 import tab1BgImage from '../../assets/tab1-bg.png';
+import tab1BgMobileImage from '../../assets/tab1-bg-m.png';
 import tab2BgImage from '../../assets/tab2-bg.png';
+import tab2BgMobileImage from '../../assets/tab2-bg-m.png';
 import tab3BgImage from '../../assets/tab3-bg.png';
+import tab3BgMobileImage from '../../assets/tab3-bg-m.png';
 import tab4BgImage from '../../assets/tab4-bg.png';
+import tab4BgMobileImage from '../../assets/tab4-bg-m.png';
 import '../../styles/components/goszakaz/financing-section.scss';
 
 type FinancingTab = {
@@ -17,6 +21,7 @@ type FinancingTab = {
 	detailsTitle: string;
 	description: string;
 	image: ImageMetadata;
+	mobileImage: ImageMetadata;
 	imageModifier: string;
 };
 
@@ -30,6 +35,7 @@ const financingTabs: FinancingTab[] = [
 		description:
 			'Тендерный заем помогает получить обеспечение заявки и контракта для участия в закупках по 44-ФЗ, 223-ФЗ и 615-ПП без вывода собственных средств из оборота',
 		image: tab1BgImage,
+		mobileImage: tab1BgMobileImage,
 		imageModifier: 'tender-loan',
 	},
 	{
@@ -41,6 +47,7 @@ const financingTabs: FinancingTab[] = [
 		description:
 			'Участие, исполнение, ГО, возврат аванса, коммерция, закрытые торги. Помогаем на всех этапах получения. Для одобрения нужно от двух документов',
 		image: tab2BgImage,
+		mobileImage: tab2BgMobileImage,
 		imageModifier: 'bank-guarantee',
 	},
 	{
@@ -52,6 +59,7 @@ const financingTabs: FinancingTab[] = [
 		description:
 			'Пополнение оборотных средств для исполнения отдельного контракта, всей контрактной базы и обязательств по госзаказу',
 		image: tab3BgImage,
+		mobileImage: tab3BgMobileImage,
 		imageModifier: 'credit-line',
 	},
 	{
@@ -63,6 +71,7 @@ const financingTabs: FinancingTab[] = [
 		description:
 			'Деньги на оплату комиссии или депозит по банковской гарантии без вывода крупной суммы из оборотных средств',
 		image: tab4BgImage,
+		mobileImage: tab4BgMobileImage,
 		imageModifier: 'guarantee-commission-loan',
 	},
 ];
@@ -120,11 +129,24 @@ const financingTabs: FinancingTab[] = [
 									<Image
 										class:list={[
 											'procurement-financing-card__image',
+											'procurement-financing-card__image--desktop',
 											`procurement-financing-card__image--${tab.imageModifier}`,
 										]}
 										src={tab.image}
 										alt=""
 										loading={index === 0 ? 'eager' : 'lazy'}
+										decoding="async"
+									/>
+
+									<Image
+										class:list={[
+											'procurement-financing-card__image',
+											'procurement-financing-card__image--mobile',
+											`procurement-financing-card__image--${tab.imageModifier}`,
+										]}
+										src={tab.mobileImage}
+										alt=""
+										loading="lazy"
 										decoding="async"
 									/>
 								</article>

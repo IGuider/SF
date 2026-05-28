@@ -8,7 +8,7 @@
 
 .procurement-support-card {
   position: relative;
-  min-height: 266px;
+  min-height: 286px;
   overflow: hidden;
   border-radius: var(--radius-md);
   background: linear-gradient(109deg, rgba(215, 226, 255, 0.8) -58.52%, rgba(215, 226, 255, 0.1) 100%);
@@ -19,12 +19,11 @@
     display: flex;
     min-height: inherit;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     padding: 40px;
   }
 
   &__eyebrow {
-    margin-bottom: 10px;
     color: var(--color-primary);
     font-size: 26px;
     font-weight: var(--font-weight-regular);
@@ -54,26 +53,72 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
+  .procurement-support {
+    &__grid {
+      gap: 10px;
+    }
+  }
+
   .procurement-support-card {
-    min-height: 230px;
+    min-height: 276px;
+    border-radius: 20px;
 
     &__content {
-      padding: 24px;
+      gap: 15px;
+      padding: 40px 30px;
     }
 
     &__eyebrow {
-      font-size: 20px;
-      letter-spacing: -0.6px;
+      font-size: 22px;
+      letter-spacing: -0.88px;
     }
 
     &__title {
-      font-size: 24px;
-      letter-spacing: -0.7px;
+      max-width: 470px;
+      font-size: 32px;
+      letter-spacing: -1.28px;
     }
 
     &__text {
-      font-size: 16px;
+      max-width: 510px;
+      font-size: 26px;
+      letter-spacing: -1.04px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .procurement-support {
+    &__grid {
+      gap: 12px;
+    }
+  }
+
+  .procurement-support-card {
+    min-height: 0;
+    border-radius: 20px;
+
+    &__content {
+      gap: 15px;
+      padding: 30px 20px;
+    }
+
+    &__eyebrow {
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+
+    &__title {
+      max-width: 359px;
+      font-size: 25px;
+      letter-spacing: -1px;
+    }
+
+    &__text {
+      max-width: 359px;
+      font-size: 18px;
+      letter-spacing: -0.72px;
     }
   }
 }
@@ -81,36 +126,70 @@
 @media (max-width: 768px) {
   .procurement-support {
     &__grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
     }
   }
 
   .procurement-support-card {
-    min-height: 220px;
-    border-radius: var(--radius-md-mobile);
+    border-radius: 20px;
+
+    &__content {
+      gap: 15px;
+      padding: 30px 20px 30px 24px;
+    }
+
+    &__eyebrow {
+      font-size: 13px;
+      letter-spacing: -0.52px;
+    }
+
+    &__title {
+      max-width: 298px;
+      font-size: 21px;
+      letter-spacing: -0.84px;
+    }
+
+    &__text {
+      max-width: 297px;
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
   }
 }
 
 @media (max-width: 560px) {
+  .procurement-support {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
   .procurement-support-card {
+    border-radius: 10px;
+    background: linear-gradient(124deg, rgb(231 238 255) 1.57%, rgb(231 238 255 / 18%) 117.3%);
+
     &__content {
-      gap: 16px;
-      padding: 22px 18px;
+      gap: 15px;
+      padding: 20px;
     }
 
     &__eyebrow {
-      margin-bottom: 4px;
-      font-size: 16px;
-      letter-spacing: -0.3px;
+      font-size: 13px;
+      letter-spacing: -0.52px;
     }
 
     &__title {
+      max-width: 298px;
       font-size: 21px;
+      letter-spacing: -0.84px;
     }
 
     &__text {
-      font-size: 15px;
-      letter-spacing: -0.2px;
+      max-width: 100%;
+      font-size: 16px;
+      letter-spacing: -0.64px;
     }
   }
 }
