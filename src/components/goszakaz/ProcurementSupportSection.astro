@@ -1,32 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import '../../styles/components/goszakaz/support-section.scss';
 
-const supportItems = [
-	{
-		title: 'Заем на исполнение контракта (КИК)',
-		heading: 'Победил в тендере, но нет денег на исполнение контракта?',
-		accent: 'Профинансируем 70% от суммы,',
-		text: ' если нужны свободные деньги на поставку товара или чтобы начать работы',
-	},
-	{
-		title: 'Тендерный заем',
-		heading: 'Нужны деньги на обеспечение заявки?',
-		accent: 'Профинансируем до 150 млн ₽,',
-		text: ' чтобы заблокировать деньги на спецсчете или внести обеспечение',
-	},
-	{
-		title: 'Банковская гарантия',
-		heading: 'Нужна банковская гарантия?',
-		accent: 'Предоставим до 3 млрд ₽.',
-		text: ' Это дешевле, чем замораживать средства, требуется лишь оплата комиссии за выпуск',
-	},
-	{
-		title: 'Заем на пополнение оборотных средств',
-		heading: 'Нужны оборотные средства?',
-		accent: 'Предоставим до 65 млн ₽',
-		text: ' на обязательные платежи. Не прерывайте свой бизнес из-за кассового разрыва',
-	},
-];
+const supportItems = (await getCollection('goszakazSupportItems'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data);
 ---
 
 <section class="procurement-support section" id="products" aria-labelledby="procurement-support-title">

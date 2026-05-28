@@ -29,6 +29,76 @@ const goszakazFaq = defineCollection({
   }),
 });
 
+const goszakazHeroBadges = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/goszakaz-hero-badges",
+  }),
+  schema: z.object({
+    label: z.string(),
+    order: z.number().int().positive(),
+  }),
+});
+
+const goszakazSupportItems = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/goszakaz-support-items",
+  }),
+  schema: z.object({
+    title: z.string(),
+    heading: z.string(),
+    accent: z.string(),
+    text: z.string(),
+    order: z.number().int().positive(),
+  }),
+});
+
+const goszakazFinancingTabs = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/goszakaz-financing-tabs",
+  }),
+  schema: z.object({
+    label: z.string(),
+    summaryTitle: z.string(),
+    facts: z.array(z.string()).min(1),
+    detailsTitle: z.string(),
+    description: z.string(),
+    modifier: z.enum([
+      "tender-loan",
+      "bank-guarantee",
+      "credit-line",
+      "guarantee-commission-loan",
+    ]),
+    order: z.number().int().positive(),
+  }),
+});
+
+const goszakazWhyItems = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/goszakaz-why-items",
+  }),
+  schema: z.object({
+    title: z.string(),
+    icon: z.enum(["documents", "decision", "laws"]),
+    iconAlt: z.string().default(""),
+    order: z.number().int().positive(),
+  }),
+});
+
+const goszakazUsefulArticles = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/goszakaz-useful-articles",
+  }),
+  schema: z.object({
+    slug: z.string(),
+    order: z.number().int().positive(),
+  }),
+});
+
 const homeDirections = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/home-directions" }),
   schema: z.object({
@@ -260,6 +330,11 @@ export const collections = {
   faq,
   homeFaq,
   goszakazFaq,
+  goszakazHeroBadges,
+  goszakazSupportItems,
+  goszakazFinancingTabs,
+  goszakazWhyItems,
+  goszakazUsefulArticles,
   homeDirections,
   homeTrustItems,
   homeStats,

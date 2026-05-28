@@ -1,30 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import wwIcon1 from '../../assets/ww-icon1.png';
 import wwIcon2 from '../../assets/ww-icon2.png';
 import wwIcon3 from '../../assets/ww-icon3.png';
 import '../../styles/components/goszakaz/why-section.scss';
 
-const whyItems = [
-	{
-		title: '2 документа<br />для одобрения',
-		icon: wwIcon1,
-		iconAlt: '',
-		iconClass: 'documents',
-	},
-	{
-		title: 'Решение за 1 день<br />без залога',
-		icon: wwIcon2,
-		iconAlt: '',
-		iconClass: 'decision',
-	},
-	{
-		title: 'Работаем по 44-ФЗ,<br />223-ФЗ, 615-ПП',
-		icon: wwIcon3,
-		iconAlt: '',
-		iconClass: 'laws',
-	},
-];
+const whyIconMap = {
+	documents: wwIcon1,
+	decision: wwIcon2,
+	laws: wwIcon3,
+} as const;
+
+const whyItems = (await getCollection('goszakazWhyItems'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => ({
+		...item.data,
+		iconImage: whyIconMap[item.data.icon],
+	}));
 ---
 
 <section class="procurement-why section" id="why-simplefinance" aria-labelledby="procurement-why-title">
@@ -37,8 +30,8 @@ const whyItems = [
 			{
 				whyItems.map((item) => (
 					<article class="procurement-why-card">
-						<div class:list={['procurement-why-card__icon', `procurement-why-card__icon--${item.iconClass}`]}>
-							<Image class="media-fill media-fit-contain" src={item.icon} alt={item.iconAlt} loading="lazy" decoding="async" />
+						<div class:list={['procurement-why-card__icon', `procurement-why-card__icon--${item.icon}`]}>
+							<Image class="media-fill media-fit-contain" src={item.iconImage} alt={item.iconAlt} loading="lazy" decoding="async" />
 						</div>
 						<h3 class="procurement-why-card__title" set:html={item.title} />
 					</article>

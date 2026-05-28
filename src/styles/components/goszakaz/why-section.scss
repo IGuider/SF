@@ -18,7 +18,11 @@
   gap: 40px;
   padding: 40px;
   border-radius: var(--radius-md);
-  background: linear-gradient(116deg, rgba(215, 226, 255, 0.1) 1.57%, rgba(215, 226, 255, 0.8) 100%);
+  background: linear-gradient(
+    116deg,
+    var(--color-surface-panel-end) 1.57%,
+    var(--color-surface-panel-start) 100%
+  );
 
   &__icon {
     flex: 0 0 auto;
@@ -43,7 +47,7 @@
     color: var(--color-text-strong);
     font-size: 36px;
     font-weight: var(--font-weight-regular);
-    line-height: 1.2;
+    line-height: var(--line-height-compact);
     letter-spacing: -1.44px;
   }
 }
@@ -63,7 +67,7 @@
     min-height: 309px;
     gap: 30px;
     padding: 30px;
-    border-radius: 20px;
+    border-radius: var(--radius-md);
 
     &__icon {
       &--documents {
@@ -141,7 +145,7 @@
     min-height: 211px;
     gap: 20px;
     padding: 20px 24px;
-    border-radius: 20px;
+    border-radius: var(--radius-md);
 
     &__icon {
       &--documents {
@@ -182,8 +186,12 @@
     justify-content: space-between;
     gap: 20px;
     padding: 23px 18px;
-    border-radius: 15px;
-    background: linear-gradient(143deg, rgb(231, 238, 255) 1.57%, rgb(231 238 255 / 18%) 117.3%);
+    border-radius: var(--radius-compact);
+    background: linear-gradient(
+      143deg,
+      var(--color-surface-soft) 1.57%,
+      var(--color-surface-feature-end) 117.3%
+    );
 
     &__icon {
       &--documents {

@@ -1,17 +1,21 @@
 ---
+import { getCollection } from 'astro:content';
 import LeadForm from '../common/LeadForm.astro';
 import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
 import Button from '../ui/Button.astro';
 import '../../styles/components/goszakaz/hero-section.scss';
 
-const badges = ['35+ банков-партнеров', 'до 500 млн ₽', 'от 3% в месяц'];
+const [badgeEntries, financingTabs] = await Promise.all([
+	getCollection('goszakazHeroBadges'),
+	getCollection('goszakazFinancingTabs'),
+]);
 
-const productOptions = [
-	'Тендерный заем',
-	'Банковская гарантия',
-	'Возобновляемая кредитная линия',
-	'Заем на оплату комиссии БГ',
-];
+const badges = badgeEntries
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data.label);
+const productOptions = financingTabs
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data.label);
 ---
 
 <section class="procurement-hero section" id="hero" data-lead-form-root>

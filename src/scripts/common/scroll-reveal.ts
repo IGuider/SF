@@ -17,6 +17,20 @@ const REVEAL_SELECTOR = [
   ".steps-section",
   ".blog-section",
   ".faq-section",
+  ".blog-page__hero",
+  ".blog-card-item",
+  ".blog-page__sidebar",
+  ".article-page__header",
+  ".article-page__content > *",
+  ".article-page__aside",
+  ".article-page__lead",
+  ".article-page__related",
+  ".procurement-hero",
+  ".procurement-support-card",
+  ".procurement-financing",
+  ".procurement-why-card",
+  ".procurement-manager",
+  ".useful-articles-section",
 ].join(",");
 
 const INITIAL_VISIBLE_RATIO = 0.96;

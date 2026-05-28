@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import ProcurementHeroSection from './ProcurementHeroSection.astro';
 import FinancingSection from './FinancingSection.astro';
 import WhySimpleFinanceSection from './WhySimpleFinanceSection.astro';
@@ -9,12 +10,9 @@ import UsefulArticlesSection from '../common/UsefulArticlesSection.astro';
 import LeadFormSection from '../common/LeadFormSection.astro';
 import FaqSection from '../common/FaqSection.astro';
 
-const usefulArticleSlugs = [
-	'bank-guarantee-criteria',
-	'rnp-procurement-block',
-	'bank-guarantee-rejection',
-	'44-fz-vs-223-fz-procurement',
-];
+const usefulArticleSlugs = (await getCollection('goszakazUsefulArticles'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data.slug);
 ---
 
 <main transition:name="page-content" transition:animate="slide">

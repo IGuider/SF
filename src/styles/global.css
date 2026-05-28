@@ -52,6 +52,7 @@
   --color-surface-panel-hero-start: rgba(201, 201, 201, 0.24);
   --color-surface-panel-hero-end: rgba(196, 196, 196, 0.03);
   --color-surface-feature-end: rgba(231, 238, 255, 0.18);
+  --color-surface-glass-border: rgba(255, 255, 255, 0.8);
   --color-surface-input-border: rgba(214, 226, 255, 0.95);
   --color-control-border: #a8bfff;
   --color-control-border-soft: rgba(196, 205, 240, 0.95);
@@ -74,6 +75,26 @@
     var(--color-surface-soft) 1.57%,
     var(--color-surface-feature-end) 117.3%
   );
+  --gradient-surface-panel: linear-gradient(
+    109deg,
+    var(--color-surface-panel-start) 1.57%,
+    var(--color-surface-panel-end) 100%
+  );
+  --gradient-surface-panel-reverse: linear-gradient(
+    111deg,
+    var(--color-surface-panel-end) 1.49%,
+    var(--color-surface-panel-start) 149.5%
+  );
+  --gradient-surface-hero-glass: linear-gradient(
+    110deg,
+    var(--color-surface-panel-hero-start) 1.57%,
+    var(--color-surface-panel-hero-end) 100%
+  );
+  --gradient-surface-success-card: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 88%) 0%,
+    rgb(255 255 255 / 72%) 100%
+  );
   --shadow-focus-soft: 0 0 3.32px 3.32px var(--color-primary-focus-soft);
   --shadow-soft: 0 12px 30px rgba(24, 49, 83, 0.08);
   --container-max-width: 1356px;
@@ -93,6 +114,7 @@
   --transition-duration-slow: 180ms;
   --radius-xs: 7px;
   --radius-sm: 10px;
+  --radius-compact: 15px;
   --radius-md: 20px;
   --radius-md-mobile: 18px;
   --radius-lg-mobile: 14px;
