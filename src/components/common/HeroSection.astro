@@ -4,11 +4,15 @@ import type { ImageMetadata } from 'astro';
 import '../../styles/components/common/hero-section.scss';
 import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
 import Button from '../ui/Button.astro';
+import Badge from '../ui/Badge.astro';
 
 interface Props {
 	id?: string;
-	variant?: 'ecom' | 'home';
+	variant?: 'ecom' | 'home' | 'goszakaz';
 	badges?: string[];
+	badgesPosition?: 'beforeTitle' | 'afterText';
+	badgesLabel?: string;
+	badgeVariant?: 'outline-primary' | 'outline-secondary';
 	titleLines: string[];
 	descriptionLines?: string[];
 	buttonLabel: string;
@@ -21,6 +25,9 @@ const {
 	id = 'hero',
 	variant = 'ecom',
 	badges = [],
+	badgesPosition = 'beforeTitle',
+	badgesLabel = 'Поддерживаемые площадки',
+	badgeVariant = 'outline-secondary',
 	titleLines,
 	descriptionLines = [],
 	buttonLabel,
@@ -30,6 +37,8 @@ const {
 }: Props = Astro.props;
 
 const sectionClass = ['hero-section', 'section', `hero-section--${variant}`].join(' ');
+const badgesPositionClass = badgesPosition === 'afterText' ? 'after-text' : 'before-title';
+const badgesClass = ['hero-section__badges', `hero-section__badges--${badgesPositionClass}`].join(' ');
 ---
 
 <section class={sectionClass} id={id}>
@@ -49,10 +58,10 @@ const sectionClass = ['hero-section', 'section', `hero-section--${variant}`].joi
 					class="hero-section__panel"
 				>
 					{
-						badges.length > 0 && (
-							<ul class="hero-section__badges" aria-label="Поддерживаемые площадки">
+						badges.length > 0 && badgesPosition === 'beforeTitle' && (
+							<ul class={badgesClass} aria-label={badgesLabel}>
 								{badges.map((badge) => (
-									<li class="hero-section__badge">{badge}</li>
+									<Badge as="li" variant={badgeVariant} class="hero-section__badge">{badge}</Badge>
 								))}
 							</ul>
 						)
@@ -79,6 +88,15 @@ const sectionClass = ['hero-section', 'section', `hero-section--${variant}`].joi
 									</>
 								))}
 							</p>
+						)
+					}
+					{
+						badges.length > 0 && badgesPosition === 'afterText' && (
+							<ul class={badgesClass} aria-label={badgesLabel}>
+								{badges.map((badge) => (
+									<Badge as="li" variant={badgeVariant} class="hero-section__badge">{badge}</Badge>
+								))}
+							</ul>
 						)
 					}
 

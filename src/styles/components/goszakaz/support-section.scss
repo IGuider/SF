@@ -27,12 +27,13 @@
     padding: 40px;
   }
 
-  &__eyebrow {
-    color: var(--color-primary);
-    font-size: 26px;
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-compact);
-    letter-spacing: -1.04px;
+  &__eyebrow.ui-badge {
+    --ui-badge-min-height: 37px;
+    --ui-badge-padding: 8px 20px;
+    --ui-badge-font-size: 22px;
+    --ui-badge-line-height: var(--line-height-compact);
+    --ui-badge-letter-spacing: -0.88px;
+    margin-bottom: 15px;
   }
 
   &__title {
@@ -73,9 +74,12 @@
       padding: 40px 30px;
     }
 
-    &__eyebrow {
-      font-size: 22px;
-      letter-spacing: -0.88px;
+    &__eyebrow.ui-badge {
+      --ui-badge-min-height: 37px;
+      --ui-badge-padding: 8px 20px;
+      --ui-badge-font-size: 22px;
+      --ui-badge-letter-spacing: -0.88px;
+      margin-bottom: 15px;
     }
 
     &__title {
@@ -108,9 +112,12 @@
       padding: 30px 20px;
     }
 
-    &__eyebrow {
-      font-size: 18px;
-      letter-spacing: -0.72px;
+    &__eyebrow.ui-badge {
+      --ui-badge-min-height: 32px;
+      --ui-badge-padding: 6px 16px;
+      --ui-badge-font-size: 16px;
+      --ui-badge-letter-spacing: -0.64px;
+      margin-bottom: 12px;
     }
 
     &__title {
@@ -143,9 +150,12 @@
       padding: 30px 20px 30px 24px;
     }
 
-    &__eyebrow {
-      font-size: 13px;
-      letter-spacing: -0.52px;
+    &__eyebrow.ui-badge {
+      --ui-badge-min-height: 30px;
+      --ui-badge-padding: 6px 14px;
+      --ui-badge-font-size: 14px;
+      --ui-badge-letter-spacing: -0.56px;
+      margin-bottom: 10px;
     }
 
     &__title {
@@ -183,9 +193,12 @@
       padding: 20px;
     }
 
-    &__eyebrow {
-      font-size: 13px;
-      letter-spacing: -0.52px;
+    &__eyebrow.ui-badge {
+      --ui-badge-min-height: 28px;
+      --ui-badge-padding: 5px 13px;
+      --ui-badge-font-size: 13px;
+      --ui-badge-letter-spacing: -0.52px;
+      margin-bottom: 8px;
     }
 
     &__title {

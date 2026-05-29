@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import ProcurementHeroSection from './ProcurementHeroSection.astro';
+import HeroSection from '../common/HeroSection.astro';
 import FinancingSection from './FinancingSection.astro';
 import WhySimpleFinanceSection from './WhySimpleFinanceSection.astro';
 import PersonalManagerSection from './PersonalManagerSection.astro';
@@ -9,14 +9,34 @@ import StepsSection from '../common/StepsSection.astro';
 import UsefulArticlesSection from '../common/UsefulArticlesSection.astro';
 import LeadFormSection from '../common/LeadFormSection.astro';
 import FaqSection from '../common/FaqSection.astro';
+import heroGoszakazImage from '../../assets/hero-goszakaz.jpg';
 
-const usefulArticleSlugs = (await getCollection('goszakazUsefulArticles'))
+const [usefulArticleEntries, heroBadgeEntries] = await Promise.all([
+	getCollection('goszakazUsefulArticles'),
+	getCollection('goszakazHeroBadges'),
+]);
+
+const usefulArticleSlugs = usefulArticleEntries
 	.sort((left, right) => left.data.order - right.data.order)
 	.map((item) => item.data.slug);
+const heroBadges = heroBadgeEntries
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data.label);
 ---
 
 <main transition:name="page-content" transition:animate="slide">
-	<ProcurementHeroSection />
+	<HeroSection
+		variant="goszakaz"
+		titleLines={['Финансирование,', 'для госзакупок —', 'за 1 день, без залога']}
+		descriptionLines={['Тендерный займ, банковская гарантия', 'и финансирование контракта']}
+		badges={heroBadges}
+		badgesPosition="afterText"
+		badgesLabel="Преимущества финансирования"
+		badgeVariant="outline-primary"
+		buttonLabel="Подобрать решение"
+		buttonVariant="secondary"
+		image={heroGoszakazImage}
+	/>
 	<ProcurementSupportSection />
 	<FinancingSection />
 	<WhySimpleFinanceSection />
@@ -29,13 +49,12 @@ const usefulArticleSlugs = (await getCollection('goszakazUsefulArticles'))
 	/>
 	<LeadFormSection
 		id="procurement-lead-form"
-		title="Подберём решение под ваш бизнес"
-		fields={['name', 'phone', 'email', 'inn', 'procurement']}
+		title="Подберем решение под ваш бизнес"
+		fields={['name', 'phone', 'email', 'inn']}
 		submitLabel="Оставить заявку"
 		fieldOverrides={{
-			name: { label: 'ФИО' },
+			name: { label: 'ФИО', required: false },
 			inn: { label: 'ИНН организации', required: false, validate: true },
-			procurement: { label: 'Закупка (название или номер)' },
 		}}
 	/>
 	<FaqSection collection="goszakazFaq" />

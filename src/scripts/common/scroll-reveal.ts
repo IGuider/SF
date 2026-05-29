@@ -25,7 +25,6 @@ const REVEAL_SELECTOR = [
   ".article-page__aside",
   ".article-page__lead",
   ".article-page__related",
-  ".procurement-hero",
   ".procurement-support-card",
   ".procurement-financing",
   ".procurement-why-card",

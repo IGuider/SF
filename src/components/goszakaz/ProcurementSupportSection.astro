@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Badge from '../ui/Badge.astro';
 import '../../styles/components/goszakaz/support-section.scss';
 
 const supportItems = (await getCollection('goszakazSupportItems'))
@@ -17,7 +18,7 @@ const supportItems = (await getCollection('goszakazSupportItems'))
 			{supportItems.map((item) => (
 				<article class="procurement-support-card">
 					<div class="procurement-support-card__content">
-						<p class="procurement-support-card__eyebrow">{item.title}</p>
+						<Badge as="p" variant="surface-white" class="procurement-support-card__eyebrow">{item.title}</Badge>
 						<h3 class="procurement-support-card__title">{item.heading}</h3>
 						<p class="procurement-support-card__text">
 							<span>{item.accent}</span>{item.text}

@@ -1,0 +1,65 @@
+.ui-badge {
+  display: inline-flex;
+  width: fit-content;
+  min-width: 0;
+  min-height: var(--ui-badge-min-height, auto);
+  align-items: center;
+  justify-content: center;
+  padding: var(--ui-badge-padding, 8px 20px);
+  border: var(--ui-badge-border-width, 1px) solid
+    var(--ui-badge-border-color, transparent);
+  border-radius: var(--ui-badge-radius, var(--radius-pill));
+  background: var(--ui-badge-background, transparent);
+  color: var(--ui-badge-color, currentColor);
+  font-family: "Commissioner", Arial, sans-serif;
+  font-size: var(--ui-badge-font-size, 22px);
+  font-weight: var(--ui-badge-font-weight, var(--font-weight-regular));
+  line-height: var(--ui-badge-line-height, var(--line-height-compact));
+  letter-spacing: var(--ui-badge-letter-spacing, -0.88px);
+  text-align: center;
+  white-space: var(--ui-badge-white-space, nowrap);
+
+  &[hidden] {
+    display: none;
+  }
+
+  &--outline-primary {
+    --ui-badge-border-color: var(--color-primary);
+    --ui-badge-color: var(--color-primary);
+  }
+
+  &--outline-secondary {
+    --ui-badge-border-color: var(--color-secondary);
+    --ui-badge-color: var(--color-secondary);
+    --ui-badge-line-height: var(--line-height-button);
+  }
+
+  &--surface-white {
+    --ui-badge-background: var(--color-white);
+    --ui-badge-color: var(--color-text-strong);
+  }
+
+  &--blog-primary {
+    --ui-badge-background: var(
+      --ui-badge-blog-background,
+      var(--color-surface-tag)
+    );
+    --ui-badge-color: var(--color-primary-border-strong);
+  }
+
+  &--blog-muted {
+    --ui-badge-background: var(
+      --ui-badge-blog-background,
+      var(--color-surface-tag)
+    );
+    --ui-badge-color: var(--color-text-muted);
+  }
+
+  &--rounded {
+    --ui-badge-radius: var(--ui-badge-rounded-radius, var(--radius-sm));
+  }
+
+  &--pill {
+    --ui-badge-radius: var(--radius-pill);
+  }
+}

@@ -1,0 +1,37 @@
+---
+import '../../styles/components/ui/badge.scss';
+
+type BadgeElement = 'span' | 'li' | 'p';
+type BadgeVariant =
+	| 'outline-primary'
+	| 'outline-secondary'
+	| 'surface-white'
+	| 'blog-primary'
+	| 'blog-muted';
+type BadgeShape = 'rounded' | 'pill';
+
+interface Props {
+	as?: BadgeElement;
+	variant?: BadgeVariant;
+	shape?: BadgeShape;
+	class?: string;
+	dataBlogTag?: 'direction' | 'category';
+}
+
+const {
+	as = 'span',
+	variant = 'surface-white',
+	shape = 'pill',
+	class: className,
+	dataBlogTag,
+} = Astro.props;
+
+const Tag = as;
+const componentClass = ['ui-badge', `ui-badge--${variant}`, `ui-badge--${shape}`, className]
+	.filter(Boolean)
+	.join(' ');
+---
+
+<Tag class={componentClass} data-blog-tag={dataBlogTag}>
+	<slot />
+</Tag>

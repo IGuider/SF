@@ -7,6 +7,7 @@ import {
 	type BlogDirectionFilter,
 	type BlogPost,
 } from '../../lib/blog';
+import Badge from '../ui/Badge.astro';
 
 interface Props {
 	post: BlogPost;
@@ -25,6 +26,9 @@ const {
 } = Astro.props;
 const href = `${basePath}${getBlogPostPath(post)}`;
 const tags = getBlogPostTags(post, directionFilter);
+const tagVariant = pinned ? 'blog-muted' : 'blog-primary';
+const getTagType = (tag: (typeof tags)[number]) => tag.value === post.data.direction ? 'direction' : 'category';
+const getTagShape = (tag: (typeof tags)[number]) => getTagType(tag) === 'category' ? 'pill' : 'rounded';
 ---
 
 <li
@@ -40,7 +44,9 @@ const tags = getBlogPostTags(post, directionFilter);
 
 		<div class="blog-card__mobile-head">
 			<ul class="blog-card__tags blog-card__tags--mobile" aria-label="Теги статьи">
-				{tags.map((tag) => <li data-blog-tag={tag.value === post.data.direction ? 'direction' : 'category'}>{tag.label}</li>)}
+				{tags.map((tag) => (
+					<Badge as="li" variant={tagVariant} shape={getTagShape(tag)} class="blog-card__tag" dataBlogTag={getTagType(tag)}>{tag.label}</Badge>
+				))}
 			</ul>
 
 			{!pinned && <time class="blog-card__date blog-card__date--mobile" datetime={post.data.publishedAt}>{formatBlogDate(post.data.publishedAt)}</time>}
@@ -51,7 +57,9 @@ const tags = getBlogPostTags(post, directionFilter);
 
 		<div class="blog-card__meta">
 			<ul class="blog-card__tags blog-card__tags--desktop" aria-label="Теги статьи">
-				{tags.map((tag) => <li data-blog-tag={tag.value === post.data.direction ? 'direction' : 'category'}>{tag.label}</li>)}
+				{tags.map((tag) => (
+					<Badge as="li" variant={tagVariant} shape={getTagShape(tag)} class="blog-card__tag" dataBlogTag={getTagType(tag)}>{tag.label}</Badge>
+				))}
 			</ul>
 
 			<span class="blog-card__read">

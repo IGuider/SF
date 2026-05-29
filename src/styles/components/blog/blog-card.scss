@@ -115,34 +115,17 @@
     margin: 0;
     padding: 0;
     list-style: none;
+  }
 
-    li {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 20px;
-      border-radius: 10px;
-      background: #F3F6FF;
-      color: rgba(5, 55, 200, 0.55);
-      font-size: 22px;
-      letter-spacing: -0.88px;
-
-      &[hidden] {
-        display: none;
-      }
-
-      &[data-blog-tag="category"] {
-        border-radius: 50px;
-      }
-    }
+  &__tag.ui-badge {
+    --ui-badge-padding: 8px 20px;
+    --ui-badge-rounded-radius: var(--radius-sm);
+    --ui-badge-font-size: 22px;
+    --ui-badge-letter-spacing: -0.88px;
   }
 
   &__mobile-head {
     display: none;
-  }
-
-  &--pinned &__tags li {
-      background: #F3F6FF;
-      color: rgba(0, 0, 0, 0.55);
   }
 
   &__read {
@@ -206,10 +189,10 @@
       letter-spacing: -0.8px;
     }
 
-    &__tags li {
-      padding: 6px 16px;
-      font-size: 20px;
-      letter-spacing: -0.8px;
+    &__tag.ui-badge {
+      --ui-badge-padding: 6px 16px;
+      --ui-badge-font-size: 20px;
+      --ui-badge-letter-spacing: -0.8px;
     }
 
     &--pinned {
@@ -269,10 +252,10 @@
       gap: 6px;
     }
 
-    &__tags li {
-      padding: 5px 12px;
-      font-size: 13px;
-      letter-spacing: -0.56px;
+    &__tag.ui-badge {
+      --ui-badge-padding: 5px 12px;
+      --ui-badge-font-size: 13px;
+      --ui-badge-letter-spacing: -0.56px;
     }
 
     &--pinned {
@@ -384,10 +367,10 @@
       justify-content: flex-start;
     }
 
-    &__tags li {
-      min-height: 28px;
-      padding-inline: 12px;
-      font-size: 13px;
+    &__tag.ui-badge {
+      --ui-badge-min-height: 28px;
+      --ui-badge-padding: 5px 12px;
+      --ui-badge-font-size: 13px;
     }
   }
 }

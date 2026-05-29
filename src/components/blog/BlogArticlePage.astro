@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import ArticleContent from './ArticleContent.astro';
 import ArticleLeadSection from './ArticleLeadSection.astro';
 import ArticleRelatedSection from './ArticleRelatedSection.astro';
+import Badge from '../ui/Badge.astro';
 import sokolovaPhoto from '../../assets/article/sokolova.jpg';
 import {
 	formatBlogDate,
@@ -23,6 +24,9 @@ const basePath = import.meta.env.BASE_URL.endsWith('/')
 	? import.meta.env.BASE_URL
 	: `${import.meta.env.BASE_URL}/`;
 const tags = getBlogPostTags(post, 'all');
+const getTagType = (tag: (typeof tags)[number]) => tag.value === post.data.direction ? 'direction' : 'category';
+const getTagVariant = (tag: (typeof tags)[number]) => getTagType(tag) === 'category' ? 'blog-primary' : 'blog-muted';
+const getTagShape = (tag: (typeof tags)[number]) => getTagType(tag) === 'category' ? 'pill' : 'rounded';
 const getBlockText = (block: any) =>
 	block.text ?? block.children?.map((child: { text: string }) => child.text).join('') ?? '';
 const getHeadingId = (text: string) =>
@@ -75,7 +79,9 @@ const tocHeadings = articleBody
 			<article class="article-page__article">
 				<header class="article-page__header">
 					<ul class="article-page__tags" aria-label="Теги статьи">
-						{tags.map((tag) => <li data-blog-tag={tag.value === post.data.direction ? 'direction' : 'category'}>{tag.label}</li>)}
+						{tags.map((tag) => (
+							<Badge as="li" variant={getTagVariant(tag)} shape={getTagShape(tag)} class="article-page__tag" dataBlogTag={getTagType(tag)}>{tag.label}</Badge>
+						))}
 					</ul>
 					<time datetime={post.data.publishedAt}>{formatBlogDate(post.data.publishedAt)}</time>
 					<h1>{post.data.title}</h1>

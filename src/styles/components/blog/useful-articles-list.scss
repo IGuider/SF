@@ -19,8 +19,8 @@
     &:hover {
       background: #e8f0fc;
 
-      .blog-card__tags li {
-        background: #f3f9ff;
+      .blog-card__tag.ui-badge {
+        --ui-badge-blog-background: var(--color-surface-card-light);
       }
     }
   }
@@ -48,17 +48,16 @@
   .blog-card__tags {
     gap: 12px;
 
-    li {
-      padding: 8px 20px;
-      border-radius: 8px;
-      background: #eef4ff;
-      color: rgba(0, 0, 0, 0.55);
-      font-size: 20px;
-      letter-spacing: -0.88px;
+    .blog-card__tag.ui-badge {
+      --ui-badge-blog-background: var(--color-surface-tag-soft);
+      --ui-badge-color: var(--color-text-muted);
+      --ui-badge-rounded-radius: 8px;
+      --ui-badge-padding: 8px 20px;
+      --ui-badge-font-size: 20px;
+      --ui-badge-letter-spacing: -0.88px;
 
       &[data-blog-tag="category"] {
-        border-radius: 50px;
-        color: rgba(5, 55, 200, 0.55);
+        --ui-badge-color: var(--color-primary-border-strong);
       }
     }
   }
@@ -97,10 +96,10 @@
     .blog-card__tags {
       order: -1;
 
-      li {
-        padding: 8px 20px;
-        font-size: 22px;
-        letter-spacing: -0.88px;
+      .blog-card__tag.ui-badge {
+        --ui-badge-padding: 8px 20px;
+        --ui-badge-font-size: 22px;
+        --ui-badge-letter-spacing: -0.88px;
       }
     }
   }
@@ -118,10 +117,10 @@
       letter-spacing: -1.16px;
     }
 
-    .blog-card__tags li {
-      padding: 7px 18px;
-      font-size: 18px;
-      letter-spacing: -0.72px;
+    .blog-card__tag.ui-badge {
+      --ui-badge-padding: 7px 18px;
+      --ui-badge-font-size: 18px;
+      --ui-badge-letter-spacing: -0.72px;
     }
 
     &--with-read {
@@ -162,10 +161,10 @@
       gap: 8px;
     }
 
-    .blog-card__tags li {
-      padding: 6px 14px;
-      font-size: 14px;
-      letter-spacing: -0.56px;
+    .blog-card__tag.ui-badge {
+      --ui-badge-padding: 6px 14px;
+      --ui-badge-font-size: 14px;
+      --ui-badge-letter-spacing: -0.56px;
     }
 
     &--with-read {
@@ -220,10 +219,10 @@
       letter-spacing: -0.84px;
     }
 
-    .blog-card__tags li {
-      min-height: 28px;
-      padding-inline: 12px;
-      font-size: 13px;
+    .blog-card__tag.ui-badge {
+      --ui-badge-min-height: 28px;
+      --ui-badge-padding: 6px 12px;
+      --ui-badge-font-size: 13px;
     }
   }
 }

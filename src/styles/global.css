@@ -46,6 +46,8 @@
   --color-surface-soft: #e7eeff;
   --color-surface-card: #f0f6fe;
   --color-surface-card-light: #f3f9ff;
+  --color-surface-tag: #f3f6ff;
+  --color-surface-tag-soft: #eef4ff;
   --color-surface-panel-border: rgba(221, 221, 221, 0.4);
   --color-surface-panel-start: rgba(215, 226, 255, 0.8);
   --color-surface-panel-end: rgba(215, 226, 255, 0.1);
