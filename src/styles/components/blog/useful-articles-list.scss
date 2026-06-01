@@ -139,6 +139,12 @@
           height: 32px;
         }
       }
+
+      .blog-card__tags .blog-card__tag.ui-badge {
+        --ui-badge-padding: 7px 18px;
+        --ui-badge-font-size: 18px;
+        --ui-badge-letter-spacing: -0.72px;
+      }
     }
   }
 }
@@ -183,6 +189,16 @@
           height: 24px;
         }
       }
+
+      .blog-card__tags {
+        gap: 8px;
+      }
+
+      .blog-card__tags .blog-card__tag.ui-badge {
+        --ui-badge-padding: 6px 14px;
+        --ui-badge-font-size: 14px;
+        --ui-badge-letter-spacing: -0.56px;
+      }
     }
   }
 }
@@ -204,6 +220,12 @@
       .blog-card {
         min-height: 0;
       }
+
+      .blog-card__tags .blog-card__tag.ui-badge {
+        --ui-badge-padding: 6px 14px;
+        --ui-badge-font-size: 14px;
+        --ui-badge-letter-spacing: -0.56px;
+      }
     }
   }
 }
@@ -223,6 +245,19 @@
       --ui-badge-min-height: 28px;
       --ui-badge-padding: 6px 12px;
       --ui-badge-font-size: 13px;
+    }
+
+    &--with-read {
+      .blog-card__tags {
+        gap: 6px;
+      }
+
+      .blog-card__tags .blog-card__tag.ui-badge {
+        --ui-badge-min-height: 28px;
+        --ui-badge-padding: 5px 12px;
+        --ui-badge-font-size: 13px;
+        --ui-badge-letter-spacing: -0.52px;
+      }
     }
   }
 }
