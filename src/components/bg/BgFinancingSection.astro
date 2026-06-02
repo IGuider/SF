@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import type { ImageMetadata } from 'astro';
+import participationIcon from '../../assets/bg/finance-participation.svg';
+import contractIcon from '../../assets/bg/finance-contract.svg';
+import advanceIcon from '../../assets/bg/finance-advance.svg';
+import warrantyIcon from '../../assets/bg/finance-warranty.svg';
+import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
+import Button from '../ui/Button.astro';
+import '../../styles/components/bg/financing-section.scss';
+
+type FinancingModifier = 'participation' | 'contract' | 'advance' | 'warranty';
+
+const iconMap: Record<FinancingModifier, ImageMetadata> = {
+	participation: participationIcon,
+	contract: contractIcon,
+	advance: advanceIcon,
+	warranty: warrantyIcon,
+};
+
+const items = (await getCollection('bgFinancingItems'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => ({
+		...item.data,
+		icon: iconMap[item.data.modifier],
+	}));
+---
+
+<section class="bg-financing section" id="financing" aria-labelledby="bg-financing-title">
+	<div class="container">
+		<div class="bg-financing__layout">
+			<h2 class="bg-financing__title section-title" id="bg-financing-title">Финансирование для&nbsp;госзаказа</h2>
+
+			<div class="bg-financing__grid">
+				{
+					items.map((item) => (
+						<article
+							class:list={['bg-financing-card', `bg-financing-card--${item.modifier}`]}
+							style={`--bg-financing-mobile-order: ${item.mobileOrder};`}
+						>
+							<div class="bg-financing-card__heading-row">
+								<span class="bg-financing-card__check" aria-hidden="true"></span>
+								<h3 class="bg-financing-card__title">
+									<span class="bg-financing-card__desktop-text">
+										{item.titleLines.map((line) => <span class="bg-financing-card__line">{line}</span>)}
+									</span>
+									<span class="bg-financing-card__mobile-text">{item.title}</span>
+								</h3>
+							</div>
+							<p class="bg-financing-card__text">
+								<span class="bg-financing-card__desktop-text">
+									{item.descriptionLines.map((line) => <span class="bg-financing-card__line">{line}</span>)}
+								</span>
+								<span class="bg-financing-card__mobile-text">{item.description}</span>
+							</p>
+							<img class="bg-financing-card__icon" src={item.icon.src} alt="" loading="lazy" decoding="async" aria-hidden="true" />
+						</article>
+					))
+				}
+			</div>
+
+			<ConsultationDialogTrigger>
+				<Button variant="secondary" size="xl" class="bg-financing__button">Оставить заявку</Button>
+			</ConsultationDialogTrigger>
+		</div>
+	</div>
+</section>

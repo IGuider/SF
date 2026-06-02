@@ -1,0 +1,361 @@
+.bg-financing {
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 75px;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--gap-sm);
+  }
+
+  &__button.ui-button {
+    height: 59px;
+    padding: 10px 26px;
+    font-size: 24px;
+  }
+}
+
+.bg-financing-card {
+  position: relative;
+  min-height: 421px;
+  padding: 37px 38px 70px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--gradient-surface-feature);
+
+  &__heading-row {
+    display: contents;
+  }
+
+  &__check {
+    display: none;
+  }
+
+  &__title {
+    max-width: 238px;
+    color: var(--color-primary);
+    font-size: 36px;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.44px;
+  }
+
+  &__text {
+    max-width: 278px;
+    margin-top: 20px;
+    color: var(--color-text-strong);
+    font-size: 29px;
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+  }
+
+  &__line {
+    display: block;
+  }
+
+  &__mobile-text {
+    display: none;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 16px;
+    bottom: -14px;
+    width: 121px;
+    height: 121px;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  &--contract &__icon {
+    right: 17px;
+    width: 126px;
+    height: 126px;
+  }
+
+  &--advance &__icon {
+    right: 16px;
+    bottom: -17px;
+    width: 142px;
+    height: 142px;
+  }
+
+  &--warranty &__icon {
+    right: 10px;
+    bottom: -15px;
+    width: 125px;
+    height: 125px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .bg-financing {
+    &__layout {
+      gap: 75px;
+    }
+
+    &__button.ui-button {
+      height: 65px;
+      padding: 20px 25px;
+      font-size: 26px;
+    }
+  }
+
+  .bg-financing-card {
+    min-height: 421px;
+    padding: 37px 34px 70px;
+
+    &__title {
+      font-size: 32px;
+      letter-spacing: -1.28px;
+    }
+
+    &__text {
+      max-width: 246px;
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+
+    &__icon {
+      right: 15px;
+      bottom: -17px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .bg-financing {
+    &__layout {
+      gap: 50px;
+    }
+
+    &__grid {
+      gap: var(--gap-sm);
+    }
+
+    &__button.ui-button {
+      height: 47px;
+      padding: 12px 15px;
+      border-radius: var(--radius-xs);
+      font-size: 16px;
+    }
+  }
+
+  .bg-financing-card {
+    min-height: 339px;
+    padding: 25px 20px 70px;
+
+    &__title {
+      max-width: 166px;
+      font-size: 25px;
+      letter-spacing: -1px;
+    }
+
+    &__text {
+      max-width: 173px;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+
+    &__icon {
+      right: 0;
+      bottom: -16px;
+      transform: translateX(0);
+    }
+
+    &--participation &__icon {
+      width: 97px;
+      height: 97px;
+    }
+
+    &--contract &__icon {
+      width: 101px;
+      height: 101px;
+    }
+
+    &--advance &__icon {
+      bottom: -16px;
+      width: 114px;
+      height: 114px;
+    }
+
+    &--warranty &__icon {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-financing {
+    &__layout {
+      gap: 45px;
+    }
+
+    &__title {
+      font-size: 27px;
+      letter-spacing: -1.08px;
+    }
+
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--gap-sm);
+    }
+
+    &__button.ui-button {
+      height: 38px;
+      padding: 10px 15px;
+      font-size: 13px;
+    }
+  }
+
+  .bg-financing-card {
+    order: var(--bg-financing-mobile-order);
+    min-height: 125px;
+    padding: 17px 25px;
+
+    &__heading-row {
+      display: block;
+    }
+
+    &__title {
+      max-width: none;
+      font-size: 24px;
+      font-weight: var(--font-weight-regular);
+      letter-spacing: -0.96px;
+      white-space: nowrap;
+    }
+
+    &__text {
+      max-width: 310px;
+      margin-top: 5px;
+      color: var(--color-text-muted);
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+
+    &__desktop-text {
+      display: none;
+    }
+
+    &__mobile-text {
+      display: inline;
+    }
+
+    &__icon {
+      right: -1px;
+      bottom: -10px;
+      width: 57px;
+      height: 57px;
+      transform: none;
+    }
+
+    &--participation &__icon {
+      width: 57px;
+      height: 57px;
+    }
+
+    &--contract &__icon {
+      right: 5px;
+      width: 58px;
+      height: 58px;
+    }
+
+    &--advance &__icon {
+      right: 5px;
+      bottom: -9px;
+      width: 58px;
+      height: 58px;
+    }
+
+    &--warranty &__icon {
+      right: 8px;
+      width: 50px;
+      height: 53px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .bg-financing {
+    &__layout {
+      gap: 25px;
+    }
+
+    &__title {
+      font-size: 25px;
+      letter-spacing: -1px;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    &__button.ui-button {
+      height: 45px;
+      padding: 6px 8px;
+      font-size: 16px;
+    }
+  }
+
+  .bg-financing-card {
+    min-height: auto;
+    padding: 15px 15px 15px 18px;
+    border-radius: var(--radius-sm);
+
+    &__heading-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &__check {
+      position: relative;
+      display: inline-flex;
+      flex: 0 0 auto;
+      width: 23px;
+      height: 23px;
+      border-radius: var(--radius-pill);
+      background: var(--color-secondary);
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 6px;
+        width: 7px;
+        height: 4px;
+        border-left: 2px solid var(--color-white);
+        border-bottom: 2px solid var(--color-white);
+        transform: rotate(-45deg);
+      }
+    }
+
+    &__title {
+      font-size: 22px;
+      letter-spacing: -0.88px;
+    }
+
+    &__text {
+      max-width: none;
+      margin-top: 10px;
+      color: var(--color-text-strong);
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+
+    &__icon {
+      display: none;
+    }
+  }
+}
