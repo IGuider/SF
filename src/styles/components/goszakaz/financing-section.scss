@@ -7,11 +7,15 @@
 
   &__body {
     display: grid;
+    grid-template-areas:
+      "tabs"
+      "panels";
     gap: 45px;
     overflow-x: clip;
   }
 
   &__tabs {
+    grid-area: tabs;
     display: flex;
     justify-content: space-between;
     gap: 16px;
@@ -54,6 +58,8 @@
   }
 
   &__panel {
+    grid-area: panels;
+
     &[hidden] {
       display: none;
     }
@@ -69,6 +75,7 @@
   &[data-financing-motion="settling"] {
     .procurement-financing__panel[data-state="active"] {
       transform: translateX(var(--procurement-financing-slide-offset, 24px));
+      will-change: transform;
     }
   }
 
@@ -76,6 +83,7 @@
     .procurement-financing__panel[data-state="active"] {
       transform: translateX(0);
       transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
     }
   }
 
@@ -85,6 +93,20 @@
 
   &[data-financing-direction="next"] {
     --procurement-financing-slide-offset: 14px;
+  }
+
+  &[data-financing-motion-source="carousel"][data-financing-direction="previous"] {
+    --procurement-financing-slide-offset: -36px;
+  }
+
+  &[data-financing-motion-source="carousel"][data-financing-direction="next"] {
+    --procurement-financing-slide-offset: 36px;
+  }
+
+  &[data-financing-motion-source="carousel"][data-financing-motion="settled"] {
+    .procurement-financing__panel[data-state="active"] {
+      transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
   }
 }
 
@@ -418,6 +440,10 @@
     &__body {
       gap: 25px;
       overflow: visible;
+    }
+
+    &__panel {
+      touch-action: pan-y;
     }
 
     &__tabs {
