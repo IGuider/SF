@@ -315,6 +315,36 @@ const featureCards = defineCollection({
   }),
 });
 
+const bgFeatureCards = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/bg-feature-cards" }),
+  schema: z.object({
+    title: z.string(),
+    text: z.string(),
+    modifier: z.enum([
+      "geography",
+      "speed",
+      "amount",
+      "documents",
+      "installment",
+    ]),
+    ctaLabel: z.string().optional(),
+    order: z.number().int().positive(),
+  }),
+});
+
+const bgFinancingItems = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/bg-financing-items" }),
+  schema: z.object({
+    title: z.string(),
+    titleLines: z.array(z.string()).min(1),
+    description: z.string(),
+    descriptionLines: z.array(z.string()).min(1),
+    modifier: z.enum(["participation", "contract", "advance", "warranty"]),
+    order: z.number().int().positive(),
+    mobileOrder: z.number().int().positive(),
+  }),
+});
+
 const steps = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/steps" }),
   schema: z.object({
@@ -346,5 +376,7 @@ export const collections = {
   footerLinks,
   turnoverOptions,
   featureCards,
+  bgFeatureCards,
+  bgFinancingItems,
   steps,
 };

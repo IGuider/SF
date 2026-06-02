@@ -6,7 +6,7 @@ import '../../styles/components/common/blog-section.scss';
 import SocialIcon from '../ui/SocialIcon.astro';
 import { getBlogPostPath, sortBlogPosts } from '../../lib/blog';
 
-const posts = sortBlogPosts(await getCollection('blogPosts'));
+const posts = sortBlogPosts(await getCollection('blogPosts')).slice(0, 4);
 const socials = (await getCollection('socialLinks'))
 	.filter((item) => item.data.contexts.includes('blog'))
 	.sort((left, right) => left.data.order - right.data.order);

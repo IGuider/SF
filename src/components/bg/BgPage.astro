@@ -1,0 +1,23 @@
+---
+import HeroSection from '../common/HeroSection.astro';
+import StepsSection from '../common/StepsSection.astro';
+import BgFeatureCardsSection from './BgFeatureCardsSection.astro';
+import BgFinancingSection from './BgFinancingSection.astro';
+import WhySimpleFinanceSection from '../goszakaz/WhySimpleFinanceSection.astro';
+import heroBgImage from '../../assets/hero-bg.jpg';
+---
+
+<main transition:name="page-content" transition:animate="slide">
+	<HeroSection
+		variant="bg"
+		titleLines={['Банковская', 'гарантия онлайн', 'для бизнеса']}
+		descriptionLines={['Быстрое одобрение без залога и депозита']}
+		buttonLabel="Рассчитать стоимость"
+		buttonVariant="secondary"
+		image={heroBgImage}
+	/>
+	<BgFeatureCardsSection />
+	<BgFinancingSection />
+	<WhySimpleFinanceSection />
+	<StepsSection />
+</main>

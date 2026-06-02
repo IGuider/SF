@@ -1,0 +1,478 @@
+.bg-feature-cards {
+  padding-top: 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.995fr) minmax(0, 0.998fr);
+    gap: var(--gap-sm);
+    align-items: stretch;
+  }
+}
+
+.bg-feature-card {
+  position: relative;
+  min-width: 0;
+  min-height: 224px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--gradient-surface-feature);
+
+  &--geography,
+  &--installment {
+    min-height: 684px;
+  }
+
+  &--geography {
+    grid-column: 1;
+    grid-row: 1 / 4;
+  }
+
+  &--speed {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  &--amount {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  &--documents {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  &--installment {
+    grid-column: 3;
+    grid-row: 1 / 4;
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 1;
+    left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    max-width: calc(100% - 80px);
+    color: var(--color-text-strong);
+  }
+
+  &--geography &__content {
+    bottom: 31px;
+  }
+
+  &--speed &__content,
+  &--amount &__content,
+  &--documents &__content {
+    top: 96px;
+  }
+
+  &--installment &__content {
+    top: 40px;
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.6px;
+    color: var(--color-text-strong);
+    white-space: nowrap;
+  }
+
+  &__text {
+    font-size: 29px;
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+    color: var(--color-text-muted);
+  }
+
+  &__media {
+    position: absolute;
+    pointer-events: none;
+    line-height: 0;
+
+    picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &--geography {
+      top: 0;
+      left: 0;
+      width: 450px;
+    }
+
+    &--speed {
+      top: 0;
+      right: 0;
+      width: 170px;
+    }
+
+    &--amount {
+      top: 0;
+      right: 0;
+      width: 163px;
+    }
+
+    &--documents {
+      top: 20px;
+      right: 0;
+      width: 130px;
+    }
+
+    &--installment {
+      right: -13px;
+      bottom: 30px;
+      width: 230px;
+    }
+  }
+
+  &__image {
+    position: relative;
+  }
+
+  &__media--installment &__image {
+    object-fit: cover;
+    object-position: left center;
+  }
+
+  .consultation-dialog-trigger {
+    position: absolute;
+    z-index: 2;
+    left: 40px;
+    bottom: 30px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .bg-feature-card {
+    &__content {
+      left: 34px;
+      max-width: calc(100% - 68px);
+    }
+
+    &--geography &__content {
+      bottom: 34px;
+    }
+
+    &--speed &__content,
+    &--amount &__content,
+    &--documents &__content {
+      top: 106px;
+    }
+
+    &--installment &__content {
+      left: 40px;
+      top: 40px;
+      max-width: calc(100% - 80px);
+    }
+
+    &__title {
+      font-size: 35px;
+      letter-spacing: -1.4px;
+    }
+
+    &__text {
+      font-size: 26px;
+      letter-spacing: -1.04px;
+    }
+
+    &__media {
+      &--geography {
+        top: 0;
+        left: 0;
+        width: 410px;
+      }
+
+      &--speed {
+        top: 5px;
+        right: 0;
+        width: 160px;
+      }
+
+      &--amount {
+        top: 8px;
+        right: 0;
+        width: 150px;
+      }
+
+      &--documents {
+        top: 30px;
+        right: 0;
+        width: 110px;
+      }
+
+      &--installment {
+        right: 0;
+        bottom: 30px;
+        width: 220px;
+      }
+    }
+
+    .consultation-dialog-trigger {
+      left: 40px;
+      bottom: 33px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .bg-feature-card {
+    min-height: 136px;
+    border-radius: var(--radius-md);
+
+    &--geography,
+    &--installment {
+      min-height: 420px;
+    }
+
+    &__content {
+      left: 25px;
+      max-width: calc(100% - 50px);
+    }
+
+    &--geography &__content {
+      bottom: 24px;
+    }
+
+    &--speed &__content,
+    &--amount &__content,
+    &--documents &__content {
+      top: 54px;
+    }
+
+    &--installment &__content {
+      left: 25px;
+      top: 25px;
+      max-width: calc(100% - 50px);
+    }
+
+    &__title {
+      font-size: 25px;
+      letter-spacing: -1px;
+    }
+
+    &__text {
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+
+    &__media {
+      &--geography {
+        top: 0;
+        left: 0;
+        width: 300px;
+      }
+
+      &--speed {
+        top: 5px;
+        right: 0;
+        width: 106px;
+      }
+
+      &--amount {
+        top: 7px;
+        right: 0;
+        width: 95px;
+      }
+
+      &--documents {
+        top: 15px;
+        right: 0;
+        width: 75px;
+      }
+
+      &--installment {
+        right: 0;
+        bottom: 20px;
+        width: 140px;
+      }
+    }
+
+    .consultation-dialog-trigger {
+      left: 27px;
+      bottom: 25px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-feature-cards {
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--gap-sm);
+    }
+  }
+
+  .bg-feature-card {
+    min-height: clamp(156px, 29vw, 215px);
+    border-radius: var(--radius-sm);
+
+    &--geography,
+    &--speed,
+    &--amount,
+    &--documents {
+      grid-row: auto;
+      min-height: clamp(156px, 29vw, 215px);
+    }
+
+    &--speed {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    &--amount {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    &--geography {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    &--documents {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    &--installment {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      min-height: clamp(108px, 19vw, 145px);
+    }
+
+    &__content,
+    &--geography &__content,
+    &--speed &__content,
+    &--amount &__content,
+    &--documents &__content {
+      top: 17px;
+      bottom: auto;
+      left: 15px;
+      gap: 2px;
+      max-width: calc(100% - 30px);
+    }
+
+    &--amount &__content,
+    &--geography &__content {
+      top: 15px;
+    }
+
+    &--installment &__content {
+      top: 27px;
+      left: 20px;
+      max-width: calc(100% - 40px);
+    }
+
+    &__title {
+      font-size: clamp(21px, 3.25vw, 25px);
+      letter-spacing: -0.84px;
+      white-space: normal;
+    }
+
+    &__text {
+      font-size: clamp(16px, 2.35vw, 18px);
+      letter-spacing: -0.64px;
+    }
+
+    &__media {
+      &--geography {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: auto;
+        width: 144px;
+      }
+
+      &--speed {
+        top: auto;
+        bottom: 0;
+        right: 0;
+        width: 160px;
+      }
+
+      &--amount {
+        top: auto;
+        bottom: 0;
+        right: 0;
+        width: 143px;
+      }
+
+      &--documents {
+        top: auto;
+        bottom: 0;
+        right: 0;
+        width: 127px;
+      }
+
+      &--installment {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
+        width: 145px;
+      }
+    }
+
+    .consultation-dialog-trigger {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .bg-feature-card {
+    min-height: 156px;
+
+    &--geography,
+    &--speed,
+    &--amount,
+    &--documents {
+      min-height: 156px;
+    }
+
+    &--installment {
+      min-height: 108px;
+    }
+
+    &__title {
+      font-size: 21px;
+      letter-spacing: -0.84px;
+    }
+
+    &__text {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+
+    &__media {
+      &--geography {
+        width: 110px;
+      }
+
+      &--speed {
+        width: 125px;
+      }
+
+      &--amount {
+        width: 107px;
+      }
+
+      &--documents {
+        width: 91px;
+      }
+
+      &--installment {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
+        width: 100px;
+      }
+    }
+  }
+}

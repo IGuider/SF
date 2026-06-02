@@ -84,8 +84,12 @@
   }
 
   &__title {
+    display: -webkit-box;
+    overflow: hidden;
     font-size: clamp(17px, 9vw, 29px);
     letter-spacing: -1.16px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     padding-right: 30px;
   }
 
