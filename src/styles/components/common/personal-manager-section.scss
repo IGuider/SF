@@ -1,4 +1,4 @@
-.procurement-manager {
+.personal-manager {
   &__header {
     margin-bottom: 85px;
   }
@@ -74,7 +74,7 @@
 }
 
 @media (max-width: 1440px) {
-  .procurement-manager {
+  .personal-manager {
     &__header {
       margin-bottom: 80px;
     }
@@ -118,7 +118,7 @@
 }
 
 @media (max-width: 1024px) {
-  .procurement-manager {
+  .personal-manager {
     &__header {
       margin-bottom: 50px;
     }
@@ -169,7 +169,7 @@
 }
 
 @media (max-width: 768px) {
-  .procurement-manager {
+  .personal-manager {
     &__header {
       margin-bottom: 40px;
     }
@@ -228,7 +228,7 @@
 }
 
 @media (max-width: 560px) {
-  .procurement-manager {
+  .personal-manager {
     &__header {
       margin-bottom: 35px;
     }
@@ -267,6 +267,7 @@
     &__role {
       font-size: 13px;
       letter-spacing: -0.52px;
+      max-width: 190px;
     }
   }
 }

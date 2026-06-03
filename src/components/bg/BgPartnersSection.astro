@@ -1,0 +1,79 @@
+---
+import type { ImageMetadata } from 'astro';
+import alfaBankLogo from '../../assets/bg/alfa-bank-p.svg';
+import gazpromBankLogo from '../../assets/bg/gazprom-p.svg';
+import metalInvestBankLogo from '../../assets/bg/metal-p.svg';
+import mtsBankLogo from '../../assets/bg/mts-p.svg';
+import sberBankLogo from '../../assets/bg/sber-p.svg';
+import sovkomBankLogo from '../../assets/bg/sovkom-p.svg';
+import '../../styles/components/bg/partners-section.scss';
+
+type PartnerLogo = {
+	id: string;
+	name: string;
+	image: ImageMetadata;
+};
+
+const logos: PartnerLogo[] = [
+	{ id: 'sovkom', name: 'Совкомбанк', image: sovkomBankLogo },
+	{ id: 'sber', name: 'Сбер Банк', image: sberBankLogo },
+	{ id: 'metal', name: 'Металлинвестбанк', image: metalInvestBankLogo },
+	{ id: 'mts', name: 'МТС Банк', image: mtsBankLogo },
+	{ id: 'alfa', name: 'Альфа Банк', image: alfaBankLogo },
+	{ id: 'gazprom', name: 'Газпромбанк', image: gazpromBankLogo },
+];
+
+const marqueeRows = [
+	[logos[0], logos[4], logos[5], logos[2]],
+	[logos[3], logos[1], logos[2], logos[0]],
+];
+---
+
+<section class="bg-partners section" aria-labelledby="bg-partners-title">
+	<div class="container">
+		<div class="bg-partners__layout">
+			<div class="bg-partners__heading">
+				<h2 class="bg-partners__title" id="bg-partners-title">Более 40 банков-партнеров</h2>
+				<p class="bg-partners__subtitle">Подберем банк под сумму, срок и тип гарантии</p>
+			</div>
+
+			<div class="bg-partners__logos" aria-label="Банки-партнеры">
+				{
+					logos.map((logo) => (
+						<div class:list={['bg-partners__logo', `bg-partners__logo--${logo.id}`]}>
+							<img src={logo.image.src} alt={logo.name} loading="lazy" decoding="async" />
+						</div>
+					))
+				}
+			</div>
+
+			<div class="bg-partners__marquee" aria-hidden="true">
+				{
+					marqueeRows.map((row, index) => (
+						<div class:list={['bg-partners__marquee-row', `bg-partners__marquee-row--${index === 0 ? 'top' : 'bottom'}`]}>
+							<div class="bg-partners__marquee-track">
+								{
+									Array.from({ length: 2 }).map(() => (
+										<div class="bg-partners__marquee-group">
+											{
+												row.map((logo) => (
+													<img
+														class:list={['bg-partners__marquee-logo', `bg-partners__marquee-logo--${logo.id}`]}
+														src={logo.image.src}
+														alt=""
+														loading="lazy"
+														decoding="async"
+													/>
+												))
+											}
+										</div>
+									))
+								}
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

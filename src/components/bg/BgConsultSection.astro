@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import consultImage from '../../assets/bg/consult-form-bg.png';
+import Button from '../ui/Button.astro';
+import ConsultationDialogTrigger from '../common/ConsultationDialogTrigger.astro';
+import '../../styles/components/bg/consult-section.scss';
+---
+
+<section class="bg-consult section" id="bank-guarantee-consult" aria-labelledby="bank-guarantee-consult-title">
+	<div class="container">
+		<div class="bg-consult__panel">
+			<div class="bg-consult__content">
+				<div class="bg-consult__text-group">
+					<h2 class="bg-consult__title" id="bank-guarantee-consult-title">
+						Получите предварительное решение по гарантии
+					</h2>
+					<p class="bg-consult__description">
+						Оставьте заявку — менеджер свяжется<br />
+						с вами и предложит оптимальные условия
+					</p>
+				</div>
+
+				<ConsultationDialogTrigger>
+					<Button variant="secondary" size="xl" class="bg-consult__button">
+						Получить предварительное решение
+					</Button>
+				</ConsultationDialogTrigger>
+			</div>
+
+			<div class="bg-consult__visual" aria-hidden="true">
+				<Image
+					class="bg-consult__image media-fill media-fit-contain"
+					src={consultImage}
+					alt=""
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
+		</div>
+	</div>
+</section>

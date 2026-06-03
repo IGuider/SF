@@ -170,6 +170,7 @@
   }
 
   &__submenu-link--child {
+    font-size: 20px;
     font-weight: var(--font-weight-regular);
     color: var(--color-text-muted);
     transition: color var(--transition-duration-fast) ease;
@@ -177,6 +178,10 @@
     &:hover {
       color: var(--color-primary);
       opacity: 1;
+    }
+
+    &[aria-current="page"] {
+      color: var(--color-primary);
     }
   }
 
@@ -262,6 +267,10 @@ body.site-header-menu-open {
       font-size: 20px;
     }
 
+    &__submenu-link--child {
+      font-size: 18px;
+    }
+
     &__nav-list {
       gap: 30px;
 
@@ -310,6 +319,10 @@ body.site-header-menu-open {
 
     &__submenu-link {
       font-size: 16px;
+    }
+
+    &__submenu-link--child {
+      font-size: 14px;
     }
 
     &__nav-list {
@@ -553,7 +566,7 @@ body.site-header-menu-open {
     }
 
     &__submenu-link--child {
-      font-size: 20px;
+      font-size: 18px;
       letter-spacing: -0.88px;
       color: var(--color-text-muted);
     }
@@ -788,7 +801,7 @@ body.site-header-menu-open {
     }
 
     &__submenu-link--child {
-      font-size: 16px;
+      font-size: 14px;
     }
 
     &__mobile-footer {

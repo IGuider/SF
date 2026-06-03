@@ -1,10 +1,15 @@
 ---
 import HeroSection from '../common/HeroSection.astro';
 import StepsSection from '../common/StepsSection.astro';
+import FaqSection from '../common/FaqSection.astro';
 import BgFeatureCardsSection from './BgFeatureCardsSection.astro';
 import BgFinancingSection from './BgFinancingSection.astro';
+import BgConsultSection from './BgConsultSection.astro';
+import BgPartnersSection from './BgPartnersSection.astro';
+import PersonalManagerSection from '../common/PersonalManagerSection.astro';
 import WhySimpleFinanceSection from '../goszakaz/WhySimpleFinanceSection.astro';
 import heroBgImage from '../../assets/hero-bg.jpg';
+import bgManagerImage from '../../assets/bg/manager-bg-panel-bg.png';
 ---
 
 <main transition:name="page-content" transition:animate="slide">
@@ -20,4 +25,15 @@ import heroBgImage from '../../assets/hero-bg.jpg';
 	<BgFinancingSection />
 	<WhySimpleFinanceSection />
 	<StepsSection />
+	<BgPartnersSection />
+	<PersonalManagerSection
+		id="bank-guarantee-manager"
+		title="Разберусь за вас в банковских гарантиях"
+		textLines={['Сравню предложения более 40 банков, помогу собрать необходимые документы и подберу оптимальные условия именно под ваш контракт']}
+		name="Мария"
+		role="менеджер по банковским гарантиям"
+		image={bgManagerImage}
+	/>
+	<FaqSection collection="bgFaq" />
+	<BgConsultSection />
 </main>

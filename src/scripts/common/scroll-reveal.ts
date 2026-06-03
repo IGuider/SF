@@ -27,10 +27,11 @@ const REVEAL_SELECTOR = [
   ".article-page__related",
   ".bg-feature-card",
   ".bg-financing-card",
+  ".bg-consult",
   ".procurement-support-card",
   ".procurement-financing",
   ".procurement-why-card",
-  ".procurement-manager",
+  ".personal-manager",
   ".useful-articles-section",
 ].join(",");
 

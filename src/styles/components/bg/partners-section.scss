@@ -1,0 +1,381 @@
+.bg-partners {
+  overflow: hidden;
+
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 105px;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+    color: var(--color-primary);
+    text-align: center;
+  }
+
+  &__title,
+  &__subtitle {
+    margin: 0;
+    line-height: var(--line-height-compact);
+  }
+
+  &__title {
+    font-size: 52px;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0;
+  }
+
+  &__subtitle {
+    font-size: 29px;
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0;
+  }
+
+  &__logos {
+    position: relative;
+    display: grid;
+    width: 100%;
+    max-width: 1116px;
+    height: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 59px;
+    align-items: center;
+    color: #7da3ff;
+    padding-inline: 14px;
+  }
+
+  &__logo {
+    min-width: 0;
+    line-height: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    &--sovkom {
+      justify-self: start;
+      width: min(100%, 295px);
+    }
+
+    &--sber {
+      justify-self: center;
+      width: min(100%, 237px);
+    }
+
+    &--metal {
+      justify-self: end;
+      width: min(100%, 329px);
+    }
+
+    &--mts {
+      justify-self: start;
+      width: min(100%, 205px);
+    }
+
+    &--alfa {
+      justify-self: center;
+      width: min(100%, 262px);
+    }
+
+    &--gazprom {
+      justify-self: end;
+      width: min(100%, 279px);
+    }
+  }
+
+  &__marquee {
+    display: none;
+  }
+}
+
+@media (max-width: 1440px) {
+  .bg-partners {
+    &__layout {
+      gap: 75px;
+    }
+
+    &__heading {
+      gap: 35px;
+    }
+
+    &__title {
+      font-size: 45px;
+    }
+
+    &__subtitle {
+      font-size: 26px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .bg-partners {
+    &__layout {
+      gap: 50px;
+    }
+
+    &__heading {
+      gap: 20px;
+    }
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+    }
+
+    &__logos {
+      max-width: 840px;
+      row-gap: 45px;
+    }
+
+    &__logo {
+      &--sovkom {
+        width: min(100%, 222px);
+      }
+
+      &--sber {
+        width: min(100%, 179px);
+      }
+
+      &--metal {
+        width: min(100%, 248px);
+      }
+
+      &--mts {
+        width: min(100%, 204px);
+      }
+
+      &--alfa {
+        width: min(100%, 197px);
+      }
+
+      &--gazprom {
+        width: min(100%, 210px);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-partners {
+    &__layout {
+      gap: 45px;
+    }
+
+    &__heading {
+      gap: 15px;
+    }
+
+    &__title {
+      font-size: 27px;
+    }
+
+    &__subtitle {
+      font-size: 16px;
+    }
+
+    &__logos {
+      max-width: 720px;
+      row-gap: 37px;
+    }
+
+    &__logo {
+      &--sovkom {
+        width: min(100%, 190px);
+      }
+
+      &--sber {
+        width: min(100%, 153px);
+      }
+
+      &--metal {
+        width: min(100%, 213px);
+      }
+
+      &--mts {
+        width: min(100%, 175px);
+      }
+
+      &--alfa {
+        width: min(100%, 169px);
+      }
+
+      &--gazprom {
+        width: min(100%, 180px);
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .bg-partners {
+    &__layout {
+      gap: 30px;
+    }
+
+    &__title {
+      font-size: 25px;
+    }
+
+    &__subtitle {
+      font-size: 16px;
+    }
+
+    &__logos {
+      display: none;
+    }
+
+    &__marquee {
+      position: relative;
+      display: block;
+      width: 100vw;
+      height: 139px;
+      margin-inline: calc(50% - 50vw);
+      overflow: hidden;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        bottom: 0;
+        width: min(18vw, 72px);
+        pointer-events: none;
+      }
+
+      &::before {
+        left: 0;
+        background: linear-gradient(90deg, var(--color-white) 0%, rgba(255, 255, 255, 0) 100%);
+      }
+
+      &::after {
+        right: 0;
+        background: linear-gradient(270deg, var(--color-white) 0%, rgba(255, 255, 255, 0) 100%);
+      }
+    }
+
+    &__marquee-row {
+      --bg-partners-marquee-gap: 25px;
+      --bg-partners-marquee-offset: -72px;
+
+      position: absolute;
+      right: 0;
+      left: 0;
+      overflow: hidden;
+
+      &--top {
+        top: 15px;
+      }
+
+      &--bottom {
+        --bg-partners-marquee-gap: 40px;
+        --bg-partners-marquee-offset: -65px;
+
+        top: 95px;
+      }
+    }
+
+    &__marquee-track {
+      display: flex;
+      width: max-content;
+      transform: translateX(var(--bg-partners-marquee-offset));
+      will-change: transform;
+    }
+
+    &__marquee-row--top &__marquee-track {
+      animation: bg-partners-marquee-right 24s linear infinite;
+    }
+
+    &__marquee-row--bottom &__marquee-track {
+      animation: bg-partners-marquee-left 24s linear infinite;
+    }
+
+    &__marquee-group {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: var(--bg-partners-marquee-gap);
+      padding-right: var(--bg-partners-marquee-gap);
+    }
+
+    &__marquee-logo {
+      display: block;
+      flex: 0 0 auto;
+      height: auto;
+
+      &--sovkom {
+        width: 190px;
+      }
+
+      &--sber {
+        width: 153px;
+      }
+
+      &--metal {
+        width: 213px;
+      }
+
+      &--mts {
+        width: 175px;
+      }
+
+      &--alfa {
+        width: 169px;
+      }
+
+      &--gazprom {
+        width: 180px;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .bg-partners {
+    &__title {
+      font-size: 22px;
+    }
+
+    &__subtitle {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-partners__marquee-track {
+    animation: none;
+  }
+}
+
+@keyframes bg-partners-marquee-right {
+  from {
+    transform: translateX(calc(-50% + var(--bg-partners-marquee-offset)));
+  }
+
+  to {
+    transform: translateX(var(--bg-partners-marquee-offset));
+  }
+}
+
+@keyframes bg-partners-marquee-left {
+  from {
+    transform: translateX(var(--bg-partners-marquee-offset));
+  }
+
+  to {
+    transform: translateX(calc(-50% + var(--bg-partners-marquee-offset)));
+  }
+}

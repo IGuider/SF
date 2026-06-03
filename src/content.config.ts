@@ -29,6 +29,15 @@ const goszakazFaq = defineCollection({
   }),
 });
 
+const bgFaq = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/bg-faq" }),
+  schema: z.object({
+    question: z.string(),
+    answer: z.string(),
+    order: z.number().int().positive(),
+  }),
+});
+
 const goszakazHeroBadges = defineCollection({
   loader: glob({
     pattern: "**/*.json",
@@ -360,6 +369,7 @@ export const collections = {
   faq,
   homeFaq,
   goszakazFaq,
+  bgFaq,
   goszakazHeroBadges,
   goszakazSupportItems,
   goszakazFinancingTabs,
