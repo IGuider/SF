@@ -1,0 +1,25 @@
+---
+import SiteShell from '../components/common/SiteShell.astro';
+import NotFoundPage from '../components/common/NotFoundPage.astro';
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const navItems = [
+	{ label: 'О компании', href: `${basePath}about/` },
+	{ label: 'Продукты', href: `${basePath}products/` },
+	{ label: 'Блог', href: `${basePath}blog/` },
+	{ label: 'Контакты', href: `${basePath}contacts/` },
+];
+---
+
+<SiteShell
+	title="Страница не найдена | SimpleFinance"
+	description="Страница не найдена. Вернитесь на главную страницу SimpleFinance."
+	headerBrandHref={basePath}
+	headerNavItems={navItems}
+	headerMobileNavItems={navItems}
+>
+	<NotFoundPage />
+</SiteShell>

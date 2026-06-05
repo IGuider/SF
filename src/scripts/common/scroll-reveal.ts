@@ -27,6 +27,7 @@ const REVEAL_SELECTOR = [
   ".article-page__related",
   ".bg-feature-card",
   ".bg-financing-card",
+  ".bg-partners",
   ".bg-consult",
   ".procurement-support-card",
   ".procurement-financing",
