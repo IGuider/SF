@@ -1,0 +1,126 @@
+---
+import decorStarLarge from '../../assets/cont-page-b1.png';
+import decorStarSmall from '../../assets/cont-page-b2.png';
+import decorMapPin from '../../assets/cont-page-b3.png';
+import '../../styles/components/common/contacts-page.scss';
+
+type ContactRow = {
+	label: string | string[];
+	note?: string;
+	email: string;
+	phone?: string;
+	phoneHref?: string;
+};
+
+const contactRows: ContactRow[] = [
+	{
+		label: 'По общим вопросам',
+		email: 'info@simplefinance.ru',
+		phone: '+7 (495) 150–40–11',
+		phoneHref: 'tel:+74951504011',
+	},
+	{
+		label: 'Тендерные займы',
+		email: 'tenders@simplefinance.ru',
+		phone: '+7 (495) 150–40–11 доб. 5005',
+		phoneHref: 'tel:+74951504011,5005',
+	},
+	{
+		label: ['Финансирование на исполнение', 'контрактов'],
+		email: 'kik@simplefinance.ru',
+		phone: '+7 (495) 150–40–11 доб. 5005',
+		phoneHref: 'tel:+74951504011,5005',
+	},
+	{
+		label: ['Финансирование поставщиков', 'e-commerce'],
+		email: 'doc@simplefinance.ru',
+		phone: '+7 (495) 150–40–11 доб. 5007',
+		phoneHref: 'tel:+74951504011,5007',
+	},
+	{
+		label: ['Банковские гарантии и платформа', 'SimpleFinance'],
+		note: '(для клиентов)',
+		email: 'sales@simplefinance.ru',
+		phone: '8 (800) 550–53–11',
+		phoneHref: 'tel:88005505311',
+	},
+	{
+		label: ['Банковские гарантии и платформа', 'SimpleFinance'],
+		note: '(для агентов)',
+		email: 'agents@simplefinance.ru',
+		phone: '+7 (495) 150–40–11 доб. 5005',
+		phoneHref: 'tel:+74951504011,5005',
+	},
+	{
+		label: 'Для партнеров SimpleFinance',
+		email: 'partners@simplefinance.ru',
+		phone: '+7 (495) 150–40–11 доб. 2074',
+		phoneHref: 'tel:+74951504011,2074',
+	},
+	{
+		label: 'Для прессы',
+		email: 'press@simplefinance.ru',
+	},
+	{
+		label: 'Для инвесторов',
+		email: 'investors@simplefinance.ru',
+	},
+];
+---
+
+<main class="contacts-page" transition:name="page-content" transition:animate="slide">
+	<div class="contacts-page__decor" aria-hidden="true">
+		<img class="contacts-page__decor-image contacts-page__decor-image--large" src={decorStarLarge.src} alt="" loading="lazy" />
+		<img class="contacts-page__decor-image contacts-page__decor-image--small" src={decorStarSmall.src} alt="" loading="lazy" />
+	</div>
+
+	<section class="section contacts-page__section" aria-labelledby="contacts-page-title">
+		<div class="container contacts-page__container">
+			<h1 class="contacts-page__title" id="contacts-page-title">Контакты</h1>
+
+			<dl class="contacts-page__list">
+				{
+					contactRows.map((row) => (
+						<div class="contacts-page__row">
+							<dt>
+								{Array.isArray(row.label)
+									? row.label.map((line) => <span>{line}</span>)
+									: row.label}
+								{row.note && <span class="contacts-page__note">{row.note}</span>}
+							</dt>
+							<dd class="contacts-page__email">
+								<a href={`mailto:${row.email}`}>{row.email}</a>
+							</dd>
+							<dd class="contacts-page__phone">
+								{row.phone && <a href={row.phoneHref}>{row.phone}</a>}
+							</dd>
+						</div>
+					))
+				}
+
+				<div class="contacts-page__row contacts-page__row--address">
+					<dt>Адрес офиса</dt>
+					<dd class="contacts-page__address">
+						<span>115191, г. Москва, Холодильный переулок, д. 3</span>
+						<span>Время работы: 9:00 – 19:00 по московскому времени</span>
+					</dd>
+				</div>
+			</dl>
+		</div>
+	</section>
+
+	<section class="section contacts-page__map-section" aria-label="Карта проезда к офису SimpleFinance">
+		<img class="contacts-page__map-decor" src={decorMapPin.src} alt="" loading="lazy" aria-hidden="true" />
+		<div class="container">
+			<div class="contacts-page__map-frame">
+				<script
+					is:inline
+					type="text/javascript"
+					charset="utf-8"
+					async
+					src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae1ef039eb67f2e3f53352c1f7cb3cc9b9cba7e72e6c5e23c570fd2000a990109&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"
+				></script>
+			</div>
+		</div>
+	</section>
+</main>

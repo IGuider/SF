@@ -1,0 +1,136 @@
+---
+import reqBg from '../../assets/req-bg.png';
+import reqBgMobileRocket from '../../assets/req-bg-m1.png';
+import reqBgMobileSphere from '../../assets/req-bg-m2.png';
+import '../../styles/components/common/requisites-page.scss';
+
+type RequisiteRow = {
+	label: string | string[];
+	value: string;
+	href?: string;
+};
+
+const companyRows: RequisiteRow[] = [
+	{
+		label: 'Полное наименование',
+		value: 'Общество с ограниченной ответственностью микрокредитная компания «СимплФинанс»',
+	},
+	{
+		label: 'Сокращенное наименование',
+		value: 'ООО МКК «СимплФинанс»',
+	},
+	{
+		label: 'Юридический адрес',
+		value: '115191, г. Москва, Холодильный пер., дом 3',
+	},
+	{
+		label: 'Фактический адрес',
+		value: '115191, г. Москва, Холодильный пер., дом 3',
+	},
+	{
+		label: 'Телефон',
+		value: '+7 (495) 150–40–11',
+		href: 'tel:+74951504011',
+	},
+	{
+		label: 'Электронный адрес',
+		value: 'info@simplefinance.ru',
+		href: 'mailto:info@simplefinance.ru',
+	},
+	{
+		label: 'Сайт',
+		value: 'www.simplefinance.ru',
+		href: 'https://www.simplefinance.ru/',
+	},
+	{
+		label: 'ИНН',
+		value: '7703381419',
+	},
+	{
+		label: 'КПП',
+		value: '772601001',
+	},
+	{
+		label: 'ОГРН',
+		value: '1157746499547',
+	},
+	{
+		label: ['Единоличный исполнительный', 'орган - Генеральный директор'],
+		value: 'Басенко Алексей Юрьевич (с 13.02.2017 г.)',
+	},
+];
+
+const bankRows: RequisiteRow[] = [
+	{
+		label: 'Расчетный счет №',
+		value: '40701.810.6.38000001262',
+	},
+	{
+		label: 'Корреспондентский счет №',
+		value: '30101810400000000225',
+	},
+	{
+		label: 'Банк',
+		value: 'ПАО Сбербанк',
+	},
+	{
+		label: 'ИНН Банка',
+		value: '7707083893',
+	},
+	{
+		label: 'БИК Банка',
+		value: '044525225',
+	},
+];
+---
+
+<main class="requisites-page" transition:name="page-content" transition:animate="slide">
+	<div class="requisites-page__decor" aria-hidden="true">
+		<img class="requisites-page__decor-image requisites-page__decor-image--desktop" src={reqBg.src} alt="" loading="lazy" />
+		<img class="requisites-page__decor-image requisites-page__decor-image--mobile-rocket" src={reqBgMobileRocket.src} alt="" loading="lazy" />
+		<img class="requisites-page__decor-image requisites-page__decor-image--mobile-sphere" src={reqBgMobileSphere.src} alt="" loading="lazy" />
+	</div>
+	<section class="section requisites-page__section" aria-labelledby="requisites-page-title">
+		<div class="container requisites-page__container">
+			<h1 class="requisites-page__title" id="requisites-page-title">Реквизиты</h1>
+
+			<dl class="requisites-page__list">
+				{
+					companyRows.map((row) => (
+						<div class="requisites-page__row">
+							<dt>
+								{Array.isArray(row.label)
+									? row.label.map((line) => <span>{line}</span>)
+									: row.label}
+							</dt>
+							<dd>
+								{row.href ? (
+									<a href={row.href} target={row.href.startsWith('http') ? '_blank' : undefined} rel={row.href.startsWith('http') ? 'noreferrer' : undefined}>
+										{row.value}
+									</a>
+								) : (
+									row.value
+								)}
+							</dd>
+						</div>
+					))
+				}
+			</dl>
+
+			<section class="requisites-page__bank" aria-labelledby="requisites-bank-title">
+				<h2 class="requisites-page__subtitle" id="requisites-bank-title">Банковские реквизиты</h2>
+
+				<dl class="requisites-page__list requisites-page__list--bank">
+					{
+						bankRows.map((row) => (
+							<div class="requisites-page__row">
+								<dt>{row.label}</dt>
+								<dd>{row.value}</dd>
+							</div>
+						))
+					}
+				</dl>
+			</section>
+		</div>
+	</section>
+</main>

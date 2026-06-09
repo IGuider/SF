@@ -1,0 +1,25 @@
+---
+import SiteShell from '../components/common/SiteShell.astro';
+import ContactsPage from '../components/common/ContactsPage.astro';
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const contactsNavItems = [
+	{ label: 'О компании', href: `${basePath}about/` },
+	{ label: 'Продукты', href: `${basePath}products/` },
+	{ label: 'Блог', href: `${basePath}blog/` },
+	{ label: 'Контакты', href: `${basePath}contacts/` },
+];
+---
+
+<SiteShell
+	title="Контакты SimpleFinance"
+	description="Контакты SimpleFinance для общих вопросов, финансирования, банковских гарантий, партнеров, прессы и инвесторов."
+	headerBrandHref={basePath}
+	headerNavItems={contactsNavItems}
+	headerMobileNavItems={contactsNavItems}
+>
+	<ContactsPage />
+</SiteShell>
