@@ -68,6 +68,8 @@
       }
 
       &[aria-current="page"] {
+        cursor: default;
+        pointer-events: none;
         text-decoration: underline;
         text-decoration-color: var(--color-secondary);
         text-decoration-thickness: 2px;

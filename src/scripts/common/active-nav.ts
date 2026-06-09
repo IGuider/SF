@@ -48,6 +48,18 @@ const setActiveLinks = (activeLinks: HTMLAnchorElement[]) => {
     });
 };
 
+const preventCurrentPageNavigation = (event: MouseEvent) => {
+  const activeLink = (event.target as Element | null)?.closest<HTMLAnchorElement>(
+    ".site-header__nav-link[aria-current='page']",
+  );
+
+  if (!activeLink) {
+    return;
+  }
+
+  event.preventDefault();
+};
+
 const findPageLink = () => {
   const currentPathname = getCurrentPathname();
   const matchingLinks = [
@@ -65,6 +77,7 @@ const findPageLink = () => {
 
 export const initActiveNav = () => {
   cleanupActiveNav?.();
+  const abortController = new AbortController();
 
   const syncActiveNav = () => {
     const activeLink = findPageLink();
@@ -78,8 +91,13 @@ export const initActiveNav = () => {
   };
 
   syncActiveNav();
+  document.addEventListener("click", preventCurrentPageNavigation, {
+    capture: true,
+    signal: abortController.signal,
+  });
 
   cleanupActiveNav = () => {
+    abortController.abort();
     setActiveLinks([]);
   };
 

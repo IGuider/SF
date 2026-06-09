@@ -3,7 +3,7 @@
 }
 
 .blog-page {
-  padding: 74px 0 110px;
+  margin-block: 74px 110px;
 
   &__header {
     margin-bottom: 52px;
@@ -294,7 +294,7 @@
 
 @media (max-width: 1440px) {
   .blog-page {
-    padding-top: 60px;
+    margin-block-start: 60px;
 
     &__header {
       margin-bottom: 45px;
@@ -365,7 +365,7 @@
 
 @media (max-width: 1024px) {
   .blog-page {
-    padding-top: 50px;
+    margin-block-start: 50px;
 
     &__header {
       margin-bottom: 40px;
@@ -469,8 +469,7 @@
 
 @media (max-width: 768px) {
   .blog-page {
-    padding-top: 90px;
-    padding-bottom: 55px;
+    margin-block: 90px 55px;
 
     &__header {
       margin-bottom: 30px;

@@ -1,5 +1,5 @@
 .not-found-page {
-  padding-block: 60px 100px;
+  margin-block: 74px 100px;
 
   &__inner {
     display: flex;
@@ -54,7 +54,7 @@
 
 @media (max-width: 1440px) {
   .not-found-page {
-    padding-block: 44px 105px;
+    margin-block: 60px 105px;
 
     &__image {
       width: min(100%, 980px);
@@ -79,7 +79,7 @@
 
 @media (max-width: 1024px) {
   .not-found-page {
-    padding-block: 38px 90px;
+    margin-block: 50px 90px;
 
     &__image {
       width: min(100%, 760px);
@@ -113,7 +113,7 @@
 
 @media (max-width: 768px) {
   .not-found-page {
-    padding-block: 108px 72px;
+    margin-block: 90px 72px;
 
     &__image {
       width: min(100%, 640px);
@@ -147,7 +147,7 @@
 
 @media (max-width: 560px) {
   .not-found-page {
-    padding-block: 96px 60px;
+    margin-block: 90px 60px;
 
     &__image {
       width: min(100%, 520px);
@@ -177,7 +177,7 @@
 
 @media (max-width: 390px) {
   .not-found-page {
-    padding-block: 90px 50px;
+    margin-block: 90px 50px;
 
     &__image {
       width: 100%;

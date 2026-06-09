@@ -30,6 +30,7 @@
   &__section {
     position: relative;
     z-index: 1;
+    margin-block-start: 74px;
   }
 
   &__title {
@@ -147,6 +148,10 @@
 
 @media (max-width: 1440px) {
   .contacts-page {
+    &__section {
+      margin-block-start: 60px;
+    }
+
     &__decor {
       top: 430px;
       right: -25px;
@@ -192,6 +197,10 @@
 
 @media (max-width: 1024px) {
   .contacts-page {
+    &__section {
+      margin-block-start: 50px;
+    }
+
     &__decor {
       top: 390px;
       right: -22px;
@@ -252,7 +261,7 @@
     }
 
     &__section {
-      margin-block-start: 100px;
+      margin-block-start: 90px;
     }
 
     &__title {
