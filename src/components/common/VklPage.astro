@@ -1,5 +1,7 @@
 ---
 import DocumentDownloadLink from '../ui/DocumentDownloadLink.astro';
+import decorStar from '../../assets/vkl-bg1.png';
+import decorRing from '../../assets/vkl-bg2.png';
 import '../../styles/components/common/vkl-page.scss';
 
 type DocumentLink = {
@@ -35,6 +37,11 @@ const archivedDocuments: DocumentLink[] = [
 ---
 
 <main class="vkl-page" transition:name="page-content" transition:animate="fade">
+	<div class="vkl-page__decor" aria-hidden="true">
+		<img class="vkl-page__decor-image vkl-page__decor-image--ring" src={decorRing.src} alt="" loading="lazy" />
+		<img class="vkl-page__decor-image vkl-page__decor-image--star" src={decorStar.src} alt="" loading="lazy" />
+	</div>
+
 	<section class="section vkl-page__section" aria-labelledby="vkl-page-title">
 		<div class="container vkl-page__container">
 			<h1 class="vkl-page__title" id="vkl-page-title">

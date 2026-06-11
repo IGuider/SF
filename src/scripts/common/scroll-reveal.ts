@@ -39,6 +39,8 @@ const REVEAL_SELECTOR = [
   ".documents-page__title",
   ".documents-page__group",
   ".documents-page__contacts",
+  ".privacy-page__title",
+  ".privacy-page__text-block",
 ].join(",");
 
 const INITIAL_VISIBLE_RATIO = 0.96;

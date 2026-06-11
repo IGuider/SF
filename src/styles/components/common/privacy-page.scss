@@ -1,0 +1,142 @@
+.privacy-page {
+  color: var(--color-text-strong);
+
+  &__section {
+    position: relative;
+    z-index: 1;
+    margin-block-start: 74px;
+  }
+
+  &__title {
+    margin: 0 0 80px;
+    color: var(--color-primary);
+    font-size: 70px;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-compact);
+    letter-spacing: -2.8px;
+  }
+
+  &__content {
+    display: grid;
+    gap: 30px;
+    color: var(--color-text-strong);
+    font-size: 29px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+    word-break: break-word;
+  }
+
+  &__text-block {
+    margin: 0;
+
+    p {
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 43.5px;
+      list-style: disc;
+    }
+
+    li {
+      margin: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .privacy-page {
+    &__section {
+      margin-block-start: 60px;
+    }
+
+    &__title {
+      margin-bottom: 72px;
+      font-size: 58px;
+      letter-spacing: -2.32px;
+    }
+
+    &__content {
+      gap: 28px;
+      font-size: 26px;
+      letter-spacing: -1.04px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .privacy-page {
+    &__section {
+      margin-block-start: 50px;
+    }
+
+    &__title {
+      margin-bottom: 55px;
+      font-size: 40px;
+      letter-spacing: -1.6px;
+    }
+
+    &__content {
+      gap: 22px;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+
+    &__text-block {
+      ul {
+        padding-left: 27px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .privacy-page {
+    &__section {
+      margin-block-start: 90px;
+    }
+
+    &__title {
+      margin-bottom: 35px;
+    }
+
+    &__content {
+      gap: 18px;
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+
+    &__text-block {
+      ul {
+        padding-left: 24px;
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .privacy-page {
+    &__section {
+      margin-block-start: 90px;
+    }
+
+    &__title {
+      margin-bottom: 35px;
+    }
+
+    &__content {
+      gap: 16px;
+      font-size: 14px;
+      letter-spacing: -0.56px;
+    }
+
+    &__text-block {
+      ul {
+        padding-left: 21px;
+      }
+    }
+  }
+}

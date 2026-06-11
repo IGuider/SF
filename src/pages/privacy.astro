@@ -1,0 +1,25 @@
+---
+import SiteShell from '../components/common/SiteShell.astro';
+import PrivacyPage from '../components/common/PrivacyPage.astro';
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const privacyNavItems = [
+	{ label: 'О компании', href: `${basePath}about/` },
+	{ label: 'Продукты', href: `${basePath}products/` },
+	{ label: 'Блог', href: `${basePath}blog/` },
+	{ label: 'Контакты', href: `${basePath}contacts/` },
+];
+---
+
+<SiteShell
+	title="Политика конфиденциальности SimpleFinance"
+	description="Политика конфиденциальности SimpleFinance: обработка, использование и защита персональных данных клиентов."
+	headerBrandHref={basePath}
+	headerNavItems={privacyNavItems}
+	headerMobileNavItems={privacyNavItems}
+>
+	<PrivacyPage />
+</SiteShell>
