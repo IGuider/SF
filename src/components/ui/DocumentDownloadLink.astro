@@ -1,0 +1,29 @@
+---
+import pdfIcon from '../../assets/pdf-icon.svg';
+import '../../styles/components/ui/document-download-link.scss';
+
+interface Props {
+	href: string;
+	label: string;
+	download?: string | boolean;
+	class?: string;
+	ariaLabel?: string;
+}
+
+const {
+	href,
+	label,
+	download,
+	class: className,
+	ariaLabel = `${label}. Скачать PDF`,
+} = Astro.props;
+
+const componentClass = ['ui-document-link', className]
+	.filter(Boolean)
+	.join(' ');
+---
+
+<a class={componentClass} href={href} download={download} aria-label={ariaLabel}>
+	<img class="ui-document-link__icon" src={pdfIcon.src} alt="" loading="lazy" />
+	<span class="ui-document-link__label">{label}</span>
+</a>

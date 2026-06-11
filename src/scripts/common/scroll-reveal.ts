@@ -34,6 +34,11 @@ const REVEAL_SELECTOR = [
   ".procurement-why-card",
   ".personal-manager",
   ".useful-articles-section",
+  ".vkl-page__title",
+  ".vkl-page__group",
+  ".documents-page__title",
+  ".documents-page__group",
+  ".documents-page__contacts",
 ].join(",");
 
 const INITIAL_VISIBLE_RATIO = 0.96;

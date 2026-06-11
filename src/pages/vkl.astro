@@ -1,0 +1,25 @@
+---
+import SiteShell from '../components/common/SiteShell.astro';
+import VklPage from '../components/common/VklPage.astro';
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const vklNavItems = [
+	{ label: 'О компании', href: `${basePath}about/` },
+	{ label: 'Продукты', href: `${basePath}products/` },
+	{ label: 'Блог', href: `${basePath}blog/` },
+	{ label: 'Контакты', href: `${basePath}contacts/` },
+];
+---
+
+<SiteShell
+	title="Общие условия для возобновляемой кредитной линии SimpleFinance"
+	description="Общие условия SimpleFinance для возобновляемой кредитной линии: действующий документ и архив версий для скачивания."
+	headerBrandHref={basePath}
+	headerNavItems={vklNavItems}
+	headerMobileNavItems={vklNavItems}
+>
+	<VklPage />
+</SiteShell>

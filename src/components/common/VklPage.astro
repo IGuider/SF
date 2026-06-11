@@ -1,0 +1,74 @@
+---
+import DocumentDownloadLink from '../ui/DocumentDownloadLink.astro';
+import '../../styles/components/common/vkl-page.scss';
+
+type DocumentLink = {
+	label: string;
+	href: string;
+	filename: string;
+};
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const placeholderDocumentHref = `${basePath}documents/vkl-terms-placeholder.pdf`;
+
+const currentDocument: DocumentLink = {
+	label: 'Актуально с 04.09.2025',
+	href: placeholderDocumentHref,
+	filename: 'simplefinance-vkl-terms-current.pdf',
+};
+
+const archivedDocuments: DocumentLink[] = [
+	{
+		label: 'Актуально с 22.07.2025 до 28.08.2025',
+		href: placeholderDocumentHref,
+		filename: 'simplefinance-vkl-terms-2025-07-22.pdf',
+	},
+	{
+		label: 'Актуально с 29.08.2025 до 03.09.2025',
+		href: placeholderDocumentHref,
+		filename: 'simplefinance-vkl-terms-2025-08-29.pdf',
+	},
+];
+---
+
+<main class="vkl-page" transition:name="page-content" transition:animate="fade">
+	<section class="section vkl-page__section" aria-labelledby="vkl-page-title">
+		<div class="container vkl-page__container">
+			<h1 class="vkl-page__title" id="vkl-page-title">
+				<span>Общие условия для возобновляемой</span>
+				<span>кредитной линии</span>
+			</h1>
+
+			<div class="vkl-page__content">
+				<section class="vkl-page__group vkl-page__group--current" aria-labelledby="vkl-current-document-title">
+					<h2 class="vkl-page__subtitle" id="vkl-current-document-title">Действующий документ</h2>
+
+					<DocumentDownloadLink
+						href={currentDocument.href}
+						label={currentDocument.label}
+						download={currentDocument.filename}
+					/>
+				</section>
+
+				<section class="vkl-page__group vkl-page__group--archive" aria-labelledby="vkl-archive-documents-title">
+					<h2 class="vkl-page__subtitle" id="vkl-archive-documents-title">Архив документов</h2>
+
+					<div class="vkl-page__archive-list">
+						{
+							archivedDocuments.map((document) => (
+								<DocumentDownloadLink
+									href={document.href}
+									label={document.label}
+									download={document.filename}
+								/>
+							))
+						}
+					</div>
+				</section>
+			</div>
+		</div>
+	</section>
+</main>

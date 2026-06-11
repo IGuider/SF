@@ -1,0 +1,152 @@
+.vkl-page {
+  color: var(--color-text-strong);
+
+  &__section {
+    position: relative;
+    z-index: 1;
+    margin-block-start: 74px;
+  }
+
+  &__title {
+    margin: 0 0 80px;
+    color: var(--color-primary);
+    font-size: 70px;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-compact);
+    letter-spacing: -2.8px;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: 90px;
+  }
+
+  &__group {
+    display: grid;
+    gap: 50px;
+    justify-items: start;
+  }
+
+  &__subtitle {
+    margin: 0;
+    color: var(--color-text-strong);
+    font-size: 44px;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.76px;
+  }
+
+  &__archive-list {
+    display: grid;
+    gap: 20px;
+    justify-items: start;
+  }
+}
+
+@media (max-width: 1440px) {
+  .vkl-page {
+    &__section {
+      margin-block-start: 60px;
+    }
+
+    &__title {
+      margin-bottom: 72px;
+      font-size: 58px;
+      letter-spacing: -2.32px;
+    }
+
+    &__content {
+      gap: 80px;
+    }
+
+    &__group {
+      gap: 45px;
+    }
+
+    &__subtitle {
+      font-size: 35px;
+      letter-spacing: -1.4px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .vkl-page {
+    &__section {
+      margin-block-start: 50px;
+    }
+
+    &__title {
+      margin-bottom: 55px;
+      font-size: 40px;
+      letter-spacing: -1.6px;
+    }
+
+    &__content {
+      gap: 70px;
+    }
+
+    &__group {
+      gap: 34px;
+    }
+
+    &__subtitle {
+      font-size: 25px;
+      letter-spacing: -1px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .vkl-page {
+    &__section {
+      margin-block-start: 90px;
+    }
+
+    &__title {
+      margin-bottom: 35px;
+    }
+
+    &__content {
+      gap: 60px;
+    }
+
+    &__group {
+      gap: 28px;
+    }
+
+    &__subtitle {
+      font-size: 21px;
+      letter-spacing: -0.84px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .vkl-page {
+    &__section {
+      margin-block-start: 90px;
+    }
+
+    &__title {
+      margin-bottom: 35px;
+    }
+
+    &__content {
+      gap: 55px;
+    }
+
+    &__group {
+      gap: 24px;
+      justify-items: stretch;
+    }
+
+    &__archive-list {
+      justify-items: stretch;
+    }
+  }
+}

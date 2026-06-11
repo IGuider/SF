@@ -1,0 +1,180 @@
+---
+import DocumentDownloadLink from '../ui/DocumentDownloadLink.astro';
+import '../../styles/components/common/documents-page.scss';
+
+type DocumentLink = {
+	label: string;
+	filename: string;
+};
+
+type DocumentGroup = {
+	title: string;
+	items: DocumentLink[];
+};
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const placeholderDocumentHref = `${basePath}documents/vkl-terms-placeholder.pdf`;
+
+const documentGroups: DocumentGroup[] = [
+	{
+		title: 'Лицензии',
+		items: [
+			{
+				label: 'Свидетельство о государственной регистрации',
+				filename: 'simplefinance-registration-certificate.pdf',
+			},
+			{
+				label: 'Свидетельство ЦБ о внесении в реестр',
+				filename: 'simplefinance-cbr-registry-certificate.pdf',
+			},
+			{
+				label: 'Свидетельство СРО «МиР»',
+				filename: 'simplefinance-sro-mir-certificate.pdf',
+			},
+		],
+	},
+	{
+		title: 'Уставные документы и политики',
+		items: [
+			{
+				label: 'Свидетельство о постановке на учет в налоговом органе',
+				filename: 'simplefinance-tax-registration-certificate.pdf',
+			},
+			{
+				label: 'Политика по обработке персональных данных',
+				filename: 'simplefinance-personal-data-policy.pdf',
+			},
+			{
+				label: 'Устав',
+				filename: 'simplefinance-charter.pdf',
+			},
+			{
+				label: 'Лист записи в ЕГРЮЛ',
+				filename: 'simplefinance-egrul-record.pdf',
+			},
+			{
+				label: 'Информация о товарном знаке',
+				filename: 'simplefinance-trademark-information.pdf',
+			},
+			{
+				label: 'Базовый стандарт защиты прав и интересов физических и юридических лиц - получателей финансовых услуг, оказываемых членами саморегулируемых организаций в сфере финансового рынка, объединяющих кредитные потребительские кооперативы',
+				filename: 'simplefinance-basic-standard-client-rights.pdf',
+			},
+			{
+				label: 'Базовый стандарт совершения операций на финансовом рынке',
+				filename: 'simplefinance-basic-standard-financial-market-operations.pdf',
+			},
+			{
+				label: 'Базовый стандарт по управлению рисками',
+				filename: 'simplefinance-basic-standard-risk-management.pdf',
+			},
+			{
+				label: 'Правила предоставления микрозаймов',
+				filename: 'simplefinance-microloan-rules.pdf',
+			},
+			{
+				label: 'Приказ об утверждении правил предоставления микрозаймов',
+				filename: 'simplefinance-microloan-rules-approval-order.pdf',
+			},
+			{
+				label: 'Рекомендации по защите информации в целях противодействия осуществлению незаконных финансовых операций',
+				filename: 'simplefinance-information-security-recommendations.pdf',
+			},
+			{
+				label: 'Перечень лиц, оказывающих существенное (прямое или косвенное) влияние на решения, принимаемые органами управления',
+				filename: 'simplefinance-controlling-persons-list.pdf',
+			},
+			{
+				label: 'Заявление должника об осуществлении взаимодействия с кредитором и (или) лицом, действующим от его имени и (или) в его интересах, только через представителя либо об отказе от взаимодействия',
+				filename: 'simplefinance-debtor-interaction-statement.pdf',
+			},
+			{
+				label: 'Информация о вступающем в силу с 1 октября 2019 г. Федеральном законе №271-ФЗ',
+				filename: 'simplefinance-federal-law-271-fz-information.pdf',
+			},
+			{
+				label: 'Порядок рассмотрения обращений получателей финансовых услуг',
+				filename: 'simplefinance-appeals-review-procedure.pdf',
+			},
+			{
+				label: 'Информация о праве потребителей финансовых услуг на направление обращения финансовому уполномоченному',
+				filename: 'simplefinance-financial-ombudsman-information.pdf',
+			},
+			{
+				label: 'Порядок применения переменной процентной ставки в финансовых продуктах ООО МКК СимплФинанс с 01.09.2024 года',
+				filename: 'simplefinance-variable-interest-rate-procedure.pdf',
+			},
+		],
+	},
+];
+---
+
+<main class="documents-page" transition:name="page-content" transition:animate="fade">
+	<section class="section documents-page__section" aria-labelledby="documents-page-title">
+		<div class="container documents-page__container">
+			<h1 class="documents-page__title" id="documents-page-title">Юридические документы</h1>
+
+			<div class="documents-page__content">
+				{
+					documentGroups.map((group, groupIndex) => {
+						const groupTitleId = `documents-group-${groupIndex + 1}-title`;
+
+						return (
+							<section class="documents-page__group" aria-labelledby={groupTitleId}>
+								<h2 class="documents-page__subtitle" id={groupTitleId}>{group.title}</h2>
+
+								<div class="documents-page__list" data-documents-list>
+									{
+										group.items.map((document) => (
+											<DocumentDownloadLink
+												class="documents-page__document"
+												href={placeholderDocumentHref}
+												label={document.label}
+												download={document.filename}
+											/>
+										))
+									}
+								</div>
+
+								{group.items.length > 5 && (
+									<button class="documents-page__show-more" type="button" data-documents-show-more>
+										<span>Показать все документы</span>
+										<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+											<path d="m12 18.5 6.25-6.25-1.42-1.42L13 14.67V5h-2v9.67l-3.83-3.84-1.42 1.42L12 18.5Z" />
+										</svg>
+									</button>
+								)}
+							</section>
+						);
+					})
+				}
+			</div>
+
+			<section class="documents-page__contacts" aria-labelledby="documents-contacts-title">
+				<h2 class="documents-page__contacts-title" id="documents-contacts-title">Дополнительные контакты:</h2>
+				<div class="documents-page__contacts-text">
+					<p>
+						Саморегулируемая организация «МиР» - официальный сайт{' '}
+						<a href="http://www.npmir.ru/" target="_blank" rel="noreferrer">http://www.npmir.ru/</a>,
+					</p>
+					<p>горячая линия для заемщиков 8 (800) 775-27-55.</p>
+					<p>
+						Банк России - интернет-приемная{' '}
+						<a href="http://www.cbr.ru/Reception/" target="_blank" rel="noreferrer">http://www.cbr.ru/Reception/</a>
+					</p>
+					<p>телефон 8 (800) 250-40-72 (для бесплатных звонков из регионов России)</p>
+				</div>
+			</section>
+		</div>
+	</section>
+</main>
+
+<script>
+	import { runOnPageLoad } from '../../scripts/common/lifecycle';
+	import { initDocumentsLists } from '../../scripts/common/documents-lists';
+
+	runOnPageLoad(initDocumentsLists);
+</script>
