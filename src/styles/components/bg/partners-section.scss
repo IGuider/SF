@@ -85,9 +85,9 @@
       width: min(100%, 262px);
     }
 
-    &--gazprom {
+    &--uralsib {
       justify-self: end;
-      width: min(100%, 279px);
+      width: min(100%, 220px);
     }
   }
 
@@ -160,8 +160,8 @@
         width: min(100%, 197px);
       }
 
-      &--gazprom {
-        width: min(100%, 210px);
+      &--uralsib {
+        width: min(100%, 166px);
       }
     }
   }
@@ -211,8 +211,8 @@
         width: min(100%, 169px);
       }
 
-      &--gazprom {
-        width: min(100%, 180px);
+      &--uralsib {
+        width: min(100%, 142px);
       }
     }
   }
@@ -337,10 +337,6 @@
 
       &--alfa {
         width: 169px;
-      }
-
-      &--gazprom {
-        width: 180px;
       }
 
       &--levober {
