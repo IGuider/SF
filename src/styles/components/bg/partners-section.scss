@@ -46,7 +46,6 @@
     row-gap: 59px;
     align-items: center;
     color: #7da3ff;
-    padding-inline: 14px;
   }
 
   &__logo {
@@ -61,7 +60,7 @@
     }
 
     &--sovkom {
-      justify-self: start;
+      justify-self: center;
       width: min(100%, 295px);
     }
 
@@ -71,12 +70,12 @@
     }
 
     &--metal {
-      justify-self: end;
+      justify-self: center;
       width: min(100%, 329px);
     }
 
     &--mts {
-      justify-self: start;
+      justify-self: center;
       width: min(100%, 205px);
     }
 
@@ -86,7 +85,7 @@
     }
 
     &--uralsib {
-      justify-self: end;
+      justify-self: center;
       width: min(100%, 220px);
     }
   }
@@ -240,7 +239,7 @@
       position: relative;
       display: block;
       width: 100vw;
-      height: 139px;
+      height: 124px;
       margin-inline: calc(50% - 50vw);
       overflow: hidden;
 
@@ -283,7 +282,7 @@
         --bg-partners-marquee-gap: 40px;
         --bg-partners-marquee-offset: -65px;
 
-        top: 95px;
+        top: 75px;
       }
     }
 
