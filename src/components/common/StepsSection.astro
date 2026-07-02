@@ -26,8 +26,10 @@ const ctaStep = steps.find((step) => step.data.ctaLabel);
 						<div class="steps-card__number" aria-hidden="true" data-steps-number>
 							{step.data.number}
 						</div>
-						<h3 class="steps-card__title" id={`${step.id}-title`}>{step.data.title}</h3>
-						<p class="steps-card__description">{step.data.description}</p>
+						<div class="steps-card__content">
+							<h3 class="steps-card__title" id={`${step.id}-title`}>{step.data.title}</h3>
+							<p class="steps-card__description">{step.data.description}</p>
+						</div>
 					</article>
 				))
 			}

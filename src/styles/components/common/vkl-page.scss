@@ -1,7 +1,7 @@
 .vkl-page {
   position: relative;
   color: var(--color-text-strong);
-  overflow: clip;
+  overflow: visible;
 
   &__decor {
     position: absolute;

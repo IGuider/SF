@@ -2,10 +2,12 @@
 import type { ImageMetadata } from 'astro';
 import alfaBankLogo from '../../assets/bg/alfa-bank-p.svg';
 import gazpromBankLogo from '../../assets/bg/gazprom-p.svg';
+import levoberBankLogo from '../../assets/bg/levober-p.svg';
 import metalInvestBankLogo from '../../assets/bg/metal-p.svg';
 import mtsBankLogo from '../../assets/bg/mts-p.svg';
 import sberBankLogo from '../../assets/bg/sber-p.svg';
 import sovkomBankLogo from '../../assets/bg/sovkom-p.svg';
+import uralsibBankLogo from '../../assets/bg/uralsib-p.svg';
 import '../../styles/components/bg/partners-section.scss';
 
 type PartnerLogo = {
@@ -23,9 +25,12 @@ const logos: PartnerLogo[] = [
 	{ id: 'gazprom', name: 'Газпромбанк', image: gazpromBankLogo },
 ];
 
+const uralsibLogo: PartnerLogo = { id: 'uralsib', name: 'Уралсиб', image: uralsibBankLogo };
+const levoberLogo: PartnerLogo = { id: 'levober', name: 'Левобережный', image: levoberBankLogo };
+
 const marqueeRows = [
-	[logos[0], logos[4], logos[5], logos[2]],
-	[logos[3], logos[1], logos[2], logos[0]],
+	[logos[0], logos[1], logos[2], uralsibLogo],
+	[logos[3], logos[4], logos[5], levoberLogo],
 ];
 ---
 

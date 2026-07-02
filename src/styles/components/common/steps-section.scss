@@ -330,6 +330,12 @@
     justify-items: stretch;
     justify-content: stretch;
 
+    &__content {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+    }
+
     &__title {
       margin: 0 0 6px;
       font-size: 21px;
@@ -352,11 +358,6 @@
       font-size: 36px;
       color: var(--color-secondary);
       font-weight: 300;
-    }
-
-    &__title,
-    &__description {
-      grid-column: 2;
     }
   }
 }
