@@ -1,6 +1,7 @@
 ---
 import decorStarLarge from '../../assets/cont-page-b1.png';
 import decorStarSmall from '../../assets/cont-page-b2.png';
+import decorStarSmallMobile from '../../assets/cont-page-b3-m.png';
 import decorMapPin from '../../assets/cont-page-b3.png';
 import '../../styles/components/common/contacts-page.scss';
 
@@ -73,7 +74,10 @@ const mapConstructorSrc = 'https://api-maps.yandex.ru/services/constructor/1.0/j
 <main class="contacts-page" transition:name="page-content" transition:animate="fade">
 	<div class="contacts-page__decor" aria-hidden="true">
 		<img class="contacts-page__decor-image contacts-page__decor-image--large" src={decorStarLarge.src} alt="" loading="lazy" />
-		<img class="contacts-page__decor-image contacts-page__decor-image--small" src={decorStarSmall.src} alt="" loading="lazy" />
+		<picture>
+			<source media="(max-width: 768px)" srcset={decorStarSmallMobile.src} />
+			<img class="contacts-page__decor-image contacts-page__decor-image--small" src={decorStarSmall.src} alt="" loading="lazy" />
+		</picture>
 	</div>
 
 	<section class="section contacts-page__section" aria-labelledby="contacts-page-title">
