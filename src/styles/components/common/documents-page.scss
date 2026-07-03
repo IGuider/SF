@@ -1,7 +1,7 @@
 .documents-page {
   color: var(--color-text-strong);
 
-  &__section {
+  &__section.section {
     position: relative;
     z-index: 1;
     margin-block-start: 74px;
@@ -189,7 +189,7 @@
 
 @media (max-width: 1440px) {
   .documents-page {
-    &__section {
+    &__section.section {
       margin-block-start: 60px;
     }
 
@@ -242,7 +242,7 @@
 
 @media (max-width: 1024px) {
   .documents-page {
-    &__section {
+    &__section.section {
       margin-block-start: 50px;
     }
 
@@ -297,7 +297,7 @@
 
 @media (max-width: 768px) {
   .documents-page {
-    &__section {
+    &__section.section {
       margin-block-start: 90px;
     }
 
@@ -343,7 +343,7 @@
 
 @media (max-width: 560px) {
   .documents-page {
-    &__section {
+    &__section.section {
       margin-block-start: 90px;
     }
 

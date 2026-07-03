@@ -27,7 +27,7 @@
     transform: translate(-83px, 350px);
   }
 
-  &__section {
+  &__section.section {
     position: relative;
     z-index: 1;
     margin-block-start: 74px;
@@ -148,7 +148,7 @@
 
 @media (max-width: 1440px) {
   .contacts-page {
-    &__section {
+    &__section.section {
       margin-block-start: 60px;
     }
 
@@ -197,7 +197,7 @@
 
 @media (max-width: 1024px) {
   .contacts-page {
-    &__section {
+    &__section.section {
       margin-block-start: 50px;
     }
 
@@ -260,7 +260,7 @@
       transform: translate(-30px, 337px);
     }
 
-    &__section {
+    &__section.section {
       margin-block-start: 90px;
     }
 
@@ -322,7 +322,7 @@
       transform: translate(-31px, 611px);
     }
 
-    &__section {
+    &__section.section {
       margin-block-start: 90px;
     }
 

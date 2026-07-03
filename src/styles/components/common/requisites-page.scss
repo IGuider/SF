@@ -27,7 +27,7 @@
     display: none;
   }
 
-  &__section {
+  &__section.section {
     position: relative;
     z-index: 1;
     margin-block-start: 74px;
@@ -111,7 +111,7 @@
 
 @media (max-width: 1440px) {
   .requisites-page {
-    &__section {
+    &__section.section {
       margin-block-start: 60px;
     }
 
@@ -153,7 +153,7 @@
 
 @media (max-width: 1024px) {
   .requisites-page {
-    &__section {
+    &__section.section {
       margin-block-start: 50px;
     }
 
@@ -208,7 +208,7 @@
       display: none;
     }
 
-    &__section {
+    &__section.section {
       margin-block-start: 90px;
     }
 
@@ -265,7 +265,7 @@
       width: 200px;
     }
 
-    &__section {
+    &__section.section {
       margin-block-start: 90px;
     }
 

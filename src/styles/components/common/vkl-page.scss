@@ -30,7 +30,7 @@
     width: 158px;
   }
 
-  &__section {
+  &__section.section {
     position: relative;
     z-index: 1;
     margin-block-start: 74px;
@@ -90,7 +90,7 @@
       width: 142px;
     }
 
-    &__section {
+    &__section.section {
       margin-block-start: 60px;
     }
 
@@ -129,7 +129,7 @@
       width: 122px;
     }
 
-    &__section {
+    &__section.section {
       margin-block-start: 50px;
     }
 
@@ -168,7 +168,7 @@
       width: 104px;
     }
 
-    &__section {
+    &__section.section {
       margin-block-start: 90px;
     }
 
@@ -197,7 +197,7 @@
       display: none;
     }
 
-    &__section {
+    &__section.section {
       margin-block-start: 90px;
     }
 
