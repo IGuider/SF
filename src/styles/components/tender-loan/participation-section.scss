@@ -74,7 +74,8 @@
     }
 
     &__grid {
-      gap: 20px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr) minmax(0, 1.7fr);
+      gap: 60px;
     }
   }
 
@@ -109,14 +110,14 @@
     }
 
     &__grid {
-      gap: 10px;
+      gap: 37px;
     }
   }
 
   .tender-participation-card {
-    min-height: 84px;
+    min-height: 80px;
     gap: 16px;
-    padding: 22px 20px;
+    padding: 20px 22px;
 
     &__title {
       font-size: 28px;
@@ -133,8 +134,93 @@
 
 @media (max-width: 768px) {
   .tender-participation {
+    &__heading {
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    &__title {
+      max-width: 720px;
+      font-size: 26px;
+      letter-spacing: -1.04px;
+    }
+
+    &__description {
+      max-width: 620px;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+
     &__grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, max-content);
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+
+  .tender-participation-card {
+    min-height: 60px;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+
+    &:nth-child(3) {
+      grid-column: 1 / -1;
+      justify-self: center;
+    }
+
+    &__title {
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+
+    &__icon {
+      width: 28px;
+      height: 28px;
+      flex-basis: 28px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .tender-participation {
+    &__heading {
+      gap: 22px;
+      margin-bottom: 30px;
+    }
+
+    &__title {
+      max-width: 360px;
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+
+    &__description {
+      max-width: 350px;
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+
+    &__grid {
+      gap: 8px;
+    }
+  }
+
+  .tender-participation-card {
+    min-height: 48px;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: var(--radius-md-mobile);
+
+    &__title {
+      font-size: 22px;
+      letter-spacing: -0.88px;
+    }
+
+    &__icon {
+      width: 20px;
+      height: 20px;
+      flex-basis: 20px;
     }
   }
 }
