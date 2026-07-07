@@ -1,0 +1,35 @@
+---
+import '../../styles/components/tender-loan/participation-section.scss';
+
+const participationItems = ['44-ФЗ', '223-ФЗ', '185-ФЗ и 615-ПП'];
+---
+
+<section class="tender-participation section" aria-labelledby="tender-participation-title">
+	<div class="container">
+		<div class="tender-participation__heading">
+			<h2 class="tender-participation__title section-title" id="tender-participation-title">
+				Участвуйте в закупках без изъятия денег из оборота
+			</h2>
+			<p class="tender-participation__description">
+				Тендерный заем позволяет выполнить требования заказчика по обеспечению заявки
+				и сохранить собственные средства для операционной деятельности и развития бизнеса
+			</p>
+		</div>
+
+		<div class="tender-participation__grid" aria-label="Типы закупок">
+			{
+				participationItems.map((item) => (
+					<article class="tender-participation-card">
+						<h3 class="tender-participation-card__title">{item}</h3>
+						<span class="tender-participation-card__icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<circle cx="12" cy="12" r="12" fill="currentColor" />
+								<path d="M7.9 12.1L10.6 14.8L16.1 9.3" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</span>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

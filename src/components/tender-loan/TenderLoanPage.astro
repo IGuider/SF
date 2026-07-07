@@ -1,0 +1,67 @@
+---
+import HeroSection from '../common/HeroSection.astro';
+import FaqSection from '../common/FaqSection.astro';
+import LeadFormSection from '../common/LeadFormSection.astro';
+import StepsSection from '../common/StepsSection.astro';
+import AboutSection from './AboutSection.astro';
+import NeedSection from './NeedSection.astro';
+import ParticipationSection from './ParticipationSection.astro';
+import heroTenderLoanImage from '../../assets/tz-home.jpg';
+
+const tenderLoanBadges = ['до 500 млн ₽', 'от 3% в месяц', 'до 60 дней', 'онлайн'];
+const tenderLoanSteps = [
+	{
+		id: 'tender-loan-request',
+		number: '01',
+		title: 'Заявка',
+		description: 'Оставьте заявку на сайте: 2 минуты на заполнение',
+	},
+	{
+		id: 'tender-loan-review',
+		number: '02',
+		title: 'Рассмотрение',
+		description: 'Получите предварительное решение',
+	},
+	{
+		id: 'tender-loan-offer',
+		number: '03',
+		title: 'Предложение',
+		description: 'Подпишите документы и оплатите комиссию',
+	},
+	{
+		id: 'tender-loan-payout',
+		number: '04',
+		title: 'Выдача',
+		description: 'Напрямую на спецсчет или счет площадки',
+		ctaLabel: 'Оставить заявку',
+	},
+];
+---
+
+<main transition:name="page-content" transition:animate="fade">
+	<HeroSection
+		variant="tender-loan"
+		titleLines={['Тендерный заем', 'на обеспечение заявки', 'и исполнение контракта']}
+		descriptionLines={['Предоставляем финансирование для участия в', 'государственных и коммерческих закупках']}
+		badges={tenderLoanBadges}
+		badgesPosition="afterText"
+		badgesLabel="Условия тендерного займа"
+		badgeVariant="outline-primary"
+		buttonLabel="Подобрать решение"
+		buttonVariant="secondary"
+		image={heroTenderLoanImage}
+	/>
+	<ParticipationSection />
+	<NeedSection />
+	<StepsSection
+		title="Как проходит оформление тендерного займа"
+		descriptionLines={[
+			'Такой порядок удобен для компаний, которым важно не пропустить срок подачи заявки',
+			'и при этом сохранить собственные оборотные средства для текущей деятельности',
+		]}
+		steps={tenderLoanSteps}
+	/>
+	<FaqSection collection="tenderLoanFaq" />
+	<AboutSection />
+	<LeadFormSection />
+</main>

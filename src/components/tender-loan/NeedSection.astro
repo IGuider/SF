@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+import needIcon1 from '../../assets/w-tz-1.png';
+import needIcon2 from '../../assets/w-tz-2.png';
+import needIcon3 from '../../assets/w-tz-3.png';
+import needIcon4 from '../../assets/w-tz-4.png';
+import '../../styles/components/tender-loan/need-section.scss';
+
+const needItems = [
+	{
+		title: 'До 65 млн ₽',
+		text: 'Финансирование участия в закупках',
+		icon: needIcon1,
+	},
+	{
+		title: 'Свой график',
+		text: 'Индивидуальные условия погашения займа',
+		icon: needIcon2,
+	},
+	{
+		title: 'До 12 месяцев',
+		text: 'На обеспечение и исполнение контракта',
+		icon: needIcon3,
+	},
+	{
+		title: 'Онлайн',
+		text: 'Подача заявки без посещения офиса',
+		icon: needIcon4,
+	},
+];
+---
+
+<section class="tender-need section" aria-labelledby="tender-need-title">
+	<div class="container">
+		<div class="tender-need__heading">
+			<h2 class="tender-need__title section-title" id="tender-need-title">
+				Когда бизнесу нужен тендерный заем
+			</h2>
+			<p class="tender-need__description">
+				Тендерный заем помогает получить финансирование для участия в государственных
+				и коммерческих закупках, сохранив собственные средства для текущей деятельности компании
+			</p>
+		</div>
+
+		<div class="tender-need__grid">
+			{
+				needItems.map((item, index) => (
+					<article class="tender-need-card">
+						<div class:list={['tender-need-card__icon', `tender-need-card__icon--${index + 1}`]} aria-hidden="true">
+							<Image class="media-fill media-fit-contain" src={item.icon} alt="" loading="lazy" decoding="async" />
+						</div>
+						<div class="tender-need-card__content">
+							<h3 class="tender-need-card__title">{item.title}</h3>
+							<p class="tender-need-card__text">{item.text}</p>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

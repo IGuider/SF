@@ -88,6 +88,18 @@
     will-change: transform;
     animation: hero-glow-float 12s ease-in-out infinite;
   }
+
+  &--tender-loan {
+    .hero-section__badges {
+      gap: 14px;
+    }
+
+    .hero-section__badge.ui-badge {
+      --ui-badge-padding: 8px 17px;
+      --ui-badge-font-size: 20px;
+      --ui-badge-letter-spacing: -0.8px;
+    }
+  }
 }
 
 @keyframes hero-glow-float {
@@ -204,6 +216,18 @@
 
     &__panel {
       padding: 30px 22px 30px 24px;
+    }
+
+    &--tender-loan {
+      .hero-section__badges {
+        gap: 8px;
+      }
+
+      .hero-section__badge.ui-badge {
+        --ui-badge-padding: 5px 10px;
+        --ui-badge-font-size: 14px;
+        --ui-badge-letter-spacing: -0.56px;
+      }
     }
   }
 }

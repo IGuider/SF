@@ -4,14 +4,55 @@ import '../../styles/components/common/steps-section.scss';
 import ConsultationDialogTrigger from './ConsultationDialogTrigger.astro';
 import Button from '../ui/Button.astro';
 
-const steps = (await getCollection('steps')).sort((left, right) => left.data.order - right.data.order);
-const ctaStep = steps.find((step) => step.data.ctaLabel);
+type StepItem = {
+	id: string;
+	number: string;
+	title: string;
+	description: string;
+	ctaLabel?: string;
+};
+
+interface Props {
+	title?: string;
+	descriptionLines?: string[];
+	steps?: StepItem[];
+}
+
+const {
+	title = 'Как получить финансирование',
+	descriptionLines = [],
+	steps: providedSteps,
+}: Props = Astro.props;
+
+const collectionSteps = providedSteps
+	? []
+	: (await getCollection('steps')).sort((left, right) => left.data.order - right.data.order);
+const steps = providedSteps ?? collectionSteps.map((step) => ({
+	id: step.id,
+	number: step.data.number,
+	title: step.data.title,
+	description: step.data.description,
+	ctaLabel: step.data.ctaLabel,
+}));
+const ctaStep = steps.find((step) => step.ctaLabel);
 ---
 
 <section class="steps-section section" id="steps" aria-labelledby="steps-title">
 	<div class="container">
 		<div class="steps-section__header section-header section-header--spacious">
-			<h2 class="steps-section__title section-title" id="steps-title">Как получить финансирование</h2>
+			<h2 class="steps-section__title section-title" id="steps-title">{title}</h2>
+			{
+				descriptionLines.length > 0 && (
+					<p class="steps-section__description">
+						{descriptionLines.map((line, index) => (
+							<>
+								{index > 0 && <br />}
+								{line}
+							</>
+						))}
+					</p>
+				)
+			}
 		</div>
 
 		<div class="steps-section__timeline" aria-hidden="true">
@@ -24,11 +65,11 @@ const ctaStep = steps.find((step) => step.data.ctaLabel);
 				steps.map((step) => (
 					<article class="steps-card" aria-labelledby={`${step.id}-title`}>
 						<div class="steps-card__number" aria-hidden="true" data-steps-number>
-							{step.data.number}
+							{step.number}
 						</div>
 						<div class="steps-card__content">
-							<h3 class="steps-card__title" id={`${step.id}-title`}>{step.data.title}</h3>
-							<p class="steps-card__description">{step.data.description}</p>
+							<h3 class="steps-card__title" id={`${step.id}-title`}>{step.title}</h3>
+							<p class="steps-card__description">{step.description}</p>
 						</div>
 					</article>
 				))
@@ -39,7 +80,7 @@ const ctaStep = steps.find((step) => step.data.ctaLabel);
 			ctaStep && (
 				<div class="steps-section__actions">
 					<ConsultationDialogTrigger>
-						<Button variant="secondary" size="xl">{ctaStep.data.ctaLabel}</Button>
+						<Button variant="secondary" size="xl">{ctaStep.ctaLabel}</Button>
 					</ConsultationDialogTrigger>
 				</div>
 			)

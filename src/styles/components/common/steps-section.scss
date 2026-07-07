@@ -11,6 +11,22 @@
     gap: 18px;
   }
 
+  &__header {
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+    text-align: center;
+  }
+
+  &__description {
+    max-width: 1160px;
+    color: var(--color-primary);
+    font-size: 29px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+  }
+
   &__timeline {
     position: relative;
     margin: 0 clamp(78px, 9vw, 122px) -86px;
@@ -125,6 +141,16 @@
     &__grid {
       gap: 16px;
     }
+
+    &__header {
+      gap: 26px;
+    }
+
+    &__description {
+      max-width: 1040px;
+      font-size: 26px;
+      letter-spacing: -1.04px;
+    }
   }
 
   .steps-card {
@@ -167,6 +193,16 @@
     &__actions {
       margin-top: 40px;
     }
+
+    &__header {
+      gap: 22px;
+    }
+
+    &__description {
+      max-width: 780px;
+      font-size: 20px;
+      letter-spacing: -0.8px;
+    }
   }
 
   .steps-card {
@@ -208,6 +244,10 @@
 
     &__actions {
       margin-top: 30px;
+    }
+
+    &__header {
+      gap: 18px;
     }
   }
 

@@ -1,0 +1,188 @@
+.tender-need {
+  &__heading {
+    display: grid;
+    gap: 30px;
+    justify-items: center;
+    margin-bottom: 64px;
+    text-align: center;
+  }
+
+  &__description {
+    max-width: 1120px;
+    color: var(--color-primary);
+    font-size: 29px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+  }
+}
+
+.tender-need-card {
+  display: grid;
+  min-height: 250px;
+  align-content: start;
+  justify-items: center;
+  gap: 30px;
+  text-align: center;
+
+  &__icon {
+    width: 98px;
+    height: 98px;
+
+    &--1 {
+      width: 108px;
+      height: 99px;
+    }
+
+    &--2 {
+      width: 122px;
+      height: 100px;
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: 22px;
+    justify-items: center;
+  }
+
+  &__title {
+    color: var(--color-text-strong);
+    font-size: 36px;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.44px;
+  }
+
+  &__text {
+    max-width: 280px;
+    color: var(--color-primary);
+    font-size: 29px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .tender-need {
+    &__heading {
+      gap: 26px;
+      margin-bottom: 54px;
+    }
+
+    &__description {
+      max-width: 1000px;
+      font-size: 26px;
+      letter-spacing: -1.04px;
+    }
+
+    &__grid {
+      gap: 20px;
+    }
+  }
+
+  .tender-need-card {
+    min-height: 225px;
+    gap: 26px;
+
+    &__icon {
+      width: 88px;
+      height: 88px;
+
+      &--1 {
+        width: 96px;
+        height: 88px;
+      }
+
+      &--2 {
+        width: 107px;
+        height: 88px;
+      }
+    }
+
+    &__content {
+      gap: 18px;
+    }
+
+    &__title {
+      font-size: 32px;
+      letter-spacing: -1.28px;
+    }
+
+    &__text {
+      max-width: 250px;
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .tender-need {
+    &__heading {
+      gap: 22px;
+      margin-bottom: 42px;
+    }
+
+    &__description {
+      max-width: 780px;
+      font-size: 20px;
+      letter-spacing: -0.8px;
+    }
+
+    &__grid {
+      gap: 12px;
+    }
+  }
+
+  .tender-need-card {
+    min-height: 190px;
+    gap: 20px;
+
+    &__icon {
+      width: 68px;
+      height: 68px;
+
+      &--1 {
+        width: 74px;
+        height: 68px;
+      }
+
+      &--2 {
+        width: 83px;
+        height: 68px;
+      }
+    }
+
+    &__content {
+      gap: 14px;
+    }
+
+    &__title {
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+
+    &__text {
+      max-width: 190px;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .tender-need {
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 30px;
+    }
+  }
+}

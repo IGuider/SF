@@ -1,0 +1,53 @@
+.tender-about {
+  &__content {
+    display: grid;
+    gap: 42px;
+  }
+
+  &__text {
+    color: var(--color-primary);
+    font-size: 29px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .tender-about {
+    &__content {
+      gap: 36px;
+    }
+
+    &__text {
+      font-size: 26px;
+      letter-spacing: -1.04px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .tender-about {
+    &__content {
+      gap: 28px;
+    }
+
+    &__text {
+      font-size: 20px;
+      letter-spacing: -0.8px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .tender-about {
+    &__content {
+      gap: 22px;
+    }
+
+    &__text {
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+  }
+}
