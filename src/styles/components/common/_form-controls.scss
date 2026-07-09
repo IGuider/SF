@@ -245,12 +245,18 @@
   $margin-block,
   $checkbox-border-color
 ) {
+  &__consents {
+    display: grid;
+    gap: 14px;
+    margin-block: $margin-block;
+  }
+
   &__consent {
     display: flex;
     gap: $gap;
     align-items: center;
     position: relative;
-    margin-block: $margin-block;
+    margin-block: 0;
     padding-bottom: 0;
     font-size: $font-size;
     line-height: $line-height;

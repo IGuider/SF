@@ -154,6 +154,9 @@ const selectFieldConfig = {
 		menuId: productMenuId,
 	},
 };
+
+const marketingConsentText =
+	'Согласен(а) на получение рекламных и информационных материалов от ООО МКК «СимплФинанс»';
 ---
 
 <form class={`${block}__form`} data-lead-form data-state="visible" novalidate>
@@ -237,23 +240,43 @@ const selectFieldConfig = {
 		);
 	})}
 
-	<label class={`${block}__consent`} data-required-field data-invalid="false">
-		<input class={`${block}__checkbox`} name="consent" type="checkbox" required />
-		<span class={`${block}__checkbox-box`} aria-hidden="true">
-			<svg class={`${block}__checkbox-check`} viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path
-					d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031"
-					stroke="white"
-					stroke-width="1.5"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				/>
-			</svg>
-		</span>
-		<span class={`${block}__consent-text`}>
-			Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
-		</span>
-	</label>
+	<div class={`${block}__consents`}>
+		<label class={`${block}__consent`} data-required-field data-invalid="false">
+			<input class={`${block}__checkbox`} name="consent" type="checkbox" required />
+			<span class={`${block}__checkbox-box`} aria-hidden="true">
+				<svg class={`${block}__checkbox-check`} viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031"
+						stroke="white"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</span>
+			<span class={`${block}__consent-text`}>
+				Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
+			</span>
+		</label>
+
+		<label class={`${block}__consent`} data-invalid="false">
+			<input class={`${block}__checkbox`} name="marketingConsent" type="checkbox" />
+			<span class={`${block}__checkbox-box`} aria-hidden="true">
+				<svg class={`${block}__checkbox-check`} viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031"
+						stroke="white"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</span>
+			<span class={`${block}__consent-text`}>
+				{marketingConsentText}
+			</span>
+		</label>
+	</div>
 
 	{button === 'ui' ? (
 		<Button type="submit" variant={submitVariant} size={submitSize} class={submitClass}>

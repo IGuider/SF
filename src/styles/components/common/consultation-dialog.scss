@@ -449,9 +449,12 @@
       font-size: 15px;
     }
 
+    &__consents {
+      margin-block: 0;
+    }
+
     &__consent {
       font-size: 12px;
-      margin-block: 0;
     }
 
     &__success {

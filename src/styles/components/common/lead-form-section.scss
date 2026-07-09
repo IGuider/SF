@@ -95,6 +95,10 @@
     var(--color-primary-track)
   );
 
+  &__consents {
+    gap: 20px;
+  }
+
   &__field[data-shake="true"],
   &__consent[data-shake="true"] {
     animation: lead-form-field-shake 360ms ease;
@@ -338,10 +342,15 @@
       height: 20px;
     }
 
-    &__consent {
+    &__consents {
       font-size: 14px;
       letter-spacing: -0.56px;
       margin-block: 12px;
+    }
+
+    &__consent {
+      font-size: 14px;
+      letter-spacing: -0.56px;
     }
 
     &__success-card {
@@ -448,9 +457,13 @@
       top: 22px;
     }
 
-    &__consent {
+    &__consents {
       font-size: 12px;
       margin-block: 9px;
+    }
+
+    &__consent {
+      font-size: 12px;
     }
 
     &__success {

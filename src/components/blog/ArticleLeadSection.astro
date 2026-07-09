@@ -2,6 +2,9 @@
 import Button from '../ui/Button.astro';
 import Consent from '../ui/Consent.astro';
 import Input from '../ui/Input.astro';
+
+const marketingConsentText =
+	'Согласен(а) на получение рекламных и информационных материалов от ООО МКК «СимплФинанс»';
 ---
 
 <section class="article-page__lead" aria-labelledby="article-lead-title" data-lead-form-root>
@@ -23,9 +26,14 @@ import Input from '../ui/Input.astro';
 			dataLeadPhone
 			required
 		/>
-		<Consent class="article-page__lead-consent" required>
-			Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
-		</Consent>
+		<div class="article-page__lead-consents">
+			<Consent class="article-page__lead-consent" required>
+				Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
+			</Consent>
+			<Consent class="article-page__lead-consent" name="marketingConsent">
+				{marketingConsentText}
+			</Consent>
+		</div>
 		<Button size="lg" type="submit" variant="secondary" class="article-page__lead-submit">Перезвоните мне</Button>
 	</form>
 	<div class="article-page__lead-success" data-lead-form-success data-state="hidden" aria-live="polite">
