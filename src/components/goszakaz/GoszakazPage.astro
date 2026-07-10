@@ -22,13 +22,41 @@ const usefulArticleSlugs = usefulArticleEntries
 const heroBadges = heroBadgeEntries
 	.sort((left, right) => left.data.order - right.data.order)
 	.map((item) => item.data.label);
+
+const goszakazSteps = [
+	{
+		id: 'goszakaz-request',
+		number: '01',
+		title: 'Заявка',
+		description: 'Оставьте заявку на сайте — 2 минуты на заполнение',
+	},
+	{
+		id: 'goszakaz-review',
+		number: '02',
+		title: 'Рассмотрение',
+		description: 'В течение 1 дня подготовим персональные условия',
+	},
+	{
+		id: 'goszakaz-offer',
+		number: '03',
+		title: 'Предложение',
+		description: 'Получите лимит, ставку и срок',
+	},
+	{
+		id: 'goszakaz-disbursement',
+		number: '04',
+		title: 'Выдача',
+		description: 'Средства поступают на счет день в день',
+		ctaLabel: 'Оставить заявку',
+	},
+];
 ---
 
 <main transition:name="page-content" transition:animate="fade">
 	<HeroSection
 		variant="goszakaz"
-		titleLines={['Финансирование,', 'для госзакупок —', 'за 1 день, без залога']}
-		descriptionLines={['Тендерный займ, банковская гарантия', 'и финансирование контракта']}
+		titleLines={['Финансирование', 'для госзакупок', 'за 1 день без залога']}
+		descriptionLines={['Тендерные займы, банковские гарантии', 'и контрактное финансирование по 44-ФЗ и 223-ФЗ']}
 		badges={heroBadges}
 		badgesPosition="afterText"
 		badgesLabel="Преимущества финансирования"
@@ -40,7 +68,11 @@ const heroBadges = heroBadgeEntries
 	<ProcurementSupportSection />
 	<FinancingSection />
 	<WhySimpleFinanceSection />
-	<StepsSection />
+	<StepsSection
+		title="Как проходит оформление тендерного займа"
+		descriptionLines={['Получить финансирование можно полностью онлайн —', 'от подачи заявки до получения денежных средств']}
+		steps={goszakazSteps}
+	/>
 	<PersonalManagerSection />
 	<UsefulArticlesSection
 		id="procurement-useful"

@@ -5,6 +5,21 @@
     gap: 70px;
   }
 
+  &__header.section-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 31px;
+  }
+
+  &__description {
+    max-width: 1090px;
+    color: var(--color-primary);
+    font-size: 29px;
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+    text-align: center;
+  }
+
   &__body {
     display: grid;
     grid-template-areas:
@@ -330,6 +345,16 @@
       gap: 36px;
     }
 
+    &__header.section-header {
+      gap: 24px;
+    }
+
+    &__description {
+      max-width: 780px;
+      font-size: 22px;
+      letter-spacing: -0.88px;
+    }
+
     &__body {
       gap: 36px;
     }
@@ -435,6 +460,12 @@
   .procurement-financing {
     &__content {
       gap: 30px;
+    }
+
+    &__description {
+      max-width: 620px;
+      font-size: 20px;
+      letter-spacing: -0.8px;
     }
 
     &__body {
@@ -558,6 +589,19 @@
   .procurement-financing {
     &__content {
       gap: 26px;
+    }
+
+    &__header.section-header {
+      gap: 18px;
+    }
+
+    &__description {
+      font-size: 17px;
+      letter-spacing: -0.68px;
+
+      br {
+        display: none;
+      }
     }
 
     &__body {
