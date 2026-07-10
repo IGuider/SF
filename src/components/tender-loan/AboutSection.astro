@@ -1,5 +1,5 @@
 ---
-import '../../styles/components/tender-loan/about-section.scss';
+import AboutSection from '../common/AboutSection.astro';
 
 const paragraphs = [
 	'Тендерный заем — это инструмент финансирования для компаний, участвующих в закупках. Он помогает обеспечить заявку, сохранить собственные оборотные средства и не откладывать участие в тендере из-за временной нехватки денег.',
@@ -8,10 +8,4 @@ const paragraphs = [
 ];
 ---
 
-<section class="tender-about section" aria-label="О тендерном займе">
-	<div class="container">
-		<div class="tender-about__content">
-			{paragraphs.map((paragraph) => <p class="tender-about__text">{paragraph}</p>)}
-		</div>
-	</div>
-</section>
+<AboutSection paragraphs={paragraphs} ariaLabel="О тендерном займе" />

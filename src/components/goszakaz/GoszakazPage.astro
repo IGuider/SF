@@ -9,6 +9,7 @@ import StepsSection from '../common/StepsSection.astro';
 import UsefulArticlesSection from '../common/UsefulArticlesSection.astro';
 import LeadFormSection from '../common/LeadFormSection.astro';
 import FaqSection from '../common/FaqSection.astro';
+import AboutSection from '../common/AboutSection.astro';
 import heroGoszakazImage from '../../assets/hero-goszakaz.jpg';
 
 const [usefulArticleEntries, heroBadgeEntries] = await Promise.all([
@@ -50,6 +51,12 @@ const goszakazSteps = [
 		ctaLabel: 'Оставить заявку',
 	},
 ];
+
+const goszakazAboutParagraphs = [
+	'Финансирование для участия в госзакупках позволяет компаниям получить необходимые средства для работы с государственными и коммерческими заказчиками без отвлечения собственного оборотного капитала. Такой инструмент помогает своевременно участвовать в закупках, исполнять требования заказчика и сохранять финансовую устойчивость бизнеса',
+	'Решение подходит поставщикам, подрядчикам, производителям и сервисным компаниям, работающим по 44-ФЗ, 223-ФЗ, 185-ФЗ, 615-ПП, а также участвующим в коммерческих закупках. Финансирование может использоваться для обеспечения заявки, исполнения контракта и покрытия расходов, связанных с выполнением обязательств перед заказчиком',
+	'SimpleFinance помогает подобрать оптимальный вариант финансирования для участия в госзакупках с учетом параметров закупки, финансового состояния компании и сроков реализации проекта. Заявку можно подать онлайн, а решение принимается в кратчайшие сроки',
+];
 ---
 
 <main transition:name="page-content" transition:animate="fade">
@@ -89,5 +96,6 @@ const goszakazSteps = [
 			inn: { label: 'ИНН организации', required: false, validate: true },
 		}}
 	/>
+	<AboutSection paragraphs={goszakazAboutParagraphs} ariaLabel="О финансировании для госзакупок" />
 	<FaqSection collection="goszakazFaq" />
 </main>

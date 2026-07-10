@@ -1,0 +1,18 @@
+---
+import '../../styles/components/common/about-section.scss';
+
+interface Props {
+	paragraphs: string[];
+	ariaLabel: string;
+}
+
+const { paragraphs, ariaLabel } = Astro.props;
+---
+
+<section class="tender-about section" aria-label={ariaLabel}>
+	<div class="container">
+		<div class="tender-about__content">
+			{paragraphs.map((paragraph) => <p class="tender-about__text">{paragraph}</p>)}
+		</div>
+	</div>
+</section>
