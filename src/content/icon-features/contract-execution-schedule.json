@@ -1,0 +1,7 @@
+{
+  "group": "contract-execution",
+  "icon": "schedule",
+  "title": "Свой график",
+  "text": "Погашение под сроки оплаты заказчика",
+  "order": 1
+}

@@ -47,6 +47,18 @@ const tenderLoanFaq = defineCollection({
   }),
 });
 
+const contractExecutionFaq = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/contract-execution-faq",
+  }),
+  schema: z.object({
+    question: z.string(),
+    answer: z.string(),
+    order: z.number().int().positive(),
+  }),
+});
+
 const goszakazHeroBadges = defineCollection({
   loader: glob({
     pattern: "**/*.json",
@@ -333,11 +345,40 @@ const featureCards = defineCollection({
   }),
 });
 
+const contractExecutionStats = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/contract-execution-stats",
+  }),
+  schema: z.object({
+    value: z.number().int().nonnegative(),
+    prefix: z.string().default(""),
+    postfix: z.string().default(""),
+    label: z.string().optional(),
+    subtitle: z.string(),
+    background: z.string(),
+    grouped: z.boolean(),
+    order: z.number().int().positive(),
+  }),
+});
+
+const iconFeatures = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/icon-features" }),
+  schema: z.object({
+    group: z.enum(["tender-loan", "contract-execution"]),
+    icon: z.enum(["amount", "schedule", "duration", "online"]),
+    title: z.string(),
+    text: z.string(),
+    order: z.number().int().positive(),
+  }),
+});
+
 const bgFeatureCards = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/bg-feature-cards" }),
   schema: z.object({
     title: z.string(),
     text: z.string(),
+    textLines: z.array(z.string()).min(1),
     modifier: z.enum([
       "geography",
       "speed",
@@ -380,6 +421,7 @@ export const collections = {
   goszakazFaq,
   bgFaq,
   tenderLoanFaq,
+  contractExecutionFaq,
   goszakazHeroBadges,
   goszakazSupportItems,
   goszakazFinancingTabs,
@@ -388,6 +430,8 @@ export const collections = {
   homeDirections,
   homeTrustItems,
   homeStats,
+  contractExecutionStats,
+  iconFeatures,
   homeFacts,
   products,
   clients,

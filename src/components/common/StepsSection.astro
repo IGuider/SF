@@ -8,17 +8,20 @@ type StepItem = {
 	id: string;
 	number: string;
 	title: string;
-	description: string;
+	description?: string;
+	descriptionLines?: string[];
 	ctaLabel?: string;
 };
 
 interface Props {
+	variant?: 'default' | 'credit-line';
 	title?: string;
 	descriptionLines?: string[];
 	steps?: StepItem[];
 }
 
 const {
+	variant = 'default',
 	title = 'Как получить финансирование',
 	descriptionLines = [],
 	steps: providedSteps,
@@ -35,9 +38,10 @@ const steps = providedSteps ?? collectionSteps.map((step) => ({
 	ctaLabel: step.data.ctaLabel,
 }));
 const ctaStep = steps.find((step) => step.ctaLabel);
+const sectionClass = ['steps-section', 'section', `steps-section--${variant}`].join(' ');
 ---
 
-<section class="steps-section section" id="steps" aria-labelledby="steps-title">
+<section class={sectionClass} id="steps" aria-labelledby="steps-title">
 	<div class="container">
 		<div class="steps-section__header section-header section-header--spacious">
 			<h2 class="steps-section__title section-title" id="steps-title">{title}</h2>
@@ -69,7 +73,14 @@ const ctaStep = steps.find((step) => step.ctaLabel);
 						</div>
 						<div class="steps-card__content">
 							<h3 class="steps-card__title" id={`${step.id}-title`}>{step.title}</h3>
-							<p class="steps-card__description">{step.description}</p>
+							<p class="steps-card__description">
+								{(step.descriptionLines ?? [step.description]).map((line, index) => (
+									<>
+										{index > 0 && <br />}
+										{line}
+									</>
+								))}
+							</p>
 						</div>
 					</article>
 				))

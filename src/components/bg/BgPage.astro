@@ -7,16 +7,26 @@ import BgFinancingSection from './BgFinancingSection.astro';
 import BgConsultSection from './BgConsultSection.astro';
 import BgPartnersSection from './BgPartnersSection.astro';
 import PersonalManagerSection from '../common/PersonalManagerSection.astro';
+import AboutSection from '../common/AboutSection.astro';
 import WhySimpleFinanceSection from '../goszakaz/WhySimpleFinanceSection.astro';
 import heroBgImage from '../../assets/hero-bg.jpg';
 import bgManagerImage from '../../assets/bg/manager-bg-panel-bg.png';
+
+const bankGuaranteeAboutParagraphs = [
+	'Банковская гарантия для бизнеса позволяет подтвердить исполнение обязательств перед заказчиком без замораживания собственных денежных средств. Такой инструмент используют для обеспечения заявки, исполнения контракта, возврата аванса и гарантийных обязательств',
+	'Через платформу SimpleFinance можно оформить банковскую гарантию онлайн для закупок по 44-ФЗ, 223-ФЗ и коммерческих тендеров. Заявка передается банкам-партнерам, после чего клиент получает доступные предложения и может выбрать подходящие условия по сумме, сроку и стоимости',
+	'SimpleFinance сопровождает оформление на всех этапах: от предварительного расчета и проверки документов до подписания с помощью ЭЦП и выпуска гарантии. При готовом комплекте документов и положительном решении банка оформление возможно за один рабочий день',
+];
 ---
 
 <main transition:name="page-content" transition:animate="fade">
 	<HeroSection
 		variant="bg"
 		titleLines={['Банковская', 'гарантия онлайн', 'для бизнеса']}
-		descriptionLines={['Быстрое одобрение без залога и депозита']}
+		descriptionLines={[
+			'Финансирование для участников',
+			'государственных и коммерческих закупок',
+		]}
 		buttonLabel="Рассчитать стоимость"
 		buttonVariant="secondary"
 		image={heroBgImage}
@@ -36,4 +46,8 @@ import bgManagerImage from '../../assets/bg/manager-bg-panel-bg.png';
 	/>
 	<FaqSection collection="bgFaq" />
 	<BgConsultSection />
+	<AboutSection
+		paragraphs={bankGuaranteeAboutParagraphs}
+		ariaLabel="О банковской гарантии"
+	/>
 </main>

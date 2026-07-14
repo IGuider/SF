@@ -1,16 +1,29 @@
 ---
 import { getCollection } from 'astro:content';
-import '../../styles/components/home/company-stats-section.scss';
+import '../../styles/components/common/company-stats-section.scss';
 
-const stats = (await getCollection('homeStats'))
+interface Props {
+	id?: string;
+	title?: string;
+	collectionName?: 'homeStats' | 'contractExecutionStats';
+}
+
+const {
+	id = 'company-stats',
+	title = 'SimpleFinance в цифрах',
+	collectionName = 'homeStats',
+}: Props = Astro.props;
+
+const titleId = `${id}-title`;
+const stats = (await getCollection(collectionName))
 	.sort((left, right) => left.data.order - right.data.order)
 	.map((item) => item.data);
 ---
 
-<section class="company-stats-section section" id="company-stats" aria-labelledby="company-stats-title">
+<section class="company-stats-section section" id={id} aria-labelledby={titleId}>
 	<div class="container">
 		<div class="company-stats-section__header section-header section-header--compact">
-			<h2 class="company-stats-section__title section-title" id="company-stats-title">SimpleFinance в цифрах</h2>
+			<h2 class="company-stats-section__title section-title" id={titleId}>{title}</h2>
 		</div>
 
 		<div class="company-stats-section__grid">

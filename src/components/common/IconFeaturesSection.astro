@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { getCollection } from 'astro:content';
+import amountIcon from '../../assets/w-tz-1.png';
+import scheduleIcon from '../../assets/w-tz-2.png';
+import durationIcon from '../../assets/w-tz-3.png';
+import onlineIcon from '../../assets/w-tz-4.png';
+import '../../styles/components/common/icon-features-section.scss';
+
+type IconFeatureGroup = 'tender-loan' | 'contract-execution';
+type IconFeatureIcon = 'amount' | 'schedule' | 'duration' | 'online';
+
+interface Props {
+	id?: string;
+	title: string;
+	description: string;
+	group: IconFeatureGroup;
+}
+
+const { id, title, description, group }: Props = Astro.props;
+const sectionId = id ?? `${group}-features`;
+const titleId = `${sectionId}-title`;
+const iconMap = {
+	amount: amountIcon,
+	schedule: scheduleIcon,
+	duration: durationIcon,
+	online: onlineIcon,
+} satisfies Record<IconFeatureIcon, ImageMetadata>;
+
+const items = (await getCollection('iconFeatures', ({ data }) => data.group === group))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => ({ ...item.data, image: iconMap[item.data.icon] }));
+---
+
+<section class="icon-features-section section" id={sectionId} aria-labelledby={titleId}>
+	<div class="container">
+		<div class="icon-features-section__heading">
+			<h2 class="icon-features-section__title section-title" id={titleId}>{title}</h2>
+			<p class="icon-features-section__description">{description}</p>
+		</div>
+
+		<div class="icon-features-section__grid">
+			{
+				items.map((item) => (
+					<article class="icon-feature-card">
+						<div
+							class:list={['icon-feature-card__icon', `icon-feature-card__icon--${item.icon}`]}
+							aria-hidden="true"
+						>
+							<Image
+								class="media-fill media-fit-contain"
+								src={item.image}
+								alt=""
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+						<div class="icon-feature-card__content">
+							<h3 class="icon-feature-card__title">{item.title}</h3>
+							<p class="icon-feature-card__text">{item.text}</p>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

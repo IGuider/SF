@@ -9,10 +9,10 @@ interface Props {
 const { paragraphs, ariaLabel } = Astro.props;
 ---
 
-<section class="tender-about section" aria-label={ariaLabel}>
+<section class="about-section section" aria-label={ariaLabel}>
 	<div class="container">
-		<div class="tender-about__content">
-			{paragraphs.map((paragraph) => <p class="tender-about__text">{paragraph}</p>)}
+		<div class="about-section__content">
+			{paragraphs.map((paragraph) => <p class="about-section__text">{paragraph}</p>)}
 		</div>
 	</div>
 </section>

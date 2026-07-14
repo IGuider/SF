@@ -48,7 +48,14 @@ const cards = (await getCollection('bgFeatureCards'))
 					<article class:list={['bg-feature-card', `bg-feature-card--${card.modifier}`]}>
 						<div class="bg-feature-card__content">
 							<h2 class="bg-feature-card__title">{card.title}</h2>
-							<p class="bg-feature-card__text">{card.text}</p>
+							<p class="bg-feature-card__text">
+								{card.textLines.map((line, index) => (
+									<>
+										<span class="bg-feature-card__text-line">{line}</span>
+										{index < card.textLines.length - 1 && ' '}
+									</>
+								))}
+							</p>
 						</div>
 
 						<div class:list={['bg-feature-card__media', `bg-feature-card__media--${card.modifier}`]} aria-hidden="true">

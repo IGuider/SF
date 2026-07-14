@@ -8,16 +8,19 @@ type Props = {
 	id?: string;
 	heading?: string;
 	title?: string;
+	titleLines?: string[];
 	textLines?: string[];
 	name?: string;
 	role?: string;
 	image?: ImageMetadata;
+	imageFit?: 'cover' | 'contain';
 };
 
 const {
 	id = 'manager',
 	heading = 'Персональный менеджер на весь процесс',
 	title = 'Сопровождаю вас от заявки до исполнения контракта',
+	titleLines,
 	textLines = [
 		'Помогу подобрать инструменты под ваш тендер, подскажу по сбору необходимых документов и объясню разницу в продуктах.',
 		'Всегда на связи любым удобным способом',
@@ -25,9 +28,11 @@ const {
 	name = 'Анна',
 	role = 'менеджер по госзаказу',
 	image = managerImage,
+	imageFit = 'cover',
 } = Astro.props;
 
 const titleId = `${id}-title`;
+const resolvedTitleLines = titleLines ?? [title];
 ---
 
 <section class="personal-manager section" id={id} aria-labelledby={titleId}>
@@ -39,7 +44,7 @@ const titleId = `${id}-title`;
 		<div class="personal-manager__panel">
 			<div class="personal-manager__visual" aria-hidden="true">
 				<Image
-					class="personal-manager__image media-fill media-fit-cover"
+					class:list={['personal-manager__image', 'media-fill', `media-fit-${imageFit}`]}
 					src={image}
 					alt=""
 					loading="lazy"
@@ -48,7 +53,14 @@ const titleId = `${id}-title`;
 			</div>
 
 			<div class="personal-manager__content">
-				<h3 class="personal-manager__title">{title}</h3>
+				<h3 class="personal-manager__title">
+					{resolvedTitleLines.map((line, index) => (
+						<>
+							{index > 0 && <br />}
+							{line}
+						</>
+					))}
+				</h3>
 				<p class="personal-manager__text">
 					{
 						textLines.map((line, index) => (

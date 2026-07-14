@@ -1,4 +1,4 @@
-.tender-about {
+.about-section {
   &__content {
     display: grid;
     gap: 42px;
@@ -14,7 +14,7 @@
 }
 
 @media (max-width: 1440px) {
-  .tender-about {
+  .about-section {
     &__content {
       gap: 36px;
     }
@@ -27,7 +27,7 @@
 }
 
 @media (max-width: 1024px) {
-  .tender-about {
+  .about-section {
     &__content {
       gap: 28px;
     }
@@ -40,7 +40,7 @@
 }
 
 @media (max-width: 560px) {
-  .tender-about {
+  .about-section {
     &__content {
       gap: 22px;
     }

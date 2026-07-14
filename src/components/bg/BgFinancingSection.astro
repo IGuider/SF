@@ -29,7 +29,13 @@ const items = (await getCollection('bgFinancingItems'))
 <section class="bg-financing section" id="financing" aria-labelledby="bg-financing-title">
 	<div class="container">
 		<div class="bg-financing__layout">
-			<h2 class="bg-financing__title section-title" id="bg-financing-title">Финансирование для&nbsp;госзаказа</h2>
+			<div class="bg-financing__header">
+				<h2 class="bg-financing__title section-title" id="bg-financing-title">Финансирование для&nbsp;госзаказа</h2>
+				<p class="bg-financing__description">
+					<span class="bg-financing__description-line">Банковская гарантия подтверждает финансовую надежность компании и позволяет</span>
+					<span class="bg-financing__description-line">участвовать в закупках без изъятия собственных средств из оборота</span>
+				</p>
+			</div>
 
 			<div class="bg-financing__grid">
 				{

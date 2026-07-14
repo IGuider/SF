@@ -3,11 +3,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 75px;
+    gap: 45px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
   }
 
   &__title {
     margin: 0;
+  }
+
+  &__description {
+    color: var(--color-primary);
+    font-size: 29px;
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+    text-align: center;
+  }
+
+  &__description-line {
+    display: block;
   }
 
   &__grid {
@@ -100,7 +119,16 @@
 @media (max-width: 1440px) {
   .bg-financing {
     &__layout {
-      gap: 75px;
+      gap: 45px;
+    }
+
+    &__header {
+      gap: 26px;
+    }
+
+    &__description {
+      font-size: 24px;
+      letter-spacing: -0.96px;
     }
 
     &__button.ui-button {
@@ -135,7 +163,16 @@
 @media (max-width: 1024px) {
   .bg-financing {
     &__layout {
-      gap: 50px;
+      gap: 40px;
+    }
+
+    &__header {
+      gap: 22px;
+    }
+
+    &__description {
+      font-size: 18px;
+      letter-spacing: -0.72px;
     }
 
     &__grid {
@@ -199,6 +236,19 @@
   .bg-financing {
     &__layout {
       gap: 45px;
+    }
+
+    &__header {
+      gap: 18px;
+    }
+
+    &__description {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+
+    &__description-line {
+      display: inline;
     }
 
     &__title {
@@ -289,6 +339,15 @@
   .bg-financing {
     &__layout {
       gap: 25px;
+    }
+
+    &__header {
+      gap: 15px;
+    }
+
+    &__description {
+      font-size: 16px;
+      letter-spacing: -0.64px;
     }
 
     &__title {

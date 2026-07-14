@@ -65,7 +65,7 @@
   &--speed &__content,
   &--amount &__content,
   &--documents &__content {
-    top: 96px;
+    top: 60px;
   }
 
   &--installment &__content {
@@ -86,6 +86,10 @@
     line-height: var(--line-height-compact);
     letter-spacing: -1.16px;
     color: var(--color-text-muted);
+  }
+
+  &__text-line {
+    display: block;
   }
 
   &__media {
@@ -161,7 +165,7 @@
     &--speed &__content,
     &--amount &__content,
     &--documents &__content {
-      top: 106px;
+      top: 70px;
     }
 
     &--installment &__content {
@@ -241,7 +245,7 @@
     &--speed &__content,
     &--amount &__content,
     &--documents &__content {
-      top: 54px;
+      top: 25px;
     }
 
     &--installment &__content {

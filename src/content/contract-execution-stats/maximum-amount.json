@@ -1,0 +1,10 @@
+{
+  "value": 65,
+  "prefix": "",
+  "postfix": "",
+  "label": "млн ₽",
+  "subtitle": "Максимальная сумма одного займа",
+  "background": "65",
+  "grouped": false,
+  "order": 2
+}
