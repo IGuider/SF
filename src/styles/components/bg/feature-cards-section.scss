@@ -7,6 +7,10 @@
     gap: var(--gap-sm);
     align-items: stretch;
   }
+
+  &__mobile-cta {
+    display: none;
+  }
 }
 
 .bg-feature-card {
@@ -389,28 +393,28 @@
         right: 0;
         bottom: 0;
         left: auto;
-        width: 144px;
+        width: 117px;
       }
 
       &--speed {
         top: auto;
         bottom: 0;
         right: 0;
-        width: 160px;
+        width: 145px;
       }
 
       &--amount {
         top: auto;
         bottom: 0;
         right: 0;
-        width: 143px;
+        width: 130px;
       }
 
       &--documents {
         top: auto;
         bottom: 0;
         right: 0;
-        width: 127px;
+        width: 110px;
       }
 
       &--installment {
@@ -429,18 +433,75 @@
 }
 
 @media (max-width: 560px) {
+  .bg-feature-cards {
+    &__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 5px;
+    }
+
+    &__mobile-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+
+      .consultation-dialog-trigger {
+        display: inline-flex;
+      }
+
+      .ui-button {
+        height: 45px;
+        padding: 6px 8px;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+    }
+  }
+
   .bg-feature-card {
-    min-height: 156px;
+    min-height: 110px;
+    border-radius: 10px;
 
     &--geography,
     &--speed,
     &--amount,
+    &--documents,
+    &--installment {
+      grid-column: 1;
+      grid-row: auto;
+      min-height: 110px;
+    }
+
+    &--speed {
+      order: 1;
+    }
+
+    &--amount {
+      order: 2;
+    }
+
     &--documents {
-      min-height: 156px;
+      order: 3;
+    }
+
+    &--geography {
+      order: 4;
     }
 
     &--installment {
-      min-height: 108px;
+      order: 5;
+    }
+
+    &__content,
+    &--geography &__content,
+    &--speed &__content,
+    &--amount &__content,
+    &--documents &__content,
+    &--installment &__content {
+      top: 20px;
+      bottom: auto;
+      left: 20px;
+      gap: 8px;
+      max-width: calc(100% - 40px);
     }
 
     &__title {
@@ -455,27 +516,39 @@
 
     &__media {
       &--geography {
-        width: 110px;
+        top: 0;
+        right: 0;
+        bottom: auto;
+        width: 85px;
       }
 
       &--speed {
-        width: 125px;
+        top: 0;
+        right: 0;
+        bottom: auto;
+        width: 106px;
       }
 
       &--amount {
-        width: 107px;
+        top: 0;
+        right: 0;
+        bottom: auto;
+        width: 91px;
       }
 
       &--documents {
-        width: 91px;
+        top: 10px;
+        right: 0;
+        bottom: auto;
+        width: 77px;
       }
 
       &--installment {
         top: 0;
         right: 0;
-        bottom: 0;
+        bottom: auto;
         left: auto;
-        width: 100px;
+        width: 104px;
       }
     }
   }
