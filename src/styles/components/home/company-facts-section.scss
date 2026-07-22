@@ -1,6 +1,21 @@
 @use "../common/section-mixins" as shared;
 
 .company-facts-section {
+  &__header.section-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 31px;
+  }
+
+  &__description {
+    max-width: 1380px;
+    font-size: 29px;
+    line-height: 1.2;
+    letter-spacing: -1.16px;
+    color: var(--color-primary);
+    text-align: center;
+  }
+
   &__grid {
     @include shared.feature-card-grid();
   }
@@ -36,6 +51,14 @@
 }
 
 @media (max-width: 1440px) {
+  .company-facts-section {
+    &__description {
+      max-width: 1040px;
+      font-size: 22px;
+      letter-spacing: -0.88px;
+    }
+  }
+
   .company-fact-card {
     min-height: 204px;
     padding: 34px 24px 26px;
@@ -54,6 +77,18 @@
 }
 
 @media (max-width: 1024px) {
+  .company-facts-section {
+    &__header.section-header {
+      gap: 24px;
+    }
+
+    &__description {
+      max-width: 780px;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+  }
+
   .company-fact-card {
     gap: 16px;
     min-height: auto;
@@ -93,6 +128,17 @@
 }
 
 @media (max-width: 560px) {
+  .company-facts-section {
+    &__header.section-header {
+      gap: 18px;
+    }
+
+    &__description {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+  }
+
   .company-fact-card {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;

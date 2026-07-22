@@ -1,4 +1,19 @@
 .directions-section {
+  &__header.section-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 31px;
+  }
+
+  &__description {
+    max-width: 1380px;
+    font-size: 29px;
+    line-height: 1.2;
+    letter-spacing: -1.16px;
+    color: var(--color-primary);
+    text-align: center;
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 512px minmax(0, 1fr);
@@ -75,6 +90,12 @@
 
 @media (max-width: 1440px) {
   .directions-section {
+    &__description {
+      max-width: 1040px;
+      font-size: 22px;
+      letter-spacing: -0.88px;
+    }
+
     &__grid {
       grid-template-columns: minmax(0, 1fr) 440px minmax(0, 1fr);
     }
@@ -120,6 +141,16 @@
 
 @media (max-width: 1024px) {
   .directions-section {
+    &__header.section-header {
+      gap: 24px;
+    }
+
+    &__description {
+      max-width: 780px;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+
     &__grid {
       grid-template-columns: minmax(0, 1fr) 300px minmax(0, 1fr);
     }
@@ -220,6 +251,17 @@
 }
 
 @media (max-width: 560px) {
+  .directions-section {
+    &__header.section-header {
+      gap: 18px;
+    }
+
+    &__description {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+  }
+
   .directions-card {
     min-height: 207px;
 

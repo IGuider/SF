@@ -9,14 +9,52 @@ import MissionSection from './MissionSection.astro';
 import WhyTrustSection from './WhyTrustSection.astro';
 import HeroSection from '../common/HeroSection.astro';
 import StepsSection from '../common/StepsSection.astro';
+import AboutSection from '../common/AboutSection.astro';
 import heroHomeImage from '../../assets/hero-home.jpg';
+
+const homeSteps = [
+	{
+		id: 'request',
+		number: '01',
+		title: 'Заявка',
+		descriptionLines: ['Оставьте заявку на сайте:', 'потребуется всего', 'несколько минут'],
+	},
+	{
+		id: 'review',
+		number: '02',
+		title: 'Рассмотрение',
+		descriptionLines: ['Проверим', 'данные и подготовим', 'индивидуальное предложение'],
+	},
+	{
+		id: 'offer',
+		number: '03',
+		title: 'Предложение',
+		descriptionLines: ['Подберем', 'финансовое решение', 'и согласуем условия'],
+	},
+	{
+		id: 'payout',
+		number: '04',
+		title: 'Выдача',
+		descriptionLines: ['Перечислим средства', 'после подписания', 'документов'],
+		ctaLabel: 'Оставить заявку',
+	},
+];
+
+const homeAboutParagraphs = [
+	'SimpleFinance — финансовая платформа для бизнеса, которая помогает предпринимателям и компаниям привлекать финансирование для развития, пополнения оборотных средств, исполнения контрактов, участия в государственных и коммерческих закупках, а также работы на маркетплейсах. Мы объединяем современные финансовые инструменты для бизнеса в одном сервисе, помогая подобрать оптимальное решение под конкретные задачи компании',
+	'На платформе доступны банковские гарантии, тендерные займы, финансирование исполнения контрактов, решения для поставщиков и продавцов маркетплейсов, а также другие продукты для малого и среднего бизнеса. Благодаря полностью онлайн-оформлению, собственной технологической платформе и сотрудничеству с финансовыми организациями SimpleFinance помогает получить финансирование бизнеса быстрее и сосредоточиться на развитии компании',
+];
 ---
 
 <main transition:name="page-content" transition:animate="fade">
 	<HeroSection
 		variant="home"
 		titleLines={['Финансирование,', 'которое помогает', 'бизнесу расти']}
-		descriptionLines={['Для государственных контрактов', 'и продавцов маркетплейсов']}
+		descriptionLines={[
+			'Помогаем получить финансирование для развития',
+			'компании, участия в государственных закупках,',
+			'исполнения контрактов и работы на маркетплейсах',
+		]}
 		buttonLabel="Подобрать решение"
 		buttonVariant="secondary"
 		image={heroHomeImage}
@@ -26,8 +64,17 @@ import heroHomeImage from '../../assets/hero-home.jpg';
 	<MissionSection />
 	<CompanyFactsSection />
 	<CompanyStatsSection />
-	<StepsSection />
-	<LeadFormSection />
+	<StepsSection
+		descriptionLines={['Получить финансирование можно полностью онлайн — от подачи заявки до получения денежных средств']}
+		steps={homeSteps}
+	/>
+	<LeadFormSection
+		descriptionLines={[
+			'Оставьте заявку, и мы предложим финансовый инструмент,',
+			'который поможет решить задачи вашей компании',
+		]}
+	/>
 	<BlogSection />
+	<AboutSection paragraphs={homeAboutParagraphs} ariaLabel="О платформе SimpleFinance" />
 	<FaqSection collection="homeFaq" />
 </main>
