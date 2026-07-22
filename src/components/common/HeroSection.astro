@@ -15,6 +15,7 @@ interface Props {
 	badgeVariant?: 'outline-primary' | 'outline-secondary';
 	titleLines: string[];
 	descriptionLines?: string[];
+	descriptionBreaksDesktopOnly?: boolean;
 	buttonLabel: string;
 	buttonVariant?: 'primary' | 'secondary' | 'outline';
 	image: ImageMetadata;
@@ -30,6 +31,7 @@ const {
 	badgeVariant = 'outline-secondary',
 	titleLines,
 	descriptionLines = [],
+	descriptionBreaksDesktopOnly = false,
 	buttonLabel,
 	buttonVariant = 'primary',
 	image,
@@ -83,7 +85,7 @@ const badgesClass = ['hero-section__badges', `hero-section__badges--${badgesPosi
 							>
 								{descriptionLines.map((line, index) => (
 									<>
-										{index > 0 && <br />}
+										{index > 0 && <><br class:list={{ 'desktop-only-break': descriptionBreaksDesktopOnly }} />{descriptionBreaksDesktopOnly && ' '}</>}
 										{line}
 									</>
 								))}

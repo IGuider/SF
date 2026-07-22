@@ -46,7 +46,7 @@ const stats = (await getCollection(collectionName))
 							</span>
 							{stat.label && <span class="company-stat-card__value-suffix">{stat.label}</span>}
 						</p>
-						<p class="company-stat-card__subtitle">{stat.subtitle}</p>
+						<p class="company-stat-card__subtitle" set:html={stat.subtitle}></p>
 					</article>
 				))
 			}

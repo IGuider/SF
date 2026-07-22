@@ -10,6 +10,7 @@ interface Props {
 	id?: string;
 	title?: string;
 	descriptionLines?: string[];
+	descriptionBreaksDesktopOnly?: boolean;
 	fields?: LeadFormField[];
 	submitLabel?: string;
 	fieldOverrides?: LeadFormFieldOverrides;
@@ -19,6 +20,7 @@ const {
 	id = 'lead-form',
 	title = 'Подберем решение под ваш бизнес',
 	descriptionLines = ['Оставьте заявку, и мы предложим', 'финансовый инструмент под вашу задачу'],
+	descriptionBreaksDesktopOnly = false,
 	fields = ['phone', 'email', 'inn', 'turnover'],
 	submitLabel = 'Подобрать решение',
 	fieldOverrides = {},
@@ -40,7 +42,7 @@ const turnoverOptions = (await getCollection('turnoverOptions'))
 					<p class="lead-form-section__description">
 						{descriptionLines.map((line, index) => (
 							<>
-								{index > 0 && <br />}
+								{index > 0 && <><br class:list={{ 'desktop-only-break': descriptionBreaksDesktopOnly }} />{descriptionBreaksDesktopOnly && ' '}</>}
 								{line}
 							</>
 						))}

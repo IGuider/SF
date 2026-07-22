@@ -2,17 +2,27 @@
 import '../../styles/components/common/about-section.scss';
 
 interface Props {
-	paragraphs: string[];
+	paragraphs: Array<string | string[]>;
 	ariaLabel: string;
+	breaksDesktopOnly?: boolean;
 }
 
-const { paragraphs, ariaLabel } = Astro.props;
+const { paragraphs, ariaLabel, breaksDesktopOnly = false } = Astro.props;
 ---
 
 <section class="about-section section" aria-label={ariaLabel}>
 	<div class="container">
 		<div class="about-section__content">
-			{paragraphs.map((paragraph) => <p class="about-section__text">{paragraph}</p>)}
+			{paragraphs.map((paragraph) => (
+				<p class="about-section__text">
+					{(Array.isArray(paragraph) ? paragraph : [paragraph]).map((line, index) => (
+						<>
+							{index > 0 && <><br class:list={{ 'desktop-only-break': breaksDesktopOnly }} />{breaksDesktopOnly && ' '}</>}
+							{line}
+						</>
+					))}
+				</p>
+			))}
 		</div>
 	</div>
 </section>

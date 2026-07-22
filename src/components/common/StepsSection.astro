@@ -18,6 +18,8 @@ interface Props {
 	title?: string;
 	descriptionLines?: string[];
 	steps?: StepItem[];
+	breaksDesktopOnly?: boolean;
+	descriptionDesktopNoWrap?: boolean;
 }
 
 const {
@@ -25,6 +27,8 @@ const {
 	title = 'Как получить финансирование',
 	descriptionLines = [],
 	steps: providedSteps,
+	breaksDesktopOnly = false,
+	descriptionDesktopNoWrap = false,
 }: Props = Astro.props;
 
 const collectionSteps = providedSteps
@@ -47,10 +51,10 @@ const sectionClass = ['steps-section', 'section', `steps-section--${variant}`].j
 			<h2 class="steps-section__title section-title" id="steps-title">{title}</h2>
 			{
 				descriptionLines.length > 0 && (
-					<p class="steps-section__description section-description">
+					<p class:list={['steps-section__description', 'section-description', { 'desktop-only-nowrap': descriptionDesktopNoWrap }]}>
 						{descriptionLines.map((line, index) => (
 							<>
-								{index > 0 && <br />}
+								{index > 0 && <><br class:list={{ 'desktop-only-break': breaksDesktopOnly }} />{breaksDesktopOnly && ' '}</>}
 								{line}
 							</>
 						))}
@@ -76,7 +80,7 @@ const sectionClass = ['steps-section', 'section', `steps-section--${variant}`].j
 							<p class="steps-card__description">
 								{(step.descriptionLines ?? [step.description]).map((line, index) => (
 									<>
-										{index > 0 && <br />}
+										{index > 0 && <><br class:list={{ 'desktop-only-break': breaksDesktopOnly }} />{breaksDesktopOnly && ' '}</>}
 										{line}
 									</>
 								))}
