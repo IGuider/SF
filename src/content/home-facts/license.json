@@ -1,6 +1,6 @@
 {
   "title": "Лицензия Центробанка",
-  "description": "Работаем в соответствии<br class=\"desktop-only-break\"> с требованиями законодательства Российской Федерации",
+  "description": "Работаем в соответствии<br class=\"desktop-only-break\"> <span class=\"desktop-only-nowrap\">с требованиями законодательства</span><br class=\"desktop-only-break\"> Российской Федерации",
   "logo": "br",
   "logoAlt": "Банк России",
   "logoWidth": "185px",

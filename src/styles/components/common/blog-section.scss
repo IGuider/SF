@@ -88,6 +88,7 @@
     overflow: hidden;
     font-size: clamp(17px, 9vw, 29px);
     letter-spacing: -1.16px;
+    text-wrap: balance;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     padding-right: 30px;

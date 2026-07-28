@@ -1,6 +1,6 @@
 {
   "title": "Продавцам маркетплейсов",
-  "description": "Для закупки товара, пополнения оборотных <span class=\"desktop-only-nowrap\">средств и масштабирования</span> продаж на маркетплейсах",
+  "description": "Для закупки товара, пополнения оборотных <span class=\"desktop-only-nowrap\">средств и масштабирования</span> продаж на маркетплейсах",
   "modifier": "marketplaces",
   "href": "ecom",
   "buttonVariant": "primary",
