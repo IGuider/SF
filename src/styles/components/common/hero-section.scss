@@ -304,6 +304,12 @@
     &__panel {
       padding: 35px 20px;
     }
+
+    &--ecom {
+      .hero-section__badges {
+        display: none;
+      }
+    }
   }
 }
 

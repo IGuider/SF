@@ -78,35 +78,35 @@ export const CALCULATOR_PERKS: readonly CalculatorPerk[] = [
 // Если меняются сроки или параметры из Excel, править нужно в первую очередь здесь.
 export const CALCULATOR_PLANS: readonly CalculatorPlan[] = [
   {
-    months: "3 месяца",
+    months: "3\u00A0месяца",
     featured: false,
     profitable: false,
     paymentPeriods: 3,
     firstPeriodRate: 1.5,
   },
   {
-    months: "6 месяцев",
+    months: "6\u00A0месяцев",
     featured: true,
     profitable: false,
     paymentPeriods: 5,
     firstPeriodRate: 2,
   },
   {
-    months: "9 месяцев",
+    months: "9\u00A0месяцев",
     featured: false,
     profitable: false,
     paymentPeriods: 8,
     firstPeriodRate: 3.75,
   },
   {
-    months: "12 месяцев",
+    months: "12\u00A0месяцев",
     featured: false,
     profitable: false,
     paymentPeriods: 11,
     firstPeriodRate: 4.5,
   },
   {
-    months: "18 месяцев",
+    months: "18\u00A0месяцев",
     featured: false,
     profitable: true,
     paymentPeriods: 17,
@@ -128,9 +128,9 @@ export const formatAmount = (value: number) => amountFormatter.format(value);
 export const truncateNumber = (value: number) =>
   value < 0 ? Math.ceil(value) : Math.floor(value);
 export const formatCurrency = (value: number) =>
-  `${currencyFormatter.format(truncateNumber(value))} ₽`;
+  `${currencyFormatter.format(truncateNumber(value))}\u00A0₽`;
 export const formatPercent = (value: number) =>
-  `${percentFormatter.format(value)} %`;
+  `${percentFormatter.format(value)}\u00A0%`;
 
 export const roundMoney = (value: number) => Math.round(value * 100) / 100;
 
