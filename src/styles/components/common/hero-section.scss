@@ -220,12 +220,12 @@
 
     &--tender-loan {
       .hero-section__badges {
-        gap: 8px;
+        gap: 5px;
       }
 
       .hero-section__badge.ui-badge {
-        --ui-badge-padding: 5px 10px;
-        --ui-badge-font-size: 14px;
+        --ui-badge-padding: 5px 6px;
+        --ui-badge-font-size: 13px;
         --ui-badge-letter-spacing: -0.56px;
       }
     }
@@ -307,6 +307,12 @@
 
     &--ecom {
       .hero-section__badges {
+        display: none;
+      }
+    }
+
+    &--tender-loan {
+      .hero-section__badge:last-child {
         display: none;
       }
     }

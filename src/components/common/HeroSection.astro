@@ -14,6 +14,7 @@ interface Props {
 	badgesLabel?: string;
 	badgeVariant?: 'outline-primary' | 'outline-secondary';
 	titleLines: string[];
+	titleBreaksDesktopOnly?: boolean;
 	descriptionLines?: string[];
 	descriptionBreaksDesktopOnly?: boolean;
 	buttonLabel: string;
@@ -30,6 +31,7 @@ const {
 	badgesLabel = 'Поддерживаемые площадки',
 	badgeVariant = 'outline-secondary',
 	titleLines,
+	titleBreaksDesktopOnly = false,
 	descriptionLines = [],
 	descriptionBreaksDesktopOnly = false,
 	buttonLabel,
@@ -73,7 +75,7 @@ const badgesClass = ['hero-section__badges', `hero-section__badges--${badgesPosi
 					>
 						{titleLines.map((line, index) => (
 							<>
-								{index > 0 && <br />}
+								{index > 0 && <><br class:list={{ 'desktop-only-break': titleBreaksDesktopOnly }} />{titleBreaksDesktopOnly && ' '}</>}
 								{line}
 							</>
 						))}
