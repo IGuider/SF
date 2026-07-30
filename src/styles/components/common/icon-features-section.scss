@@ -122,6 +122,7 @@
       letter-spacing: -0.96px;
     }
   }
+
 }
 
 @media (max-width: 1024px) {
@@ -295,6 +296,13 @@
       color: var(--color-text-strong);
       font-size: 16px;
       letter-spacing: -0.64px;
+    }
+  }
+
+  .icon-features-section--contract-execution {
+    .icon-feature-card:nth-child(2) .icon-feature-card__icon,
+    .icon-feature-card:nth-child(4) .icon-feature-card__icon {
+      transform: translateX(-6px);
     }
   }
 }

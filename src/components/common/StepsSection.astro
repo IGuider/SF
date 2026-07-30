@@ -19,6 +19,7 @@ interface Props {
 	descriptionLines?: string[];
 	steps?: StepItem[];
 	breaksDesktopOnly?: boolean;
+	descriptionBreaksDesktopOnly?: boolean;
 	descriptionDesktopNoWrap?: boolean;
 }
 
@@ -28,6 +29,7 @@ const {
 	descriptionLines = [],
 	steps: providedSteps,
 	breaksDesktopOnly = false,
+	descriptionBreaksDesktopOnly = breaksDesktopOnly,
 	descriptionDesktopNoWrap = false,
 }: Props = Astro.props;
 
@@ -54,7 +56,7 @@ const sectionClass = ['steps-section', 'section', `steps-section--${variant}`].j
 					<p class:list={['steps-section__description', 'section-description', { 'desktop-only-nowrap': descriptionDesktopNoWrap }]}>
 						{descriptionLines.map((line, index) => (
 							<>
-								{index > 0 && <><br class:list={{ 'desktop-only-break': breaksDesktopOnly }} />{breaksDesktopOnly && ' '}</>}
+								{index > 0 && <><br class:list={{ 'desktop-only-break': descriptionBreaksDesktopOnly }} />{descriptionBreaksDesktopOnly && ' '}</>}
 								{line}
 							</>
 						))}

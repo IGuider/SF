@@ -12,8 +12,10 @@ type Props = {
 	textLines?: string[];
 	name?: string;
 	role?: string;
+	roleLines?: string[];
 	image?: ImageMetadata;
 	imageFit?: 'cover' | 'contain';
+	breaksDesktopOnly?: boolean;
 };
 
 const {
@@ -27,15 +29,18 @@ const {
 	],
 	name = 'Анна',
 	role = 'менеджер по госзаказу',
+	roleLines,
 	image = managerImage,
 	imageFit = 'cover',
+	breaksDesktopOnly = false,
 } = Astro.props;
 
 const titleId = `${id}-title`;
 const resolvedTitleLines = titleLines ?? [title];
+const resolvedRoleLines = roleLines ?? [role];
 ---
 
-<section class="personal-manager section" id={id} aria-labelledby={titleId}>
+<section class:list={['personal-manager', 'section', `personal-manager--${id}`]} id={id} aria-labelledby={titleId}>
 	<div class="container">
 		<div class="personal-manager__header section-header">
 			<h2 class="section-title" id={titleId}>{heading}</h2>
@@ -56,7 +61,7 @@ const resolvedTitleLines = titleLines ?? [title];
 				<h3 class="personal-manager__title">
 					{resolvedTitleLines.map((line, index) => (
 						<>
-							{index > 0 && <br />}
+							{index > 0 && <><br class:list={{ 'desktop-only-break': breaksDesktopOnly }} />{breaksDesktopOnly && ' '}</>}
 							{line}
 						</>
 					))}
@@ -65,7 +70,7 @@ const resolvedTitleLines = titleLines ?? [title];
 					{
 						textLines.map((line, index) => (
 							<>
-								{index > 0 && <br />}
+								{index > 0 && <><br class:list={{ 'desktop-only-break': breaksDesktopOnly }} />{breaksDesktopOnly && ' '}</>}
 								{line}
 							</>
 						))
@@ -73,7 +78,14 @@ const resolvedTitleLines = titleLines ?? [title];
 				</p>
 				<div class="personal-manager__author">
 					<p class="personal-manager__name">{name}</p>
-					<p class="personal-manager__role">{role}</p>
+					<p class="personal-manager__role">
+						{resolvedRoleLines.map((line, index) => (
+							<>
+								{index > 0 && <><br class="personal-manager__role-break" />{' '}</>}
+								{line}
+							</>
+						))}
+					</p>
 				</div>
 			</div>
 		</div>

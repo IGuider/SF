@@ -1,4 +1,8 @@
 .personal-manager {
+  &__role-break {
+    display: none;
+  }
+
   &__header {
     margin-bottom: 85px;
   }
@@ -268,7 +272,33 @@
       font-size: 13px;
       letter-spacing: -0.52px;
       max-width: 190px;
-      margin-top: 5px;
+      margin-top: 3px;
     }
+
+    &__role-break {
+      display: initial;
+    }
+  }
+
+  .personal-manager--contract-execution-manager {
+    .personal-manager__content {
+      max-width: 100%;
+    }
+
+    .personal-manager__title {
+      max-width: 100%;
+    }
+
+    .personal-manager__text {
+      max-width: 260px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .personal-manager__visual {
+    right: -50px;
+    width: 170px;
+    height: 170px;
   }
 }

@@ -33,7 +33,7 @@ const items = (await getCollection('iconFeatures', ({ data }) => data.group === 
 	.map((item) => ({ ...item.data, image: iconMap[item.data.icon] }));
 ---
 
-<section class="icon-features-section section" id={sectionId} aria-labelledby={titleId}>
+<section class:list={['icon-features-section', 'section', `icon-features-section--${group}`]} id={sectionId} aria-labelledby={titleId}>
 	<div class="container">
 		<div class="icon-features-section__heading">
 			<h2 class="icon-features-section__title section-title" id={titleId}>{title}</h2>
