@@ -1,0 +1,221 @@
+.requisites-page {
+  position: relative;
+  color: var(--color-text-strong);
+  overflow: clip;
+}
+.requisites-page__decor {
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.requisites-page__decor-image {
+  display: block;
+  width: auto;
+  max-width: none;
+  user-select: none;
+}
+.requisites-page__decor-image--desktop {
+  width: 620px;
+}
+.requisites-page__decor-image--mobile-rocket, .requisites-page__decor-image--mobile-sphere {
+  display: none;
+}
+.requisites-page__section.section {
+  position: relative;
+  z-index: 1;
+  margin-block-start: 74px;
+}
+.requisites-page__title {
+  margin: 0 0 70px;
+  color: var(--color-primary);
+  font-size: 70px;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-compact);
+  letter-spacing: -2.8px;
+}
+.requisites-page__list {
+  display: grid;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+  font-size: 29px;
+  line-height: var(--line-height-compact);
+  letter-spacing: -1.16px;
+}
+.requisites-page__row {
+  display: grid;
+  grid-template-columns: 430px minmax(0, 793px);
+  gap: 86px;
+  align-items: start;
+}
+.requisites-page dt,
+.requisites-page dd {
+  margin: 0;
+}
+.requisites-page dt {
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+.requisites-page dt span {
+  display: block;
+  white-space: nowrap;
+}
+.requisites-page dd {
+  font-weight: var(--font-weight-regular);
+}
+.requisites-page a {
+  color: #2038a8;
+  text-decoration: none;
+  transition: opacity var(--transition-duration-fast) ease;
+}
+.requisites-page a:hover {
+  opacity: 0.75;
+}
+.requisites-page__bank {
+  margin-top: 135px;
+}
+.requisites-page__subtitle {
+  margin: 0 0 70px;
+  color: var(--color-text-strong);
+  font-size: 44px;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-compact);
+  letter-spacing: -1.76px;
+}
+.requisites-page__list--bank .requisites-page__row {
+  grid-template-columns: 318px minmax(0, 390px);
+  gap: 167px;
+}
+
+@media (max-width: 1440px) {
+  .requisites-page__section.section {
+    margin-block-start: 60px;
+  }
+  .requisites-page__decor {
+    right: -110px;
+  }
+  .requisites-page__decor-image--desktop {
+    width: 550px;
+  }
+  .requisites-page__title {
+    margin-bottom: 72px;
+    font-size: 58px;
+    letter-spacing: -2.32px;
+  }
+  .requisites-page__list {
+    font-size: 26px;
+    letter-spacing: -1.04px;
+  }
+  .requisites-page__row {
+    grid-template-columns: 318px minmax(0, 711px);
+    gap: 167px;
+  }
+  .requisites-page__bank {
+    margin-top: 100px;
+  }
+  .requisites-page__subtitle {
+    margin-bottom: 70px;
+    font-size: 35px;
+    letter-spacing: -1.4px;
+  }
+}
+@media (max-width: 1024px) {
+  .requisites-page__section.section {
+    margin-block-start: 50px;
+  }
+  .requisites-page__decor {
+    right: -90px;
+  }
+  .requisites-page__decor-image--desktop {
+    width: 380px;
+  }
+  .requisites-page__title {
+    margin-bottom: 55px;
+    font-size: 40px;
+    letter-spacing: -1.6px;
+  }
+  .requisites-page__list {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  .requisites-page__row {
+    grid-template-columns: 318px minmax(0, 360px);
+    gap: 110px;
+  }
+  .requisites-page__bank {
+    margin-top: 75px;
+  }
+  .requisites-page__subtitle {
+    margin-bottom: 55px;
+    font-size: 25px;
+    letter-spacing: -1px;
+  }
+  .requisites-page__list--bank {
+    gap: 15px;
+  }
+  .requisites-page__list--bank .requisites-page__row {
+    grid-template-columns: 318px minmax(0, 299px);
+    gap: 110px;
+  }
+}
+@media (max-width: 768px) {
+  .requisites-page__decor-image--desktop {
+    display: none;
+  }
+  .requisites-page__section.section {
+    margin-block-start: 90px;
+  }
+  .requisites-page__title {
+    margin-bottom: 35px;
+  }
+  .requisites-page__list {
+    font-size: 16px;
+    letter-spacing: -0.64px;
+  }
+  .requisites-page__row {
+    grid-template-columns: 195px minmax(0, 360px);
+    gap: 86px;
+  }
+  .requisites-page__bank {
+    margin-top: 70px;
+  }
+  .requisites-page__subtitle {
+    margin-bottom: 35px;
+    font-size: 21px;
+    letter-spacing: -0.84px;
+  }
+  .requisites-page__list--bank .requisites-page__row {
+    grid-template-columns: 195px minmax(0, 299px);
+    gap: 110px;
+  }
+}
+@media (max-width: 560px) {
+  .requisites-page__decor-image--mobile-rocket, .requisites-page__decor-image--mobile-sphere {
+    display: block;
+  }
+  .requisites-page__decor {
+    right: -30px;
+  }
+  .requisites-page__decor-image--mobile-rocket {
+    width: 230px;
+    transform: translate(-29px, -222px);
+  }
+  .requisites-page__decor-image--mobile-sphere {
+    width: 200px;
+  }
+  .requisites-page__section.section {
+    margin-block-start: 90px;
+  }
+  .requisites-page__title {
+    margin-bottom: 35px;
+  }
+  .requisites-page__row, .requisites-page__list--bank .requisites-page__row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .requisites-page__bank {
+    margin-top: 60px;
+  }
+}

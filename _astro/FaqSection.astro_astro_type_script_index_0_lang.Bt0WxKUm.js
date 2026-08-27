@@ -1,0 +1,1 @@
+import{r as e}from"./lifecycle.DPpCPxPn.js";import{i as t}from"./accordion.BSgOrvDE.js";const o=()=>t({rootSelector:".faq-section",itemSelector:".faq-item",triggerSelector:".faq-item__summary",panelSelector:".faq-item__content",panelInnerSelector:".faq-item__content-inner",openClass:"is-open"});e(o);

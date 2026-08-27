@@ -1,0 +1,1140 @@
+.bg-feature-cards {
+  padding-top: 0;
+}
+.bg-feature-cards__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.995fr) minmax(0, 0.998fr);
+  gap: var(--gap-sm);
+  align-items: stretch;
+}
+.bg-feature-cards__mobile-cta {
+  display: none;
+}
+
+.bg-feature-card {
+  position: relative;
+  min-width: 0;
+  min-height: 224px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--gradient-surface-feature);
+}
+.bg-feature-card--geography, .bg-feature-card--installment {
+  min-height: 684px;
+}
+.bg-feature-card--geography {
+  grid-column: 1;
+  grid-row: 1/4;
+}
+.bg-feature-card--speed {
+  grid-column: 2;
+  grid-row: 1;
+}
+.bg-feature-card--amount {
+  grid-column: 2;
+  grid-row: 2;
+}
+.bg-feature-card--documents {
+  grid-column: 2;
+  grid-row: 3;
+}
+.bg-feature-card--installment {
+  grid-column: 3;
+  grid-row: 1/4;
+}
+.bg-feature-card__content {
+  position: absolute;
+  z-index: 1;
+  left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  max-width: calc(100% - 80px);
+  color: var(--color-text-strong);
+}
+.bg-feature-card--geography .bg-feature-card__content {
+  bottom: 31px;
+}
+.bg-feature-card--speed .bg-feature-card__content, .bg-feature-card--amount .bg-feature-card__content, .bg-feature-card--documents .bg-feature-card__content {
+  top: 60px;
+}
+.bg-feature-card--installment .bg-feature-card__content {
+  top: 40px;
+}
+.bg-feature-card__title {
+  font-size: 40px;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-compact);
+  letter-spacing: -1.6px;
+  color: var(--color-text-strong);
+  white-space: nowrap;
+}
+.bg-feature-card__text {
+  font-size: 29px;
+  line-height: var(--line-height-compact);
+  letter-spacing: -1.16px;
+  color: var(--color-text-muted);
+}
+.bg-feature-card__text-line {
+  display: block;
+}
+.bg-feature-card__media {
+  position: absolute;
+  pointer-events: none;
+  line-height: 0;
+}
+.bg-feature-card__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.bg-feature-card__media--geography {
+  top: 0;
+  left: 0;
+  width: 450px;
+}
+.bg-feature-card__media--speed {
+  top: 0;
+  right: 0;
+  width: 170px;
+}
+.bg-feature-card__media--amount {
+  top: 0;
+  right: 0;
+  width: 163px;
+}
+.bg-feature-card__media--documents {
+  top: 20px;
+  right: 0;
+  width: 130px;
+}
+.bg-feature-card__media--installment {
+  right: -13px;
+  bottom: 30px;
+  width: 230px;
+}
+.bg-feature-card__image {
+  position: relative;
+}
+.bg-feature-card__media--installment .bg-feature-card__image {
+  object-fit: cover;
+  object-position: left center;
+}
+.bg-feature-card .consultation-dialog-trigger {
+  position: absolute;
+  z-index: 2;
+  left: 40px;
+  bottom: 30px;
+}
+
+@media (max-width: 1440px) {
+  .bg-feature-card__content {
+    left: 34px;
+    max-width: calc(100% - 68px);
+  }
+  .bg-feature-card--geography .bg-feature-card__content {
+    bottom: 34px;
+  }
+  .bg-feature-card--speed .bg-feature-card__content, .bg-feature-card--amount .bg-feature-card__content, .bg-feature-card--documents .bg-feature-card__content {
+    top: 70px;
+  }
+  .bg-feature-card--installment .bg-feature-card__content {
+    left: 40px;
+    top: 40px;
+    max-width: calc(100% - 80px);
+  }
+  .bg-feature-card__title {
+    font-size: 35px;
+    letter-spacing: -1.4px;
+  }
+  .bg-feature-card__text {
+    font-size: 26px;
+    letter-spacing: -1.04px;
+  }
+  .bg-feature-card__media--geography {
+    top: 0;
+    left: 0;
+    width: 410px;
+  }
+  .bg-feature-card__media--speed {
+    top: 5px;
+    right: 0;
+    width: 160px;
+  }
+  .bg-feature-card__media--amount {
+    top: 8px;
+    right: 0;
+    width: 150px;
+  }
+  .bg-feature-card__media--documents {
+    top: 30px;
+    right: 0;
+    width: 110px;
+  }
+  .bg-feature-card__media--installment {
+    right: 0;
+    bottom: 30px;
+    width: 220px;
+  }
+  .bg-feature-card .consultation-dialog-trigger {
+    left: 40px;
+    bottom: 33px;
+  }
+}
+@media (max-width: 1024px) {
+  .bg-feature-card {
+    min-height: 136px;
+    border-radius: var(--radius-md);
+  }
+  .bg-feature-card--geography, .bg-feature-card--installment {
+    min-height: 420px;
+  }
+  .bg-feature-card__content {
+    left: 25px;
+    max-width: calc(100% - 50px);
+  }
+  .bg-feature-card--geography .bg-feature-card__content {
+    bottom: 24px;
+  }
+  .bg-feature-card--speed .bg-feature-card__content, .bg-feature-card--amount .bg-feature-card__content, .bg-feature-card--documents .bg-feature-card__content {
+    top: 25px;
+  }
+  .bg-feature-card--installment .bg-feature-card__content {
+    left: 25px;
+    top: 25px;
+    max-width: calc(100% - 50px);
+  }
+  .bg-feature-card__title {
+    font-size: 25px;
+    letter-spacing: -1px;
+  }
+  .bg-feature-card__text {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  .bg-feature-card__media--geography {
+    top: 0;
+    left: 0;
+    width: 300px;
+  }
+  .bg-feature-card__media--speed {
+    top: 5px;
+    right: 0;
+    width: 106px;
+  }
+  .bg-feature-card__media--amount {
+    top: 7px;
+    right: 0;
+    width: 95px;
+  }
+  .bg-feature-card__media--documents {
+    top: 15px;
+    right: 0;
+    width: 75px;
+  }
+  .bg-feature-card__media--installment {
+    right: 0;
+    bottom: 20px;
+    width: 140px;
+  }
+  .bg-feature-card .consultation-dialog-trigger {
+    left: 27px;
+    bottom: 25px;
+  }
+}
+@media (max-width: 768px) {
+  .bg-feature-cards__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap-sm);
+  }
+  .bg-feature-card {
+    min-height: clamp(156px, 29vw, 215px);
+    border-radius: var(--radius-sm);
+  }
+  .bg-feature-card--geography, .bg-feature-card--speed, .bg-feature-card--amount, .bg-feature-card--documents {
+    grid-row: auto;
+    min-height: clamp(156px, 29vw, 215px);
+  }
+  .bg-feature-card--speed {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .bg-feature-card--amount {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .bg-feature-card--geography {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .bg-feature-card--documents {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .bg-feature-card--installment {
+    grid-column: 1/-1;
+    grid-row: 3;
+    min-height: clamp(108px, 19vw, 145px);
+  }
+  .bg-feature-card__content, .bg-feature-card--geography .bg-feature-card__content, .bg-feature-card--speed .bg-feature-card__content, .bg-feature-card--amount .bg-feature-card__content, .bg-feature-card--documents .bg-feature-card__content {
+    top: 17px;
+    bottom: auto;
+    left: 15px;
+    gap: 2px;
+    max-width: calc(100% - 30px);
+  }
+  .bg-feature-card--amount .bg-feature-card__content, .bg-feature-card--geography .bg-feature-card__content {
+    top: 15px;
+  }
+  .bg-feature-card--installment .bg-feature-card__content {
+    top: 27px;
+    left: 20px;
+    max-width: calc(100% - 40px);
+  }
+  .bg-feature-card__title {
+    font-size: clamp(21px, 3.25vw, 25px);
+    letter-spacing: -0.84px;
+    white-space: normal;
+  }
+  .bg-feature-card__text {
+    font-size: clamp(16px, 2.35vw, 18px);
+    letter-spacing: -0.64px;
+  }
+  .bg-feature-card__media--geography {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 117px;
+  }
+  .bg-feature-card__media--speed {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    width: 145px;
+  }
+  .bg-feature-card__media--amount {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    width: 130px;
+  }
+  .bg-feature-card__media--documents {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    width: 110px;
+  }
+  .bg-feature-card__media--installment {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 145px;
+  }
+  .bg-feature-card .consultation-dialog-trigger {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .bg-feature-cards__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 5px;
+  }
+  .bg-feature-cards__mobile-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  .bg-feature-cards__mobile-cta .consultation-dialog-trigger {
+    display: inline-flex;
+  }
+  .bg-feature-cards__mobile-cta .ui-button {
+    height: 45px;
+    padding: 6px 8px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .bg-feature-card {
+    min-height: 110px;
+    border-radius: 10px;
+  }
+  .bg-feature-card--geography, .bg-feature-card--speed, .bg-feature-card--amount, .bg-feature-card--documents, .bg-feature-card--installment {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 110px;
+  }
+  .bg-feature-card--speed {
+    order: 1;
+  }
+  .bg-feature-card--amount {
+    order: 2;
+  }
+  .bg-feature-card--documents {
+    order: 3;
+  }
+  .bg-feature-card--geography {
+    order: 4;
+  }
+  .bg-feature-card--installment {
+    order: 5;
+  }
+  .bg-feature-card__content, .bg-feature-card--geography .bg-feature-card__content, .bg-feature-card--speed .bg-feature-card__content, .bg-feature-card--amount .bg-feature-card__content, .bg-feature-card--documents .bg-feature-card__content, .bg-feature-card--installment .bg-feature-card__content {
+    top: 20px;
+    bottom: auto;
+    left: 20px;
+    gap: 8px;
+    max-width: calc(100% - 40px);
+  }
+  .bg-feature-card__title {
+    font-size: 21px;
+    letter-spacing: -0.84px;
+  }
+  .bg-feature-card__text {
+    font-size: 16px;
+    letter-spacing: -0.64px;
+  }
+  .bg-feature-card__media--geography {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    width: 85px;
+  }
+  .bg-feature-card__media--speed {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    width: 106px;
+  }
+  .bg-feature-card__media--amount {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    width: 91px;
+  }
+  .bg-feature-card__media--documents {
+    top: 10px;
+    right: 0;
+    bottom: auto;
+    width: 77px;
+  }
+  .bg-feature-card__media--installment {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    width: 104px;
+  }
+}.bg-financing__layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 45px;
+}
+.bg-financing__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.bg-financing__title {
+  margin: 0;
+}
+.bg-financing__description {
+  color: var(--color-primary);
+  font-size: 29px;
+  line-height: var(--line-height-compact);
+  letter-spacing: -1.16px;
+  text-align: center;
+}
+.bg-financing__description-line {
+  display: block;
+}
+.bg-financing__grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap-sm);
+}
+.bg-financing__button.ui-button {
+  height: 59px;
+  padding: 10px 26px;
+  font-size: 24px;
+}
+
+.bg-financing-card {
+  position: relative;
+  min-height: 421px;
+  padding: 37px 38px 70px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--gradient-surface-feature);
+}
+.bg-financing-card__heading-row {
+  display: contents;
+}
+.bg-financing-card__check {
+  display: none;
+}
+.bg-financing-card__title {
+  max-width: 238px;
+  color: var(--color-primary);
+  font-size: 36px;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-compact);
+  letter-spacing: -1.44px;
+}
+.bg-financing-card__text {
+  max-width: 278px;
+  margin-top: 20px;
+  color: var(--color-text-strong);
+  font-size: 29px;
+  line-height: var(--line-height-compact);
+  letter-spacing: -1.16px;
+}
+.bg-financing-card__line {
+  display: block;
+}
+.bg-financing-card__mobile-text {
+  display: none;
+}
+.bg-financing-card__icon {
+  position: absolute;
+  right: 16px;
+  bottom: -14px;
+  width: 121px;
+  height: 121px;
+  object-fit: contain;
+  pointer-events: none;
+}
+.bg-financing-card--contract .bg-financing-card__icon {
+  right: 17px;
+  width: 126px;
+  height: 126px;
+}
+.bg-financing-card--advance .bg-financing-card__icon {
+  right: 16px;
+  bottom: -17px;
+  width: 142px;
+  height: 142px;
+}
+.bg-financing-card--warranty .bg-financing-card__icon {
+  right: 10px;
+  bottom: -15px;
+  width: 125px;
+  height: 125px;
+}
+
+@media (max-width: 1440px) {
+  .bg-financing__layout {
+    gap: 45px;
+  }
+  .bg-financing__header {
+    gap: 26px;
+  }
+  .bg-financing__description {
+    font-size: 24px;
+    letter-spacing: -0.96px;
+  }
+  .bg-financing__button.ui-button {
+    height: 65px;
+    padding: 20px 25px;
+    font-size: 26px;
+  }
+  .bg-financing-card {
+    min-height: 421px;
+    padding: 37px 34px 70px;
+  }
+  .bg-financing-card__title {
+    font-size: 32px;
+    letter-spacing: -1.28px;
+  }
+  .bg-financing-card__text {
+    max-width: 246px;
+    font-size: 24px;
+    letter-spacing: -0.96px;
+  }
+  .bg-financing-card__icon {
+    right: 15px;
+    bottom: -17px;
+  }
+}
+@media (max-width: 1024px) {
+  .bg-financing__layout {
+    gap: 40px;
+  }
+  .bg-financing__header {
+    gap: 22px;
+  }
+  .bg-financing__description {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  .bg-financing__grid {
+    gap: var(--gap-sm);
+  }
+  .bg-financing__button.ui-button {
+    height: 47px;
+    padding: 12px 15px;
+    border-radius: var(--radius-xs);
+    font-size: 16px;
+  }
+  .bg-financing-card {
+    min-height: 339px;
+    padding: 25px 20px 70px;
+  }
+  .bg-financing-card__title {
+    max-width: 166px;
+    font-size: 25px;
+    letter-spacing: -1px;
+  }
+  .bg-financing-card__text {
+    max-width: 173px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  .bg-financing-card__icon {
+    right: 0;
+    bottom: -16px;
+    transform: translateX(0);
+  }
+  .bg-financing-card--participation .bg-financing-card__icon {
+    width: 97px;
+    height: 97px;
+  }
+  .bg-financing-card--contract .bg-financing-card__icon {
+    width: 101px;
+    height: 101px;
+  }
+  .bg-financing-card--advance .bg-financing-card__icon {
+    bottom: -16px;
+    width: 114px;
+    height: 114px;
+  }
+  .bg-financing-card--warranty .bg-financing-card__icon {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media (max-width: 768px) {
+  .bg-financing__layout {
+    gap: 45px;
+  }
+  .bg-financing__header {
+    gap: 18px;
+  }
+  .bg-financing__description {
+    font-size: 16px;
+    letter-spacing: -0.64px;
+  }
+  .bg-financing__description-line {
+    display: inline;
+  }
+  .bg-financing__title {
+    font-size: 27px;
+    letter-spacing: -1.08px;
+  }
+  .bg-financing__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap-sm);
+  }
+  .bg-financing__button.ui-button {
+    height: 38px;
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+  .bg-financing-card {
+    order: var(--bg-financing-mobile-order);
+    min-height: 125px;
+    padding: 17px 25px;
+  }
+  .bg-financing-card__heading-row {
+    display: block;
+  }
+  .bg-financing-card__title {
+    max-width: none;
+    font-size: 24px;
+    font-weight: var(--font-weight-regular);
+    letter-spacing: -0.96px;
+    white-space: nowrap;
+  }
+  .bg-financing-card__text {
+    max-width: 310px;
+    margin-top: 5px;
+    color: var(--color-text-muted);
+    font-size: 16px;
+    letter-spacing: -0.64px;
+  }
+  .bg-financing-card__desktop-text {
+    display: none;
+  }
+  .bg-financing-card__mobile-text {
+    display: inline;
+  }
+  .bg-financing-card__icon {
+    right: -1px;
+    bottom: -10px;
+    width: 57px;
+    height: 57px;
+    transform: none;
+  }
+  .bg-financing-card--participation .bg-financing-card__icon {
+    width: 57px;
+    height: 57px;
+  }
+  .bg-financing-card--contract .bg-financing-card__icon {
+    right: 5px;
+    width: 58px;
+    height: 58px;
+  }
+  .bg-financing-card--advance .bg-financing-card__icon {
+    right: 5px;
+    bottom: -9px;
+    width: 58px;
+    height: 58px;
+  }
+  .bg-financing-card--warranty .bg-financing-card__icon {
+    right: 8px;
+    width: 50px;
+    height: 53px;
+  }
+}
+@media (max-width: 560px) {
+  .bg-financing__layout {
+    gap: 25px;
+  }
+  .bg-financing__header {
+    gap: 15px;
+  }
+  .bg-financing__description {
+    font-size: 16px;
+    letter-spacing: -0.64px;
+  }
+  .bg-financing__title {
+    font-size: 25px;
+    letter-spacing: -1px;
+  }
+  .bg-financing__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .bg-financing__button.ui-button {
+    height: 45px;
+    padding: 6px 8px;
+    font-size: 16px;
+  }
+  .bg-financing-card {
+    min-height: auto;
+    padding: 15px 15px 15px 18px;
+    border-radius: var(--radius-sm);
+  }
+  .bg-financing-card__heading-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .bg-financing-card__check {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: 23px;
+    height: 23px;
+    border-radius: var(--radius-pill);
+    background: var(--color-secondary);
+  }
+  .bg-financing-card__check::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    width: 7px;
+    height: 4px;
+    border-left: 2px solid var(--color-white);
+    border-bottom: 2px solid var(--color-white);
+    transform: rotate(-45deg);
+  }
+  .bg-financing-card__title {
+    font-size: 22px;
+    letter-spacing: -0.88px;
+  }
+  .bg-financing-card__text {
+    max-width: none;
+    margin-top: 10px;
+    color: var(--color-text-strong);
+    font-size: 16px;
+    letter-spacing: -0.64px;
+  }
+  .bg-financing-card__icon {
+    display: none;
+  }
+}.bg-consult__panel {
+  position: relative;
+  min-height: 486px;
+  overflow: hidden;
+  border-radius: 19px;
+  background: linear-gradient(133deg, var(--color-surface-panel-start) 37.62%, var(--color-surface-panel-end) 99.57%);
+}
+.bg-consult__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50px;
+  width: min(100%, 692px);
+  padding: 66px 0 66px 58px;
+}
+.bg-consult__text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.bg-consult__title {
+  max-width: 690px;
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 47px;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-compact);
+  letter-spacing: -1.88px;
+}
+.bg-consult__description {
+  max-width: 658px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 29px;
+  line-height: var(--line-height-compact);
+  letter-spacing: -1.16px;
+}
+.bg-consult__visual {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 590px;
+  pointer-events: none;
+}
+.bg-consult__image {
+  object-position: center bottom;
+}
+
+@media (max-width: 1440px) {
+  .bg-consult__panel {
+    min-height: 450px;
+  }
+  .bg-consult__content {
+    width: min(100%, 692px);
+    padding: 66px 0 66px 58px;
+    gap: 40px;
+  }
+  .bg-consult__title {
+    font-size: 45px;
+    letter-spacing: -1.8px;
+  }
+  .bg-consult__description {
+    font-size: 26px;
+    letter-spacing: -1.04px;
+  }
+  .bg-consult__visual {
+    width: 550px;
+  }
+}
+@media (max-width: 1024px) {
+  .bg-consult {
+    display: none;
+  }
+}.bg-partners {
+  overflow: hidden;
+}
+.bg-partners__layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+.bg-partners__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  color: var(--color-primary);
+  text-align: center;
+}
+.bg-partners__title, .bg-partners__subtitle {
+  margin: 0;
+  line-height: var(--line-height-compact);
+}
+.bg-partners__title {
+  font-size: 52px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0;
+}
+.bg-partners__subtitle {
+  font-size: 29px;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+}
+.bg-partners__logos {
+  position: relative;
+  display: grid;
+  width: 100%;
+  max-width: 1116px;
+  height: auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  row-gap: 59px;
+  align-items: center;
+  color: #7da3ff;
+}
+.bg-partners__logo {
+  min-width: 0;
+  line-height: 0;
+}
+.bg-partners__logo img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.bg-partners__logo--sovkom {
+  justify-self: center;
+  width: min(100%, 295px);
+}
+.bg-partners__logo--sber {
+  justify-self: center;
+  width: min(100%, 237px);
+}
+.bg-partners__logo--metal {
+  justify-self: center;
+  width: min(100%, 329px);
+}
+.bg-partners__logo--mts {
+  justify-self: center;
+  width: min(100%, 205px);
+}
+.bg-partners__logo--alfa {
+  justify-self: center;
+  width: min(100%, 262px);
+}
+.bg-partners__logo--uralsib {
+  justify-self: center;
+  width: min(100%, 220px);
+}
+.bg-partners__marquee {
+  display: none;
+}
+
+@media (max-width: 1440px) {
+  .bg-partners__layout {
+    gap: 45px;
+  }
+  .bg-partners__heading {
+    gap: 35px;
+  }
+  .bg-partners__title {
+    font-size: 45px;
+  }
+  .bg-partners__subtitle {
+    font-size: 26px;
+  }
+}
+@media (max-width: 1024px) {
+  .bg-partners__layout {
+    gap: 50px;
+  }
+  .bg-partners__heading {
+    gap: 20px;
+  }
+  .bg-partners__title {
+    font-size: 32px;
+  }
+  .bg-partners__subtitle {
+    font-size: 18px;
+  }
+  .bg-partners__logos {
+    max-width: 840px;
+    row-gap: 45px;
+  }
+  .bg-partners__logo--sovkom {
+    width: min(100%, 222px);
+  }
+  .bg-partners__logo--sber {
+    width: min(100%, 179px);
+  }
+  .bg-partners__logo--metal {
+    width: min(100%, 248px);
+  }
+  .bg-partners__logo--mts {
+    width: min(100%, 204px);
+  }
+  .bg-partners__logo--alfa {
+    width: min(100%, 197px);
+  }
+  .bg-partners__logo--uralsib {
+    width: min(100%, 166px);
+  }
+}
+@media (max-width: 768px) {
+  .bg-partners__layout {
+    gap: 45px;
+  }
+  .bg-partners__heading {
+    gap: 15px;
+  }
+  .bg-partners__title {
+    font-size: 27px;
+  }
+  .bg-partners__subtitle {
+    font-size: 16px;
+  }
+  .bg-partners__logos {
+    max-width: 720px;
+    row-gap: 37px;
+  }
+  .bg-partners__logo--sovkom {
+    width: min(100%, 190px);
+  }
+  .bg-partners__logo--sber {
+    width: min(100%, 153px);
+  }
+  .bg-partners__logo--metal {
+    width: min(100%, 213px);
+  }
+  .bg-partners__logo--mts {
+    width: min(100%, 175px);
+  }
+  .bg-partners__logo--alfa {
+    width: min(100%, 169px);
+  }
+  .bg-partners__logo--uralsib {
+    width: min(100%, 142px);
+  }
+}
+@media (max-width: 560px) {
+  .bg-partners__layout {
+    gap: 30px;
+  }
+  .bg-partners__title {
+    font-size: 25px;
+  }
+  .bg-partners__subtitle {
+    font-size: 16px;
+  }
+  .bg-partners__logos {
+    display: none;
+  }
+  .bg-partners__marquee {
+    position: relative;
+    display: block;
+    width: 100vw;
+    height: 124px;
+    margin-inline: calc(50% - 50vw);
+    overflow: hidden;
+  }
+  .bg-partners__marquee::before, .bg-partners__marquee::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    width: min(18vw, 72px);
+    pointer-events: none;
+  }
+  .bg-partners__marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--color-white) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+  .bg-partners__marquee::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--color-white) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+  .bg-partners__marquee-row {
+    --bg-partners-marquee-gap: 25px;
+    --bg-partners-marquee-offset: -72px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  .bg-partners__marquee-row--top {
+    top: 15px;
+  }
+  .bg-partners__marquee-row--bottom {
+    --bg-partners-marquee-gap: 40px;
+    --bg-partners-marquee-offset: -65px;
+    top: 75px;
+  }
+  .bg-partners__marquee-track {
+    display: flex;
+    width: max-content;
+    transform: translateX(var(--bg-partners-marquee-offset));
+    will-change: transform;
+  }
+  .bg-partners__marquee-row--top .bg-partners__marquee-track {
+    animation: bg-partners-marquee-right 24s linear infinite;
+  }
+  .bg-partners__marquee-row--bottom .bg-partners__marquee-track {
+    animation: bg-partners-marquee-left 24s linear infinite;
+  }
+  .bg-partners__marquee-group {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: var(--bg-partners-marquee-gap);
+    padding-right: var(--bg-partners-marquee-gap);
+  }
+  .bg-partners__marquee-logo {
+    display: block;
+    flex: 0 0 auto;
+    height: auto;
+  }
+  .bg-partners__marquee-logo--sovkom {
+    width: 190px;
+  }
+  .bg-partners__marquee-logo--sber {
+    width: 153px;
+  }
+  .bg-partners__marquee-logo--metal {
+    width: 213px;
+  }
+  .bg-partners__marquee-logo--uralsib {
+    width: 142px;
+  }
+  .bg-partners__marquee-logo--mts {
+    width: 175px;
+  }
+  .bg-partners__marquee-logo--alfa {
+    width: 169px;
+  }
+  .bg-partners__marquee-logo--levober {
+    width: 133px;
+  }
+}
+@media (max-width: 360px) {
+  .bg-partners__title {
+    font-size: 22px;
+  }
+  .bg-partners__subtitle {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bg-partners__marquee-track {
+    animation: none;
+  }
+}
+@keyframes bg-partners-marquee-right {
+  from {
+    transform: translateX(calc(-50% + var(--bg-partners-marquee-offset)));
+  }
+  to {
+    transform: translateX(var(--bg-partners-marquee-offset));
+  }
+}
+@keyframes bg-partners-marquee-left {
+  from {
+    transform: translateX(var(--bg-partners-marquee-offset));
+  }
+  to {
+    transform: translateX(calc(-50% + var(--bg-partners-marquee-offset)));
+  }
+}

@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ru" data-astro-transition-scope="astro-tyfwoq7n-3">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Astro v6.3.6">
+    <meta name="description" content="Заем на исполнение государственного или коммерческого контракта без отвлечения оборотных средств.">
+    <link rel="icon" type="image/png" sizes="32x32" href="/SF/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/SF/favicon-16x16.png">
+    <title>SimpleFinance | Исполнение контракта</title>
+    
+<meta name="astro-view-transitions-enabled" content="true">
+<meta name="astro-view-transitions-fallback" content="animate">
+<script type="module" src="/SF/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CZ1STEZH.js"></script>
+  <link rel="stylesheet" href="/SF/_astro/StepsSection.h-UtTo1n.css">
+<style>.company-stats-section__grid {
+  display: grid;
+  gap: var(--gap-sm);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 768px) {
+  .company-stats-section__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.company-stat-card {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  gap: 38px;
+  min-height: 380px;
+  padding: 44px 20px 34px 37px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-surface-feature);
+  overflow: hidden;
+  isolation: isolate;
+}
+.company-stat-card__background {
+  position: absolute;
+  top: -46px;
+  right: -28px;
+  z-index: -1;
+  font-size: 150px;
+  letter-spacing: -5.44px;
+  color: rgba(229, 237, 255, 0.7);
+  white-space: nowrap;
+  pointer-events: none;
+  font-weight: 600;
+}
+.company-stat-card__value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin: 67px 0 0;
+  font-size: 90px;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: -3.6px;
+  color: var(--color-primary);
+}
+.company-stat-card__value-suffix {
+  font-size: clamp(32px, 3.2vw, 54px);
+  letter-spacing: -2.2px;
+}
+.company-stat-card__subtitle {
+  margin: 0;
+  max-width: 340px;
+  font-size: clamp(18px, 1.7vw, 29px);
+  letter-spacing: -1.16px;
+  color: var(--color-text-strong);
+}
+
+@media (max-width: 1440px) {
+  .company-stat-card {
+    min-height: 280px;
+    padding: 30px 27px 24px;
+    gap: 28px;
+  }
+  .company-stat-card__background {
+    top: -35px;
+    right: -11px;
+    font-size: 100px;
+    letter-spacing: -4px;
+  }
+  .company-stat-card__value {
+    margin-top: 40px;
+    font-size: clamp(52px, 5.5vw, 70px);
+    letter-spacing: -2.48px;
+  }
+  .company-stat-card__subtitle {
+    font-size: 26px;
+    letter-spacing: -1.04px;
+  }
+}
+@media (max-width: 1024px) {
+  .company-stat-card {
+    min-height: 220px;
+    padding: 24px 20px 22px;
+    gap: 20px;
+  }
+  .company-stat-card__background {
+    top: -35px;
+    right: -11px;
+    font-size: 90px;
+  }
+  .company-stat-card__value {
+    margin-top: 28px;
+    font-size: clamp(46px, 5.5vw, 54px);
+    letter-spacing: -2.16px;
+  }
+  .company-stat-card__value-suffix {
+    font-size: clamp(28px, 3.6vw, 36px);
+    letter-spacing: -1.44px;
+  }
+  .company-stat-card__subtitle {
+    font-size: clamp(16px, 1.8vw, 18px);
+    letter-spacing: -0.72px;
+    max-width: 420px;
+  }
+}
+@media (max-width: 768px) {
+  .company-stat-card {
+    min-height: 176px;
+    padding: 20px 22px;
+    border-radius: var(--radius-md-mobile);
+  }
+  .company-stat-card__background {
+    font-size: 100px;
+  }
+  .company-stat-card__value {
+    margin-top: 24px;
+    font-size: 62px;
+    letter-spacing: -1.84px;
+  }
+  .company-stat-card__value-suffix {
+    font-size: 50px;
+    letter-spacing: -1.44px;
+  }
+  .company-stat-card__subtitle {
+    font-size: 20px;
+    letter-spacing: -0.64px;
+  }
+}
+@media (max-width: 560px) {
+  .company-stat-card {
+    min-height: 130px;
+    padding: 20px 22px;
+    border-radius: var(--radius-md-mobile);
+    gap: 14px;
+  }
+  .company-stat-card__background {
+    top: -31px;
+    right: -13px;
+    font-size: 90px;
+  }
+  .company-stat-card__value {
+    margin-top: 14px;
+    font-size: 45px;
+    letter-spacing: -1.8px;
+  }
+  .company-stat-card__value-suffix {
+    font-size: 36px;
+    letter-spacing: -1.2px;
+  }
+  .company-stat-card__subtitle {
+    font-size: 16px;
+    letter-spacing: -0.64px;
+  }
+}</style>
+<link rel="stylesheet" href="/SF/_astro/SiteShell.B3XxVbyn.css">
+<style>.ui-badge {
+  display: inline-flex;
+  width: fit-content;
+  min-width: 0;
+  min-height: var(--ui-badge-min-height, auto);
+  align-items: center;
+  justify-content: center;
+  padding: var(--ui-badge-padding, 8px 20px);
+  border: var(--ui-badge-border-width, 1px) solid var(--ui-badge-border-color, transparent);
+  border-radius: var(--ui-badge-radius, var(--radius-pill));
+  background: var(--ui-badge-background, transparent);
+  color: var(--ui-badge-color, currentColor);
+  font-family: "Commissioner", Arial, sans-serif;
+  font-size: var(--ui-badge-font-size, 22px);
+  font-weight: var(--ui-badge-font-weight, var(--font-weight-regular));
+  line-height: var(--ui-badge-line-height, var(--line-height-compact));
+  letter-spacing: var(--ui-badge-letter-spacing, -0.88px);
+  text-align: center;
+  white-space: var(--ui-badge-white-space, nowrap);
+}
+.ui-badge[hidden] {
+  display: none;
+}
+.ui-badge--outline-primary {
+  --ui-badge-border-color: var(--color-primary);
+  --ui-badge-color: var(--color-primary);
+}
+.ui-badge--outline-secondary {
+  --ui-badge-border-color: var(--color-secondary);
+  --ui-badge-color: var(--color-secondary);
+  --ui-badge-line-height: var(--line-height-button);
+}
+.ui-badge--surface-white {
+  --ui-badge-background: var(--color-white);
+  --ui-badge-color: var(--color-text-muted);
+}
+.ui-badge--blog-primary {
+  --ui-badge-background: var(
+    --ui-badge-blog-background,
+    var(--color-surface-tag)
+  );
+  --ui-badge-color: var(--color-primary-border-strong);
+}
+.ui-badge--blog-muted {
+  --ui-badge-background: var(
+    --ui-badge-blog-background,
+    var(--color-surface-tag)
+  );
+  --ui-badge-color: var(--color-text-muted);
+}
+.ui-badge--rounded {
+  --ui-badge-radius: var(--ui-badge-rounded-radius, var(--radius-sm));
+}
+.ui-badge--pill {
+  --ui-badge-radius: var(--radius-pill);
+}</style>
+<link rel="stylesheet" href="/SF/_astro/PersonalManagerSection.CwCBehbD.css">
+<link rel="stylesheet" href="/SF/_astro/FaqSection.BtNSSsvo.css">
+<link rel="stylesheet" href="/SF/_astro/IconFeaturesSection.wNPTUeDG.css">
+<link rel="stylesheet" href="/SF/_astro/LeadFormSection.CrYv0g3a.css"><style>[data-astro-transition-scope="astro-grvvslmb-1"] { view-transition-name: page-content; }@layer astro { ::view-transition-old(page-content) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(page-content) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(page-content) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(page-content) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-grvvslmb-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-grvvslmb-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-grvvslmb-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-grvvslmb-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-grvvslmb-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-grvvslmb-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-grvvslmb-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-grvvslmb-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-o3uvwbk5-2"] { view-transition-name: site-brand; }@layer astro { ::view-transition-old(site-brand) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(site-brand) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(site-brand) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(site-brand) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-o3uvwbk5-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-o3uvwbk5-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-o3uvwbk5-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-o3uvwbk5-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-o3uvwbk5-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-o3uvwbk5-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-o3uvwbk5-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-o3uvwbk5-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-tyfwoq7n-3"] { view-transition-name: root; }@layer astro { ::view-transition-old(root) { animation: none; opacity: 0; mix-blend-mode: normal; }::view-transition-new(root) { animation: none; mix-blend-mode: normal; }::view-transition-group(root) { animation: none } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-tyfwoq7n-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-tyfwoq7n-3"] { animation: none; mix-blend-mode: normal; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-tyfwoq7n-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-tyfwoq7n-3"] { animation: none; mix-blend-mode: normal; }</style></head>
+  <body>
+    
+	<header class="site-header">
+	<div class="container site-header__inner">
+		<a class="site-header__brand" href="/SF/" aria-label="SimpleFinance" data-astro-transition-scope="astro-o3uvwbk5-2">
+			<img class="site-header__logo" src="/SF/_astro/sf-logo.DMG_1NIQ.svg" alt="SimpleFinance">
+		</a>
+
+		<button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="site-header-menu" aria-label="Открыть меню">
+			<span class="site-header__toggle-line"></span>
+			<span class="site-header__toggle-line"></span>
+			<span class="site-header__toggle-line"></span>
+		</button>
+
+		<div class="site-header__menu" id="site-header-menu">
+			<div class="site-header__menu-container">
+				<nav class="site-header__nav" aria-label="Основная навигация">
+					<ul class="site-header__nav-list site-header__nav-list--desktop">
+						<li class="site-header__nav-item">
+									<a class="site-header__nav-link" href="/SF/about/">
+										О компании
+									</a>
+									
+								</li><li class="site-header__nav-item site-header__nav-item--has-submenu">
+									<a class="site-header__nav-link" href="/SF/products/" aria-haspopup="true">
+										Продукты
+									</a>
+									<div class="site-header__submenu" aria-label="Раздел Продукты">
+											<ul class="site-header__submenu-list">
+												<li class="site-header__submenu-group">
+														<a class="site-header__submenu-link site-header__submenu-link--group" href="/SF/goszakaz/">
+															Гос- и коммерческие закупки
+														</a>
+														<ul class="site-header__submenu-list site-header__submenu-list--nested">
+																<li>
+																		<a class="site-header__submenu-link site-header__submenu-link--child" href="/SF/bg/">
+																			Банковская гарантия
+																		</a>
+																	</li><li>
+																		<a class="site-header__submenu-link site-header__submenu-link--child" href="/SF/tendernyy-zaem/">
+																			Тендерный заем
+																		</a>
+																	</li><li>
+																		<a class="site-header__submenu-link site-header__submenu-link--child" href="/SF/ispolnenie-kontrakta/">
+																			Исполнение контракта
+																		</a>
+																	</li>
+															</ul>
+													</li><li class="site-header__submenu-group">
+														<a class="site-header__submenu-link site-header__submenu-link--group" href="/SF/ecom/">
+															Поставщикам маркетплейсов
+														</a>
+														
+													</li><li class="site-header__submenu-group">
+														<a class="site-header__submenu-link site-header__submenu-link--group" href="https://platform.simplefinance.ru/">
+															Агентам
+														</a>
+														
+													</li>
+											</ul>
+										</div>
+								</li><li class="site-header__nav-item">
+									<a class="site-header__nav-link" href="/SF/blog/">
+										Блог
+									</a>
+									
+								</li><li class="site-header__nav-item">
+									<a class="site-header__nav-link" href="/SF/contacts/">
+										Контакты
+									</a>
+									
+								</li>
+					</ul>
+
+					<ul class="site-header__nav-list site-header__nav-list--mobile">
+						<li class="site-header__nav-item">
+									<a class="site-header__nav-link" href="/SF/about/">О компании</a>
+									
+								</li><li class="site-header__nav-item site-header__nav-item--has-submenu">
+									<a class="site-header__nav-link" href="/SF/products/">Продукты</a>
+									<div class="site-header__submenu" aria-label="Раздел Продукты">
+											<ul class="site-header__submenu-list">
+												<li class="site-header__submenu-group">
+														<a class="site-header__submenu-link site-header__submenu-link--group" href="/SF/goszakaz/">
+															Гос- и коммерческие закупки
+														</a>
+														<ul class="site-header__submenu-list site-header__submenu-list--nested">
+																<li>
+																		<a class="site-header__submenu-link site-header__submenu-link--child" href="/SF/bg/">
+																			Банковская гарантия
+																		</a>
+																	</li><li>
+																		<a class="site-header__submenu-link site-header__submenu-link--child" href="/SF/tendernyy-zaem/">
+																			Тендерный заем
+																		</a>
+																	</li><li>
+																		<a class="site-header__submenu-link site-header__submenu-link--child" href="/SF/ispolnenie-kontrakta/">
+																			Исполнение контракта
+																		</a>
+																	</li>
+															</ul>
+													</li><li class="site-header__submenu-group">
+														<a class="site-header__submenu-link site-header__submenu-link--group" href="/SF/ecom/">
+															Поставщикам маркетплейсов
+														</a>
+														
+													</li><li class="site-header__submenu-group">
+														<a class="site-header__submenu-link site-header__submenu-link--group" href="https://platform.simplefinance.ru/">
+															Агентам
+														</a>
+														
+													</li>
+											</ul>
+										</div>
+								</li><li class="site-header__nav-item">
+									<a class="site-header__nav-link" href="/SF/blog/">Блог</a>
+									
+								</li><li class="site-header__nav-item">
+									<a class="site-header__nav-link" href="/SF/contacts/">Контакты</a>
+									
+								</li>
+					</ul>
+				</nav>
+
+				<div class="site-header__actions">
+					<a class="site-header__phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+					<span class="consultation-dialog-trigger">
+  
+						<button class="ui-button ui-button--outline ui-button--md site-header__button" type="button">
+			Перезвоните мне
+		</button>
+					
+</span>
+				</div>
+
+				<div class="site-header__mobile-footer">
+					<a class="site-header__mobile-phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+
+					<ul class="site-header__socials" aria-label="Социальные сети">
+						<li>
+									<a href="#" aria-label="ВКонтакте">
+										
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path d="M20 0C16.0444 0 12.1776 1.17298 8.8886 3.37061C5.59962 5.56823 3.03617 8.69181 1.52242 12.3463C0.00866575 16.0009 -0.387401 20.0222 0.384303 23.9018C1.15601 27.7814 3.06082 31.3451 5.85787 34.1421C8.65492 36.9392 12.2186 38.844 16.0982 39.6157C19.9778 40.3874 23.9991 39.9913 27.6537 38.4776C31.3082 36.9638 34.4318 34.4004 36.6294 31.1114C38.827 27.8224 40 23.9556 40 20C40 14.6957 37.8929 9.60859 34.1421 5.85786C30.3914 2.10714 25.3043 0 20 0ZM31.5273 27.8273C30.9455 27.9091 28.1 27.8273 27.9523 27.8273C27.2167 27.8369 26.507 27.556 25.9773 27.0455C25.3773 26.4659 24.8409 25.8295 24.2545 25.2273C24.0818 25.0424 23.894 24.8721 23.6932 24.7182C23.225 24.3591 22.7614 24.4386 22.5409 24.9932C22.3688 25.59 22.2486 26.2006 22.1818 26.8182C22.1432 27.3773 21.7886 27.7273 21.1614 27.7659C20.7727 27.7864 20.3841 27.7955 20 27.7841C18.6001 27.7764 17.222 27.436 15.9795 26.7909C14.6348 26.0423 13.4631 25.0185 12.5409 23.7864C11.025 21.85 9.81364 19.7227 8.73182 17.5295C8.67501 17.4182 7.56592 15.0591 7.53864 14.9477C7.43864 14.5773 7.53864 14.2205 7.84546 14.0955C8.04092 14.0205 11.6955 14.0955 11.7568 14.0955C12.0287 14.0936 12.2941 14.1783 12.5148 14.3372C12.7354 14.4961 12.8997 14.7211 12.9841 14.9795C13.6603 16.7091 14.5852 18.3307 15.7296 19.7932C15.8899 19.988 16.0774 20.1587 16.2864 20.3C16.5841 20.5045 16.8659 20.4341 16.9886 20.0886C17.1343 19.6125 17.2198 19.1201 17.2432 18.6227C17.2636 17.6364 17.2432 16.9886 17.1886 16.0023C17.1523 15.3705 16.9296 14.8182 15.9977 14.6386C15.7114 14.5864 15.6864 14.35 15.8705 14.1136C16.2546 13.625 16.7796 13.5455 17.3682 13.5159C18.2455 13.4659 19.1227 13.5 20 13.5159H20.1909C20.5727 13.5145 20.9536 13.5534 21.3273 13.6318C21.5483 13.6769 21.749 13.7922 21.8992 13.9605C22.0495 14.1288 22.1415 14.3412 22.1614 14.5659C22.2065 14.8148 22.2255 15.0676 22.2182 15.3205C22.1955 16.3955 22.1432 17.4727 22.1318 18.5477C22.1213 18.9743 22.1601 19.4006 22.2477 19.8182C22.3727 20.3909 22.7659 20.5341 23.1568 20.1205C23.6634 19.5869 24.1277 19.0147 24.5455 18.4091C25.2859 17.3052 25.896 16.1192 26.3636 14.875C26.6182 14.2364 26.8182 14.0955 27.5 14.0955H31.3773C31.6078 14.0914 31.8377 14.1221 32.0591 14.1864C32.1375 14.207 32.2107 14.2435 32.2743 14.2937C32.3379 14.344 32.3905 14.4068 32.4287 14.4783C32.4668 14.5497 32.4899 14.6283 32.4963 14.7091C32.5027 14.7899 32.4924 14.8711 32.4659 14.9477C32.275 15.7977 31.8159 16.5227 31.3295 17.2205C30.5409 18.3364 29.7091 19.425 28.9023 20.5273C28.8052 20.6698 28.7164 20.8177 28.6364 20.9704C28.3318 21.5205 28.3545 21.8273 28.7955 22.2818C29.5 23.0068 30.2523 23.6841 30.9318 24.4295C31.4302 24.9719 31.8804 25.5567 32.2773 26.1773C32.7614 26.9591 32.4545 27.6954 31.5273 27.8273Z" fill="#0537C8"></path>
+		</svg>
+
+
+									</a>
+								</li><li>
+									<a href="#" aria-label="Telegram">
+										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95469 0 0 8.95469 0 20C0 31.0453 8.95469 40 20 40C31.0453 40 40 31.0453 40 20C40 8.95469 31.0453 0 20 0ZM29.2703 13.6016C28.9695 16.7641 27.6672 24.4383 27.0047 27.9805C26.7242 29.4797 26.1719 29.982 25.6375 30.0312C24.4766 30.1383 23.5945 29.2633 22.4695 28.5258C20.7094 27.3719 19.7148 26.6539 18.0063 25.5281C16.0312 24.2266 17.3117 23.5117 18.4367 22.343C18.7313 22.0367 23.8484 17.382 23.9477 16.9602C23.9602 16.907 23.9719 16.7102 23.8547 16.6063C23.7375 16.5023 23.5648 16.5383 23.4406 16.5664C23.2641 16.6063 20.4516 18.4648 15.0047 22.1422C14.2063 22.6906 13.4836 22.957 12.8352 22.9437C12.1211 22.9281 10.7477 22.5398 9.72656 22.2078C8.47422 21.8008 7.47891 21.5852 7.56562 20.8937C7.61016 20.5336 8.10625 20.1656 9.05312 19.7891C14.8836 17.2484 18.7711 15.5742 20.7164 14.7648C26.271 12.4548 27.425 12.0531 28.1773 12.0398C29.1196 12.0232 29.347 12.801 29.2703 13.6016Z" fill="#0537C8"></path>
+		</svg>
+
+
+
+
+
+
+									</a>
+								</li><li>
+									<a href="#" aria-label="MAX">
+										
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95469 0 0 8.95469 0 20C0 31.0453 8.95469 40 20 40C31.0453 40 40 31.0453 40 20C40 8.95469 31.0453 0 20 0ZM29.2703 13.6016C28.9695 16.7641 27.6672 24.4383 27.0047 27.9805C26.7242 29.4797 26.1719 29.982 25.6375 30.0312C24.4766 30.1383 23.5945 29.2633 22.4695 28.5258C20.7094 27.3719 19.7148 26.6539 18.0063 25.5281C16.0312 24.2266 17.3117 23.5117 18.4367 22.343C18.7313 22.0367 23.8484 17.382 23.9477 16.9602C23.9602 16.907 23.9719 16.7102 23.8547 16.6063C23.7375 16.5023 23.5648 16.5383 23.4406 16.5664C23.2641 16.6063 20.4516 18.4648 15.0047 22.1422C14.2063 22.6906 13.4836 22.957 12.8352 22.9437C12.1211 22.9281 10.7477 22.5398 9.72656 22.2078C8.47422 21.8008 7.47891 21.5852 7.56562 20.8937C7.61016 20.5336 8.10625 20.1656 9.05312 19.7891C14.8836 17.2484 18.7711 15.5742 20.7164 14.7648C26.271 12.4548 27.425 12.0531 28.1773 12.0398C29.1196 12.0232 29.347 12.801 29.2703 13.6016Z" fill="#0537C8"></path>
+			<circle cx="20.5" cy="20.5" r="13.5" fill="#0537C8"></circle>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M19.7041 28.9458C17.8395 28.9458 16.973 28.6724 15.4668 27.5788C14.5141 28.8091 11.4971 29.7705 11.3656 28.1256C11.3656 26.8908 11.0934 25.8474 10.7849 24.7083C10.4174 23.3049 10 21.742 10 19.4775C10 14.0689 14.4188 10 19.6542 10C24.8942 10 28.9999 14.2694 28.9999 19.5276C29.0175 24.7044 24.8585 28.9182 19.7041 28.9458ZM19.7813 14.6749C17.2316 14.5428 15.2445 16.3153 14.8044 19.0947C14.4415 21.3957 15.0857 24.1979 15.6346 24.3438C15.8978 24.4075 16.5602 23.8699 16.973 23.4552C17.6557 23.9289 18.4506 24.2134 19.2777 24.28C21.9195 24.4076 24.1769 22.3876 24.3543 19.7372C24.4576 17.0811 22.4235 14.8315 19.7813 14.6795V14.6749Z" fill="white"></path>
+		</svg>
+
+
+
+
+									</a>
+								</li><li>
+									<a href="mailto:info@simplefinance.ru" aria-label="Email">
+										
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path d="M39 20.5C39 9.73045 30.2696 1 19.5 1C8.73045 1 0 9.73045 0 20.5C0 31.2696 8.73045 40 19.5 40C30.2696 40 39 31.2696 39 20.5Z" fill="#0537C8"></path>
+			<path d="M27.7696 13.0522H11.2319C10.9505 13.0524 10.6734 13.1174 10.4245 13.2416C10.1756 13.3659 9.96256 13.5456 9.80371 13.7653L18.0717 19.3101C18.4894 19.5893 18.9884 19.7393 19.4999 19.7393C20.0114 19.7393 20.5104 19.5893 20.9281 19.3101L29.1952 13.7653C29.0366 13.546 28.8239 13.3664 28.5756 13.2422C28.3272 13.1179 28.0506 13.0528 27.7696 13.0522Z" fill="white"></path>
+			<path d="M21.6432 20.2647C21.0164 20.6844 20.2675 20.9097 19.4996 20.9097C18.7317 20.9097 17.9827 20.6844 17.356 20.2647L9.5 14.9966V25.4149C9.5 25.8492 9.68239 26.2657 10.007 26.5727C10.3317 26.8798 10.772 27.0523 11.2312 27.0523H27.7688C28.228 27.0523 28.6683 26.8798 28.993 26.5727C29.3176 26.2657 29.5 25.8492 29.5 25.4149V14.9966L21.6432 20.2647Z" fill="white"></path>
+		</svg>
+									</a>
+								</li>
+					</ul>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="site-header__decor" aria-hidden="true">
+			<img class="site-header__decor-item site-header__decor-item--top" src="/SF/_astro/menu-bg1.sRjCXtST.png" alt="">
+			<img class="site-header__decor-item site-header__decor-item--bottom" src="/SF/_astro/menu-bg2.CNJEz8gR.png" alt="">
+		</div>
+	</div>
+</header>
+
+<script type="module" src="/SF/_astro/Header.astro_astro_type_script_index_0_lang.CjGE52hc.js"></script>
+	
+	<main data-astro-transition-scope="astro-grvvslmb-1">
+	<section class="hero-section section hero-section--contract-execution" id="hero">
+	<div class="container">
+		<div class="hero-section__layout">
+			<div class="hero-section__content">
+				
+				<div class="hero-section__panel">
+					
+					<h1 class="hero-section__title">
+						Заем на исполнение<br>контракта за 2 дня
+					</h1>
+					<p class="hero-section__text">
+								Финансирование для государственного<br class="desktop-only-break"> или коммерческого контракта без отвлечения<br class="desktop-only-break"> оборотных средств
+							</p>
+					<ul class="hero-section__badges hero-section__badges--after-text" aria-label="Поддерживаемые виды закупок">
+								<li class="ui-badge ui-badge--outline-primary ui-badge--pill hero-section__badge">
+	44‑ФЗ
+</li><li class="ui-badge ui-badge--outline-primary ui-badge--pill hero-section__badge">
+	223‑ФЗ
+</li><li class="ui-badge ui-badge--outline-primary ui-badge--pill hero-section__badge">
+	185‑ФЗ и 615‑ПП
+</li>
+							</ul>
+
+					<div>
+						<span class="consultation-dialog-trigger">
+  
+							<button class="ui-button ui-button--secondary ui-button--xl hero-section__button" type="button">
+			Подобрать решение
+		</button>
+						
+</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="hero-section__visual" aria-hidden="true">
+				<div class="hero-section__visual-frame">
+					
+<img src="/SF/_astro/hero-ipsk.DO71zFCB_sKm1I.webp" alt loading="eager" decoding="async" width="1791" height="1569" class="hero-section__image media-fill media-fit-cover">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+	<section class="company-stats-section section" id="contract-execution-stats" aria-labelledby="contract-execution-stats-title" data-company-stats-counter>
+	<div class="container">
+		<div class="company-stats-section__header section-header section-header--compact">
+			<h2 class="company-stats-section__title section-title" id="contract-execution-stats-title">Преимущества</h2>
+		</div>
+
+		<div class="company-stats-section__grid">
+			<article class="company-stat-card">
+						<span class="company-stat-card__background" aria-hidden="true">
+							3 800
+						</span>
+						<p class="company-stat-card__value">
+							<span class="company-stat-card__value-number" data-company-stat-number data-target="3800" data-prefix data-postfix="+" data-grouped="true">
+								3800+
+							</span>
+							
+						</p>
+						<p class="company-stat-card__subtitle">Профинансированных контрактов</p>
+					</article><article class="company-stat-card">
+						<span class="company-stat-card__background" aria-hidden="true">
+							65
+						</span>
+						<p class="company-stat-card__value">
+							<span class="company-stat-card__value-number" data-company-stat-number data-target="65" data-prefix data-postfix data-grouped="false">
+								65
+							</span>
+							<span class="company-stat-card__value-suffix">млн ₽</span>
+						</p>
+						<p class="company-stat-card__subtitle">Максимальная сумма одного займа</p>
+					</article><article class="company-stat-card">
+						<span class="company-stat-card__background" aria-hidden="true">
+							2017
+						</span>
+						<p class="company-stat-card__value">
+							<span class="company-stat-card__value-number" data-company-stat-number data-target="2017" data-prefix="с " data-postfix data-grouped="false">
+								с 2017
+							</span>
+							<span class="company-stat-card__value-suffix">года</span>
+						</p>
+						<p class="company-stat-card__subtitle">На рынке госфинансирования</p>
+					</article>
+		</div>
+	</div>
+</section>
+	<section class="icon-features-section section icon-features-section--contract-execution" id="contract-execution-features" aria-labelledby="contract-execution-features-title">
+	<div class="container">
+		<div class="icon-features-section__heading">
+			<h2 class="icon-features-section__title section-title" id="contract-execution-features-title">Прозрачные условия без скрытых комиссий</h2>
+			<p class="icon-features-section__description section-description">Получите средства на исполнение контракта, закупку материалов, оплату поставщиков и запуск работ до поступления оплаты от заказчика</p>
+		</div>
+
+		<div class="icon-features-section__grid">
+			<article class="icon-feature-card">
+						<div class="icon-feature-card__icon icon-feature-card__icon--schedule" aria-hidden="true">
+							
+<img src="/SF/_astro/w-tz-2.Cp83NXH5_2n2xpy.webp" alt loading="lazy" decoding="async" width="244" height="200" class="media-fill media-fit-contain">
+						</div>
+						<div class="icon-feature-card__content">
+							<h3 class="icon-feature-card__title">Свой график</h3>
+							<p class="icon-feature-card__text">Погашение под сроки оплаты заказчика</p>
+						</div>
+					</article><article class="icon-feature-card">
+						<div class="icon-feature-card__icon icon-feature-card__icon--amount" aria-hidden="true">
+							
+<img src="/SF/_astro/w-tz-1.uomOsWGA_R1hQS.webp" alt loading="lazy" decoding="async" width="216" height="198" class="media-fill media-fit-contain">
+						</div>
+						<div class="icon-feature-card__content">
+							<h3 class="icon-feature-card__title">До 65 млн ₽</h3>
+							<p class="icon-feature-card__text">Финансирование гос‑ и коммерческих контрактов</p>
+						</div>
+					</article><article class="icon-feature-card">
+						<div class="icon-feature-card__icon icon-feature-card__icon--duration" aria-hidden="true">
+							
+<img src="/SF/_astro/w-tz-3.-0euhgX8_Z1fmLm8.webp" alt loading="lazy" decoding="async" width="198" height="198" class="media-fill media-fit-contain">
+						</div>
+						<div class="icon-feature-card__content">
+							<h3 class="icon-feature-card__title">До 12 месяцев</h3>
+							<p class="icon-feature-card__text">На исполнение контракта по 44‑ФЗ</p>
+						</div>
+					</article><article class="icon-feature-card">
+						<div class="icon-feature-card__icon icon-feature-card__icon--online" aria-hidden="true">
+							
+<img src="/SF/_astro/w-tz-4.C1dxGFbr_2tREgP.webp" alt loading="lazy" decoding="async" width="198" height="198" class="media-fill media-fit-contain">
+						</div>
+						<div class="icon-feature-card__content">
+							<h3 class="icon-feature-card__title">Онлайн</h3>
+							<p class="icon-feature-card__text">Заявка на заем без посещения офиса</p>
+						</div>
+					</article>
+		</div>
+	</div>
+</section>
+	<section class="steps-section section steps-section--credit-line" id="steps" aria-labelledby="steps-title">
+	<div class="container">
+		<div class="steps-section__header section-header section-header--spacious">
+			<h2 class="steps-section__title section-title" id="steps-title">Как работает возобновляемая линия</h2>
+			<p class="steps-section__description section-description">
+						Возобновляемая кредитная линия позволяет получать финансирование на исполнение государственных<br class="desktop-only-break"> и коммерческих контрактов без повторного оформления документов по каждому новому проекту
+					</p>
+		</div>
+
+		<div class="steps-section__timeline" aria-hidden="true">
+			<div class="steps-section__timeline-track"></div>
+			<div class="steps-section__timeline-fill"></div>
+		</div>
+
+		<div class="steps-section__grid">
+			<article class="steps-card" aria-labelledby="contract-execution-line-title">
+						<div class="steps-card__number" aria-hidden="true" data-steps-number>
+							01
+						</div>
+						<div class="steps-card__content">
+							<h3 class="steps-card__title" id="contract-execution-line-title">Открываете линию</h3>
+							<p class="steps-card__description">
+								Один раз, один договор.<br>Одобренный лимит,<br>например, 20 млн ₽
+							</p>
+						</div>
+					</article><article class="steps-card" aria-labelledby="contract-execution-tranche-title">
+						<div class="steps-card__number" aria-hidden="true" data-steps-number>
+							02
+						</div>
+						<div class="steps-card__content">
+							<h3 class="steps-card__title" id="contract-execution-tranche-title">Транш на контракт</h3>
+							<p class="steps-card__description">
+								Выиграли тендер —<br>берете 8 млн ₽.<br>Остаток 12 млн ₽
+							</p>
+						</div>
+					</article><article class="steps-card" aria-labelledby="contract-execution-payment-title">
+						<div class="steps-card__number" aria-hidden="true" data-steps-number>
+							03
+						</div>
+						<div class="steps-card__content">
+							<h3 class="steps-card__title" id="contract-execution-payment-title">Заказчик оплатил</h3>
+							<p class="steps-card__description">
+								Вернули 8 млн ₽.<br>Лимит обновился<br>на 20 млн ₽
+							</p>
+						</div>
+					</article><article class="steps-card" aria-labelledby="contract-execution-next-tranche-title">
+						<div class="steps-card__number" aria-hidden="true" data-steps-number>
+							04
+						</div>
+						<div class="steps-card__content">
+							<h3 class="steps-card__title" id="contract-execution-next-tranche-title">Следующий транш</h3>
+							<p class="steps-card__description">
+								Новый контракт —<br>новый транш<br>новых заявок
+							</p>
+						</div>
+					</article>
+		</div>
+
+		<div class="steps-section__actions">
+					<span class="consultation-dialog-trigger">
+  
+						<button class="ui-button ui-button--secondary ui-button--xl" type="button">
+			Оставить заявку
+		</button>
+					
+</span>
+				</div>
+	</div>
+</section>
+
+<script type="module" src="/SF/_astro/StepsSection.astro_astro_type_script_index_0_lang.53eVrg2R.js"></script>
+	<section class="personal-manager section personal-manager--contract-execution-manager" id="contract-execution-manager" aria-labelledby="contract-execution-manager-title">
+	<div class="container">
+		<div class="personal-manager__header section-header">
+			<h2 class="section-title" id="contract-execution-manager-title">Персональный менеджер на весь процесс</h2>
+		</div>
+
+		<div class="personal-manager__panel">
+			<div class="personal-manager__visual" aria-hidden="true">
+				
+<img src="/SF/_astro/manager-ispk-panel-bg.CqXgaj15_1qoq5D.webp" alt loading="lazy" decoding="async" width="724" height="782" class="personal-manager__image media-fill media-fit-contain">
+			</div>
+
+			<div class="personal-manager__content">
+				<h3 class="personal-manager__title">
+					От заявки до исполнения контракта<br class="desktop-only-break"> вас сопровождает один специалист
+				</h3>
+				<p class="personal-manager__text">
+					Менеджер поможет рассчитать условия займа, подготовить<br class="desktop-only-break"> заявку, сориентирует по документам и подберет финансирование<br class="desktop-only-break"> под параметры гос‑ или коммерческого контракта
+				</p>
+				<div class="personal-manager__author">
+					<p class="personal-manager__name">Екатерина</p>
+					<p class="personal-manager__role">
+						менеджер по тендерным<br class="personal-manager__role-break"> займам
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+	<section class="faq-section section" id="faq" aria-labelledby="faq-title">
+	<div class="container">
+		<div class="faq-section__header">
+			<h2 class="faq-section__title section-title" id="faq-title">Популярные вопросы</h2>
+		</div>
+
+		<div class="faq-section__grid">
+			<article class="faq-item">
+						<button class="faq-item__summary" type="button" aria-expanded="false" aria-controls="definition-panel">
+							<span class="faq-item__question">Что такое заем на исполнение контракта?</span>
+							<span class="faq-item__icon" aria-hidden="true">
+								<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path class="faq-item__icon-line faq-item__icon-line--horizontal" d="M5 11H17"></path>
+									<path class="faq-item__icon-line faq-item__icon-line--vertical" d="M11 5V17"></path>
+								</svg>
+							</span>
+						</button>
+
+						<div class="faq-item__content" id="definition-panel" hidden>
+							<div class="faq-item__content-inner">
+								<p class="faq-item__answer">Это финансирование для компаний, которым нужны средства на исполнение контракта после победы в закупке: закупку товара, материалов, логистику или оплату подрядчиков</p>
+							</div>
+						</div>
+					</article><article class="faq-item">
+						<button class="faq-item__summary" type="button" aria-expanded="false" aria-controls="loan-vs-credit-panel">
+							<span class="faq-item__question">Чем заем отличается от кредита на исполнение контракта?</span>
+							<span class="faq-item__icon" aria-hidden="true">
+								<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path class="faq-item__icon-line faq-item__icon-line--horizontal" d="M5 11H17"></path>
+									<path class="faq-item__icon-line faq-item__icon-line--vertical" d="M11 5V17"></path>
+								</svg>
+							</span>
+						</button>
+
+						<div class="faq-item__content" id="loan-vs-credit-panel" hidden>
+							<div class="faq-item__content-inner">
+								<p class="faq-item__answer">По задаче это близкие инструменты: оба помогают получить деньги на исполнение государственного или коммерческого контракта. Конкретный формат финансирования подбирается индивидуально</p>
+							</div>
+						</div>
+					</article><article class="faq-item">
+						<button class="faq-item__summary" type="button" aria-expanded="false" aria-controls="procurement-types-panel">
+							<span class="faq-item__question">Для каких закупок подходит финансирование?</span>
+							<span class="faq-item__icon" aria-hidden="true">
+								<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path class="faq-item__icon-line faq-item__icon-line--horizontal" d="M5 11H17"></path>
+									<path class="faq-item__icon-line faq-item__icon-line--vertical" d="M11 5V17"></path>
+								</svg>
+							</span>
+						</button>
+
+						<div class="faq-item__content" id="procurement-types-panel" hidden>
+							<div class="faq-item__content-inner">
+								<p class="faq-item__answer">Решение подходит для государственных и коммерческих контрактов, включая закупки по 44-ФЗ и 223-ФЗ</p>
+							</div>
+						</div>
+					</article><article class="faq-item">
+						<button class="faq-item__summary" type="button" aria-expanded="false" aria-controls="government-contract-panel">
+							<span class="faq-item__question">Можно ли получить финансирование под госконтракт по 44-ФЗ?</span>
+							<span class="faq-item__icon" aria-hidden="true">
+								<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path class="faq-item__icon-line faq-item__icon-line--horizontal" d="M5 11H17"></path>
+									<path class="faq-item__icon-line faq-item__icon-line--vertical" d="M11 5V17"></path>
+								</svg>
+							</span>
+						</button>
+
+						<div class="faq-item__content" id="government-contract-panel" hidden>
+							<div class="faq-item__content-inner">
+								<p class="faq-item__answer">Да, SimpleFinance рассматривает заявки на финансирование исполнения контрактов по 44-ФЗ с учетом суммы, сроков и условий конкретной закупки</p>
+							</div>
+						</div>
+					</article><article class="faq-item">
+						<button class="faq-item__summary" type="button" aria-expanded="false" aria-controls="use-of-funds-panel">
+							<span class="faq-item__question">На что можно использовать заем?</span>
+							<span class="faq-item__icon" aria-hidden="true">
+								<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path class="faq-item__icon-line faq-item__icon-line--horizontal" d="M5 11H17"></path>
+									<path class="faq-item__icon-line faq-item__icon-line--vertical" d="M11 5V17"></path>
+								</svg>
+							</span>
+						</button>
+
+						<div class="faq-item__content" id="use-of-funds-panel" hidden>
+							<div class="faq-item__content-inner">
+								<p class="faq-item__answer">Средства можно направить на закупку товара, материалы, логистику, оплату поставщиков, подрядчиков и другие расходы по контракту</p>
+							</div>
+						</div>
+					</article><article class="faq-item">
+						<button class="faq-item__summary" type="button" aria-expanded="false" aria-controls="online-panel">
+							<span class="faq-item__question">Можно ли получить финансирование онлайн?</span>
+							<span class="faq-item__icon" aria-hidden="true">
+								<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path class="faq-item__icon-line faq-item__icon-line--horizontal" d="M5 11H17"></path>
+									<path class="faq-item__icon-line faq-item__icon-line--vertical" d="M11 5V17"></path>
+								</svg>
+							</span>
+						</button>
+
+						<div class="faq-item__content" id="online-panel" hidden>
+							<div class="faq-item__content-inner">
+								<p class="faq-item__answer">Да, заявку можно подать дистанционно. Основные этапы рассмотрения проходят через платформу SimpleFinance</p>
+							</div>
+						</div>
+					</article><article class="faq-item">
+						<button class="faq-item__summary" type="button" aria-expanded="false" aria-controls="review-time-panel">
+							<span class="faq-item__question">Сколько времени занимает рассмотрение заявки?</span>
+							<span class="faq-item__icon" aria-hidden="true">
+								<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path class="faq-item__icon-line faq-item__icon-line--horizontal" d="M5 11H17"></path>
+									<path class="faq-item__icon-line faq-item__icon-line--vertical" d="M11 5V17"></path>
+								</svg>
+							</span>
+						</button>
+
+						<div class="faq-item__content" id="review-time-panel" hidden>
+							<div class="faq-item__content-inner">
+								<p class="faq-item__answer">Предварительное решение обычно принимается в течение одного рабочего дня после получения данных по контракту</p>
+							</div>
+						</div>
+					</article><article class="faq-item">
+						<button class="faq-item__summary" type="button" aria-expanded="false" aria-controls="collateral-panel">
+							<span class="faq-item__question">Нужен ли залог?</span>
+							<span class="faq-item__icon" aria-hidden="true">
+								<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path class="faq-item__icon-line faq-item__icon-line--horizontal" d="M5 11H17"></path>
+									<path class="faq-item__icon-line faq-item__icon-line--vertical" d="M11 5V17"></path>
+								</svg>
+							</span>
+						</button>
+
+						<div class="faq-item__content" id="collateral-panel" hidden>
+							<div class="faq-item__content-inner">
+								<p class="faq-item__answer">Условия определяются индивидуально и зависят от параметров контракта и финансового профиля компании</p>
+							</div>
+						</div>
+					</article>
+		</div>
+	</div>
+</section>
+
+<script type="module" src="/SF/_astro/FaqSection.astro_astro_type_script_index_0_lang.Bt0WxKUm.js"></script>
+	<section class="about-section section about-section--primary" aria-label="О займе на исполнение контракта">
+	<div class="container">
+		<div class="about-section__content">
+			<p class="about-section__text">
+					Заем на исполнение контракта помогает поставщикам, подрядчикам и исполнителям услуг получить деньги на выполнение обязательств после победы в закупке. Финансирование может понадобиться, если нужно заранее закупить товар, оплатить материалы, логистику, работу подрядчиков или подготовить производство, а оплата от заказчика поступит позже
+				</p><p class="about-section__text">
+					Такой формат подходит компаниям, которым нужны средства на исполнение государственного контракта, финансирование госконтракта по 44‑ФЗ или деньги под коммерческий контракт. Заем помогает закрыть кассовый разрыв, сохранить оборотные средства и начать работы без задержек
+				</p><p class="about-section__text">
+					SimpleFinance подбирает финансирование под параметры конкретного контракта: сумму, сроки исполнения, условия оплаты и требования заказчика. Заявку можно подать онлайн, а предварительное решение получить после рассмотрения данных по контракту
+				</p>
+		</div>
+	</div>
+</section>
+	<section class="lead-form-section section lead-form-section--default" id="lead-form" aria-labelledby="lead-form-title" data-lead-form-root>
+	<div class="container">
+		<div class="lead-form-section__panel" data-lead-form-panel>
+			<div class="lead-form-section__content" data-lead-form-content>
+				<div class="lead-form-section__header">
+					<h2 class="lead-form-section__title" id="lead-form-title">Подберем решение под ваш бизнес</h2>
+					<p class="lead-form-section__description">
+						Оставьте заявку, и мы предложим<br> финансовый инструмент под вашу задачу
+					</p>
+				</div>
+
+				<form class="lead-form-section__form" data-lead-form data-state="visible" novalidate>
+	<label class="lead-form-section__field" data-required-field="true">
+				<input class="lead-form-section__input" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " maxlength="18" required data-lead-phone="true">
+				<span class="lead-form-section__field-label">Телефон</span>
+				<span class="lead-form-section__error">Необходимо заполнить поле</span>
+			</label><label class="lead-form-section__field" data-required-field="true">
+				<input class="lead-form-section__input" name="email" type="email" autocomplete="email" inputmode="email" placeholder=" " required>
+				<span class="lead-form-section__field-label">Почта</span>
+				<span class="lead-form-section__error">Введите корректную почту</span>
+			</label><label class="lead-form-section__field" data-validate-field="true">
+				<input class="lead-form-section__input" name="inn" type="text" autocomplete="off" inputmode="numeric" placeholder=" " maxlength="12" pattern="[0-9]{10}|[0-9]{12}">
+				<span class="lead-form-section__field-label">ИНН организации</span>
+				<span class="lead-form-section__error">Введите корректный ИНН</span>
+			</label><div class="lead-form-section__field lead-form-section__field--select" data-dropdown-root data-required-field data-has-value="false" data-invalid="false">
+				<input type="hidden" name="turnover" required data-dropdown-input>
+				<button type="button" class="lead-form-section__input lead-form-section__select" data-dropdown-trigger aria-expanded="false" aria-controls="lead-form-turnover-options">
+					<span class="lead-form-section__select-label" data-dropdown-label></span>
+				</button>
+				<span class="lead-form-section__field-label lead-form-section__field-label--select">Обороты</span>
+				<span class="lead-form-section__select-icon" aria-hidden="true">
+					<svg viewBox="0 0 16 16" fill="none">
+						<path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+					</svg>
+				</span>
+				<div class="lead-form-section__dropdown" id="lead-form-turnover-options" data-dropdown-menu data-state="closed" aria-hidden="true">
+					<button type="button" class="lead-form-section__option" data-dropdown-option data-selected="false" data-value="До 5 млн ₽ в месяц">
+							До 5 млн ₽ в месяц
+						</button><button type="button" class="lead-form-section__option" data-dropdown-option data-selected="false" data-value="5-20 млн ₽ в месяц">
+							5-20 млн ₽ в месяц
+						</button><button type="button" class="lead-form-section__option" data-dropdown-option data-selected="false" data-value="20-75 млн ₽ в месяц">
+							20-75 млн ₽ в месяц
+						</button><button type="button" class="lead-form-section__option" data-dropdown-option data-selected="false" data-value="75-150 млн ₽ в месяц">
+							75-150 млн ₽ в месяц
+						</button><button type="button" class="lead-form-section__option" data-dropdown-option data-selected="false" data-value="Более 150 млн ₽ в месяц">
+							Более 150 млн ₽ в месяц
+						</button>
+				</div>
+				<span class="lead-form-section__error">Необходимо заполнить поле</span>
+			</div>
+
+	<div class="lead-form-section__consents">
+		<label class="lead-form-section__consent" data-required-field data-invalid="false">
+			<input class="lead-form-section__checkbox" name="consent" type="checkbox" required>
+			<span class="lead-form-section__checkbox-box" aria-hidden="true">
+				<svg class="lead-form-section__checkbox-check" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</span>
+			<span class="lead-form-section__consent-text">
+				Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
+			</span>
+		</label>
+
+		<label class="lead-form-section__consent" data-invalid="false">
+			<input class="lead-form-section__checkbox" name="marketingConsent" type="checkbox">
+			<span class="lead-form-section__checkbox-box" aria-hidden="true">
+				<svg class="lead-form-section__checkbox-check" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</span>
+			<span class="lead-form-section__consent-text">
+				Согласен(а) на получение рекламных и информационных материалов от ООО МКК «СимплФинанс»
+			</span>
+		</label>
+	</div>
+
+	<button class="ui-button ui-button--secondary ui-button--lg lead-form-section__submit" type="submit">
+			Подобрать решение
+		</button>
+</form>
+
+				<div class="lead-form-section__success" data-lead-form-success data-state="hidden" aria-live="polite">
+					<div class="lead-form-section__success-card">
+						<button type="button" class="lead-form-section__success-close" data-lead-form-success-close aria-label="Закрыть сообщение">
+							<svg class="lead-form-section__success-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<path d="M18 6 6 18"></path>
+								<path d="m6 6 12 12"></path>
+							</svg>
+						</button>
+						<h3 class="lead-form-section__success-title">Спасибо!</h3>
+						<p class="lead-form-section__success-text">
+							Ваша заявка отправлена.<br> В ближайшее время менеджер свяжется с вами
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="lead-form-section__visual-clip" aria-hidden="true">
+				<div class="lead-form-section__visual">
+					
+<img src="/SF/_astro/form-home-bg.BWJotq68_ZOuEBX.webp" alt loading="lazy" decoding="async" width="1365" height="1246" class="lead-form-section__visual-image lead-form-section__visual-image--desktop media-fill media-fit-contain">
+					
+<img src="/SF/_astro/form-home-bg-t.DsLWzXk__1mYc4v.webp" alt loading="lazy" decoding="async" width="528" height="715" class="lead-form-section__visual-image lead-form-section__visual-image--tablet media-fill media-fit-contain">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script type="module" src="/SF/_astro/LeadFormSection.astro_astro_type_script_index_0_lang.DQ6-q6Ne.js"></script>
+</main>
+
+	<dialog id="consultation-dialog" class="consultation-dialog" aria-labelledby="consultation-dialog-title" data-lead-form-root>
+  <div class="consultation-dialog__panel">
+    <button type="button" class="consultation-dialog__close" data-dialog-close aria-label="Закрыть форму">
+      <svg class="consultation-dialog__close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+
+    <section>
+      <div class="consultation-dialog__content" data-dialog-content data-state="form">
+        <div class="consultation-dialog__header">
+          <h2 class="consultation-dialog__title" id="consultation-dialog-title">
+            Вы в одном клике
+            <br>
+            от финансирования
+          </h2>
+        </div>
+
+        <form class="consultation-dialog__form" data-lead-form data-state="visible" novalidate>
+	<label class="consultation-dialog__field">
+				<input id="consultation-name" class="consultation-dialog__input" name="name" type="text" autocomplete="name" placeholder=" " maxlength="120">
+				<span class="consultation-dialog__field-label">ФИО</span>
+				
+			</label><label class="consultation-dialog__field" data-required-field="true">
+				<input id="consultation-phone" class="consultation-dialog__input" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " maxlength="18" required data-lead-phone="true">
+				<span class="consultation-dialog__field-label">Телефон</span>
+				<span class="consultation-dialog__error">Необходимо заполнить поле</span>
+			</label><label class="consultation-dialog__field" data-validate-field="true">
+				<input id="consultation-inn" class="consultation-dialog__input" name="inn" type="text" autocomplete="off" inputmode="numeric" placeholder=" " maxlength="12" pattern="[0-9]{10}|[0-9]{12}">
+				<span class="consultation-dialog__field-label">ИНН организации</span>
+				<span class="consultation-dialog__error">Введите корректный ИНН</span>
+			</label><label class="consultation-dialog__field" data-required-field="true">
+				<input id="consultation-email" class="consultation-dialog__input" name="email" type="email" autocomplete="email" inputmode="email" placeholder=" " required>
+				<span class="consultation-dialog__field-label">Почта</span>
+				<span class="consultation-dialog__error">Введите корректную почту</span>
+			</label>
+
+	<div class="consultation-dialog__consents">
+		<label class="consultation-dialog__consent" data-required-field data-invalid="false">
+			<input class="consultation-dialog__checkbox" name="consent" type="checkbox" required>
+			<span class="consultation-dialog__checkbox-box" aria-hidden="true">
+				<svg class="consultation-dialog__checkbox-check" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</span>
+			<span class="consultation-dialog__consent-text">
+				Отправляя заявку вы соглашаетесь с <a href="#privacy">условиями политики конфиденциальности и обработки персональных данных</a>
+			</span>
+		</label>
+
+		<label class="consultation-dialog__consent" data-invalid="false">
+			<input class="consultation-dialog__checkbox" name="marketingConsent" type="checkbox">
+			<span class="consultation-dialog__checkbox-box" aria-hidden="true">
+				<svg class="consultation-dialog__checkbox-check" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0.725952 4.53682L7.61957 11.8134L18.726 0.707031" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</span>
+			<span class="consultation-dialog__consent-text">
+				Согласен(а) на получение рекламных и информационных материалов от ООО МКК «СимплФинанс»
+			</span>
+		</label>
+	</div>
+
+	<button class="consultation-dialog__submit" type="submit">Отправить заявку</button>
+</form>
+      </div>
+
+      <div class="consultation-dialog__success" data-dialog-success data-lead-form-success data-state="hidden" aria-live="polite">
+        <div class="consultation-dialog__success-card">
+          <h3 class="consultation-dialog__success-title">Спасибо!</h3>
+          <p class="consultation-dialog__success-text">
+            Ваша заявка отправлена.
+            <br>
+            В ближайшее время менеджер свяжется с вами
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</dialog>
+
+<script type="module" src="/SF/_astro/ConsultationDialog.astro_astro_type_script_index_0_lang.DtuHL3ww.js"></script>
+	<footer class="site-footer" id="contacts">
+	<div class="container site-footer__inner">
+		<div class="site-footer__top">
+			<a class="site-footer__phone" href="tel:+74951504011">+7 (495) 150-40-11</a>
+
+			<nav class="site-footer__nav" aria-label="Навигация в футере">
+				<ul class="site-footer__nav-list">
+					<li>
+								<a href="/SF/blog/">Наш блог</a>
+							</li><li>
+								<a href="/SF/requisites/">Реквизиты</a>
+							</li><li>
+								<a href="/SF/contacts/">Контакты</a>
+							</li><li>
+								<a href="/SF/privacy/">Политика конфиденциальности</a>
+							</li><li>
+								<a href="/SF/documents/">Юридические документы</a>
+							</li>
+				</ul>
+			</nav>
+
+			<ul class="site-footer__socials" aria-label="Социальные сети">
+				<li>
+							<a href="#" aria-label="ВКонтакте">
+								
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path d="M20 0C16.0444 0 12.1776 1.17298 8.8886 3.37061C5.59962 5.56823 3.03617 8.69181 1.52242 12.3463C0.00866575 16.0009 -0.387401 20.0222 0.384303 23.9018C1.15601 27.7814 3.06082 31.3451 5.85787 34.1421C8.65492 36.9392 12.2186 38.844 16.0982 39.6157C19.9778 40.3874 23.9991 39.9913 27.6537 38.4776C31.3082 36.9638 34.4318 34.4004 36.6294 31.1114C38.827 27.8224 40 23.9556 40 20C40 14.6957 37.8929 9.60859 34.1421 5.85786C30.3914 2.10714 25.3043 0 20 0ZM31.5273 27.8273C30.9455 27.9091 28.1 27.8273 27.9523 27.8273C27.2167 27.8369 26.507 27.556 25.9773 27.0455C25.3773 26.4659 24.8409 25.8295 24.2545 25.2273C24.0818 25.0424 23.894 24.8721 23.6932 24.7182C23.225 24.3591 22.7614 24.4386 22.5409 24.9932C22.3688 25.59 22.2486 26.2006 22.1818 26.8182C22.1432 27.3773 21.7886 27.7273 21.1614 27.7659C20.7727 27.7864 20.3841 27.7955 20 27.7841C18.6001 27.7764 17.222 27.436 15.9795 26.7909C14.6348 26.0423 13.4631 25.0185 12.5409 23.7864C11.025 21.85 9.81364 19.7227 8.73182 17.5295C8.67501 17.4182 7.56592 15.0591 7.53864 14.9477C7.43864 14.5773 7.53864 14.2205 7.84546 14.0955C8.04092 14.0205 11.6955 14.0955 11.7568 14.0955C12.0287 14.0936 12.2941 14.1783 12.5148 14.3372C12.7354 14.4961 12.8997 14.7211 12.9841 14.9795C13.6603 16.7091 14.5852 18.3307 15.7296 19.7932C15.8899 19.988 16.0774 20.1587 16.2864 20.3C16.5841 20.5045 16.8659 20.4341 16.9886 20.0886C17.1343 19.6125 17.2198 19.1201 17.2432 18.6227C17.2636 17.6364 17.2432 16.9886 17.1886 16.0023C17.1523 15.3705 16.9296 14.8182 15.9977 14.6386C15.7114 14.5864 15.6864 14.35 15.8705 14.1136C16.2546 13.625 16.7796 13.5455 17.3682 13.5159C18.2455 13.4659 19.1227 13.5 20 13.5159H20.1909C20.5727 13.5145 20.9536 13.5534 21.3273 13.6318C21.5483 13.6769 21.749 13.7922 21.8992 13.9605C22.0495 14.1288 22.1415 14.3412 22.1614 14.5659C22.2065 14.8148 22.2255 15.0676 22.2182 15.3205C22.1955 16.3955 22.1432 17.4727 22.1318 18.5477C22.1213 18.9743 22.1601 19.4006 22.2477 19.8182C22.3727 20.3909 22.7659 20.5341 23.1568 20.1205C23.6634 19.5869 24.1277 19.0147 24.5455 18.4091C25.2859 17.3052 25.896 16.1192 26.3636 14.875C26.6182 14.2364 26.8182 14.0955 27.5 14.0955H31.3773C31.6078 14.0914 31.8377 14.1221 32.0591 14.1864C32.1375 14.207 32.2107 14.2435 32.2743 14.2937C32.3379 14.344 32.3905 14.4068 32.4287 14.4783C32.4668 14.5497 32.4899 14.6283 32.4963 14.7091C32.5027 14.7899 32.4924 14.8711 32.4659 14.9477C32.275 15.7977 31.8159 16.5227 31.3295 17.2205C30.5409 18.3364 29.7091 19.425 28.9023 20.5273C28.8052 20.6698 28.7164 20.8177 28.6364 20.9704C28.3318 21.5205 28.3545 21.8273 28.7955 22.2818C29.5 23.0068 30.2523 23.6841 30.9318 24.4295C31.4302 24.9719 31.8804 25.5567 32.2773 26.1773C32.7614 26.9591 32.4545 27.6954 31.5273 27.8273Z" fill="#0537C8"></path>
+		</svg>
+
+
+							</a>
+						</li><li>
+							<a href="#" aria-label="Telegram">
+								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95469 0 0 8.95469 0 20C0 31.0453 8.95469 40 20 40C31.0453 40 40 31.0453 40 20C40 8.95469 31.0453 0 20 0ZM29.2703 13.6016C28.9695 16.7641 27.6672 24.4383 27.0047 27.9805C26.7242 29.4797 26.1719 29.982 25.6375 30.0312C24.4766 30.1383 23.5945 29.2633 22.4695 28.5258C20.7094 27.3719 19.7148 26.6539 18.0063 25.5281C16.0312 24.2266 17.3117 23.5117 18.4367 22.343C18.7313 22.0367 23.8484 17.382 23.9477 16.9602C23.9602 16.907 23.9719 16.7102 23.8547 16.6063C23.7375 16.5023 23.5648 16.5383 23.4406 16.5664C23.2641 16.6063 20.4516 18.4648 15.0047 22.1422C14.2063 22.6906 13.4836 22.957 12.8352 22.9437C12.1211 22.9281 10.7477 22.5398 9.72656 22.2078C8.47422 21.8008 7.47891 21.5852 7.56562 20.8937C7.61016 20.5336 8.10625 20.1656 9.05312 19.7891C14.8836 17.2484 18.7711 15.5742 20.7164 14.7648C26.271 12.4548 27.425 12.0531 28.1773 12.0398C29.1196 12.0232 29.347 12.801 29.2703 13.6016Z" fill="#0537C8"></path>
+		</svg>
+
+
+
+
+
+
+							</a>
+						</li><li>
+							<a href="#" aria-label="MAX">
+								
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M20 0C8.95469 0 0 8.95469 0 20C0 31.0453 8.95469 40 20 40C31.0453 40 40 31.0453 40 20C40 8.95469 31.0453 0 20 0ZM29.2703 13.6016C28.9695 16.7641 27.6672 24.4383 27.0047 27.9805C26.7242 29.4797 26.1719 29.982 25.6375 30.0312C24.4766 30.1383 23.5945 29.2633 22.4695 28.5258C20.7094 27.3719 19.7148 26.6539 18.0063 25.5281C16.0312 24.2266 17.3117 23.5117 18.4367 22.343C18.7313 22.0367 23.8484 17.382 23.9477 16.9602C23.9602 16.907 23.9719 16.7102 23.8547 16.6063C23.7375 16.5023 23.5648 16.5383 23.4406 16.5664C23.2641 16.6063 20.4516 18.4648 15.0047 22.1422C14.2063 22.6906 13.4836 22.957 12.8352 22.9437C12.1211 22.9281 10.7477 22.5398 9.72656 22.2078C8.47422 21.8008 7.47891 21.5852 7.56562 20.8937C7.61016 20.5336 8.10625 20.1656 9.05312 19.7891C14.8836 17.2484 18.7711 15.5742 20.7164 14.7648C26.271 12.4548 27.425 12.0531 28.1773 12.0398C29.1196 12.0232 29.347 12.801 29.2703 13.6016Z" fill="#0537C8"></path>
+			<circle cx="20.5" cy="20.5" r="13.5" fill="#0537C8"></circle>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M19.7041 28.9458C17.8395 28.9458 16.973 28.6724 15.4668 27.5788C14.5141 28.8091 11.4971 29.7705 11.3656 28.1256C11.3656 26.8908 11.0934 25.8474 10.7849 24.7083C10.4174 23.3049 10 21.742 10 19.4775C10 14.0689 14.4188 10 19.6542 10C24.8942 10 28.9999 14.2694 28.9999 19.5276C29.0175 24.7044 24.8585 28.9182 19.7041 28.9458ZM19.7813 14.6749C17.2316 14.5428 15.2445 16.3153 14.8044 19.0947C14.4415 21.3957 15.0857 24.1979 15.6346 24.3438C15.8978 24.4075 16.5602 23.8699 16.973 23.4552C17.6557 23.9289 18.4506 24.2134 19.2777 24.28C21.9195 24.4076 24.1769 22.3876 24.3543 19.7372C24.4576 17.0811 22.4235 14.8315 19.7813 14.6795V14.6749Z" fill="white"></path>
+		</svg>
+
+
+
+
+							</a>
+						</li><li>
+							<a href="mailto:info@simplefinance.ru" aria-label="Email">
+								
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+			<path d="M39 20.5C39 9.73045 30.2696 1 19.5 1C8.73045 1 0 9.73045 0 20.5C0 31.2696 8.73045 40 19.5 40C30.2696 40 39 31.2696 39 20.5Z" fill="#0537C8"></path>
+			<path d="M27.7696 13.0522H11.2319C10.9505 13.0524 10.6734 13.1174 10.4245 13.2416C10.1756 13.3659 9.96256 13.5456 9.80371 13.7653L18.0717 19.3101C18.4894 19.5893 18.9884 19.7393 19.4999 19.7393C20.0114 19.7393 20.5104 19.5893 20.9281 19.3101L29.1952 13.7653C29.0366 13.546 28.8239 13.3664 28.5756 13.2422C28.3272 13.1179 28.0506 13.0528 27.7696 13.0522Z" fill="white"></path>
+			<path d="M21.6432 20.2647C21.0164 20.6844 20.2675 20.9097 19.4996 20.9097C18.7317 20.9097 17.9827 20.6844 17.356 20.2647L9.5 14.9966V25.4149C9.5 25.8492 9.68239 26.2657 10.007 26.5727C10.3317 26.8798 10.772 27.0523 11.2312 27.0523H27.7688C28.228 27.0523 28.6683 26.8798 28.993 26.5727C29.3176 26.2657 29.5 25.8492 29.5 25.4149V14.9966L21.6432 20.2647Z" fill="white"></path>
+		</svg>
+							</a>
+						</li>
+			</ul>
+		</div>
+
+		<div class="site-footer__content">
+			<article class="site-footer__disclosure">
+				<button class="site-footer__entity" type="button" aria-expanded="false" aria-controls="footer-requisites-panel">
+					<span>
+						Общество с ограниченной ответственностью микрокредитная компания
+						«СимплФинанс»
+					</span>
+					<span class="site-footer__entity-icon" aria-hidden="true">
+						<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M0.822266 0.822266L5.09845 6.43053C5.42747 6.86204 6.07692 6.86204 6.40595 6.43053L10.6821 0.822266" stroke="#2C2C2C" stroke-opacity="0.5" stroke-width="1.64421" stroke-linecap="round"></path>
+						</svg>
+					</span>
+				</button>
+
+				<div class="site-footer__details" id="footer-requisites-panel" hidden>
+					<div class="site-footer__details-inner" id="requisites">
+						<p>ИНН 7703381419, ОГРН 1157746499547</p>
+						<p>Дата внесения в реестр микрофинансовых организаций 23.10.2015</p>
+						<p>Регистрационный номер записи 001503045007061</p>
+						<p>Сайт Банка России</p>
+						<p>Интернет-приемная Банка России</p>
+						<p>Член СРО «МиР» с 15.12.2015, регистрационный номер в реестре 77000229.</p>
+						<p style="margin-bottom: 10px;">107078, г. Москва Орликов переулок, д.5, стр.1, этаж 2, пом.11</p>
+						<p>
+							Вы можете обратиться в Службу финансового уполномоченного: 8 (800) 200-00-10,
+							https://finombudsman.ru/
+						</p>
+						<p>119017, г. Москва, Старомонетный пер., д.3</p>
+						<p>или направить нам заявление на оспаривание своей кредитной истории в SimpleFinance (СимплФинанс)</p>
+						<p>«Вся представленная информация на сайте носит информационно-справочный характер и не является рекламой»</p>
+					</div>
+				</div>
+			</article>
+
+			<div class="site-footer__partners">
+				<img src="/SF/_astro/sf-logo.DMG_1NIQ.svg" alt="SimpleFinance">
+				<img src="/SF/_astro/sfp-logo.CMCMXRMy.svg" alt="SimpleFinance Platform">
+				<img src="/SF/_astro/Sk-logo.DcZEXjg4.svg" alt="Сколково участник">
+			</div>
+		</div>
+
+		<div class="site-footer__bottom">
+			<p>© 2015-2026 ООО МКК «СимплФинанс» 115191, г. Москва, Холодильный переулок, д.3</p>
+			<p>© 2026 Simplefinance Platform — единая платформа для компаний, участвующих в тендерах. Резидент Сколково с 2018 года</p>
+		</div>
+	</div>
+</footer>
+
+<script type="module" src="/SF/_astro/Footer.astro_astro_type_script_index_0_lang.B8YHPcXd.js"></script>
+	<button class="scroll-to-top" type="button" aria-label="Вернуться наверх" data-scroll-to-top>
+	<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+		<path d="M12 5.5 5.75 11.75l1.42 1.42L11 9.33V19h2V9.33l3.83 3.84 1.42-1.42L12 5.5Z"></path>
+	</svg>
+</button>
+
+<script type="module" src="/SF/_astro/ScrollToTop.astro_astro_type_script_index_0_lang.CMhACyYi.js"></script>
+	<script type="module" src="/SF/_astro/UxEnhancements.astro_astro_type_script_index_0_lang.ChalftlT.js"></script>
+
+  </body></html>

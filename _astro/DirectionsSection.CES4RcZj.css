@@ -1,0 +1,226 @@
+.directions-section__header.section-header {
+  flex-direction: column;
+  align-items: center;
+  gap: 31px;
+}
+.directions-section__description {
+  max-width: 1380px;
+  font-size: 29px;
+  line-height: 1.2;
+  letter-spacing: -1.16px;
+  color: var(--color-primary);
+  text-align: center;
+}
+.directions-section__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 512px minmax(0, 1fr);
+  gap: var(--gap-sm);
+}
+
+.directions-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 714px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  background: var(--gradient-surface-feature);
+}
+.directions-card__visual {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.directions-card__picture {
+  display: block;
+}
+.directions-card__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px;
+}
+.directions-card__title {
+  margin-top: auto;
+  font-size: 40px;
+  letter-spacing: -1.6px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-strong);
+}
+.directions-card__description {
+  margin: 24px 0;
+  font-size: 29px;
+  letter-spacing: -1.16px;
+  color: var(--color-text-muted);
+}
+.directions-card--marketplaces .directions-card__visual {
+  width: 250px;
+  height: auto;
+}
+.directions-card--procurement .directions-card__visual {
+  width: 350px;
+  height: auto;
+}
+.directions-card--guarantees .directions-card__visual {
+  width: 255px;
+  height: auto;
+}
+
+@media (max-width: 1440px) {
+  .directions-section__description {
+    max-width: 1040px;
+    font-size: 22px;
+    letter-spacing: -0.88px;
+  }
+  .directions-section__grid {
+    grid-template-columns: minmax(0, 1fr) 440px minmax(0, 1fr);
+  }
+  .directions-card {
+    min-height: 580px;
+  }
+  .directions-card__body {
+    padding: 30px;
+  }
+  .directions-card__title {
+    font-size: 33px;
+    letter-spacing: -1.4px;
+  }
+  .directions-card__description {
+    margin: 20px 0;
+    font-size: 22px;
+    letter-spacing: -1.04px;
+  }
+  .directions-card--marketplaces .directions-card__visual {
+    width: 200px;
+  }
+  .directions-card--procurement .directions-card__visual {
+    width: 280px;
+  }
+  .directions-card--guarantees .directions-card__visual {
+    width: 210px;
+  }
+}
+@media (max-width: 1024px) {
+  .directions-section__header.section-header {
+    gap: 24px;
+  }
+  .directions-section__description {
+    max-width: 780px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  .directions-section__grid {
+    grid-template-columns: minmax(0, 1fr) 300px minmax(0, 1fr);
+  }
+  .directions-card {
+    min-height: 500px;
+  }
+  .directions-card__body {
+    padding: 24px;
+  }
+  .directions-card__title {
+    font-size: 25px;
+    letter-spacing: -1px;
+  }
+  .directions-card__description {
+    margin: 14px 0;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  .directions-card--marketplaces .directions-card__visual {
+    width: 180px;
+  }
+  .directions-card--procurement .directions-card__visual {
+    width: 260px;
+  }
+  .directions-card--guarantees .directions-card__visual {
+    width: 190px;
+  }
+}
+@media (max-width: 768px) {
+  .directions-section__grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .directions-card {
+    min-height: 250px;
+  }
+  .directions-card__visual {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .directions-card__body {
+    padding: 30px 27px 30px 27px;
+    max-width: 330px;
+  }
+  .directions-card__title {
+    font-size: 24px;
+    letter-spacing: -0.84px;
+    margin-top: 0;
+  }
+  .directions-card__description {
+    margin: 14px 0;
+    font-size: 18px;
+    letter-spacing: -0.64px;
+  }
+  .directions-card__description br {
+    display: none;
+  }
+  .directions-card--marketplaces .directions-card__visual {
+    width: 150px;
+  }
+  .directions-card--procurement .directions-card__visual {
+    width: 170px;
+  }
+  .directions-card--guarantees .directions-card__visual {
+    width: 156px;
+  }
+}
+@media (max-width: 560px) {
+  .directions-section__header.section-header {
+    gap: 18px;
+  }
+  .directions-section__description {
+    font-size: 16px;
+    letter-spacing: -0.64px;
+  }
+  .directions-card {
+    min-height: 207px;
+  }
+  .directions-card__body {
+    padding: 27px 15px 27px 20px;
+    max-width: 225px;
+  }
+  .directions-card__title {
+    font-size: 21px;
+    letter-spacing: -0.84px;
+  }
+  .directions-card__description {
+    margin-top: 10px;
+    font-size: 16px;
+    letter-spacing: -0.64px;
+  }
+  .directions-card--marketplaces .directions-card__visual {
+    width: 134px;
+  }
+  .directions-card--procurement .directions-card__visual {
+    width: 164px;
+  }
+  .directions-card--guarantees .directions-card__visual {
+    width: 142px;
+  }
+}
+@media (max-width: 390px) {
+  .directions-card__description {
+    margin: 8px 0 12px;
+  }
+  .directions-card--marketplaces .directions-card__visual {
+    width: 122px;
+  }
+  .directions-card--procurement .directions-card__visual {
+    width: 137px;
+  }
+  .directions-card--guarantees .directions-card__visual {
+    width: 130px;
+  }
+}
