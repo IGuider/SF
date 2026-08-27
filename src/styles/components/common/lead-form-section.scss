@@ -419,7 +419,9 @@
     }
 
     input.lead-form-section__input:focus + &__field-label,
-    input.lead-form-section__input:not(:placeholder-shown) + &__field-label {
+    input.lead-form-section__input:not(:placeholder-shown) + &__field-label,
+    textarea.lead-form-section__input:focus + &__field-label,
+    textarea.lead-form-section__input:not(:placeholder-shown) + &__field-label {
       top: 6px;
       font-size: 11px;
     }
@@ -540,7 +542,9 @@
     }
 
     input.lead-form-section__input:focus + &__field-label,
-    input.lead-form-section__input:not(:placeholder-shown) + &__field-label {
+    input.lead-form-section__input:not(:placeholder-shown) + &__field-label,
+    textarea.lead-form-section__input:focus + &__field-label,
+    textarea.lead-form-section__input:not(:placeholder-shown) + &__field-label {
       top: 6px;
       font-size: 11px;
     }
@@ -582,6 +586,129 @@
     &__visual-image {
       width: 350px;
       bottom: -30px;
+    }
+  }
+}
+
+.lead-form-section--director-message {
+  .lead-form-section {
+    &__panel {
+      min-height: 760px;
+    }
+
+    &__header {
+      margin-bottom: 0;
+    }
+
+    &__form {
+      max-width: 550px;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    &__textarea {
+      height: 106px;
+      min-height: 106px;
+      padding: 24px 16px 12px;
+      resize: none;
+    }
+
+    &__visual {
+      right: -14%;
+      bottom: -5%;
+      width: 760px;
+      height: 760px;
+    }
+
+    &__visual-image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .lead-form-section--director-message {
+    .lead-form-section {
+      &__panel {
+        min-height: 700px;
+      }
+
+      &__form {
+        max-width: 470px;
+        margin-top: 22px;
+      }
+
+      &__textarea {
+        height: 92px;
+        min-height: 92px;
+        padding: 20px 16px 10px;
+      }
+
+      &__visual {
+        right: -18%;
+        bottom: -4%;
+        width: 700px;
+        height: 700px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .lead-form-section--director-message {
+    .lead-form-section {
+      &__panel {
+        min-height: 620px;
+      }
+
+      &__form {
+        max-width: 360px;
+        margin-top: 20px;
+      }
+
+      &__textarea {
+        height: 88px;
+        min-height: 88px;
+        padding: 19px 16px 9px;
+      }
+
+      &__visual {
+        right: -7%;
+        bottom: -8%;
+        width: 443px;
+        height: auto;
+      }
+
+      &__visual-image {
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .lead-form-section--director-message {
+    .lead-form-section {
+      &__panel {
+        min-height: 540px;
+      }
+
+      &__form {
+        max-width: 310px;
+        margin-top: 18px;
+      }
+
+      &__textarea {
+        height: 76px;
+        min-height: 76px;
+        padding: 14px 14px 7px;
+      }
+
+      &__visual {
+        right: -116px;
+        bottom: -8%;
+      }
     }
   }
 }

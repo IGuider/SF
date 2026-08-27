@@ -14,6 +14,8 @@ interface Props {
 	fields?: LeadFormField[];
 	submitLabel?: string;
 	fieldOverrides?: LeadFormFieldOverrides;
+	variant?: 'default' | 'director-message';
+	successTextLines?: string[];
 }
 
 const {
@@ -24,6 +26,8 @@ const {
 	fields = ['phone', 'email', 'inn', 'turnover'],
 	submitLabel = 'Подобрать решение',
 	fieldOverrides = {},
+	variant = 'default',
+	successTextLines = ['Ваша заявка отправлена.', 'В ближайшее время менеджер свяжется с вами'],
 } = Astro.props;
 
 const titleId = `${id}-title`;
@@ -33,7 +37,12 @@ const turnoverOptions = (await getCollection('turnoverOptions'))
 	.map((item) => item.data.label);
 ---
 
-<section class="lead-form-section section" id={id} aria-labelledby={titleId} data-lead-form-root>
+<section
+	class:list={['lead-form-section', 'section', `lead-form-section--${variant}`]}
+	id={id}
+	aria-labelledby={titleId}
+	data-lead-form-root
+>
 	<div class="container">
 		<div class="lead-form-section__panel" data-lead-form-panel>
 			<div class="lead-form-section__content" data-lead-form-content>
@@ -42,7 +51,7 @@ const turnoverOptions = (await getCollection('turnoverOptions'))
 					<p class="lead-form-section__description">
 						{descriptionLines.map((line, index) => (
 							<>
-								{index > 0 && <><br class:list={{ 'desktop-only-break': descriptionBreaksDesktopOnly }} />{descriptionBreaksDesktopOnly && ' '}</>}
+								{index > 0 && <><br class:list={{ 'desktop-only-break': descriptionBreaksDesktopOnly }} />{' '}</>}
 								{line}
 							</>
 						))}
@@ -85,9 +94,9 @@ const turnoverOptions = (await getCollection('turnoverOptions'))
 						</button>
 						<h3 class="lead-form-section__success-title">Спасибо!</h3>
 						<p class="lead-form-section__success-text">
-							Ваша заявка отправлена.
-							<br />
-							В ближайшее время менеджер свяжется с вами
+							{successTextLines.map((line, index) => (
+								<>{index > 0 && <><br />{' '}</>}{line}</>
+							))}
 						</p>
 					</div>
 				</div>

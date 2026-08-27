@@ -1,7 +1,7 @@
 ---
 import Button from '../ui/Button.astro';
 
-export type LeadFormField = 'name' | 'phone' | 'email' | 'inn' | 'procurement' | 'turnover' | 'product';
+export type LeadFormField = 'name' | 'phone' | 'email' | 'inn' | 'procurement' | 'message' | 'turnover' | 'product';
 
 type TextLeadFormField = Exclude<LeadFormField, 'turnover' | 'product'>;
 type LeadFormFieldOverride = Partial<{
@@ -58,6 +58,7 @@ const fieldConfig: Record<TextLeadFormField, {
 	dataLeadPhone: boolean;
 	required: boolean;
 	validate: boolean;
+	multiline: boolean;
 }> = {
 	name: {
 		id: block === 'consultation-dialog' ? 'consultation-name' : undefined,
@@ -72,6 +73,7 @@ const fieldConfig: Record<TextLeadFormField, {
 		dataLeadPhone: false,
 		required: false,
 		validate: false,
+		multiline: false,
 	},
 	phone: {
 		id: block === 'consultation-dialog' ? 'consultation-phone' : undefined,
@@ -86,6 +88,7 @@ const fieldConfig: Record<TextLeadFormField, {
 		dataLeadPhone: true,
 		required: true,
 		validate: false,
+		multiline: false,
 	},
 	email: {
 		id: block === 'consultation-dialog' ? 'consultation-email' : undefined,
@@ -100,6 +103,7 @@ const fieldConfig: Record<TextLeadFormField, {
 		dataLeadPhone: false,
 		required: true,
 		validate: false,
+		multiline: false,
 	},
 	inn: {
 		id: block === 'consultation-dialog' ? 'consultation-inn' : undefined,
@@ -114,6 +118,7 @@ const fieldConfig: Record<TextLeadFormField, {
 		dataLeadPhone: false,
 		required: false,
 		validate: true,
+		multiline: false,
 	},
 	procurement: {
 		id: undefined,
@@ -128,6 +133,22 @@ const fieldConfig: Record<TextLeadFormField, {
 		dataLeadPhone: false,
 		required: false,
 		validate: false,
+		multiline: false,
+	},
+	message: {
+		id: undefined,
+		name: 'message',
+		type: 'text',
+		autocomplete: 'off',
+		inputmode: undefined,
+		label: 'Поделитесь своим мнением',
+		error: '',
+		maxlength: '2000',
+		pattern: undefined,
+		dataLeadPhone: false,
+		required: false,
+		validate: false,
+		multiline: true,
 	},
 };
 
@@ -217,23 +238,35 @@ const marketingConsentText =
 			</div>
 		) : (
 			<label
-				class={`${block}__field`}
+				class:list={[`${block}__field`, config.multiline && `${block}__field--textarea`]}
 				data-required-field={config.required ? true : undefined}
 				data-validate-field={config.validate ? true : undefined}
 			>
-				<input
-					id={config.id}
-					class={`${block}__input`}
-					name={config.name}
-					type={config.type}
-					autocomplete={config.autocomplete}
-					inputmode={config.inputmode}
-					placeholder=" "
-					maxlength={config.maxlength}
-					pattern={config.pattern}
-					required={config.required ? true : undefined}
-					data-lead-phone={config.dataLeadPhone ? true : undefined}
-				/>
+				{config.multiline ? (
+					<textarea
+						id={config.id}
+						class={`${block}__input ${block}__textarea`}
+						name={config.name}
+						autocomplete={config.autocomplete}
+						placeholder=" "
+						maxlength={config.maxlength}
+						required={config.required ? true : undefined}
+					></textarea>
+				) : (
+					<input
+						id={config.id}
+						class={`${block}__input`}
+						name={config.name}
+						type={config.type}
+						autocomplete={config.autocomplete}
+						inputmode={config.inputmode}
+						placeholder=" "
+						maxlength={config.maxlength}
+						pattern={config.pattern}
+						required={config.required ? true : undefined}
+						data-lead-phone={config.dataLeadPhone ? true : undefined}
+					/>
+				)}
 				<span class={`${block}__field-label`}>{config.label}</span>
 				{config.error && <span class={`${block}__error`}>{config.error}</span>}
 			</label>

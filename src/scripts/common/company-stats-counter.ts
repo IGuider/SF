@@ -44,7 +44,9 @@ const animateNumber = (node: HTMLElement) => {
 export const initCompanyStatsCounter = () => {
   const observers: IntersectionObserver[] = [];
 
-  for (const section of document.querySelectorAll(".company-stats-section")) {
+  for (const section of document.querySelectorAll(
+    "[data-company-stats-counter]",
+  )) {
     if (
       !(section instanceof HTMLElement) ||
       section.dataset.counterStarted === "true"

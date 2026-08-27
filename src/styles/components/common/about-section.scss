@@ -11,6 +11,10 @@
     line-height: var(--line-height-compact);
     letter-spacing: -1.16px;
   }
+
+  &--strong &__text {
+    color: var(--color-text-strong);
+  }
 }
 
 @media (max-width: 1440px) {
@@ -22,6 +26,17 @@
     &__text {
       font-size: 26px;
       letter-spacing: -1.04px;
+    }
+  }
+
+  .about-section--company {
+    .about-section__content {
+      gap: 32px;
+    }
+
+    .about-section__text {
+      font-size: 23px;
+      letter-spacing: -0.92px;
     }
   }
 }
@@ -37,6 +52,31 @@
       letter-spacing: -0.8px;
     }
   }
+
+  .about-section--company {
+    .about-section__content {
+      gap: 24px;
+    }
+
+    .about-section__text {
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.72px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section--company {
+    .about-section__content {
+      gap: 22px;
+    }
+
+    .about-section__text {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+  }
 }
 
 @media (max-width: 560px) {
@@ -48,6 +88,17 @@
     &__text {
       font-size: 18px;
       letter-spacing: -0.72px;
+    }
+  }
+
+  .about-section--company {
+    .about-section__content {
+      gap: 20px;
+    }
+
+    .about-section__text {
+      font-size: 16px;
+      letter-spacing: -0.64px;
     }
   }
 }

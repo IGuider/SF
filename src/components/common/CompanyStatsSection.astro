@@ -20,7 +20,12 @@ const stats = (await getCollection(collectionName))
 	.map((item) => item.data);
 ---
 
-<section class="company-stats-section section" id={id} aria-labelledby={titleId}>
+<section
+	class="company-stats-section section"
+	id={id}
+	aria-labelledby={titleId}
+	data-company-stats-counter
+>
 	<div class="container">
 		<div class="company-stats-section__header section-header section-header--compact">
 			<h2 class="company-stats-section__title section-title" id={titleId}>{title}</h2>

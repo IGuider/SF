@@ -1,0 +1,282 @@
+.strategic-leadership-section {
+  &__header.section-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__description {
+    margin: 0;
+    color: var(--color-text-strong);
+    font-size: 29px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+    text-align: center;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 423fr 476fr 446fr;
+    gap: 5px;
+  }
+}
+
+.leadership-card {
+  display: flex;
+  min-width: 0;
+  min-height: 529px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 40px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-surface-feature);
+
+  &__portrait {
+    position: relative;
+    width: 176px;
+    height: 176px;
+    flex: 0 0 176px;
+  }
+
+  &__portrait-backdrop,
+  &__portrait-image {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+  }
+
+  &__portrait-image {
+    overflow: hidden;
+  }
+
+  &__content {
+    display: grid;
+    min-width: 0;
+    gap: 20px;
+  }
+
+  &__heading {
+    display: grid;
+    gap: 10px;
+  }
+
+  &__name,
+  &__role,
+  &__experience {
+    margin: 0;
+  }
+
+  &__name {
+    color: var(--color-text-strong);
+    font-size: 40px;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.6px;
+  }
+
+  &__role {
+    color: var(--color-primary);
+    font-size: 22px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-compact);
+    letter-spacing: -0.88px;
+  }
+
+  &__experience {
+    color: var(--color-text-muted);
+    font-size: 29px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-compact);
+    letter-spacing: -1.16px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .strategic-leadership-section__header.section-header {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .strategic-leadership-section {
+    &__header.section-header {
+      gap: 20px;
+    }
+
+    &__description {
+      font-size: 26px;
+      letter-spacing: -1.04px;
+
+      br {
+        display: initial;
+      }
+    }
+
+    &__grid {
+      grid-template-columns: 383fr 397fr 407fr;
+      gap: var(--gap-sm);
+    }
+  }
+
+  .leadership-card {
+    min-height: 470px;
+    justify-content: flex-start;
+    gap: 28px;
+    padding: 46px 32px;
+
+    &__name {
+      font-size: 29px;
+      letter-spacing: -1.16px;
+    }
+
+    &__role {
+      font-size: 20px;
+      letter-spacing: -0.8px;
+    }
+
+    &__experience {
+      font-size: 24px;
+      letter-spacing: -0.96px;
+
+      br {
+        display: initial;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .strategic-leadership-section {
+    &__description {
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+
+    &__grid {
+      grid-template-columns: 264fr 294fr 274fr;
+    }
+  }
+
+  .leadership-card {
+    min-height: 325px;
+    gap: 20px;
+    padding: 30px 22px;
+    border-radius: var(--radius-compact);
+
+    &__portrait {
+      width: 108px;
+      height: 108px;
+      flex-basis: 108px;
+    }
+
+    &__heading {
+      gap: 8px;
+    }
+
+    &__name {
+      font-size: 22px;
+      letter-spacing: -0.88px;
+    }
+
+    &__role {
+      font-size: 14px;
+      letter-spacing: -0.56px;
+    }
+
+    &__experience {
+      font-size: 18px;
+      letter-spacing: -0.72px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .strategic-leadership-section {
+    &__header.section-header {
+      gap: 10px;
+    }
+
+    &__description {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+  }
+
+  .leadership-card {
+    min-height: 277px;
+    gap: 10px;
+    padding: 15px 17px;
+
+    &__content {
+      gap: 10px;
+    }
+
+    &__heading {
+      gap: 5px;
+    }
+
+    &__name {
+      font-size: 21px;
+      letter-spacing: -0.84px;
+    }
+
+    &__role {
+      min-height: 2.4em;
+      font-size: 13px;
+      letter-spacing: -0.52px;
+      text-wrap: balance;
+    }
+
+    &__experience {
+      font-size: 16px;
+      letter-spacing: -0.64px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .strategic-leadership-section {
+    &__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+  }
+
+  .leadership-card {
+    display: grid;
+    min-height: 164px;
+    grid-template-columns: 94px minmax(0, 1fr);
+    align-items: center;
+    justify-content: stretch;
+    gap: 15px;
+    padding: 23px 16px;
+
+    &__portrait {
+      width: 94px;
+      height: 94px;
+    }
+
+    &__heading {
+      gap: 10px;
+    }
+
+    &__role {
+      min-height: 0;
+      text-wrap: initial;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .strategic-leadership-section {
+    &__header.section-header {
+      gap: 15px;
+    }
+
+    &__description br {
+      display: none;
+    }
+  }
+}

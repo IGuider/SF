@@ -1,0 +1,9 @@
+{
+  "value": 12500,
+  "prefix": "",
+  "postfix": "+",
+  "grouped": true,
+  "description": "Компаний пользуются<br> сервисом",
+  "order": 1,
+  "mobileOrder": 3
+}

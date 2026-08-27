@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { getCollection } from 'astro:content';
+import personalIcon from '../../assets/about/values/personal.svg';
+import recognitionIcon from '../../assets/about/values/recognition.svg';
+import reliabilityIcon from '../../assets/about/values/reliability.svg';
+import skolkovoIcon from '../../assets/about/values/skolkovo.svg';
+import stabilityIcon from '../../assets/about/values/stability.svg';
+import transparencyIcon from '../../assets/about/values/transparency.svg';
+import '../../styles/components/about/company-values-section.scss';
+
+type CompanyValueIcon =
+	| 'stability'
+	| 'reliability'
+	| 'transparency'
+	| 'skolkovo'
+	| 'recognition'
+	| 'personal';
+
+const iconMap = {
+	stability: stabilityIcon,
+	reliability: reliabilityIcon,
+	transparency: transparencyIcon,
+	skolkovo: skolkovoIcon,
+	recognition: recognitionIcon,
+	personal: personalIcon,
+} satisfies Record<CompanyValueIcon, ImageMetadata>;
+
+const values = (await getCollection('aboutCompanyValues'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => ({
+		...item.data,
+		iconImage: iconMap[item.data.icon],
+	}));
+---
+
+<section class="company-values-section section" id="company-values" aria-labelledby="company-values-title">
+	<div class="container">
+		<div class="company-values-section__header section-header section-header--compact">
+			<h2 class="company-values-section__title section-title" id="company-values-title">Наши ценности</h2>
+		</div>
+
+		<div class="company-values-section__grid">
+			{
+				values.map((value) => (
+					<article class="company-value-card">
+						<div class="company-value-card__icon" aria-hidden="true">
+							<Image
+								class="media-fill media-fit-contain"
+								src={value.iconImage}
+								alt=""
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+
+						<div class="company-value-card__content">
+							<h3 class="company-value-card__title">{value.title}</h3>
+							<p class="company-value-card__description" set:html={value.description} />
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

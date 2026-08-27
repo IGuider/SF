@@ -20,6 +20,15 @@ const homeFaq = defineCollection({
   }),
 });
 
+const aboutFaq = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/about-faq" }),
+  schema: z.object({
+    question: z.string(),
+    answer: z.string(),
+    order: z.number().int().positive(),
+  }),
+});
+
 const goszakazFaq = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/goszakaz-faq" }),
   schema: z.object({
@@ -345,6 +354,59 @@ const featureCards = defineCollection({
   }),
 });
 
+const aboutCompanyStats = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/about-company-stats",
+  }),
+  schema: z.object({
+    value: z.number().int().nonnegative(),
+    prefix: z.string().default(""),
+    postfix: z.string().default(""),
+    grouped: z.boolean(),
+    leadingAffix: z.string().optional(),
+    trailingAffix: z.string().optional(),
+    trailingText: z.string().optional(),
+    description: z.string(),
+    order: z.number().int().positive(),
+    mobileOrder: z.number().int().positive(),
+  }),
+});
+
+const aboutCompanyValues = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/about-company-values",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    icon: z.enum([
+      "stability",
+      "reliability",
+      "transparency",
+      "skolkovo",
+      "recognition",
+      "personal",
+    ]),
+    order: z.number().int().positive(),
+  }),
+});
+
+const aboutLeadership = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/about-leadership",
+  }),
+  schema: z.object({
+    name: z.string(),
+    role: z.string(),
+    experience: z.string(),
+    image: z.enum(["alexey-basenko", "campbell-bethwaite", "oleg-vyugin"]),
+    order: z.number().int().positive(),
+  }),
+});
+
 const contractExecutionStats = defineCollection({
   loader: glob({
     pattern: "**/*.json",
@@ -418,6 +480,7 @@ const steps = defineCollection({
 export const collections = {
   faq,
   homeFaq,
+  aboutFaq,
   goszakazFaq,
   bgFaq,
   tenderLoanFaq,
@@ -430,6 +493,9 @@ export const collections = {
   homeDirections,
   homeTrustItems,
   homeStats,
+  aboutCompanyStats,
+  aboutCompanyValues,
+  aboutLeadership,
   contractExecutionStats,
   iconFeatures,
   homeFacts,

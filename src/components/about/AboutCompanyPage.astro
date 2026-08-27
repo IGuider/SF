@@ -1,0 +1,52 @@
+---
+import AboutSection from '../common/AboutSection.astro';
+import FaqSection from '../common/FaqSection.astro';
+import LeadFormSection from '../common/LeadFormSection.astro';
+import DirectionsSection from '../home/DirectionsSection.astro';
+import BusinessValueSection from './BusinessValueSection.astro';
+import CompanyValuesSection from './CompanyValuesSection.astro';
+import StrategicLeadershipSection from './StrategicLeadershipSection.astro';
+import '../../styles/components/about/about-company-page.scss';
+
+const aboutCompanyParagraphs = [
+	'Мы финтех-компания: собственная платформа, экспертиза андеррайтеров и\u00A0накопленный опыт позволяют принимать решения за\u00A0часы, а\u00A0не\u00A0за\u00A0недели, как в\u00A0классическом банкинге. Каждого клиента смотрим индивидуально, с\u00A0учетом особенностей его бизнеса',
+	'В\u00A0малом и\u00A0среднем бизнесе все держится на\u00A0людях. Вы работаете, отвечаете за\u00A0результат и\u00A0берете на\u00A0себя риск, который никто за\u00A0вас не\u00A0возьмет. И\u00A0каждый день пробиваете стены, которых вообще не\u00A0должно быть: сроки, требования, формальности. Наша задача убрать хотя бы\u00A0часть из\u00A0них. Make it simple для нас не\u00A0слоган, а\u00A0критерий, по\u00A0которому мы проверяем каждое свое решение. Вам нужно не\u00A0одобрение по\u00A0формальным критериям, а\u00A0решение под вашу конкретную задачу. Этим мы и\u00A0занимаемся',
+	[
+		'Мы работаем с\u00A02015\u00A0года и\u00A0проходим вместе с\u00A0предпринимателями через разные периоды, спокойные',
+		'и\u00A0не очень. Рынок меняется, правила меняются, планы приходится пересобирать на\u00A0ходу. Наша позиция остается неизменной: мы на\u00A0стороне бизнеса и\u00A0продолжаем стабильно его финансировать. Условия подбираем под вашу ситуацию, а\u00A0не под усредненный шаблон',
+	],
+	[
+		'И\u00A0говорим прямо. Если можем профинансировать, сразу называем условия, без мелкого шрифта и\u00A0скрытых комиссий. Если нет, скажем об\u00A0этом сегодня, а\u00A0не через неделю. В\u00A0деньгах доверие строится только',
+		'на\u00A0прозрачности. Мы понимаем вас, потому что кредитуем бизнес больше десяти лет. Знаем, как устроены государственные закупки и\u00A0продажи на\u00A0маркетплейсах. В\u00A0отличие от\u00A0банков смотрим не\u00A0только на\u00A0финансовую отчетность, а\u00A0на реальный бизнес: динамику продаж, сезонность, то, как устроены ваши обороты. Поэтому даем деньги быстро и\u00A0на гибких условиях. Лучшее подтверждение этому дают сами клиенты: больше 80%\u00A0компаний, получивших у\u00A0нас финансирование, возвращаются за\u00A0следующим',
+	],
+];
+---
+
+<main class="about-company-page" transition:name="page-content" transition:animate="fade">
+	<BusinessValueSection />
+	<AboutSection
+		id="about-company-description"
+		paragraphs={aboutCompanyParagraphs}
+		ariaLabel="О компании SimpleFinance"
+		breaksDesktopOnly
+		tone="strong"
+		variant="company"
+	/>
+	<DirectionsSection showDescription={false} />
+	<CompanyValuesSection />
+	<StrategicLeadershipSection />
+	<LeadFormSection
+		id="director-message"
+		variant="director-message"
+		title="Напишите генеральному директору"
+		descriptionLines={[
+			'Если у\u00A0вас есть предложение, жалоба',
+			'или иной вопрос, требующий внимания',
+		]}
+		fields={['name', 'phone', 'email', 'message']}
+		fieldOverrides={{ name: { label: 'Имя' } }}
+		submitLabel="Оставить заявку"
+		 successTextLines={['Ваше сообщение отправлено.', 'Мы рассмотрим его в\u00A0ближайшее время']}
+	/>
+	<FaqSection collection="aboutFaq" />
+</main>

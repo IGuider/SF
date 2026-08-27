@@ -1,0 +1,86 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { getCollection } from 'astro:content';
+import alexeyBasenkoImage from '../../assets/about/leadership/alexey-basenko.png';
+import campbellBethwaiteImage from '../../assets/about/leadership/campbell-bethwaite.png';
+import olegVyuginImage from '../../assets/about/leadership/oleg-vyugin.png';
+import portraitRingLeft from '../../assets/about/leadership/portrait-ring-left.svg';
+import portraitRingRight from '../../assets/about/leadership/portrait-ring-right.svg';
+import '../../styles/components/about/strategic-leadership-section.scss';
+
+type LeaderImage = 'alexey-basenko' | 'campbell-bethwaite' | 'oleg-vyugin';
+
+const portraitMap = {
+	'alexey-basenko': {
+		image: alexeyBasenkoImage,
+		backdrop: portraitRingLeft,
+	},
+	'campbell-bethwaite': {
+		image: campbellBethwaiteImage,
+	},
+	'oleg-vyugin': {
+		image: olegVyuginImage,
+		backdrop: portraitRingRight,
+	},
+} satisfies Record<LeaderImage, { image: ImageMetadata; backdrop?: ImageMetadata }>;
+
+const leaders = (await getCollection('aboutLeadership'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => ({
+		...item.data,
+		...portraitMap[item.data.image],
+	}));
+---
+
+<section
+	class="strategic-leadership-section section"
+	id="strategic-leadership"
+	aria-labelledby="strategic-leadership-title"
+>
+	<div class="container">
+		<div class="strategic-leadership-section__header section-header section-header--compact">
+			<h2 class="strategic-leadership-section__title section-title" id="strategic-leadership-title">
+				Стратегическое руководство
+			</h2>
+			<p class="strategic-leadership-section__description">
+				Компанией руководят профессионалы с&nbsp;опытом работы в&nbsp;крупнейших финансовых организациях.
+				<br class="desktop-only-break" /> Они отвечают за&nbsp;стратегию развития и&nbsp;стандарты работы с&nbsp;клиентами
+			</p>
+		</div>
+
+		<div class="strategic-leadership-section__grid">
+			{
+				leaders.map((leader) => (
+					<article class="leadership-card">
+						<div class="leadership-card__portrait">
+							{leader.backdrop && (
+								<Image
+									class="leadership-card__portrait-backdrop media-fill"
+									src={leader.backdrop}
+									alt=""
+									aria-hidden="true"
+								/>
+							)}
+							<Image
+								class="leadership-card__portrait-image media-fill media-fit-cover"
+								src={leader.image}
+								alt={leader.name}
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+
+						<div class="leadership-card__content">
+							<div class="leadership-card__heading">
+								<h3 class="leadership-card__name">{leader.name}</h3>
+								<p class="leadership-card__role">{leader.role}</p>
+							</div>
+							<p class="leadership-card__experience" set:html={leader.experience} />
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import statsDivider from '../../assets/about/stats-divider.svg';
+import '../../styles/components/about/business-value-section.scss';
+
+const stats = (await getCollection('aboutCompanyStats'))
+	.sort((left, right) => left.data.order - right.data.order)
+	.map((item) => item.data);
+---
+
+<section
+	class="business-value-section section"
+	id="business-value"
+	aria-labelledby="business-value-title"
+	data-company-stats-counter
+>
+	<div class="container business-value-section__inner">
+		<h1 class="business-value-section__title" id="business-value-title">
+			SimpleFinance понимает ценность<br class="business-value-section__title-break" /> малого и&nbsp;среднего бизнеса
+		</h1>
+
+		<img
+			class="business-value-section__divider"
+			src={statsDivider.src}
+			alt=""
+			aria-hidden="true"
+		/>
+
+		<div class="business-value-section__stats" aria-label="SimpleFinance в цифрах">
+			{
+				stats.map((stat) => (
+					<article class="business-value-stat" style={`--business-value-mobile-order: ${stat.mobileOrder};`}>
+						<p class="business-value-stat__value">
+							{stat.leadingAffix && (
+								<span class="business-value-stat__value-affix">{stat.leadingAffix}</span>
+							)}
+							{stat.leadingAffix && ' '}
+							<span
+								data-company-stat-number
+								data-target={stat.value}
+								data-prefix={stat.prefix}
+								data-postfix={stat.postfix}
+								data-grouped={String(stat.grouped)}
+							>
+								{stat.prefix}{stat.grouped ? new Intl.NumberFormat('ru-RU').format(stat.value) : stat.value}{stat.postfix}
+							</span>
+							{stat.trailingAffix && (
+								<> <span class="business-value-stat__value-affix">{stat.trailingAffix}</span></>
+							)}
+							{stat.trailingText && <> {stat.trailingText}</>}
+						</p>
+						<p class="business-value-stat__description" set:html={stat.description} />
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

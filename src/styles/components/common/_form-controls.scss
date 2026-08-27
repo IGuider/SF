@@ -110,7 +110,9 @@
   }
 
   input#{$block}__input:focus + &__field-label,
-  input#{$block}__input:not(:placeholder-shown) + &__field-label {
+  input#{$block}__input:not(:placeholder-shown) + &__field-label,
+  textarea#{$block}__input:focus + &__field-label,
+  textarea#{$block}__input:not(:placeholder-shown) + &__field-label {
     top: $floating-top;
     transform: translateY(0);
     font-size: $floating-font-size;

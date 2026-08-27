@@ -66,12 +66,12 @@ const validateField = (field: HTMLElement) => {
     return isValid;
   }
 
-  const input = field.querySelector<HTMLInputElement>(
-    'input:not([type="hidden"]):not([type="checkbox"])',
+  const input = field.querySelector<HTMLInputElement | HTMLTextAreaElement>(
+    'input:not([type="hidden"]):not([type="checkbox"]), textarea',
   );
 
   if (input) {
-    const isPhoneField = input.matches("[data-lead-phone]");
+    const isPhoneField = input instanceof HTMLInputElement && input.matches("[data-lead-phone]");
     const isPhoneValid =
       !isPhoneField || normalizePhoneDigits(input.value).length === 11;
     const isValid = isTextInputValid(input) && isPhoneValid;
@@ -198,8 +198,8 @@ export const setupLeadForms = () => {
     }) as EventListener);
 
     getValidationFields(root).forEach((field) => {
-      const input = field.querySelector<HTMLInputElement>(
-        'input:not([type="hidden"]):not([type="checkbox"])',
+      const input = field.querySelector<HTMLInputElement | HTMLTextAreaElement>(
+        'input:not([type="hidden"]):not([type="checkbox"]), textarea',
       );
       const checkbox = field.querySelector<HTMLInputElement>(
         'input[type="checkbox"]',

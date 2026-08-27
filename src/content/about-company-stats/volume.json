@@ -1,0 +1,11 @@
+{
+  "value": 100,
+  "prefix": ">",
+  "postfix": "",
+  "grouped": false,
+  "trailingAffix": "млрд",
+  "trailingText": "₽",
+  "description": "Направлено на&nbsp;развитие<br> бизнеса",
+  "order": 2,
+  "mobileOrder": 1
+}

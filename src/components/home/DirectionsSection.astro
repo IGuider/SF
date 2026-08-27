@@ -10,6 +10,12 @@ import directionsCard3 from '../../assets/directions-card3.png';
 import directionsCard3Mobile from '../../assets/directions-card3-m.png';
 import '../../styles/components/home/directions-section.scss';
 
+interface Props {
+	showDescription?: boolean;
+}
+
+const { showDescription = true }: Props = Astro.props;
+
 const basePath = import.meta.env.BASE_URL.endsWith('/')
 	? import.meta.env.BASE_URL
 	: `${import.meta.env.BASE_URL}/`;
@@ -44,11 +50,15 @@ const cards = (await getCollection('homeDirections'))
 	<div class="container">
 		<div class="directions-section__header section-header section-header--compact">
 			<h2 class="directions-section__title section-title" id="directions-title">Направления</h2>
-			<p class="directions-section__description section-description">
-				SimpleFinance объединяет основные направления финансирования бизнеса на одной платформе.
-				Подберите решение для работы с&nbsp;маркетплейсами, участия в закупках или развития компании
-				<br class="desktop-only-break" /> без&nbsp;сложных банковских процедур
-			</p>
+			{
+				showDescription && (
+					<p class="directions-section__description section-description">
+						SimpleFinance объединяет основные направления финансирования бизнеса на одной платформе.
+						Подберите решение для работы с&nbsp;маркетплейсами, участия в закупках или развития компании
+						<br class="desktop-only-break" /> без&nbsp;сложных банковских процедур
+					</p>
+				)
+			}
 		</div>
 
 		<div class="directions-section__grid">

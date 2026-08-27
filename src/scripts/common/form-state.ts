@@ -19,7 +19,9 @@ export const formatAmountValue = (value: string) => {
   return new Intl.NumberFormat("ru-RU").format(Number(digits));
 };
 
-export const isTextInputValid = (input: HTMLInputElement) => {
+export const isTextInputValid = (
+  input: HTMLInputElement | HTMLTextAreaElement,
+) => {
   const value = input.value.trim();
 
   if (input.required && !value) {
